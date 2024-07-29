@@ -19,7 +19,7 @@ export default function LandingPageNavSection() {
             <Image src={Rewear} alt="resell" className="w-[93px] h-[101px]" />
             <p className="text-[18px] font-medium my-3">Rewear</p>
             <p className="text-[18px] text-center">
-                Own a piece of history, drape yourself in preloved elegance: “as every drape tells a beautiful story."
+                Own a piece of history, drape yourself in preloved elegance: &quot;as every drape tells a beautiful story. &quot;
             </p>
         </section>
         <section className="flex flex-col items-center max-w-[19%]">

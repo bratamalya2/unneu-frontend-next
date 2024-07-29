@@ -6,8 +6,8 @@ import ForwardArrow from "@/../public/forward-arrow.png";
 
 export default function LandingPageNewsletter() {
     return <section className="relative top-[1300px] h-[504px]">
-        <Image src={Background} className="absolute z-10 h-full w-full" />
-        <Image src={Foreground} className="absolute z-10 h-full w-[30%] right-0" />
+        <Image src={Background} alt="bg" className="absolute z-10 h-full w-full" />
+        <Image src={Foreground} alt="fg" className="absolute z-10 h-full w-[30%] right-0" />
         <p className="absolute z-20 max-w-[32%] left-[10%] top-[84px] text-[#E3E3E3] text-[48px] font-bold">
             Join the sustainability revolution: <span className="text-[#FE9135]">one saree at a time.</span>
         </p>
