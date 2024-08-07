@@ -4,9 +4,9 @@ import SampleBuyer from "@/../public/sample-buyer.png";
 import LandingPageSellerBackground from "@/../public/landingpage-seller-background.png";
 
 export default function LandingPageBuyer() {
-    return <section className="relative lg:top-[1200px] xl:top-[1500px] 2xl:top-[1800px] w-full flex items-center flex justify-around items-center">
+    return <section className="relative lg:top-[1200px] xl:top-[1400px] 2xl:top-[1700px] w-full flex items-center justify-center flex gap-x-8 items-center">
         <Image src={SampleBuyer} alt="sample buyer" className="lg:w-[52%] xl:w-[55%]" />
-        <aside className="w-[30%] flex flex-col z-10">
+        <aside className="2xl:w-[30%] xl:max-w-[43%] 2xl:max-w-[48%] flex flex-col z-10">
             <p className="font-bold text-5xl">
                 Embrace hands-me-down : <span className="text-[#FE9135]">Going back to roots.</span>
             </p>

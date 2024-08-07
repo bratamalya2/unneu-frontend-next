@@ -13,7 +13,7 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export default function Header() {
     return <header className={`${lbFont.className} h-[135px]`}>
-        <div className="py-[33px] flex justify-around items-center px-[9%]">
+        <div className="py-[33px] flex justify-around items-center px-[7.5%]">
             <Image src={Logo} alt="Unneu" className="w-[85px] lg:w-[125px] lg:h-[44px]" />
             <div className="w-[30%] md:w-[40%] relative">
                 <Image src={Search} alt="Search" className="w-[24px] h-[24px] absolute top-5 left-2" />

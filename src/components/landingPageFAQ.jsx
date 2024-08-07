@@ -12,7 +12,7 @@ export default function LandingPageFAQ() {
     const [isSellerVisible, setIsSellerVisible] = useState(false);
     const [isBuyerVisible, setIsBuyerVisible] = useState(false);
 
-    return <section className="relative top-[1900px] px-[10%] min-h-[600px]">
+    return <section className="relative 2xl:top-[1900px] xl:top-[1600px] px-[10%] min-h-[600px]">
         <p className="text-[#2D2D2D] text-[42px] font-bold">
             Frequently Asked <span className="text-[#FE9135]">Question</span>
         </p>
