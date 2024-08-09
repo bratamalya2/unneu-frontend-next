@@ -19,7 +19,7 @@ export default function LandingPageHowItWorks() {
                 </div>
             </div>
             <div className="flex flex-nowrap lg:w-[42%] xl:w-[40%] justify-between items-center">
-                <Image src={HowItWorks2} alt="list products" className="w-[66px] h-[79px]" />
+                <Image src={HowItWorks2} alt="list products" className="w-[66px] h-[79px] xl:w-[60px]" />
                 <div className="font-bold lg:text-4xl xl:text-6xl">02</div>
                 <div className="max-w-[55%]">
                     List your products with us on your profile page.
@@ -40,14 +40,14 @@ export default function LandingPageHowItWorks() {
                 </div>
             </div>
             <div className="flex flex-nowrap lg:w-[42%] xl:w-[40%] justify-between items-center">
-                <Image src={HowItWorks5} alt="dispatch" className="w-[66px] h-[79px] xl:w-[75px]" />
+                <Image src={HowItWorks5} alt="dispatch" className="w-[66px] h-[79px] xl:w-[80px]" />
                 <div className="font-bold lg:text-4xl xl:text-6xl">05</div>
                 <div className="max-w-[55%]">
                     Once approved the item is dispatched to the buyer for order fulfillment.
                 </div>
             </div>
             <div className="flex flex-nowrap lg:w-[42%] xl:w-[40%] justify-between items-center">
-                <Image src={HowItWorks6} alt="list products" className="w-[66px] h-[79px]" />
+                <Image src={HowItWorks6} alt="list products" className="w-[66px] h-[79px] xl:w-[75px]" />
                 <div className="font-bold lg:text-4xl xl:text-6xl">06</div>
                 <div className="max-w-[55%]">
                     Your account gets settled every Friday once the purchase is successful

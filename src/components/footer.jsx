@@ -4,7 +4,7 @@ import Facebook from "@/../public/facebook.png";
 import X from "@/../public/x.png";
 import LinkedIn from "@/../public/linkedin.png";
 import Instagram from "@/../public/instagram.png";
-import Logo from "@/../public/logo.png";
+import Logo from "@/../public/logo-footer.png";
 import Phone from "@/../public/phone.png";
 
 export default function Footer() {
@@ -34,7 +34,7 @@ export default function Footer() {
             <Image src={X} alt="x" className="w-[28px] h-[32px] mt-[32px] hover:cursor-pointer" />
         </li>
         <li className="w-[23%] xl:w-[32%]">
-            <Image src={Logo} alt="unneu logo" className="w-[180px] h-[60px]" />
+            <Image src={Logo} alt="unneu logo" className="w-[180px] h-[50px]" />
             <p className="mt-[20px]">Unneu Fashion Pvt Ltd</p>
             <p className="mt-[16px]">
                 19, RN Mukherjee Rd, Esplanade, B.B.D. Bagh, Kolkata, West Bengal 700001
@@ -43,7 +43,7 @@ export default function Footer() {
             <p className="mt-[20px]">
                 <Image src={Phone} alt="call" className="w-[20px] h-[20px] inline" />
                 <span className="font-semibold ml-2">Call us :</span>
-                <span>&nbsp;+91 9748083434</span>
+                <span>&nbsp;+91 9147397159</span>
             </p>
         </li>
     </footer>
