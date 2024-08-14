@@ -61,7 +61,7 @@ export default function LandingPageHowItWorks() {
             <p className="relative text-[24px] top-[28px] font-bold">HOW IT WORKS</p>
             <Carousel autoplay dotPosition="bottom" className="relative z-10 left-0 top-[80px] text-white">
                 <div className="flex flex-col flex-nowrap">
-                    <div className="flex flex-row flex-nowrap justify-around items-center my-5">
+                    <div className="flex flex-row flex-nowrap justify-around items-center myt-5 mb-10">
                         <Image src={HowItWorks1} alt="list products" className="w-[42px] h-[50px]" />
                         <div className="font-bold text-[32px]">01</div>
                         <div className="max-w-[55%]">

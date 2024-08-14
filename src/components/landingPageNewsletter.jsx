@@ -27,8 +27,8 @@ export default function LandingPageNewsletter() {
             <p className="absolute z-20 mt-[32px] max-w-[60%] left-[10%] top-[162px] text-white">
                 Join our newsletter for more Updates
             </p>
-            <input type="email" placeholder="Enter your e-mail" className="absolute z-20 mt-[32px] left-[10%] top-[240px] h-[38px] rounded-[20px] px-5 font-medium" />
-            <Image src={ForwardArrow} alt="right arrow" className="absolute z-30 left-[62%] top-[274px] w-[34px] h-[34px] hover:cursor-pointer" />
+            <input type="email" placeholder="Enter your e-mail" className="absolute z-20 mt-[32px] left-[10%] top-[240px] h-[38px] w-[230px] rounded-[20px] px-5 font-medium" />
+            <Image src={ForwardArrow} alt="right arrow" className="absolute z-30 left-[232px] top-[274px] w-[34px] h-[34px] hover:cursor-pointer" />
             <Image src={Foreground} alt="fg" className="absolute z-10 h-[350px] w-full right-0 bottom-0" />
         </section>
     </>
