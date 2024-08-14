@@ -16,29 +16,42 @@ export default function LandingPageFAQ() {
 
     useEffect(() => {
         if (isResellerVisible) {
-            document.getElementById("faq-section").style.minHeight = "1400px";
+            if (window.innerWidth < 500)
+                document.getElementById("faq-section").style.minHeight = "1300px";
+            else
+                document.getElementById("faq-section").style.minHeight = "1200px";
         }
         else if (isSellerVisible) {
-            document.getElementById("faq-section").style.minHeight = "1000px";
+            if (window.innerWidth < 500)
+                document.getElementById("faq-section").style.minHeight = "900px";
+            else
+                document.getElementById("faq-section").style.minHeight = "800px";
         }
         else if (isBuyerVisible) {
-            document.getElementById("faq-section").style.minHeight = "1240px";
+            if (window.innerWidth < 500)
+                document.getElementById("faq-section").style.minHeight = "1150px";
+            else
+                document.getElementById("faq-section").style.minHeight = "1040px";
         }
-        else
-            document.getElementById("faq-section").style.minHeight = "600px";
+        else {
+            if (window.innerWidth < 500)
+                document.getElementById("faq-section").style.minHeight = "600px";
+            else
+                document.getElementById("faq-section").style.minHeight = "600px";
+        }
     }, [isResellerVisible, isSellerVisible, isBuyerVisible]);
 
-    return <section id="faq-section" className="relative 2xl:top-[1900px] xl:top-[1600px] px-[10%] min-h-[600px]">
-        <p className="text-[#2D2D2D] text-[42px] font-bold">
+    return <section id="faq-section" className="relative top-[550px] 2xl:top-[1900px] xl:top-[1600px] px-[10%] min-h-[600px] sm:min-h-[600px]">
+        <p className="text-[#2D2D2D] text-xl sm:text-[42px] font-bold">
             Frequently Asked <span className="text-[#FE9135]">Question</span>
         </p>
-        <p className="text-[18px] mt-[30px]">
+        <p className="sm:text-[18px] mt-[30px]">
             Question commonly asked by Buyers and sellers
         </p>
-        <div className="mt-[50px] h-[65px] bg-[#FBFBFB] rounded-[24px] flex justify-between items-center px-[36px]" style={{
+        <div className="mt-[50px] h-[65px] bg-[#FBFBFB] rounded-[24px] flex justify-between items-center py-[10px] px-[36px]" style={{
             boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
         }}>
-            <div className="font-medium text-2xl">For Resellers</div>
+            <div className="font-medium text-lg sm:text-2xl">For Resellers</div>
             <Image src={ExpandButton} alt="expand" className="hover:cursor-pointer w-[40px] h-[40px]" onClick={() => {
                 setIsResellerVisible((curr) => !curr);
                 setIsSellerVisible(false);
@@ -46,10 +59,10 @@ export default function LandingPageFAQ() {
             }} />
         </div>
         <LandingPageResellersFAQ isVisible={isResellerVisible} />
-        <div className="mt-[32px] h-[65px] bg-[#FBFBFB] rounded-[24px] flex justify-between items-center px-[36px]" style={{
+        <div className="mt-[32px] h-[65px] bg-[#FBFBFB] rounded-[24px] flex justify-between items-center py-[10px] px-[36px]" style={{
             boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
         }}>
-            <div className="font-medium text-2xl">For seller representatives</div>
+            <div className="font-medium text-lg sm:text-2xl">For seller representatives</div>
             <Image src={ExpandButton} alt="expand" className="hover:cursor-pointer w-[40px] h-[40px]" onClick={() => {
                 setIsSellerVisible((curr) => !curr);
                 setIsBuyerVisible(false);
@@ -57,10 +70,10 @@ export default function LandingPageFAQ() {
             }} />
         </div>
         <LandingPageSellersFAQ isVisible={isSellerVisible} />
-        <div className="mt-[32px] h-[65px] bg-[#FBFBFB] rounded-[24px] flex justify-between items-center px-[36px]" style={{
+        <div className="mt-[32px] h-[65px] bg-[#FBFBFB] rounded-[24px] flex justify-between items-center py-[10px] px-[36px]" style={{
             boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
         }}>
-            <div className="font-medium text-2xl">For Buyers</div>
+            <div className="font-medium text-lg sm:text-2xl">For Buyers</div>
             <Image src={ExpandButton} alt="expand" className="hover:cursor-pointer w-[40px] h-[40px]" onClick={() => {
                 setIsBuyerVisible((curr) => !curr);
                 setIsResellerVisible(false);

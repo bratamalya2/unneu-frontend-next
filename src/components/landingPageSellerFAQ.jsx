@@ -16,7 +16,7 @@ export default function LandingPageSellersFAQ({ isVisible }) {
     const [currentQuestion, setCurrentQuestion] = useState(null);
 
     return <section className={`${isVisible ? "block" : "hidden"} mx-auto w-[95%] py-[24px]`}>
-        <LandingPageFAQQuestion question="How do I become a seller representative with Unneu?" id={0} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
-        <LandingPageFAQQuestion question="What benefits do I get entitled to if I become a seller representative?" id={1} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
+        <LandingPageFAQQuestion tag="seller" question="How do I become a seller representative with Unneu?" id={0} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
+        <LandingPageFAQQuestion tag="seller" question="What benefits do I get entitled to if I become a seller representative?" id={1} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
     </section>
 }

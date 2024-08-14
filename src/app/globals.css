@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ant-carousel .slick-dots-bottom {
+    bottom: -60px;
+    /* Adjust the position if needed */
+}
+
+.ant-carousel .slick-dots li button {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #000;
+    /* Customize the color */
+    opacity: 0.5;
+    /* Adjust the opacity if needed */
+}
+
+.ant-carousel .slick-dots li.slick-active button {
+    background-color: #FFFFFF;
+    /* Customize the active dot color */
+    opacity: 1;
+    /* Ensure active dot is fully visible */
+}

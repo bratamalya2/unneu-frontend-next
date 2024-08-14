@@ -27,10 +27,10 @@ export default function LandingPageBuyerFAQ({ isVisible }) {
     const [currentQuestion, setCurrentQuestion] = useState(null);
 
     return <section className={`${isVisible ? "block" : "hidden"} mx-auto w-[95%] py-[24px]`}>
-        <LandingPageFAQQuestion question="Why should I buy from Unneu.com?" id={0} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
-        <LandingPageFAQQuestion question="What is the delivery timeline?" id={1} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
-        <LandingPageFAQQuestion question="What are the cancellation and return policies?" id={2} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
-        <LandingPageFAQQuestion question="What are the refund policies?" id={3} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
-        <LandingPageFAQQuestion question="How is the shipping cost calculated?" id={4} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
+        <LandingPageFAQQuestion tag="buyer" question="Why should I buy from Unneu.com?" id={0} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
+        <LandingPageFAQQuestion tag="buyer" question="What is the delivery timeline?" id={1} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
+        <LandingPageFAQQuestion tag="buyer" question="What are the cancellation and return policies?" id={2} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
+        <LandingPageFAQQuestion tag="buyer" question="What are the refund policies?" id={3} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
+        <LandingPageFAQQuestion tag="buyer" question="How is the shipping cost calculated?" id={4} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
     </section>
 }
