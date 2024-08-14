@@ -17,7 +17,7 @@ export default function LandingPageFAQQuestion({ tag, question, currentQuestion,
                 document.getElementById("faq-section").style.minHeight = currentHeight + document.getElementById(`answer-${tag}-${currentQuestion}`).offsetHeight + "px";
             }, 500);
         }
-    }, [currentQuestion, id]);
+    }, [currentQuestion, id, tag]);
 
     return <>
         <div className="relative bg-[#FCD681] rounded-[24px] px-[15px] sm:px-[30px] py-[18px] mb-[24px] text-[#000] text-lg sm:text-2xl font-medium">
