@@ -23,6 +23,7 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export default function Header() {
     const [showHamburger, setShowHamburger] = useState(false);
+    const [showSearch, setShowSearch] = useState(false);
 
     return <>
         <header className={`${lbFont.className} h-[135px] hidden sm:block`}>
@@ -98,8 +99,15 @@ export default function Header() {
             <Image src={Hamburger} alt="details" className="w-[20px] h-[14px]" onClick={() => {
                 setShowHamburger(true);
             }} />
-            <Image src={Logo} alt="Unneu" className="w-[103px] h-[36px] ml-[30%]" />
-            <Image src={Search} alt="Search" className="w-[20px] h-[20px] ml-[15%]" />
+            <Image src={Logo} alt="Unneu" className={`w-[103px] h-[36px] ${showSearch ? "ml-[5%]" : "ml-[30%]"}`} />
+            {
+                showSearch && (
+                    <input type="text" placeholder="Search here" className="w-[112px] py-[5px] pl-[2px] text-[14px] font-medium mx-4 border-b border-[#9C9C9C] " />
+                )
+            }
+            <Image src={Search} alt="Search" className="w-[20px] h-[20px] ml-[15%]" onClick={() => {
+                setShowSearch(x => !x);
+            }} />
             <Image src={Cart} alt="Cart" className="w-[20px] h-[20px] hover:cursor-pointer ml-[5%]" />
         </header>
     </>
