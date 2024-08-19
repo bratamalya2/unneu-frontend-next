@@ -102,10 +102,10 @@ export default function Header() {
             <Image src={Logo} alt="Unneu" className={`w-[103px] h-[36px] ${showSearch ? "ml-[5%]" : "ml-[30%]"}`} />
             {
                 showSearch && (
-                    <input type="text" placeholder="Search here" className="w-[112px] py-[5px] pl-[2px] text-[14px] font-medium mx-4 border-b border-[#9C9C9C] " />
+                    <input type="text" placeholder="Search here" className="w-[112px] py-[5px] pl-[2px] text-[14px] font-medium ml-4 border-b border-[#9C9C9C] outline-0" />
                 )
             }
-            <Image src={Search} alt="Search" className="w-[20px] h-[20px] ml-[15%]" onClick={() => {
+            <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[3%]" : "ml-[15%]"}`} onClick={() => {
                 setShowSearch(x => !x);
             }} />
             <Image src={Cart} alt="Cart" className="w-[20px] h-[20px] hover:cursor-pointer ml-[5%]" />
