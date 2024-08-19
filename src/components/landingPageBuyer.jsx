@@ -7,7 +7,7 @@ export default function LandingPageBuyer() {
     return <>
         <section className="relative hidden sm:flex lg:top-[1200px] xl:top-[1400px] 2xl:top-[1700px] w-full items-center justify-center gap-x-8 items-center">
             <Image src={SampleBuyer} alt="sample buyer" className="lg:w-[52%] xl:w-[55%]" />
-            <aside className="2xl:w-[30%] xl:max-w-[43%] 2xl:max-w-[48%] flex flex-col z-10">
+            <aside className="w-[80%] 2xl:w-[30%] xl:max-w-[43%] 2xl:max-w-[48%] flex flex-col z-10">
                 <p className="font-bold text-5xl">
                     Embrace hands-me-down : <span className="text-[#FE9135]">Going back to roots.</span>
                 </p>
@@ -20,8 +20,8 @@ export default function LandingPageBuyer() {
             </aside>
             <Image src={LandingPageSellerBackground} alt="circles" className="w-[366px] h-[373px] absolute z-[-10] lg:left-[32%] xl:left-[44%] lg:bottom-[-120px] xl:bottom-0" />
         </section>
-        <section className="relative flex flex-col sm:hidden top-[400px] w-full items-center">
-            <aside className="w-[95%] px-3 flex flex-col items-center z-10">
+        <section className="relative flex flex-col sm:hidden top-[470px] w-full items-center">
+            <aside className="w-[85%] px-3 flex flex-col items-center z-10">
                 <p className="font-bold text-2xl">
                     Embrace hands-me-down : <span className="text-[#FE9135]">Going back to roots.</span>
                 </p>
