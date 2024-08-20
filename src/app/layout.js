@@ -1,11 +1,15 @@
-import { Poppins } from "next/font/google";
+import { Poppins, Libre_Baskerville } from "next/font/google";
 
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "700"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"]
+});
 
 export const metadata = {
   title: "Unneu",
@@ -17,6 +21,15 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js" crossOrigin="true"></script>
+
+        <script
+          src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"
+          crossOrigin="true"></script>
+
+        <script
+          src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js"
+          crossOrigin="true"></script>
       </head>
 
       <body className={`${poppins.className} h-screen`}>

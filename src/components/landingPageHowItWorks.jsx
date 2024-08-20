@@ -57,7 +57,7 @@ export default function LandingPageHowItWorks() {
                 </div>
             </section>
         </section>
-        <section className="relative block sm:hidden top-[500px] bg-[#E05F1D] text-white w-full h-[519px] px-[10%] z-0">
+        <section className="relative block sm:hidden top-[500px] bg-[#E05F1D] text-white w-full h-[519px] px-[10%] z-0" id="landing-page-howitworks">
             <p className="relative text-[24px] top-[28px] font-bold">HOW IT WORKS</p>
             <Carousel autoplay dotPosition="bottom" className="relative z-10 left-0 top-[80px] text-white">
                 <div className="flex flex-col flex-nowrap">

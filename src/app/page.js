@@ -8,8 +8,6 @@ import LandingPageHowItWorks from "@/components/landingPageHowItWorks";
 import LandingPageFAQ from "@/components/landingPageFAQ";
 import LandingPageNewsletter from "@/components/landingPageNewsletter";
 
-
-
 export default function Home() {
   return (
     <main className="relative">
