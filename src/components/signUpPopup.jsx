@@ -34,14 +34,14 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                 });
             }, 1000));
         }
-    }, [isOTPSent]);
+    }, [isOTPSent, timerObj]);
 
     useEffect(() => {
         if (timer === 0) {
             clearInterval(timerObj);
             setTimerObj(null);
         }
-    }, [timer]);
+    }, [timer, timerObj]);
 
     const resendOTP = () => {
         if (timer === 0) {

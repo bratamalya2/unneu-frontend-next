@@ -45,14 +45,14 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                 });
             }, 1000));
         }
-    }, [isOTPSent]);
+    }, [isOTPSent, timerObj]);
 
     useEffect(() => {
         if (timer === 0) {
             clearInterval(timerObj);
             setTimerObj(null);
         }
-    }, [timer]);
+    }, [timer, timerObj]);
 
     return <>
         <Modal show={showSignIn} onHide={hideSignIn} className="mt-[150px]">
