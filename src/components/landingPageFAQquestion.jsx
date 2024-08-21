@@ -6,7 +6,7 @@ import Image from "next/image";
 import LandingPageFAQAnswer from "./landingPageFAQanswer";
 
 import Expand from "@/../public/landingPageFAQShowAnswer.png";
-
+import Contract from "@/../public/landingPageFAQHideAnswer.png";
 
 export default function LandingPageFAQQuestion({ tag, question, currentQuestion, setCurrentQuestion, id, answer }) {
     useEffect(() => {
@@ -24,17 +24,24 @@ export default function LandingPageFAQQuestion({ tag, question, currentQuestion,
             <div className="max-w-[85%]">
                 {question}
             </div>
-            <Image src={Expand} alt="show answer" className="w-[35px] h-[35px] absolute top-5 right-2 sm:right-5 hover:cursor-pointer" onClick={() => {
-                if (currentQuestion !== id) {
-                    setCurrentQuestion(id);
-                }
-                else {
-                    const currentHeightStr = document.getElementById("faq-section").style.minHeight;
-                    const currentHeight = parseInt(currentHeightStr.substring(0, currentHeightStr.length - 2));
-                    document.getElementById("faq-section").style.minHeight = (currentHeight - document.getElementById(`answer-${tag}-${currentQuestion}`).offsetHeight) + "px";
-                    setCurrentQuestion(null);
-                }
-            }} />
+            {
+                currentQuestion !== id ? (
+                    <Image src={Expand} alt="show answer" className="w-[35px] h-[35px] absolute top-5 right-2 sm:right-5 hover:cursor-pointer" onClick={() => {
+                        setCurrentQuestion(id);
+                    }} />
+                ) : (
+                    <div
+                        className="absolute bg-[#D9D9D9] rounded-[50%] w-[40px] h-[40px] top-5 right-2"
+                        onClick={() => {
+                            const currentHeightStr = document.getElementById("faq-section").style.minHeight;
+                            const currentHeight = parseInt(currentHeightStr.substring(0, currentHeightStr.length - 2));
+                            document.getElementById("faq-section").style.minHeight = (currentHeight - document.getElementById(`answer-${tag}-${currentQuestion}`).offsetHeight) + "px";
+                            setCurrentQuestion(null);
+                        }}>
+                        <Image src={Contract} alt="hide answer" className="absolute top-[10px] left-[9px] w-[40%] h-[40%] absolute hover:cursor-pointer" />
+                    </div>
+                )
+            }
         </div>
         {
             currentQuestion === id && (

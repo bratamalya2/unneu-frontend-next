@@ -41,8 +41,8 @@ export default function LandingPageFAQ() {
         }
     }, [isResellerVisible, isSellerVisible, isBuyerVisible]);
 
-    return <section id="faq-section" className="relative top-[550px] 2xl:top-[1900px] xl:top-[1600px] px-[10%] min-h-[600px] sm:min-h-[600px]">
-        <p className="text-[#2D2D2D] text-xl sm:text-[42px] font-bold">
+    return <section id="faq-section" className="relative top-[720px] sm:top-[900px] 2xl:top-[1900px] xl:top-[1600px] px-[10%] min-h-[600px] sm:min-h-[600px]">
+        <p className="text-[#2D2D2D] text-xl sm:text-4xl md:text-[42px] font-bold">
             Frequently Asked <span className="text-[#FE9135]">Question</span>
         </p>
         <p className="sm:text-[18px] mt-[30px]">

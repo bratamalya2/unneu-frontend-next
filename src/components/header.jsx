@@ -43,7 +43,7 @@ export default function Header() {
     };
 
     return <>
-        <header className={`${lbFont.className} h-[135px] hidden sm:block`}>
+        <header className={`${lbFont.className} h-[135px] hidden md:block`}>
             <div className="py-[33px] flex justify-around items-center px-[7.5%]">
                 <Image src={Logo} alt="Unneu" className="w-[85px] lg:w-[125px] lg:h-[44px]" />
                 <div className="w-[30%] md:w-[40%] relative">
@@ -69,7 +69,7 @@ export default function Header() {
         </header>
         {
             showHamburger && (
-                <nav className="block sm:hidden bg-white max-w-[363px] w-[60%] h-[560px] list-none absolute z-50 rounded-tr-[24px] rounded-br-[24px]" style={{
+                <nav className="block md:hidden bg-white max-w-[363px] w-[60%] h-[560px] list-none absolute z-50 rounded-tr-[24px] rounded-br-[24px]" style={{
                     boxShadow: "0px 4px 78px 0px rgba(0, 0, 0, 0.25)"
                 }}>
                     <Image src={CloseIcon} alt="close" className="w-[14px] h-[14px] absolute top-10 right-5" onClick={hideHamburger} />
@@ -122,17 +122,17 @@ export default function Header() {
                 </nav>
             )
         }
-        <header className={`${lbFont.className} h-[135px] block sm:hidden h-[36px] flex items-center px-[30px] mt-[20px]`}>
+        <header className={`${lbFont.className} h-[135px] block md:hidden h-[36px] flex items-center px-[30px] mt-[20px]`}>
             <Image src={Hamburger} alt="details" className="w-[20px] h-[14px]" onClick={() => {
                 setShowHamburger(true);
             }} />
-            <Image src={Logo} alt="Unneu" className={`w-[103px] h-[36px] ${showSearch ? "ml-[5%]" : "ml-[30%]"}`} />
+            <Image src={Logo} alt="Unneu" className={`w-[103px] h-[36px] ${showSearch ? "ml-[5%] sm:ml-[10%]" : "ml-[35%] sm:ml-[40%]"}`} />
             {
                 showSearch && (
-                    <input type="text" placeholder="Search here" className="w-[112px] py-[5px] pl-[2px] text-[14px] font-medium ml-4 border-b border-[#9C9C9C] outline-0" />
+                    <input type="text" placeholder="Search here" className="w-[112px] sm:w-[210px] py-[5px] pl-[2px] text-[14px] font-medium ml-4 border-b border-[#9C9C9C] outline-0" />
                 )
             }
-            <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[4%]" : "ml-[15%]"}`} onClick={() => {
+            <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[4%] sm:ml-[20%]" : "ml-[15%] sm:ml-[27%]"}`} onClick={() => {
                 setShowSearch(x => !x);
             }} />
             <Image src={Cart} alt="Cart" className="w-[20px] h-[20px] hover:cursor-pointer ml-[7%]" />
