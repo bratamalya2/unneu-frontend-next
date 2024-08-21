@@ -103,7 +103,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                             <p className="text-[#646464] font-medium self-start mt-10">Enter phone number</p>
                             <input
                                 type="text"
-                                className="rounded-[12px] w-full py-[10px] px-[16px] border-2 border-[#E05F1D] my-2 self-start"
+                                className="rounded-[12px] w-full py-[10px] px-[12px] border-2 border-[#E05F1D] my-2 self-start"
                                 placeholder="+91 94XXXXXXXX"
                                 style={{
                                     boxShadow: "0px 11px 40px 4px rgba(81, 69, 55, 0.05)"

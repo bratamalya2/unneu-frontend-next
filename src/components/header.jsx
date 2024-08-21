@@ -75,13 +75,13 @@ export default function Header() {
                     <Image src={CloseIcon} alt="close" className="w-[14px] h-[14px] absolute top-10 right-5" onClick={hideHamburger} />
                     <Image src={Like} alt="wishlist" className="w-[20px] h-[17px] absolute left-5 top-10" />
                     <div className="absolute top-10 left-[50px] text-[14px]">Wish list</div>
-                    <li className="bg-[#FE9135] text-white py-[8px] px-[20px] text-center absolute left-5 top-20 rounded-[6px] font-medium hover:cursor-pointer" onClick={() => {
+                    <li className="bg-[#FE9135] text-white py-[8px] px-[16px] text-center absolute left-5 top-20 rounded-[6px] font-medium hover:cursor-pointer" onClick={() => {
                         hideHamburger();
                         setShowSignUp(true);
                     }}>
                         Sign up
                     </li>
-                    <li className="py-[8px] px-[20px] text-center absolute left-[130px] top-20 rounded-[6px] font-medium border border-[#000] hover:cursor-pointer" onClick={() => {
+                    <li className="py-[8px] px-[16px] text-center absolute left-[130px] top-20 rounded-[6px] font-medium border border-[#000] hover:cursor-pointer" onClick={() => {
                         hideHamburger();
                         setShowSignIn(true);
                     }}>

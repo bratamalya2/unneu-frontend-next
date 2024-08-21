@@ -74,7 +74,7 @@ export default function Footer() {
                     <Image src={X} alt="x" className="w-[28px] h-[30px] mt-[16px] hover:cursor-pointer" />
                 </li>
             </div>
-            <li className="w-full mt-[42px]">
+            <li className="w-full mt-[42px] mb-5">
                 <Image src={Logo} alt="unneu logo" className="w-[180px] h-[50px]" />
                 <p className="mt-[20px] font-medium">Unneu Fashion Pvt Ltd</p>
                 <p className="mt-[16px] max-w-[90%] font-medium">
