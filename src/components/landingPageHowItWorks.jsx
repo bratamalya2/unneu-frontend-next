@@ -57,9 +57,9 @@ export default function LandingPageHowItWorks() {
                 </div>
             </section>
         </section>
-        <section className="relative block sm:hidden top-[500px] bg-[#E05F1D] text-white w-full h-[519px] px-[10%] z-0" id="landing-page-howitworks">
+        <section className="relative block sm:hidden top-[500px] bg-[#E05F1D] text-white w-full h-[570px] px-[10%] z-0" id="landing-page-howitworks">
             <p className="relative text-[24px] top-[28px] font-bold">HOW IT WORKS</p>
-            <Carousel autoplay dotPosition="bottom" className="relative z-10 left-0 top-[80px] text-white">
+            <Carousel autoplay dotPosition="bottom" className="relative z-10 left-0 top-[50px] text-white">
                 <div className="flex flex-col flex-nowrap">
                     <div className="flex flex-row flex-nowrap justify-around items-center my-10">
                         <Image src={HowItWorks1} alt="list products" className="w-[42px] h-[50px]" />
@@ -75,7 +75,7 @@ export default function LandingPageHowItWorks() {
                             List your products with us on your profile page.
                         </div>
                     </div>
-                    <div className="flex flex-row flex-nowrap justify-around items-center my-5">
+                    <div className="flex flex-row flex-nowrap justify-around items-center mt-5">
                         <Image src={HowItWorks3} alt="list products" className="w-[42px] h-[50px]" />
                         <div className="font-bold text-[32px]">03</div>
                         <div className="max-w-[55%]">
@@ -98,7 +98,7 @@ export default function LandingPageHowItWorks() {
                             Once approved the item is dispatched to the buyer for order fulfillment.
                         </div>
                     </div>
-                    <div className="flex flex-row flex-nowrap justify-around items-center my-5">
+                    <div className="flex flex-row flex-nowrap justify-around items-center mt-5">
                         <Image src={HowItWorks6} alt="list products" className="w-[50px] h-[50px]" />
                         <div className="font-bold text-[32px]">06</div>
                         <div className="max-w-[55%]">

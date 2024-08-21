@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Libre_Baskerville } from "next/font/google";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
@@ -41,6 +41,11 @@ export default function Header() {
     const hideSignUp = () => {
         setShowSignUp(false);
     };
+
+    useEffect(() => {
+        console.log(window.innerWidth);
+        console.log(window.innerHeight);
+    }, []);
 
     return <>
         <header className={`${lbFont.className} h-[135px] hidden sm:block`}>

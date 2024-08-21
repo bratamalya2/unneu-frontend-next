@@ -24,6 +24,10 @@
     /* Ensure active dot is fully visible */
 }
 
+.modal-dialog {
+    max-width: 95vw;
+}
+
 .modal-content {
     border-radius: 32px;
 }
