@@ -20,7 +20,7 @@ export default function LandingPageBuyer() {
             </aside>
             <Image src={LandingPageSellerBackground} alt="circles" className="w-[366px] h-[373px] absolute z-[-10] lg:left-[32%] xl:left-[44%] lg:bottom-[-120px] xl:bottom-0" />
         </section>
-        <section className="relative flex flex-col sm:hidden top-[470px] w-full items-center">
+        <section className="relative flex flex-col sm:hidden top-[430px] w-full items-center">
             <aside className="w-[85%] px-3 flex flex-col items-center z-10">
                 <p className="font-bold text-2xl">
                     Embrace hands-me-down : <span className="text-[#FE9135]">Going back to roots.</span>

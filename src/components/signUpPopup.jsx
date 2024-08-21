@@ -20,19 +20,64 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
     const [otp, setOtp] = useState("");
     const [timer, setTimer] = useState(null);
     const [timerObj, setTimerObj] = useState(null);
+    const [showError, setShowError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const submitOTP = async () => {
+        try {
+            if (otp.length === 6) {
+                const x = await fetch(`${process.env.BACKEND_URL}\login`, {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    },
+                    body: JSON.stringify({
+                        phoneNumber,
+                        otp
+                    })
+                });
+                const y = await x.json();
+                console.log(y);
+            }
+            else {
+                setShowError(true);
+                setErrorMessage("Enter a 6 digit OTP!");
+                setTimeout(() => {
+                    setShowError(false);
+                }, 3000);
+            }
+            setTimeout(() => {
+                hideSignUp();
+            }, 3000);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        if (!showSignUp) {
+            setTimer(null);
+            setTimerObj(null);
+            setPhoneNumber("");
+            setIsOTPSent(false);
+            setOtp("");
+        };
+    }, [showSignUp]);
 
     useEffect(() => {
         if (isOTPSent) {
-            if (!timerObj)
+            if (!timerObj) {
                 setTimer(60);
-            setTimerObj(setInterval(() => {
-                setTimer(x => {
-                    if (x > 0)
-                        return x - 1;
-                    else
-                        return x;
-                });
-            }, 1000));
+                setTimerObj(setInterval(() => {
+                    setTimer(x => {
+                        if (x > 0)
+                            return x - 1;
+                        else
+                            return x;
+                    });
+                }, 1000));
+            }
         }
     }, [isOTPSent, timerObj]);
 
@@ -134,9 +179,20 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                                 onChange={e => setOtp(e.target.value)}
                                 value={otp}
                             />
-                            <button className="w-full mx-auto rounded-[16px] text-white bg-[#FE9135] py-[10px] text-[20px] font-semibold my-4">
+                            <button className="w-full mx-auto rounded-[16px] text-white bg-[#FE9135] py-[10px] text-[20px] font-semibold my-3" onClick={submitOTP}>
                                 Verify OTP
                             </button>
+                        </>
+                    )
+                }
+                {
+                    showError && !isSellerSelected && (
+                        <p className="text-[#8F8F8F] text-[14px] text-red-500 font-bold text-center my-2">{errorMessage}</p>
+                    )
+                }
+                {
+                    isOTPSent && !isSellerSelected && (
+                        <>
                             <p className="text-[#8F8F8F] text-[14px] text-center">Didnt get OTP ? <span className={`text-[#6C6C6C] font-medium ${timer === 0 ? "hover:cursor-pointer" : "hover:cursor-wait"}`} onClick={resendOTP}>Resend</span> {
                                 timer > 0 && timer && (
                                     <span>

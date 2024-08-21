@@ -2,6 +2,7 @@
 
 import { Libre_Baskerville } from "next/font/google";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 
@@ -14,12 +15,15 @@ const libreBaskerville = Libre_Baskerville({
 });
 
 export default function SignInPopup({ showSignIn, hideSignIn }) {
+    const router = useRouter();
     const [isSellerSelected, setIsSellerSelected] = useState(true);
     const [phoneNumber, setPhoneNumber] = useState("");
     const [isOTPSent, setIsOTPSent] = useState(false);
     const [otp, setOtp] = useState("");
     const [timer, setTimer] = useState(null);
     const [timerObj, setTimerObj] = useState(null);
+    const [showError, setShowError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     const resendOTP = () => {
         if (timer === 0) {
@@ -32,18 +36,71 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
         }
     };
 
+    const submitOTP = async () => {
+        try {
+            if (otp.length === 6) {
+                console.log(process.env.NEXT_PUBLIC_BACKEND_URL);
+                const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    },
+                    body: JSON.stringify({
+                        phoneNumber,
+                        otp
+                    })
+                });
+                const y = await x.json();
+                if (!y.success) {
+                    setShowError(true);
+                    setErrorMessage(y.err);
+                    setTimeout(() => {
+                        setShowError(false);
+                    }, 3000);
+                }
+                else {
+                    router.push(`/home`);
+                }
+            }
+            else {
+                setShowError(true);
+                setErrorMessage("Enter a 6 digit OTP!");
+                setTimeout(() => {
+                    setShowError(false);
+                }, 3000);
+            }
+            setTimeout(() => {
+                hideSignIn();
+            }, 3000);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        if (!showSignIn) {
+            setTimer(null);
+            setTimerObj(null);
+            setPhoneNumber("");
+            setIsOTPSent(false);
+            setOtp("");
+        };
+    }, [showSignIn]);
+
     useEffect(() => {
         if (isOTPSent) {
-            if (!timerObj)
+            if (!timerObj) {
                 setTimer(60);
-            setTimerObj(setInterval(() => {
-                setTimer(x => {
-                    if (x > 0)
-                        return x - 1;
-                    else
-                        return x;
-                });
-            }, 1000));
+                setTimerObj(setInterval(() => {
+                    setTimer(x => {
+                        if (x > 0)
+                            return x - 1;
+                        else
+                            return x;
+                    });
+                }, 1000));
+            }
         }
     }, [isOTPSent, timerObj]);
 
@@ -103,17 +160,26 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                                 onChange={e => setOtp(e.target.value)}
                                 value={otp}
                             />
-                            <button className="w-full mx-auto rounded-[16px] text-white bg-[#FE9135] py-[10px] text-[20px] font-semibold my-4">
+                            <button className="w-full mx-auto rounded-[16px] text-white bg-[#FE9135] py-[10px] text-[20px] font-semibold mt-4" onClick={submitOTP}>
                                 Verify OTP
                             </button>
-                            <p className="text-[#8F8F8F] text-[14px] text-center">Didnt get OTP ? <span className={`text-[#6C6C6C] font-medium ${timer === 0 ? "hover:cursor-pointer" : "hover:cursor-wait"}`} onClick={resendOTP}>Resend</span> {
-                                timer > 0 && timer && (
-                                    <span>
-                                        OTP in <span className="text-red-500">{timer} seconds</span>
-                                    </span>
-                                )}
-                            </p>
                         </>
+                    )
+                }
+                {
+                    showError && (
+                        <p className="text-[#8F8F8F] text-[14px] text-red-500 font-bold text-center my-2">{errorMessage}</p>
+                    )
+                }
+                {
+                    isOTPSent && (
+                        <p className="text-[#8F8F8F] text-[14px] text-center mt-3">Didnt get OTP ? <span className={`text-[#6C6C6C] font-medium ${timer === 0 ? "hover:cursor-pointer" : "hover:cursor-wait"}`} onClick={resendOTP}>Resend</span> {
+                            timer > 0 && timer && (
+                                <span>
+                                    OTP in <span className="text-red-500">{timer} seconds</span>
+                                </span>
+                            )}
+                        </p>
                     )
                 }
                 <div className="flex flex-row flex-nowrap items-center justify-around w-full">
