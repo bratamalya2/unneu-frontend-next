@@ -134,7 +134,7 @@ export default function Header() {
             <Image src={Hamburger} alt="details" className="w-[20px] h-[14px]" onClick={() => {
                 setShowHamburger(true);
             }} />
-            <Image src={Logo} alt="Unneu" className={`w-[103px] h-[36px] ${showSearch ? "ml-[5%] sm:ml-[10%]" : "ml-[35%] sm:ml-[40%]"}`} />
+            <Image src={Logo} alt="Unneu" className={`w-[103px] h-[36px] ${showSearch ? "ml-[5%] sm:ml-[10%]" : "ml-[31%] sm:ml-[35%]"}`} />
             {
                 showSearch && (
                     <input type="text" placeholder="Search here" className="w-[112px] sm:w-[210px] py-[5px] pl-[2px] text-[14px] font-medium ml-4 border-b border-[#9C9C9C] outline-0" />
