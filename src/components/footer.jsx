@@ -48,7 +48,7 @@ export default function Footer() {
                 </p>
             </li>
         </footer>
-        <footer className="lg:hidden flex flex-col flex-nowrap top-[660px] sm:top-[900px] h-[1050px] sm:h-[950px] px-[5%] py-[41px] list-none relative" style={{
+        <footer className="lg:hidden flex flex-col flex-nowrap top-[630px] sm:top-[900px] h-[1050px] sm:h-[950px] px-[5%] py-[41px] list-none relative" style={{
             background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)"
         }}>
             <li className="w-full">

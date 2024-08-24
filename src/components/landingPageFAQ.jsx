@@ -41,12 +41,12 @@ export default function LandingPageFAQ() {
         }
     }, [isResellerVisible, isSellerVisible, isBuyerVisible]);
 
-    return <section id="faq-section" className="relative top-[720px] sm:top-[900px] lg:top-[1100px] 2xl:top-[1800px] xl:top-[1600px] px-[10%] min-h-[600px] sm:min-h-[600px]">
-        <p className="text-[#2D2D2D] text-xl sm:text-4xl md:text-[42px] font-bold">
+    return <section id="faq-section" className="relative top-[660px] sm:top-[900px] lg:top-[1100px] 2xl:top-[1800px] xl:top-[1600px] px-[10%] min-h-[550px] sm:min-h-[600px]">
+        <p className="text-[#2D2D2D] text-3xl sm:text-4xl md:text-[42px] font-bold">
             Frequently Asked <span className="text-[#FE9135]">Question</span>
         </p>
         <p className="sm:text-[18px] mt-[30px]">
-            Question commonly asked by Buyers and sellers
+            Question commonly asked by Buyers and sellers.
         </p>
         <div className="mt-[50px] h-[65px] bg-[#FBFBFB] rounded-[24px] flex justify-between items-center py-[10px] px-[36px]" style={{
             boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
