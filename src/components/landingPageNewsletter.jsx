@@ -9,7 +9,7 @@ import "../styles/LandingPageNewsletter.css";
 
 export default function LandingPageNewsletter() {
     return <>
-        <section className="relative hidden lg:block top-[700px] 2xl:top-[1800px] xl:top-[1550px] lg:h-[450px] xl:h-[450px] 2xl:h-[504px]">
+        <section className="relative hidden lg:block lg:top-[1050px] 2xl:top-[1800px] xl:top-[1550px] lg:h-[550px] xl:h-[450px] 2xl:h-[504px]">
             <Image src={Background} alt="bg" className="absolute z-10 h-full w-full" />
             <Image src={Foreground} alt="fg" className="absolute z-10 h-full xl:w-[45%] 2xl:w-[40%] right-0" />
             <p className="absolute z-20 lg:max-w-[52%] xl:max-w-[45%] 2xl:max-w-[40%] left-[10%] lg:top-[64px] xl:top-[64px] 2xl:top-[84px] text-[#E3E3E3] lg:text-[40px] xl:text-[48px] font-bold">
@@ -18,8 +18,8 @@ export default function LandingPageNewsletter() {
             <p className="absolute z-20 mt-[32px] left-[10%] lg:top-[242px] xl:top-[262px] 2xl:top-[292px] text-white text-xl font-medium">
                 Join our newsletter for more Updates
             </p>
-            <input type="email" placeholder="Enter your e-mail" className="absolute z-20 mt-[32px] left-[10%] lg:top-[304px] xl:top-[324px] 2xl:top-[354px] xl:w-[20%] lg:w-[24%] h-[47px] rounded-[20px] px-5 font-medium text-[18px]" />
-            <Image src={ForwardArrow} alt="right arrow" className="absolute z-30 xl:left-[27%] lg:left-[30%] lg:top-[344px] xl:top-[362px] 2xl:top-[392px] w-[34px] h-[34px] hover:cursor-pointer" />
+            <input type="email" placeholder="Enter your e-mail" className="absolute z-20 mt-[32px] left-[10%] lg:top-[304px] xl:top-[324px] 2xl:top-[354px] xl:w-[20%] lg:w-[26%] h-[47px] rounded-[20px] px-3 font-medium text-[18px]" />
+            <Image src={ForwardArrow} alt="right arrow" className="absolute z-30 lg:top-[338px] xl:top-[362px] 2xl:top-[392px] w-[44px] h-[44px] hover:cursor-pointer" id="landing-page-newsletter-forward-arrow-big" />
         </section>
         <section className="relative lg:hidden top-[660px] sm:top-[900px] w-full h-[714px]">
             <Image src={Background2} alt="bg" className="absolute z-10 h-full w-full" />

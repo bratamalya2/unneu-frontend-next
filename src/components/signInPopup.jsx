@@ -90,13 +90,14 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
 
     useEffect(() => {
         if (!showSignIn) {
+            clearInterval(timerObj);
             setTimer(null);
             setTimerObj(null);
             setPhoneNumber("");
             setIsOTPSent(false);
             setOtp("");
         };
-    }, [showSignIn]);
+    }, [showSignIn, timerObj]);
 
     useEffect(() => {
         if (isOTPSent) {
@@ -132,28 +133,28 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
 
     return <>
         <Modal show={showSignIn} onHide={hideSignIn} className="mt-[150px] mb-[50px]">
-            <Modal.Body className="bg-[#FEE9BC] rounded-[32px] flex flex-row flex-nowrap">
+            <Modal.Body className="bg-[#FEE9BC] rounded-[32px] flex flex-row flex-nowrap lg:justify-around">
                 <Image src={LoginSide} alt="login-side" className="h-full max-w-[50%] hidden sm:inline-block" />
                 <div className="w-full sm:w-fit px-4 inline-flex flex-col flex-nowrap items-center">
-                    <div className={`flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] mt-8 sm:mt-0`}>
+                    <div className={`flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-2xl mt-8 sm:mt-0`}>
                         <div
-                            className={`py-[9px] sm:py-[3px] px-[36px] rounded-tl-[8px] rounded-bl-[8px] ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
+                            className={`py-[9px] sm:py-[3px] lg:py-[12px] px-[36px] rounded-tl-[8px] rounded-bl-[8px] ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
                             onClick={() => setIsSellerSelected(true)}
                         >
                             Seller
                         </div>
                         <div
-                            className={`py-[9px] sm:py-[3px] px-[36px] rounded-tr-[8px] rounded-br-[8px] ${!isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-r-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-r-2 border-[#CECECE]"}`}
+                            className={`py-[9px] sm:py-[3px] lg:py-[12px] px-[36px] rounded-tr-[8px] rounded-br-[8px] ${!isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-r-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-r-2 border-[#CECECE]"}`}
                             onClick={() => setIsSellerSelected(false)}
                         >
                             Buyer
                         </div>
                     </div>
-                    <p className="text-[15px] sm:text-[12px] text-center text-[#646464] my-4 sm:my-0">Enter your contact Number to log in</p>
-                    <p className="text-[#646464] font-medium sm:text-sm self-start">Enter phone number</p>
+                    <p className="text-[15px] sm:text-[12px] lg:text-lg text-center text-[#646464] my-4 sm:my-0 lg:my-4">Enter your contact Number to log in</p>
+                    <p className="text-[#646464] font-medium sm:text-sm lg:text-base self-start">Enter phone number</p>
                     <input
                         type="text"
-                        className="rounded-[12px] py-[10px] sm:py-[5px] px-[12px] border-2 border-[#E05F1D] my-2 self-start max-w-[100%]"
+                        className="rounded-[12px] py-[10px] sm:py-[5px] lg:py-[10px] px-[12px] border-2 border-[#E05F1D] my-2 self-start max-w-[100%]"
                         placeholder="+91 94XXXXXXXX"
                         style={{
                             boxShadow: "0px 11px 40px 4px rgba(81, 69, 55, 0.05)"
@@ -163,7 +164,7 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                     />
                     {
                         !isOTPSent && (
-                            <button className="w-full mx-auto rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] text-[20px] sm:text-normal font-semibold my-4 sm:my-1 max-w-[100%]" onClick={() => {
+                            <button className="w-full mx-auto rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[18px] text-[20px] lg:text-2xl sm:text-normal font-semibold my-4 sm:my-1 max-w-[100%]" onClick={() => {
                                 setIsOTPSent(true);
                             }}>Verify</button>
                         )
@@ -173,7 +174,7 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                             <>
                                 <input
                                     type="number"
-                                    className="rounded-[12px] py-[10px] sm:py-[5px] px-[16px] border-2 border-[#E05F1D] my-2 self-start max-w-[100%]"
+                                    className="rounded-[12px] py-[10px] sm:py-[5px] lg:py-[10px] px-[16px] border-2 border-[#E05F1D] my-2 self-start max-w-[100%]"
                                     style={{
                                         boxShadow: "0px 11px 40px 4px rgba(81, 69, 55, 0.05)"
                                     }}
@@ -181,7 +182,7 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                                     onChange={e => setOtp(e.target.value)}
                                     value={otp}
                                 />
-                                <button className="w-full mx-auto rounded-[16px] text-white bg-[#FE9135] py-[10px] text-[20px] font-semibold mt-4" onClick={submitOTP}>
+                                <button className="w-full mx-auto rounded-[16px] text-white bg-[#FE9135] py-[10px] lg:py-[18px] text-[20px] lg:text-2xl font-semibold mt-4" onClick={submitOTP}>
                                     Verify OTP
                                 </button>
                             </>
@@ -189,12 +190,12 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                     }
                     {
                         showError && (
-                            <p className="text-[#8F8F8F] text-[14px] sm:text-xs text-red-500 font-bold text-center my-2">{errorMessage}</p>
+                            <p className="text-[#8F8F8F] text-[14px] lg:text-[18px] sm:text-xs text-red-500 font-bold text-center my-2 lg:my-4">{errorMessage}</p>
                         )
                     }
                     {
                         isOTPSent && (
-                            <p className="text-[#8F8F8F] text-[14px] sm:text-xs text-center mt-3">Didnt get OTP ? <span className={`text-[#6C6C6C] font-medium ${timer === 0 ? "hover:cursor-pointer" : "hover:cursor-wait"}`} onClick={resendOTP}>Resend</span> {
+                            <p className="text-[#8F8F8F] text-[14px] sm:text-xs lg:text-[18px] text-center mt-3">Didnt get OTP ? <span className={`text-[#6C6C6C] font-medium ${timer === 0 ? "hover:cursor-pointer" : "hover:cursor-wait"}`} onClick={resendOTP}>Resend</span> {
                                 timer > 0 && timer && (
                                     <span>
                                         OTP in <span className="text-red-500">{timer} seconds</span>

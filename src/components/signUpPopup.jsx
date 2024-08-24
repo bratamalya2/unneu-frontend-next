@@ -87,13 +87,14 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
 
     useEffect(() => {
         if (!showSignUp) {
+            clearInterval(timerObj);
             setTimer(null);
             setTimerObj(null);
             setPhoneNumber("");
             setIsOTPSent(false);
             setOtp("");
         };
-    }, [showSignUp]);
+    }, [showSignUp, timerObj]);
 
     useEffect(() => {
         if (isOTPSent) {
@@ -133,32 +134,32 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                 <Image src={SignUpSide} alt="signup-side" className="hidden sm:inline-block w-[35%] h-full rounded-tl-[32px] rounded-bl-[32px]" />
                 <div className="flex flex-col items-center h-full w-full sm:w-[65%]">
                     <p className={`${libreBaskerville.className} text-[32px] text-[#4C4C4C] sm:hidden`}>Sign up</p>
-                    <div className={`flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] mt-8`}>
+                    <div className={`flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-2xl mt-8`}>
                         <div
-                            className={`py-[9px] sm:py-[4px] px-[36px] rounded-tl-[8px] rounded-bl-[8px] ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
+                            className={`py-[9px] sm:py-[4px] lg:py-[12px] px-[36px] rounded-tl-[8px] rounded-bl-[8px] ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
                             onClick={() => setIsSellerSelected(true)}
                         >
                             Seller
                         </div>
                         <div
-                            className={`py-[9px] sm:py-[4px] px-[36px] rounded-tr-[8px] rounded-br-[8px] ${!isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-r-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-r-2 border-[#CECECE]"}`}
+                            className={`py-[9px] sm:py-[4px] lg:py-[12px] px-[36px] rounded-tr-[8px] rounded-br-[8px] ${!isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-r-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-r-2 border-[#CECECE]"}`}
                             onClick={() => setIsSellerSelected(false)}
                         >
                             Buyer
                         </div>
                     </div>
-                    <p className={`${libreBaskerville.className} text-2xl uppercase mt-6 sm:mt-4 mb-2`}>{isSellerSelected ? "For Reseller" : "For Buyer"}</p>
+                    <p className={`${libreBaskerville.className} text-2xl uppercase mt-6 sm:mt-4 mb-2 lg:my-16`}>{isSellerSelected ? "For Reseller" : "For Buyer"}</p>
                     {
                         isSellerSelected ? (
                             <>
-                                <p className="text-3xl font-light uppercase mt-3 mb-2">
+                                <p className="text-3xl lg:text-4xl font-light uppercase mt-3 mb-2 lg:my-3">
                                     GET <span className="font-semibold text-[#FE9135]">RS 100 /- </span> EXTRA
                                 </p>
                                 <p className="text-[15px] font-light">on selling your first item.</p>
                             </>
                         ) : (
                             <>
-                                <p className="text-3xl font-light uppercase mt-3 mb-2 sm:mt-1 sm:mb-1">
+                                <p className="text-3xl lg:text-4xl font-light uppercase mt-3 mb-2 sm:mt-1 sm:mb-1 lg:my-3">
                                     GET <span className="font-semibold text-[#FE9135]">RS 100 /- </span> OFF
                                 </p>
                                 <p className="text-[15px] font-light">on your first purchase.</p>
@@ -191,7 +192,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                     }
                     {
                         !isOTPSent && !isSellerSelected && (
-                            <button className="relative left-[2px] w-[95%] rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] text-[20px] font-semibold my-4" onClick={() => {
+                            <button className="relative left-[2px] w-[95%] rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[18px] text-[20px] lg:text-2xl font-semibold my-4" onClick={() => {
                                 setIsOTPSent(true);
                             }}>Verify</button>
                         )
@@ -209,7 +210,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                                     onChange={e => setOtp(e.target.value)}
                                     value={otp}
                                 />
-                                <button className="relative left-[2px] w-[95%] rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] text-[20px] font-semibold my-3 sm:my-2" onClick={submitOTP}>
+                                <button className="relative left-[2px] w-[95%] rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[18px] text-[20px] lg:text-2xl font-semibold my-3 sm:my-2" onClick={submitOTP}>
                                     Verify OTP
                                 </button>
                             </>
@@ -217,13 +218,13 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                     }
                     {
                         showError && !isSellerSelected && (
-                            <p className="text-[#8F8F8F] text-[14px] text-red-500 font-bold text-center my-2 sm:my-0">{errorMessage}</p>
+                            <p className="text-[#8F8F8F] text-[14px] lg:text-[18px] text-red-500 font-bold text-center my-2 sm:my-0 lg:my-4">{errorMessage}</p>
                         )
                     }
                     {
                         isOTPSent && !isSellerSelected && (
                             <>
-                                <p className="text-[#8F8F8F] text-[14px] text-center">Didnt get OTP ? <span className={`text-[#6C6C6C] font-medium ${timer === 0 ? "hover:cursor-pointer" : "hover:cursor-wait"}`} onClick={resendOTP}>Resend</span> {
+                                <p className="text-[#8F8F8F] text-[14px] lg:text-[18px] text-center">Didnt get OTP ? <span className={`text-[#6C6C6C] font-medium ${timer === 0 ? "hover:cursor-pointer" : "hover:cursor-wait"}`} onClick={resendOTP}>Resend</span> {
                                     timer > 0 && timer && (
                                         <span>
                                             OTP in <span className="text-red-500">{timer} seconds</span>
