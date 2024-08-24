@@ -19,7 +19,7 @@ export default function LandingPageNewsletter() {
                 Join our newsletter for more Updates
             </p>
             <input type="email" placeholder="Enter your e-mail" className="absolute z-20 mt-[32px] left-[10%] lg:top-[304px] xl:top-[324px] 2xl:top-[354px] xl:w-[20%] lg:w-[26%] h-[47px] rounded-[20px] px-3 font-medium text-[18px]" />
-            <Image src={ForwardArrow} alt="right arrow" className="absolute z-30 lg:top-[338px] xl:top-[362px] 2xl:top-[392px] w-[44px] h-[44px] hover:cursor-pointer" id="landing-page-newsletter-forward-arrow-big" />
+            <Image src={ForwardArrow} alt="right arrow" className="absolute z-30 lg:top-[338px] xl:top-[358px] 2xl:top-[388px] w-[44px] h-[44px] hover:cursor-pointer" id="landing-page-newsletter-forward-arrow-big" />
         </section>
         <section className="relative lg:hidden top-[660px] sm:top-[900px] w-full h-[714px]">
             <Image src={Background2} alt="bg" className="absolute z-10 h-full w-full" />
