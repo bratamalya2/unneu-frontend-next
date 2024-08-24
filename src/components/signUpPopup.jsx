@@ -130,7 +130,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
 
     return <>
         <Modal show={showSignUp} onHide={hideSignUp} className="mt-[100px]">
-            <Modal.Body className="flex flex-row flex-nowrap justify-center sm:justify-start rounded-[32px]">
+            <Modal.Body className="flex flex-row flex-nowrap justify-center sm:justify-start rounded-[32px] md:max-h-[720px]">
                 <Image src={SignUpSide} alt="signup-side" className="hidden sm:inline-block w-[35%] h-full rounded-tl-[32px] rounded-bl-[32px]" />
                 <div className="flex flex-col items-center h-full w-full sm:w-[65%]">
                     <p className={`${libreBaskerville.className} text-[32px] text-[#4C4C4C] sm:hidden`}>Sign up</p>
@@ -148,7 +148,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                             Buyer
                         </div>
                     </div>
-                    <p className={`${libreBaskerville.className} text-2xl uppercase mt-6 sm:mt-4 mb-2 lg:my-16`}>{isSellerSelected ? "For Reseller" : "For Buyer"}</p>
+                    <p className={`${libreBaskerville.className} text-2xl uppercase mt-6 sm:mt-4 mb-2`}>{isSellerSelected ? "For Reseller" : "For Buyer"}</p>
                     {
                         isSellerSelected ? (
                             <>
@@ -192,7 +192,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                     }
                     {
                         !isOTPSent && !isSellerSelected && (
-                            <button className="relative left-[2px] w-[95%] rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[18px] text-[20px] lg:text-2xl font-semibold my-4" onClick={() => {
+                            <button className="relative left-[2px] w-[95%] rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[12px] text-[20px] font-semibold my-2" onClick={() => {
                                 setIsOTPSent(true);
                             }}>Verify</button>
                         )

@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 import { Libre_Baskerville } from "next/font/google";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
 
-import { useUnneuDataStore } from "@/store/store";
 
 import Logo from "@/../public/logo.png";
 import Search from "@/../public/search.png";
@@ -27,6 +27,7 @@ const lbFont = Libre_Baskerville({ subsets: ["latin"], weight: ["400", "700"] })
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export default function Header() {
+    const pathname = usePathname();
     const [showHamburger, setShowHamburger] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
     const [showSignIn, setShowSignIn] = useState(false);
@@ -43,6 +44,10 @@ export default function Header() {
     const hideSignUp = () => {
         setShowSignUp(false);
     };
+
+    useEffect(() => {
+        console.log(pathname);
+    }, [pathname]);
 
     return <>
         <header className={`${lbFont.className} h-[135px] hidden md:block`}>
@@ -134,13 +139,13 @@ export default function Header() {
             <Image src={Hamburger} alt="details" className="w-[20px] h-[14px]" onClick={() => {
                 setShowHamburger(true);
             }} />
-            <Image src={Logo} alt="Unneu" className={`w-[103px] h-[36px] ${showSearch ? "ml-[5%] sm:ml-[10%]" : "ml-[27%] sm:ml-[32%]"}`} />
+            <Image src={Logo} alt="Unneu" className={`w-[103px] h-[36px] ${showSearch ? "ml-[5%] sm:ml-[10%]" : "ml-[29%] sm:ml-[32%]"}`} />
             {
                 showSearch && (
                     <input type="text" placeholder="Search here" className="w-[112px] sm:w-[210px] py-[5px] pl-[2px] text-[14px] font-medium ml-4 border-b border-[#9C9C9C] outline-0" />
                 )
             }
-            <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[4%] sm:ml-[20%]" : "ml-[20%] sm:ml-[27%]"}`} onClick={() => {
+            <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[4%] sm:ml-[20%]" : "ml-[19%] sm:ml-[27%]"}`} onClick={() => {
                 setShowSearch(x => !x);
             }} />
             <Image src={Cart} alt="Cart" className="w-[20px] h-[20px] hover:cursor-pointer ml-[7%]" />

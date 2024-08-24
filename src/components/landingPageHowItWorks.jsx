@@ -10,8 +10,8 @@ import HowItWorks6 from "@/../public/landingpage-hiw-6.png";
 
 export default function LandingPageHowItWorks() {
     return <>
-        <section className="relative hidden md:block 2xl:top-[1660px] xl:top-[1500px] md:top-[800px] lg:top-[1050px] bg-[#E05F1D] text-white w-full md:h-[920px] lg:h-[850px] md:px-[8%] lg:px-[10%]">
-            <p className="absolute text-[48px] mt-[68px] font-bold md:left-[10%] xl:left-[13.5%]">HOW IT WORKS</p>
+        <section className="relative hidden md:block 2xl:top-[1660px] xl:top-[1250px] md:top-[800px] lg:top-[1050px] bg-[#E05F1D] text-white w-full md:h-[920px] lg:h-[850px] md:px-[8%]">
+            <p className="absolute text-[48px] mt-[68px] font-bold md:left-[10%] xl:left-[11.5%]">HOW IT WORKS</p>
             <section className="absolute flex flex-wrap justify-center items-center md:gap-x-[4%] lg:gap-x-[10%] md:w-[90%] lg:w-[80%] mx-auto mt-[210px] gap-y-[114px]">
                 <div className="flex flex-nowrap md:w-[45%] lg:w-[42%] xl:w-[40%] justify-between items-center">
                     <Image src={HowItWorks1} alt="sign up" className="w-[66px] h-[79px]" />
@@ -57,7 +57,7 @@ export default function LandingPageHowItWorks() {
                 </div>
             </section>
         </section>
-        <section className="relative block md:hidden top-[450px] sm:top-[800px] bg-[#E05F1D] text-white w-full h-[530px] sm:h-[600px] px-[10%] z-0" id="landing-page-howitworks">
+        <section className="relative block md:hidden top-[450px] sm:top-[700px] bg-[#E05F1D] text-white w-full h-[530px] sm:h-[600px] px-[10%] z-0" id="landing-page-howitworks">
             <p className="relative text-[24px] top-[28px] font-bold">HOW IT WORKS</p>
             <Carousel autoplay dotPosition="bottom" className="relative z-10 left-0 top-[50px] text-white">
                 <div className="flex flex-col flex-nowrap">

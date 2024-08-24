@@ -134,23 +134,23 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
     return <>
         <Modal show={showSignIn} onHide={hideSignIn} className="mt-[150px] mb-[50px]">
             <Modal.Body className="bg-[#FEE9BC] rounded-[32px] flex flex-row flex-nowrap lg:justify-around">
-                <Image src={LoginSide} alt="login-side" className="h-full max-w-[50%] hidden sm:inline-block" />
-                <div className="w-full sm:w-fit px-4 inline-flex flex-col flex-nowrap items-center">
-                    <div className={`flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-2xl mt-8 sm:mt-0`}>
+                <Image src={LoginSide} alt="login-side" className="h-full max-w-[49%] hidden sm:inline-block" />
+                <div className="w-full sm:max-w-[49%] px-4 inline-flex flex-col flex-nowrap items-center">
+                    <div className={`max-w-[90%] flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-2xl mt-8 sm:mt-0`}>
                         <div
-                            className={`py-[9px] sm:py-[3px] lg:py-[12px] px-[36px] rounded-tl-[8px] rounded-bl-[8px] ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
+                            className={`py-[9px] sm:py-[3px] lg:py-[12px] px-[25px] md:px-[36px] rounded-tl-[8px] rounded-bl-[8px] ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
                             onClick={() => setIsSellerSelected(true)}
                         >
                             Seller
                         </div>
                         <div
-                            className={`py-[9px] sm:py-[3px] lg:py-[12px] px-[36px] rounded-tr-[8px] rounded-br-[8px] ${!isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-r-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-r-2 border-[#CECECE]"}`}
+                            className={`py-[9px] sm:py-[3px] lg:py-[12px] px-[25px] md:px-[36px] rounded-tr-[8px] rounded-br-[8px] ${!isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-r-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-r-2 border-[#CECECE]"}`}
                             onClick={() => setIsSellerSelected(false)}
                         >
                             Buyer
                         </div>
                     </div>
-                    <p className="text-[15px] sm:text-[12px] lg:text-lg text-center text-[#646464] my-4 sm:my-0 lg:my-4">Enter your contact Number to log in</p>
+                    <p className="text-[15px] sm:text-[12px] lg:text-lg text-center text-[#646464] my-4 sm:my-0 lg:my-4">Enter your contact number to log in</p>
                     <p className="text-[#646464] font-medium sm:text-sm lg:text-base self-start">Enter phone number</p>
                     <input
                         type="text"
