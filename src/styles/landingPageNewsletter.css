@@ -99,8 +99,32 @@
     }
 }
 
-@media only screen and (min-width: 710px) {
+@media only screen and (min-width: 770px) {
     #landing-page-newsletter-forward-arrow {
-        left: 44%;
+        left: 43%;
+    }
+}
+
+@media only screen and (min-width: 795px) {
+    #landing-page-newsletter-forward-arrow {
+        left: 41%;
+    }
+}
+
+@media only screen and (min-width: 845px) {
+    #landing-page-newsletter-forward-arrow {
+        left: 39%;
+    }
+}
+
+@media only screen and (min-width: 905px) {
+    #landing-page-newsletter-forward-arrow {
+        left: 37%;
+    }
+}
+
+@media only screen and (min-width: 975px) {
+    #landing-page-newsletter-forward-arrow {
+        left: 35%;
     }
 }

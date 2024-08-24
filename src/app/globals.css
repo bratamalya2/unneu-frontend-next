@@ -25,7 +25,9 @@
 }
 
 .modal-dialog {
-    max-width: 95vw;
+    max-width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .modal-content {

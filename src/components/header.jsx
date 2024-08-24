@@ -5,6 +5,8 @@ import { Libre_Baskerville } from "next/font/google";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
 
+import { useUnneuDataStore } from "@/store/store";
+
 import Logo from "@/../public/logo.png";
 import Search from "@/../public/search.png";
 import Like from "@/../public/like.png";
@@ -44,7 +46,7 @@ export default function Header() {
 
     return <>
         <header className={`${lbFont.className} h-[135px] hidden md:block`}>
-            <div className="py-[33px] flex justify-around items-center px-[7.5%]">
+            <div className="py-[33px] flex justify-around items-center mg:px-[6%] lg:px-[7.5%]">
                 <Image src={Logo} alt="Unneu" className="w-[85px] lg:w-[125px] lg:h-[44px]" />
                 <div className="w-[30%] md:w-[40%] relative">
                     <Image src={Search} alt="Search" className="w-[24px] h-[24px] absolute top-5 left-2" />
@@ -55,8 +57,14 @@ export default function Header() {
                 <Image src={Like} alt="Like" className="w-[24px] h-[24px] hover:cursor-pointer" />
                 <Image src={User} alt="User" className="w-[24px] h-[24px] hover:cursor-pointer" />
                 <Image src={Cart} alt="Cart" className="w-[24px] h-[24px] hover:cursor-pointer" />
-                <div className="hover:cursor-pointer">Log in</div>
-                <button className="px-[16px] py-[18px] text-center rounded-[12px] bg-[#FE9135] text-white hover:bg-[#FBC246]">Sign up</button>
+                <div className="hover:cursor-pointer" onClick={() => {
+                    hideHamburger();
+                    setShowSignIn(true);
+                }}>Log in</div>
+                <button className="px-[16px] py-[18px] text-center rounded-[12px] bg-[#FE9135] text-white hover:bg-[#FBC246]" onClick={() => {
+                    hideHamburger();
+                    setShowSignUp(true);
+                }}>Sign up</button>
             </div>
             <nav className="border-t border-t-[#dcdcdc99] border-b border-b-[#dcdcdc99] w-full px-[9%] py-[25px] list-none flex gap-x-[38px]">
                 <li className="hover:cursor-pointer">Home</li>

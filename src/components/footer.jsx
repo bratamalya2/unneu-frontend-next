@@ -9,7 +9,7 @@ import Phone from "@/../public/phone.png";
 
 export default function Footer() {
     return <>
-        <footer className="w-full h-[743px] xl:h-[550px] relative top-[900px] 2xl:top-[1800px] xl:top-[1550px] hidden md:flex gap-x-14 pt-[100px] list-none px-[9%] text-[#282828] text-[18px] font-medium" style={{
+        <footer className="w-full h-[743px] xl:h-[550px] relative top-[900px] 2xl:top-[1800px] xl:top-[1550px] hidden lg:flex gap-x-14 pt-[100px] list-none px-[9%] text-[#282828] text-[18px] font-medium" style={{
             background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)",
             boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
         }}>
@@ -48,7 +48,7 @@ export default function Footer() {
                 </p>
             </li>
         </footer>
-        <footer className="md:hidden flex flex-col flex-nowrap top-[500px] sm:top-[900px] h-[1050px] sm:h-[950px] px-[5%] py-[41px] list-none relative" style={{
+        <footer className="lg:hidden flex flex-col flex-nowrap top-[500px] sm:top-[900px] h-[1050px] sm:h-[950px] px-[5%] py-[41px] list-none relative" style={{
             background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)"
         }}>
             <li className="w-full">

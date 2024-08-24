@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 
+import { useUnneuDataStore } from "@/store/store";
+
 import LeftLeaf from "@/../public/left-leaf.png";
 import RightLeaf from "@/../public/right-leaf.png";
 import SignUpSide from "@/../public/signup-side.png"
@@ -24,6 +26,11 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
     const [showError, setShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
 
+    const setJwtToken = useUnneuDataStore(store => store.setJwtToken);
+    const setRefreshToken = useUnneuDataStore(store => store.setRefreshToken);
+    const setBuyerSelected = useUnneuDataStore(store => store.setBuyerSelected);
+    const setSellerSelected = useUnneuDataStore(store => store.setSellerSelected);
+
     const submitOTP = async () => {
         try {
             if (otp.length === 6) {
@@ -38,7 +45,18 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                     })
                 });
                 const y = await x.json();
-                console.log(y);
+                if (!y.success) {
+                    setShowError(true);
+                    setErrorMessage(y.err);
+                    setTimeout(() => {
+                        setShowError(false);
+                    }, 3000);
+                }
+                else {
+                    setJwtToken(y.jwtToken);
+                    setRefreshToken(y.refreshToken);
+                    router.push(`/home`);
+                }
             }
             else {
                 setShowError(true);
@@ -53,6 +71,17 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
         }
         catch (err) {
             console.log(err);
+        }
+    };
+
+    const resendOTP = () => {
+        if (timer === 0) {
+            setTimerObj(null);
+            setIsOTPSent(false);
+            setTimeout(() => {
+                setIsOTPSent(true);
+            }, 1000);
+            //send OTP; communicate with backend
         }
     };
 
@@ -89,22 +118,20 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
         }
     }, [timer, timerObj]);
 
-    const resendOTP = () => {
-        if (timer === 0) {
-            setTimerObj(null);
-            setIsOTPSent(false);
-            setTimeout(() => {
-                setIsOTPSent(true);
-            }, 1000);
-            //send OTP; communicate with backend
+    useEffect(() => {
+        if (isSellerSelected) {
+            setSellerSelected();
         }
-    };
+        else {
+            setBuyerSelected();
+        }
+    }, [isSellerSelected, setBuyerSelected, setSellerSelected]);
 
     return <>
         <Modal show={showSignUp} onHide={hideSignUp} className="mt-[100px]">
-            <Modal.Body className="flex flex-row flex-nowrap rounded-[32px]">
-                <Image src={SignUpSide} alt="signup-side" className="w-[35%] h-full rounded-tl-[32px] rounded-bl-[32px]" />
-                <div className="flex flex-col items-center h-full w-[65%]">
+            <Modal.Body className="flex flex-row flex-nowrap justify-center sm:justify-start rounded-[32px]">
+                <Image src={SignUpSide} alt="signup-side" className="hidden sm:inline-block w-[35%] h-full rounded-tl-[32px] rounded-bl-[32px]" />
+                <div className="flex flex-col items-center h-full w-full sm:w-[65%]">
                     <p className={`${libreBaskerville.className} text-[32px] text-[#4C4C4C] sm:hidden`}>Sign up</p>
                     <div className={`flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] mt-8`}>
                         <div

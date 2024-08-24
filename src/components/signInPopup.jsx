@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 
+import { useUnneuDataStore } from "@/store/store";
+
 import LeftLeaf from "@/../public/left-leaf.png";
 import RightLeaf from "@/../public/right-leaf.png";
 import LoginSide from "@/../public/login-side.png";
@@ -25,6 +27,11 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
     const [timerObj, setTimerObj] = useState(null);
     const [showError, setShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+
+    const setJwtToken = useUnneuDataStore(store => store.setJwtToken);
+    const setRefreshToken = useUnneuDataStore(store => store.setRefreshToken);
+    const setBuyerSelected = useUnneuDataStore(store => store.setBuyerSelected);
+    const setSellerSelected = useUnneuDataStore(store => store.setSellerSelected);
 
     const resendOTP = () => {
         if (timer === 0) {
@@ -60,6 +67,8 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                     }, 3000);
                 }
                 else {
+                    setJwtToken(y.jwtToken);
+                    setRefreshToken(y.refreshToken);
                     router.push(`/home`);
                 }
             }
@@ -112,11 +121,20 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
         }
     }, [timer, timerObj]);
 
+    useEffect(() => {
+        if (isSellerSelected) {
+            setSellerSelected();
+        }
+        else {
+            setBuyerSelected();
+        }
+    }, [isSellerSelected, setBuyerSelected, setSellerSelected]);
+
     return <>
-        <Modal show={showSignIn} onHide={hideSignIn} className="mt-[150px]">
+        <Modal show={showSignIn} onHide={hideSignIn} className="mt-[150px] mb-[50px]">
             <Modal.Body className="bg-[#FEE9BC] rounded-[32px] flex flex-row flex-nowrap">
-                <Image src={LoginSide} alt="login-side" className="w-[50%] hidden sm:inline-block" />
-                <div className="w-full sm:w-[50%] px-4 inline-flex flex-col flex-nowrap items-center">
+                <Image src={LoginSide} alt="login-side" className="h-full max-w-[50%] hidden sm:inline-block" />
+                <div className="w-full sm:w-fit px-4 inline-flex flex-col flex-nowrap items-center">
                     <div className={`flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] mt-8 sm:mt-0`}>
                         <div
                             className={`py-[9px] sm:py-[3px] px-[36px] rounded-tl-[8px] rounded-bl-[8px] ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}

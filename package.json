@@ -15,7 +15,8 @@
     "notistack": "^3.0.1",
     "react": "^18",
     "react-bootstrap": "^2.10.4",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "eslint": "^8",
