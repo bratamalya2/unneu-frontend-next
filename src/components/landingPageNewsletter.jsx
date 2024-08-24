@@ -5,7 +5,7 @@ import Background2 from "@/../public/landing-page-newsletter-background-2.png";
 import Foreground from "@/../public/landing-page-newsletter-foreground.png";
 import ForwardArrow from "@/../public/forward-arrow.png";
 
-import "../styles/LandingPageNewsletter.css";
+import "@/styles/landingPageNewsletter.css";
 
 export default function LandingPageNewsletter() {
     return <>
