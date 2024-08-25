@@ -1,0 +1,35 @@
+@media only screen and (min-width: 1024px) {
+    .seller-home-dotted-line {
+        left: 39.5%;
+    }
+}
+
+@media only screen and (min-width: 1114px) {
+    .seller-home-dotted-line {
+        left: 38.5%;
+    }
+}
+
+@media only screen and (min-width: 1250px) {
+    .seller-home-dotted-line {
+        left: 37.5%;
+    }
+}
+
+@media only screen and (min-width: 1425px) {
+    .seller-home-dotted-line {
+        left: 36.5%;
+    }
+}
+
+@media only screen and (min-width: 1625px) {
+    .seller-home-dotted-line {
+        left: 35.5%;
+    }
+}
+
+@media only screen and (min-width: 1925px) {
+    .seller-home-dotted-line {
+        left: 35%;
+    }
+}

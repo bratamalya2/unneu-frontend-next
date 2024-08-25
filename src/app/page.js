@@ -1,12 +1,12 @@
 "use client";
 
-import LandingPageHero from "@/components/landingPageHero";
-import LandingPageNavSection from "@/components/landingPageNavSection";
-import LandingPageSeller from "@/components/landingPageSeller";
-import LandingPageBuyer from "@/components/landingPageBuyer";
-import LandingPageHowItWorks from "@/components/landingPageHowItWorks";
-import LandingPageFAQ from "@/components/landingPageFAQ";
-import LandingPageNewsletter from "@/components/landingPageNewsletter";
+import LandingPageHero from "@/components/landingPage/landingPageHero";
+import LandingPageNavSection from "@/components/landingPage/landingPageNavSection";
+import LandingPageSeller from "@/components/landingPage/landingPageSeller";
+import LandingPageBuyer from "@/components/landingPage/landingPageBuyer";
+import LandingPageHowItWorks from "@/components/landingPage/landingPageHowItWorks";
+import LandingPageFAQ from "@/components/landingPage/landingPageFAQ";
+import LandingPageNewsletter from "@/components/landingPage/landingPageNewsletter";
 
 export default function Home() {
   return (

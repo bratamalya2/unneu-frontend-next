@@ -19,7 +19,7 @@ const libreBaskerville = Libre_Baskerville({
 
 export default function SignInPopup({ showSignIn, hideSignIn }) {
     const router = useRouter();
-    const [isSellerSelected, setIsSellerSelected] = useState(true);
+    const [isSellerSelected, setIsSellerSelected] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState("");
     const [isOTPSent, setIsOTPSent] = useState(false);
     const [otp, setOtp] = useState("");
@@ -69,7 +69,10 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                 else {
                     setJwtToken(y.jwtToken);
                     setRefreshToken(y.refreshToken);
-                    router.push(`/home`);
+                    if (isSellerSelected)
+                        router.push("/seller/home");
+                    else
+                        router.push("/buyer/home");
                 }
             }
             else {

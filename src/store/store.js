@@ -6,7 +6,7 @@ export const useUnneuDataStore = create(
         (set) => ({
             jwtToken: "",
             refreshToken: "",
-            isSellerSelected: true,
+            isSellerSelected: false,
             setJwtToken: (token) => set({ jwtToken: token }),
             setRefreshToken: (token) => set({ refreshToken: token }),
             setBuyerSelected: () => set({ isSellerSelected: false }),

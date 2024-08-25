@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 import Facebook from "@/../public/facebook.png";
 import X from "@/../public/x.png";
@@ -8,11 +9,16 @@ import Logo from "@/../public/logo-footer.png";
 import Phone from "@/../public/phone.png";
 
 export default function Footer() {
+    const pathname = usePathname();
+
     return <>
-        <footer className="w-full h-[800px] xl:h-[550px] relative top-[1020px] xl:top-[1350px] 2xl:top-[1800px] hidden lg:flex gap-x-14 pt-[100px] list-none px-[9%] text-[#282828] text-[18px] font-medium" style={{
-            background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)",
-            boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
-        }}>
+        <footer className={`w-full relative list-none px-[9%] text-[#282828] text-[18px] font-medium
+                ${pathname === "/" ? "h-[800px] xl:h-[550px]  top-[1020px] xl:top-[1350px] 2xl:top-[1800px] hidden lg:flex gap-x-14 pt-[100px] " :
+                pathname === "/seller/home" ? "top-[2400px] flex gap-x-14 pt-[100px]" : ""
+            }`} style={{
+                background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)",
+                boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
+            }}>
             <li className="lg:w-[26%] xl:w-[40%] 2xl:w-[30%]">
                 <p className="uppercase font-bold">About us</p>
                 <p className="mt-[32px]">

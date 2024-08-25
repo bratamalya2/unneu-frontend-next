@@ -45,43 +45,41 @@ export default function Header() {
         setShowSignUp(false);
     };
 
-    useEffect(() => {
-        console.log(pathname);
-    }, [pathname]);
-
     return <>
-        <header className={`${lbFont.className} h-[135px] hidden md:block`}>
-            <div className="py-[33px] flex justify-around items-center mg:px-[6%] lg:px-[7.5%]">
-                <Image src={Logo} alt="Unneu" className="w-[85px] lg:w-[125px] lg:h-[44px]" />
-                <div className="w-[30%] md:w-[40%] relative">
-                    <Image src={Search} alt="Search" className="w-[24px] h-[24px] absolute top-5 left-2" />
-                    <input type="text" placeholder="Search for product" className={`rounded-[24px] w-full h-[64px] pl-[48px] ${poppins.className}`} style={{
-                        boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
-                    }} />
-                </div>
-                <Image src={Like} alt="Like" className="w-[24px] h-[24px] hover:cursor-pointer" />
-                <Image src={User} alt="User" className="w-[24px] h-[24px] hover:cursor-pointer" />
-                <Image src={Cart} alt="Cart" className="w-[24px] h-[24px] hover:cursor-pointer" />
-                <div className="hover:cursor-pointer" onClick={() => {
-                    hideHamburger();
-                    setShowSignIn(true);
-                }}>Log in</div>
-                <button className="px-[16px] py-[18px] text-center rounded-[12px] bg-[#FE9135] text-white hover:bg-[#FBC246]" onClick={() => {
-                    hideHamburger();
-                    setShowSignUp(true);
-                }}>Sign up</button>
-            </div>
-            <nav className="border-t border-t-[#dcdcdc99] border-b border-b-[#dcdcdc99] w-full px-[9%] py-[25px] list-none flex gap-x-[38px]">
-                <li className="hover:cursor-pointer">Home</li>
-                <li className="hover:cursor-pointer">Shop</li>
-                <li className="hover:cursor-pointer">Sell</li>
-                <li className="hover:cursor-pointer">How it works</li>
-                <li className="hover:cursor-pointer">About us</li>
-                <li className="hover:cursor-pointer">FAQ</li>
-            </nav>
-        </header>
         {
-            showHamburger && (
+            pathname === "/" && (
+                <header className={`${lbFont.className} h-[135px] hidden md:block`}>
+                    <div className="py-[33px] flex justify-around items-center mg:px-[6%] lg:px-[7.5%]">
+                        <Image src={Logo} alt="Unneu" className="w-[85px] lg:w-[125px] lg:h-[44px]" />
+                        <div className="w-[30%] md:w-[40%] relative">
+                            <Image src={Search} alt="Search" className="w-[24px] h-[24px] absolute top-5 left-2" />
+                            <input type="text" placeholder="Search for product" className={`rounded-[24px] w-full h-[64px] pl-[48px] ${poppins.className}`} style={{
+                                boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
+                            }} />
+                        </div>
+                        <Image src={Like} alt="Like" className="w-[24px] h-[24px] hover:cursor-pointer" />
+                        <Image src={User} alt="User" className="w-[24px] h-[24px] hover:cursor-pointer" />
+                        <Image src={Cart} alt="Cart" className="w-[24px] h-[24px] hover:cursor-pointer" />
+                        <div className="hover:cursor-pointer" onClick={() => {
+                            hideHamburger();
+                            setShowSignIn(true);
+                        }}>Log in</div>
+                        <button className="px-[16px] py-[18px] text-center rounded-[12px] bg-[#FE9135] text-white hover:bg-[#FBC246]" onClick={() => {
+                            hideHamburger();
+                            setShowSignUp(true);
+                        }}>Sign up</button>
+                    </div>
+                    <nav className="border-t border-t-[#dcdcdc99] border-b border-b-[#dcdcdc99] w-full px-[9%] py-[25px] list-none flex gap-x-[38px]">
+                        <li className="hover:cursor-pointer">Home</li>
+                        <li className="hover:cursor-pointer">Shop</li>
+                        <li className="hover:cursor-pointer">Sell</li>
+                        <li className="hover:cursor-pointer">How it works</li>
+                        <li className="hover:cursor-pointer">About us</li>
+                        <li className="hover:cursor-pointer">FAQ</li>
+                    </nav>
+                </header>)}
+        {
+            pathname === "/" && showHamburger && (
                 <nav className="block md:hidden bg-white max-w-[363px] w-[60%] h-[560px] list-none absolute z-50 rounded-tr-[24px] rounded-br-[24px]" style={{
                     boxShadow: "0px 4px 78px 0px rgba(0, 0, 0, 0.25)"
                 }}>
@@ -135,22 +133,45 @@ export default function Header() {
                 </nav>
             )
         }
-        <header className={`${lbFont.className} h-[135px] block md:hidden h-[36px] flex items-center px-[30px] mt-[20px]`}>
-            <Image src={Hamburger} alt="details" className="w-[20px] h-[14px]" onClick={() => {
-                setShowHamburger(true);
-            }} />
-            <Image src={Logo} alt="Unneu" className={`w-[103px] h-[36px] ${showSearch ? "ml-[5%] sm:ml-[10%]" : "ml-[29%] sm:ml-[32%]"}`} />
-            {
-                showSearch && (
-                    <input type="text" placeholder="Search here" className="w-[112px] sm:w-[210px] py-[5px] pl-[2px] text-[14px] font-medium ml-4 border-b border-[#9C9C9C] outline-0" />
-                )
-            }
-            <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[4%] sm:ml-[20%]" : "ml-[19%] sm:ml-[27%]"}`} onClick={() => {
-                setShowSearch(x => !x);
-            }} />
-            <Image src={Cart} alt="Cart" className="w-[20px] h-[20px] hover:cursor-pointer ml-[7%]" />
-            <SignInPopup showSignIn={showSignIn} hideSignIn={hideSignIn} />
-            <SignUpPopup showSignUp={showSignUp} hideSignUp={hideSignUp} />
-        </header>
+        {
+            pathname === "/" && (
+                <header className={`${lbFont.className} h-[135px] block md:hidden h-[36px] flex items-center px-[30px] mt-[20px]`}>
+                    <Image src={Hamburger} alt="details" className="w-[20px] h-[14px]" onClick={() => {
+                        setShowHamburger(true);
+                    }} />
+                    <Image src={Logo} alt="Unneu" className={`w-[103px] h-[36px] ${showSearch ? "ml-[4%] sm:ml-[10%]" : "ml-[29%] sm:ml-[32%]"}`} />
+                    {
+                        showSearch && (
+                            <input type="text" placeholder="Search here" className="w-[112px] sm:w-[210px] py-[5px] pl-[2px] text-[14px] font-medium ml-4 border-b border-[#9C9C9C] outline-0" />
+                        )
+                    }
+                    <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[1%] sm:ml-[20%]" : "ml-[19%] sm:ml-[27%]"}`} onClick={() => {
+                        setShowSearch(x => !x);
+                    }} />
+                    <Image src={Cart} alt="Cart" className="w-[20px] h-[20px] hover:cursor-pointer ml-[7%]" />
+                    <SignInPopup showSignIn={showSignIn} hideSignIn={hideSignIn} />
+                    <SignUpPopup showSignUp={showSignUp} hideSignUp={hideSignUp} />
+                </header>
+            )
+        }
+        {
+            pathname === "/seller/home" && (
+                <header className={`${lbFont.className} h-[90px] flex flex-row flex-nowrap items-center justify-between px-[5%]`}>
+                    <Image src={Logo} alt="Unneu" className="w-[125px] h-[44px]" />
+                    <nav className="list-none w-[40%] flex flex-row flex-nowrap items-center justify-between">
+                        <li className="text-[18px] hover:cursor-pointer">Home</li>
+                        <li className="text-[18px] hover:cursor-pointer">Shop</li>
+                        <li className="text-[18px] hover:cursor-pointer">Stories</li>
+                        <li className="text-[18px] hover:cursor-pointer">About Us</li>
+                    </nav>
+                    <div className="w-[15%] flex flex-row flex-nowrap items-center justify-between">
+                        <Image src={Search} alt="Search" className="w-[24px] h-[24px] hover:cursor-pointer" />
+                        <Image src={User} alt="User" className="w-[24px] h-[24px] hover:cursor-pointer" />
+                        <Image src={Cart} alt="Cart" className="w-[24px] h-[24px] hover:cursor-pointer" />
+                    </div>
+                    <button className="text-[18px] font-bold bg-[#FE9135] py-[12px] px-[38px] rounded-[12px] text-white">Sell</button>
+                </header>
+            )
+        }
     </>
 }
