@@ -155,14 +155,14 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                     {
                         isSellerSelected ? (
                             <>
-                                <p className="text-3xl lg:text-4xl font-light uppercase mt-3 mb-2 lg:my-3">
+                                <p className="text-2xl lg:text-4xl font-light uppercase mt-3 mb-2 lg:my-3">
                                     GET <span className="font-semibold text-[#FE9135]">RS 100 /- </span> EXTRA
                                 </p>
                                 <p className="text-[15px] font-light">on selling your first item.</p>
                             </>
                         ) : (
                             <>
-                                <p className="text-3xl lg:text-4xl font-light uppercase mt-3 mb-2 sm:mt-1 sm:mb-1 lg:my-3">
+                                <p className="text-2xl lg:text-4xl font-light uppercase mt-3 mb-2 sm:mt-1 sm:mb-1 lg:my-3">
                                     GET <span className="font-semibold text-[#FE9135]">RS 100 /- </span> OFF
                                 </p>
                                 <p className="text-[15px] font-light">on your first purchase.</p>
@@ -195,7 +195,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                     }
                     {
                         !isOTPSent && !isSellerSelected && (
-                            <button className="relative left-[2px] w-[95%] rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[12px] text-[20px] font-semibold my-2" onClick={() => {
+                            <button className="relative left-0 w-full rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[12px] text-[20px] font-semibold my-2" onClick={() => {
                                 setIsOTPSent(true);
                             }}>Verify</button>
                         )
@@ -213,7 +213,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                                     onChange={e => setOtp(e.target.value)}
                                     value={otp}
                                 />
-                                <button className="relative left-[2px] w-[95%] rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[18px] text-[20px] lg:text-2xl font-semibold my-3 sm:my-2" onClick={submitOTP}>
+                                <button className="relative left-0 w-[95%] rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[18px] text-[20px] lg:text-2xl font-semibold my-3 sm:my-2" onClick={submitOTP}>
                                     Verify OTP
                                 </button>
                             </>

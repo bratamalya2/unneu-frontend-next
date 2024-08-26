@@ -1,5 +1,3 @@
-"use client";
-
 import LandingPageHero from "@/components/landingPage/landingPageHero";
 import LandingPageNavSection from "@/components/landingPage/landingPageNavSection";
 import LandingPageSeller from "@/components/landingPage/landingPageSeller";

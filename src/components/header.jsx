@@ -135,7 +135,7 @@ export default function Header() {
         }
         {
             pathname === "/" && (
-                <header className={`${lbFont.className} h-[135px] block md:hidden h-[36px] flex items-center px-[30px] mt-[20px]`}>
+                <header className={`${lbFont.className} h-[135px] block md:hidden h-[36px] flex items-center px-[15px] mt-[20px]`}>
                     <Image src={Hamburger} alt="details" className="w-[20px] h-[14px]" onClick={() => {
                         setShowHamburger(true);
                     }} />
@@ -145,7 +145,7 @@ export default function Header() {
                             <input type="text" placeholder="Search here" className="w-[112px] sm:w-[210px] py-[5px] pl-[2px] text-[14px] font-medium ml-4 border-b border-[#9C9C9C] outline-0" />
                         )
                     }
-                    <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[1%] sm:ml-[20%]" : "ml-[19%] sm:ml-[27%]"}`} onClick={() => {
+                    <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[1%] sm:ml-[20%]" : "ml-[17%] sm:ml-[27%]"}`} onClick={() => {
                         setShowSearch(x => !x);
                     }} />
                     <Image src={Cart} alt="Cart" className="w-[20px] h-[20px] hover:cursor-pointer ml-[7%]" />
@@ -155,7 +155,7 @@ export default function Header() {
             )
         }
         {
-            pathname === "/seller/home" && (
+            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3") && (
                 <header className={`${lbFont.className} h-[90px] flex flex-row flex-nowrap items-center justify-between px-[5%]`}>
                     <Image src={Logo} alt="Unneu" className="w-[125px] h-[44px]" />
                     <nav className="list-none w-[40%] flex flex-row flex-nowrap items-center justify-between">

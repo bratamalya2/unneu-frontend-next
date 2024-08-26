@@ -12,9 +12,10 @@ export default function Footer() {
     const pathname = usePathname();
 
     return <>
-        <footer className={`w-full relative list-none px-[9%] text-[#282828] text-[18px] font-medium
-                ${pathname === "/" ? "h-[800px] xl:h-[550px]  top-[1020px] xl:top-[1350px] 2xl:top-[1800px] hidden lg:flex gap-x-14 pt-[100px] " :
-                pathname === "/seller/home" ? "top-[2400px] flex gap-x-14 pt-[100px]" : ""
+        <footer className={`w-full relative list-none px-[9%] text-[#282828] text-[18px] font-medium lg:flex
+                ${pathname === "/" ? "h-[850px] xl:h-[550px]  top-[1020px] xl:top-[1350px] 2xl:top-[1800px] hidden gap-x-14 pt-[100px] " :
+                pathname === "/seller/home" ? "top-[2400px] h-[850px] gap-x-14 pt-[100px]" :
+                    (pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3") ? "top-[2400px] h-[850px] gap-x-14 pt-[100px]" : ""
             }`} style={{
                 background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)",
                 boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"

@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import Circle from "@/../public/sellerHome-circle.png";
@@ -12,11 +15,15 @@ import HeroImg from "@/../public/sellerHome-steps-to-start-selling.png";
 import "@/styles/sellerHomeStepsToStartSelling.css";
 
 export default function SellerHomeStepsToStartSelling() {
+    const router = useRouter();
+
     return <section className="absolute px-[5%] top-[550px] mt-[85px] w-full">
         <p className="text-4xl font-medium">Steps to <span className="text-[#D57A2D] font-semibold">Start Selling</span></p>
         <section className="flex flex-row flex-nowrap justify-between mt-[48px] w-full">
             <aside className="relative w-[50%]">
-                <button className="absolute top-0 right-0 text-white text-[18px] font-semibold px-[54px] py-[10px] bg-[#FBC246] rounded-tr-[32px] rounded-bl-[32px]">Register now</button>
+                <button className="absolute top-0 right-0 text-white text-[18px] font-semibold px-[54px] py-[10px] bg-[#FBC246] rounded-tr-[32px] rounded-bl-[32px]" onClick={() => {
+                    router.push("/seller/register/1");
+                }}>Register now</button>
                 <Image src={HeroImg} alt="hero" className="w-full h-[692px]" />
             </aside>
             <aside className="w-[50%] relative">
