@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import LandingPageSellerBackground from "@/../public/landingpage-seller-background.png";
-import SampleSeller from "@/../public/sample-seller.png";
+import SampleSeller from "@/../public/sample-seller.svg";
 
 export default function LandingPageSeller() {
     return <section className="relative w-full flex flex-col items-center" id="landing-page-seller">

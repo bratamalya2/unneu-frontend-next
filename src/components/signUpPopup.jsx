@@ -132,7 +132,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
     }, [isSellerSelected, setBuyerSelected, setSellerSelected]);
 
     return <>
-        <Modal show={showSignUp} onHide={hideSignUp} className="mt-[100px]">
+        <Modal show={showSignUp} onHide={hideSignUp} className="mt-[20px]">
             <Modal.Body className="flex flex-row flex-nowrap justify-center sm:justify-start rounded-[32px] h-[650px] sm:h-[600px] md:h-[640px]">
                 <Image src={SignUpSide} alt="signup-side" className="hidden sm:inline-block w-[35%] h-full rounded-tl-[32px] rounded-bl-[32px]" />
                 <div className="flex flex-col items-center justify-center h-full w-full sm:w-[65%]">

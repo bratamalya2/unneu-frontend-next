@@ -135,7 +135,7 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
     }, [isSellerSelected, setBuyerSelected, setSellerSelected]);
 
     return <>
-        <Modal show={showSignIn} onHide={hideSignIn} className="mt-[150px] mb-[50px]">
+        <Modal show={showSignIn} onHide={hideSignIn} className="mt-[20px] mb-[50px]">
             <Modal.Body className="bg-[#FEE9BC] rounded-[32px] flex flex-row flex-nowrap sm:justify-between sm:h-[500px] md:h-[640px]">
                 <Image src={LoginSide} alt="login-side" className="h-full max-w-[57%] hidden sm:inline-block" />
                 <div className="w-full sm:max-w-[40%] px-1 inline-flex flex-col flex-nowrap items-center justify-center">

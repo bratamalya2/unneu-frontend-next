@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import SampleBuyer from "@/../public/sample-buyer.png";
+import SampleBuyer from "@/../public/sample-buyer.svg";
 import LandingPageSellerBackground from "@/../public/landingpage-seller-background.png";
 
 export default function LandingPageBuyer() {
