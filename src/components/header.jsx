@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Libre_Baskerville } from "next/font/google";
 import { Poppins } from "next/font/google";
 import Image from "next/image";

@@ -133,19 +133,19 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
 
     return <>
         <Modal show={showSignUp} onHide={hideSignUp} className="mt-[100px]">
-            <Modal.Body className="flex flex-row flex-nowrap justify-center sm:justify-start rounded-[32px] md:max-h-[720px]">
+            <Modal.Body className="flex flex-row flex-nowrap justify-center sm:justify-start rounded-[32px] h-[650px] sm:h-[600px] md:h-[640px]">
                 <Image src={SignUpSide} alt="signup-side" className="hidden sm:inline-block w-[35%] h-full rounded-tl-[32px] rounded-bl-[32px]" />
-                <div className="flex flex-col items-center h-full w-full sm:w-[65%]">
-                    <p className={`${libreBaskerville.className} text-[32px] text-[#4C4C4C] sm:hidden`}>Sign up</p>
+                <div className="flex flex-col items-center justify-center h-full w-full sm:w-[65%]">
+                    <p className={`${libreBaskerville.className} text-2xl sm:text-[32px] text-[#4C4C4C] sm:hidden`}>Sign up</p>
                     <div className={`flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-2xl mt-8`}>
                         <div
-                            className={`py-[9px] sm:py-[4px] lg:py-[12px] px-[36px] rounded-tl-[8px] rounded-bl-[8px] ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
+                            className={`py-[4px] lg:py-[12px] px-[36px] rounded-tl-[8px] rounded-bl-[8px] ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
                             onClick={() => setIsSellerSelected(true)}
                         >
                             Seller
                         </div>
                         <div
-                            className={`py-[9px] sm:py-[4px] lg:py-[12px] px-[36px] rounded-tr-[8px] rounded-br-[8px] ${!isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-r-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-r-2 border-[#CECECE]"}`}
+                            className={`py-[4px] lg:py-[12px] px-[36px] rounded-tr-[8px] rounded-br-[8px] ${!isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-r-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-r-2 border-[#CECECE]"}`}
                             onClick={() => setIsSellerSelected(false)}
                         >
                             Buyer
@@ -182,7 +182,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                                 <p className="text-[#646464] font-medium self-start mt-10 sm:mt-5 sm:ml-2">Enter phone number</p>
                                 <input
                                     type="text"
-                                    className="rounded-[12px] w-[95%] py-[10px] px-[12px] border-2 border-[#E05F1D] my-2 self-start sm:ml-2 max-w-[100%]"
+                                    className="rounded-[12px] w-full py-[10px] px-[12px] border-2 border-[#E05F1D] my-2 self-start sm:ml-2 max-w-[100%]"
                                     placeholder="+91 94XXXXXXXX"
                                     style={{
                                         boxShadow: "0px 11px 40px 4px rgba(81, 69, 55, 0.05)"
@@ -195,7 +195,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                     }
                     {
                         !isOTPSent && !isSellerSelected && (
-                            <button className="relative left-0 w-full rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[12px] text-[20px] font-semibold my-2" onClick={() => {
+                            <button className="relative left-0 sm:left-2 w-full rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[12px] text-[20px] font-semibold my-2" onClick={() => {
                                 setIsOTPSent(true);
                             }}>Verify</button>
                         )
@@ -205,7 +205,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                             <>
                                 <input
                                     type="number"
-                                    className="rounded-[12px] w-[95%] sm:ml-2 py-[10px] px-[16px] border-2 border-[#E05F1D] my-2 self-start"
+                                    className="rounded-[12px] w-full sm:ml-2 py-[10px] px-[16px] border-2 border-[#E05F1D] my-2 self-start"
                                     style={{
                                         boxShadow: "0px 11px 40px 4px rgba(81, 69, 55, 0.05)"
                                     }}
@@ -213,7 +213,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                                     onChange={e => setOtp(e.target.value)}
                                     value={otp}
                                 />
-                                <button className="relative left-0 w-[95%] rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[18px] text-[20px] lg:text-2xl font-semibold my-3 sm:my-2" onClick={submitOTP}>
+                                <button className="relative left-0 sm:left-2 w-full rounded-[16px] text-white bg-[#FE9135] py-[10px] text-[20px] font-semibold my-3 sm:my-2" onClick={submitOTP}>
                                     Verify OTP
                                 </button>
                             </>
@@ -221,7 +221,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                     }
                     {
                         showError && !isSellerSelected && (
-                            <p className="text-[#8F8F8F] text-[14px] lg:text-[18px] text-red-500 font-bold text-center my-2 sm:my-0 lg:my-4">{errorMessage}</p>
+                            <p className="text-[#8F8F8F] text-[14px] text-red-500 font-bold text-center my-2 sm:my-0 lg:my-4">{errorMessage}</p>
                         )
                     }
                     {
@@ -234,7 +234,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                                         </span>
                                     )}
                                 </p>
-                                <p className="text-xs mt-3 max-w-[96%] text-center">By selecting sign up, you agree to our terms of service and privacy policy</p>
+                                <p className="text-xs mt-3 max-w-[96%] text-center mb-1">By selecting sign up, you agree to our terms of service and privacy policy</p>
                             </>
                         )
                     }

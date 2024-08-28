@@ -8,12 +8,12 @@ import SocialMedia from "@/../public/sellerHome-social-media.png";
 import Payments from "@/../public/sellerHome-receive-payments.png";
 
 export default function SellerHomeWhySellWithUs() {
-    return <section className="mt-[120px] absolute top-[1400px] px-[5%] w-full">
+    return <section className="mt-[120px] absolute lg:top-[1400px] px-[5%] w-full">
         <p className="text-4xl font-medium">Why <span className="text-[#FE9135] font-semibold">Sell with Us?</span></p>
         <Image src={LeftLeaf} alt="leaf" className="w-[75px] h-[558px] absolute left-0 top-[155px] z-[-10]" />
         <Image src={RightLeaf} alt="leaf" className="w-[75px] h-[558px] absolute right-0 top-[155px] z-[-10]" />
         <div className="flex flex-row flex-wrap items-center justify-between w-full gap-y-[72px] mt-[58px]">
-            <div className="py-[33px] px-[38px] flex flex-col flex-nowrap w-[45%] rounded-[16px] bg-[#FAFAFA] gap-y-[18px] min-h-[235px]" style={{
+            <div className="py-[33px] px-[38px] flex flex-col flex-nowrap w-[45%] rounded-[16px] bg-[#FAFAFA] gap-y-[18px] min-h-[330px]" style={{
                 boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
             }}>
                 <Image src={Audience} alt="audience" className="w-[70px] h-[40px]" />
@@ -22,7 +22,7 @@ export default function SellerHomeWhySellWithUs() {
                     By reaching a nationwide pool of buyers, you can significantly increase the visibility of your product or service, attracting more potential customers and ultimately boosting sales.
                 </p>
             </div>
-            <div className="py-[33px] px-[38px] flex flex-col flex-nowrap w-[45%] rounded-[16px] bg-[#FAFAFA] gap-y-[18px] min-h-[235px]" style={{
+            <div className="py-[33px] px-[38px] flex flex-col flex-nowrap w-[45%] rounded-[16px] bg-[#FAFAFA] gap-y-[18px] min-h-[330px]" style={{
                 boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
             }}>
                 <Image src={Store} alt="store" className="w-[52px] h-[50px]" />
@@ -31,7 +31,7 @@ export default function SellerHomeWhySellWithUs() {
                     Create your own virtual store for free with our platform. We&apos;ll generate shareable social media links to help you reach a wider audience and increase your sales potential.
                 </p>
             </div>
-            <div className="py-[33px] px-[38px] flex flex-col flex-nowrap w-[45%] rounded-[16px] bg-[#FAFAFA] gap-y-[18px] min-h-[235px]" style={{
+            <div className="py-[33px] px-[38px] flex flex-col flex-nowrap w-[45%] rounded-[16px] bg-[#FAFAFA] gap-y-[18px] min-h-[330px]" style={{
                 boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
             }}>
                 <Image src={SocialMedia} alt="social media" className="w-[54px] h-[54px]" />
@@ -40,7 +40,7 @@ export default function SellerHomeWhySellWithUs() {
                     Achieve widespread social recognition across all major social media platforms and earn a prestigious badge of honor reflecting your business success.
                 </p>
             </div>
-            <div className="py-[33px] px-[38px] flex flex-col flex-nowrap w-[45%] rounded-[16px] bg-[#FAFAFA] gap-y-[18px] min-h-[235px]" style={{
+            <div className="py-[33px] px-[38px] flex flex-col flex-nowrap w-[45%] rounded-[16px] bg-[#FAFAFA] gap-y-[18px] min-h-[330px]" style={{
                 boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
             }}>
                 <Image src={Payments} alt="payments" className="w-[63px] h-[60px]" />

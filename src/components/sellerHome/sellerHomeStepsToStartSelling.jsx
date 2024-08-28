@@ -17,16 +17,16 @@ import "@/styles/sellerHomeStepsToStartSelling.css";
 export default function SellerHomeStepsToStartSelling() {
     const router = useRouter();
 
-    return <section className="absolute px-[5%] top-[550px] mt-[85px] w-full">
+    return <section className="absolute px-[5%] lg:top-[530px] top-[650px] 2xl:top-[450px] mt-[85px] w-full">
         <p className="text-4xl font-medium">Steps to <span className="text-[#D57A2D] font-semibold">Start Selling</span></p>
         <section className="flex flex-row flex-nowrap justify-between mt-[48px] w-full">
-            <aside className="relative w-[50%]">
+            <aside className="relative w-[50%] xl:w-[46%]">
                 <button className="absolute top-0 right-0 text-white text-[18px] font-semibold px-[54px] py-[10px] bg-[#FBC246] rounded-tr-[32px] rounded-bl-[32px]" onClick={() => {
                     router.push("/seller/register/1");
                 }}>Register now</button>
-                <Image src={HeroImg} alt="hero" className="w-full h-[692px]" />
+                <Image src={HeroImg} alt="hero" className="w-full min-h-[692px]" />
             </aside>
-            <aside className="w-[50%] relative">
+            <aside className="w-[50%] xl:w-[54%] relative">
                 <Image src={Circle} alt="circle" className="w-[86px] h-[86px] absolute top-0 left-[30%]" />
                 <Image src={Register} alt="register" className="w-[48px] h-[48px] absolute top-[15px] left-[35%] xl:left-[34%] 2xl:left-[33%]" />
                 <Image src={DottedLine} alt="line" className="w-[1px] h-[57px] absolute top-[85px] seller-home-dotted-line" />
