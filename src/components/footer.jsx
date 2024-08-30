@@ -13,7 +13,7 @@ export default function Footer() {
 
     return <>
         <footer className={`w-full relative list-none text-[#282828] text-[18px] font-medium hidden lg:flex
-                ${pathname === "/" ? "h-[850px] xl:h-[550px] top-[1020px] xl:top-[1350px] 2xl:top-[1800px] hidden gap-x-14 pt-[100px] px-[9%]" :
+                ${pathname === "/" ? "h-[850px] xl:h-[550px] top-[1100px] min-[1100px]:top-[1200px] min-[1150px]:top-[1250px] min-[1200px]:top-[1300px] min-[1250px]:top-[1350px] xl:top-[1570px] 2xl:top-[1800px] min-[1640px]:top-[1850px] min-[1760px]:top-[1970px] min-[1860px]:top-[2070px] hidden gap-x-14 pt-[100px] px-[9%]" :
                 pathname === "/seller/home" ? "lg:top-[2500px] xl:top-[2500px] h-[800px] xl:h-[600px] gap-x-14 pt-[100px] px-[5%]" :
                     (pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3") ? "h-[850px] gap-x-14 pt-[100px] px-[9%]" : ""
             }
@@ -58,7 +58,7 @@ export default function Footer() {
                 </p>
             </li>
         </footer>
-        <footer className="lg:hidden flex flex-col flex-nowrap top-[450px] sm:top-[750px] md:top-[800px] h-[1050px] sm:h-[950px] px-[5%] py-[41px] list-none relative" style={{
+        <footer className="lg:hidden flex flex-col flex-nowrap min-[300px]:top-[430px] min-[420px]:top-[460px] min-[470px]:top-[560px] min-[570px]:top-[680px] sm:top-[760px] min-[730px]:top-[840px] md:top-[820px] min-[780px]:top-[880px] min-[848px]:top-[910px] min-[880px]:top-[950px] min-[910px]:top-[990px] min-[950px]:top-[1040px] min-[1000px]:top-[1100px] h-[1050px] sm:h-[950px] px-[5%] py-[41px] list-none relative" style={{
             background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)"
         }}>
             <li className="w-full">

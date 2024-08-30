@@ -1,0 +1,27 @@
+#landingpage-hero-bg-2 {
+    background-image: url("../../public/hero-background.png");
+}
+
+@media only screen and (min-width: 300px) {
+    #landingpage-hero-fg {
+        top: 95px;
+    }
+}
+
+@media only screen and (min-width: 350px) {
+    #landingpage-hero-fg {
+        top: 88px;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    #landingpage-hero-fg {
+        top: 77px;
+    }
+}
+
+@media only screen and (min-width: 450px) {
+    #landingpage-hero-fg {
+        top: 68px;
+    }
+}

@@ -10,7 +10,9 @@ import { useUnneuDataStore } from "@/store/store";
 
 import LeftLeaf from "@/../public/left-leaf.png";
 import RightLeaf from "@/../public/right-leaf.png";
-import LoginSide from "@/../public/login-side.png";
+import CloseIcon from "@/../public/close.png";
+
+import "@/styles/signInPopup.css";
 
 const libreBaskerville = Libre_Baskerville({
     subsets: ["latin"],
@@ -136,29 +138,30 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
 
     return <>
         <Modal show={showSignIn} onHide={hideSignIn} className="mt-[20px] mb-[50px]">
-            <Modal.Body className="bg-[#FEE9BC] rounded-[32px] flex flex-row flex-nowrap sm:justify-between sm:h-[500px] md:h-[640px]">
-                <Image src={LoginSide} alt="login-side" className="h-full max-w-[57%] hidden sm:inline-block" />
-                <div className="w-full sm:max-w-[40%] px-1 inline-flex flex-col flex-nowrap items-center justify-center">
-                    <p className={`text-[#4C4C4C] ${libreBaskerville.className} text-2xl mb-3`}>Log in</p>
-                    <div className={`max-w-[90%] flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-2xl mt-8 sm:mt-0`}>
+            <Modal.Body className="bg-[#FEE9BC] rounded-[32px] flex flex-row flex-nowrap sm:justify-between p-0 h-[550px] sm:h-fit">
+                <div className="sm:h-[500px] lg:h-[600px] w-[52%] rounded-tl-[32px] rounded-bl-[32px] hidden sm:inline-block" id="login-side-img-container"></div>
+                <div className="relative w-full sm:max-w-[45%] pl-1 pl-1 sm:pr-10 inline-flex flex-col flex-nowrap items-center">
+                    <Image src={CloseIcon} alt="close" className="w-[20px] h-[20px] absolute top-5 right-5" onClick={hideSignIn} />
+                    <p className={`text-[#4C4C4C] ${libreBaskerville.className} text-2xl lg:text-3xl mt-[25px] mb-4`}>Log in</p>
+                    <div className={`max-w-[90%] flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-2xl sm:mt-0`}>
                         <div
-                            className={`py-[9px] sm:py-[3px] px-[25px] sm:px-[12px] rounded-tl-[8px] rounded-bl-[8px] ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
+                            className={`py-[9px] sm:py-[6px] lg:py-[10px] px-[25px] lg:px-[25px] rounded-tl-[8px] rounded-bl-[8px] ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
                             onClick={() => setIsSellerSelected(true)}
                         >
                             Seller
                         </div>
                         <div
-                            className={`py-[9px] sm:py-[3px] px-[25px] sm:px-[12px] rounded-tr-[8px] rounded-br-[8px] ${!isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-r-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-r-2 border-[#CECECE]"}`}
+                            className={`py-[9px] sm:py-[6px] lg:py-[10px] px-[25px] lg:px-[25px] rounded-tr-[8px] rounded-br-[8px] ${!isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-r-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-r-2 border-[#CECECE]"}`}
                             onClick={() => setIsSellerSelected(false)}
                         >
                             Buyer
                         </div>
                     </div>
-                    <p className="text-[15px] sm:text-sm text-center text-[#646464] my-4 sm:my-0 lg:my-4">Enter your contact number to log in</p>
-                    <p className="text-[#646464] font-medium sm:text-sm lg:text-base self-start">Enter phone number</p>
+                    <p className="text-[15px] sm:text-sm lg:text-base text-center text-[#646464] my-4 sm:my-0 lg:my-4">Enter your contact number to log in</p>
+                    <p className="text-[#646464] font-medium self-start ml-[46px] sm:ml-2 sm:text-sm lg:text-base">Enter phone number</p>
                     <input
                         type="text"
-                        className="rounded-[12px] py-[10px] sm:py-[5px] lg:py-[10px] px-[12px] border-2 border-[#E05F1D] my-2 self-start w-[100%]"
+                        className="rounded-[12px] py-[10px] sm:py-[5px] lg:py-[10px] px-[12px] my-2 sm:self-start w-[80%] sm:w-[95%]"
                         placeholder="+91 94XXXXXXXX"
                         style={{
                             boxShadow: "0px 11px 40px 4px rgba(81, 69, 55, 0.05)"
@@ -168,7 +171,7 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                     />
                     {
                         !isOTPSent && (
-                            <button className="w-full mx-auto rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] text-[20px] sm:text-normal font-semibold my-4 sm:my-1 max-w-[100%]" onClick={() => {
+                            <button className="w-[80%] sm:w-[95%] sm:self-start rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[10px] text-[20px] sm:text-normal font-semibold my-4 sm:my-1 max-w-[100%]" onClick={() => {
                                 setIsOTPSent(true);
                             }}>Verify</button>
                         )
@@ -178,7 +181,7 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                             <>
                                 <input
                                     type="number"
-                                    className="rounded-[12px] py-[10px] sm:py-[5px] lg:py-[10px] px-[16px] border-2 border-[#E05F1D] my-2 self-start w-[100%]"
+                                    className="rounded-[12px] py-[10px] sm:py-[5px] lg:py-[10px] px-[16px] my-2 sm:self-start w-[80%] sm:w-[95%]"
                                     style={{
                                         boxShadow: "0px 11px 40px 4px rgba(81, 69, 55, 0.05)"
                                     }}
@@ -186,7 +189,7 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                                     onChange={e => setOtp(e.target.value)}
                                     value={otp}
                                 />
-                                <button className="w-full mx-auto rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] text-[20px] font-semibold mt-4" onClick={submitOTP}>
+                                <button className="w-[80%] sm:w-[95%] lg:py-[10px] sm:self-start rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] text-[20px] font-semibold mt-4" onClick={submitOTP}>
                                     Verify OTP
                                 </button>
                             </>
@@ -194,12 +197,12 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                     }
                     {
                         showError && (
-                            <p className="text-[#8F8F8F] text-[14px] sm:text-xs text-red-500 font-bold text-center my-2 lg:my-4">{errorMessage}</p>
+                            <p className="text-[#8F8F8F] text-[14px] sm:text-xs lg:text-base text-red-500 font-bold text-center my-2 lg:my-4">{errorMessage}</p>
                         )
                     }
                     {
                         isOTPSent && (
-                            <p className="text-[#8F8F8F] text-[14px] sm:text-xs text-center mt-3">Didnt get OTP ? <span className={`text-[#6C6C6C] font-medium ${timer === 0 ? "hover:cursor-pointer" : "hover:cursor-wait"}`} onClick={resendOTP}>Resend</span> {
+                            <p className="sm:self-start text-[#8F8F8F] text-[14px] sm:text-xs lg:text-base text-center my-3">Didnt get OTP ? <span className={`text-[#6C6C6C] font-medium ${timer === 0 ? "hover:cursor-pointer" : "hover:cursor-wait"}`} onClick={resendOTP}>Resend</span> {
                                 timer > 0 && timer && (
                                     <span>
                                         OTP in <span className="text-red-500">{timer} seconds</span>
@@ -208,7 +211,7 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                             </p>
                         )
                     }
-                    <div className="sm:hidden flex flex-row flex-nowrap items-center justify-around w-full">
+                    <div className="absolute flex sm:hidden md:flex flex-row flex-nowrap items-center justify-around w-full bottom-5">
                         <Image src={LeftLeaf} alt="left-leaf" className="w-[48%]" />
                         <Image src={RightLeaf} alt="right-leaf" className="w-[48%]" />
                     </div>

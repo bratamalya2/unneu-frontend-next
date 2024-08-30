@@ -1,4 +1,6 @@
-import { useState } from "react";
+"use client";
+
+import { useState, useEffect } from "react";
 
 import LandingPageFAQQuestion from "./landingPageFAQquestion";
 
@@ -26,12 +28,22 @@ const answer = {
 
 export default function LandingPageResellersFAQ({ isVisible }) {
     const [currentQuestion, setCurrentQuestion] = useState(null);
+    const [clickedQuestion, setClickedQuestion] = useState(null);
+    const [prevHeight, setPrevHeight] = useState(0);
 
-    return <section className={`${isVisible ? "block" : "hidden"} mx-auto w-[95%] py-[24px]`}>
-        <LandingPageFAQQuestion tag="reseller" question="Why should I sell with Unneu.com?" id={0} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
-        <LandingPageFAQQuestion tag="reseller" question="Can I sell on other platforms while selling at Unneu.com?" id={1} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
-        <LandingPageFAQQuestion tag="reseller" question="When and how do I get paid against my sales?" id={2} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
-        <LandingPageFAQQuestion tag="reseller" question="Can my products get returned after I sell them?" id={3} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
-        <LandingPageFAQQuestion tag="reseller" question="How do I know the service platform is authentic?" id={4} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
+    useEffect(() => {
+        if (isVisible === false) {
+            setPrevHeight(0);
+            setCurrentQuestion(null);
+            setClickedQuestion(null);
+        }
+    }, [isVisible]);
+
+    return <section className={`${isVisible ? "block" : "hidden"} mx-auto w-[95%] pt-[24px]`}>
+        <LandingPageFAQQuestion tag="reseller" question="Why should I sell with Unneu.com?" id={0} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} clickedQuestion={clickedQuestion} setClickedQuestion={setClickedQuestion} answer={answer} prevHeight={prevHeight} setPrevHeight={setPrevHeight} />
+        <LandingPageFAQQuestion tag="reseller" question="Can I sell on other platforms while selling at Unneu.com?" id={1} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} clickedQuestion={clickedQuestion} setClickedQuestion={setClickedQuestion} answer={answer} prevHeight={prevHeight} setPrevHeight={setPrevHeight} />
+        <LandingPageFAQQuestion tag="reseller" question="When and how do I get paid against my sales?" id={2} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} clickedQuestion={clickedQuestion} setClickedQuestion={setClickedQuestion} answer={answer} prevHeight={prevHeight} setPrevHeight={setPrevHeight} />
+        <LandingPageFAQQuestion tag="reseller" question="Can my products get returned after I sell them?" id={3} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} clickedQuestion={clickedQuestion} setClickedQuestion={setClickedQuestion} answer={answer} prevHeight={prevHeight} setPrevHeight={setPrevHeight} />
+        <LandingPageFAQQuestion tag="reseller" question="How do I know the service platform is authentic?" id={4} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} clickedQuestion={clickedQuestion} setClickedQuestion={setClickedQuestion} answer={answer} prevHeight={prevHeight} setPrevHeight={setPrevHeight} />
     </section>
 }

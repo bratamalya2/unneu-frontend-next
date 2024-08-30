@@ -146,3 +146,147 @@
         left: 26.5%;
     }
 }
+
+@media only screen and (min-width: 300px) {
+    #landingpage-newsletter-section-mobile {
+        top: 450px;
+    }
+}
+
+@media only screen and (min-width: 420px) {
+    #landingpage-newsletter-section-mobile {
+        top: 480px;
+    }
+}
+
+@media only screen and (min-width: 470px) {
+    #landingpage-newsletter-section-mobile {
+        top: 580px;
+    }
+}
+
+@media only screen and (min-width: 530px) {
+    #landingpage-newsletter-section-mobile {
+        top: 580px;
+    }
+}
+
+@media only screen and (min-width: 570px) {
+    #landingpage-newsletter-section-mobile {
+        top: 700px;
+    }
+}
+
+@media only screen and (min-width: 639px) {
+    #landingpage-newsletter-section-mobile {
+        top: 770px;
+    }
+}
+
+@media only screen and (min-width: 730px) {
+    #landingpage-newsletter-section-mobile {
+        top: 840px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #landingpage-newsletter-section-mobile {
+        top: 820px;
+    }
+}
+
+@media only screen and (min-width: 780px) {
+    #landingpage-newsletter-section-mobile {
+        top: 900px;
+    }
+}
+
+@media only screen and (min-width: 848px) {
+    #landingpage-newsletter-section-mobile {
+        top: 920px;
+    }
+}
+
+@media only screen and (min-width: 880px) {
+    #landingpage-newsletter-section-mobile {
+        top: 960px;
+    }
+}
+
+@media only screen and (min-width: 910px) {
+    #landingpage-newsletter-section-mobile {
+        top: 1000px;
+    }
+}
+
+@media only screen and (min-width: 950px) {
+    #landingpage-newsletter-section-mobile {
+        top: 1040px;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    #landingpage-newsletter-section-mobile {
+        top: 1110px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #landingpage-newsletter-section {
+        top: 1110px;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    #landingpage-newsletter-section {
+        top: 1200px;
+    }
+}
+
+@media only screen and (min-width: 1150px) {
+    #landingpage-newsletter-section {
+        top: 1250px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #landingpage-newsletter-section {
+        top: 1300px;
+    }
+}
+
+@media only screen and (min-width: 1250px) {
+    #landingpage-newsletter-section {
+        top: 1350px;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    #landingpage-newsletter-section {
+        top: 1600px;
+    }
+}
+
+@media only screen and (min-width: 1536px) {
+    #landingpage-newsletter-section {
+        top: 1800px;
+    }
+}
+
+@media only screen and (min-width: 1640px) {
+    #landingpage-newsletter-section {
+        top: 1850px;
+    }
+}
+
+@media only screen and (min-width: 1760px) {
+    #landingpage-newsletter-section {
+        top: 2000px;
+    }
+}
+
+@media only screen and (min-width: 1860px) {
+    #landingpage-newsletter-section {
+        top: 2100px;
+    }
+}

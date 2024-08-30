@@ -48,11 +48,11 @@ export default function Header() {
     return <>
         {
             pathname === "/" && (
-                <header className={`${lbFont.className} h-[135px] hidden md:block`}>
+                <header className={`${lbFont.className} h-[182px] hidden md:block z-[200] bg-white`}>
                     <div className="py-[33px] flex justify-around items-center mg:px-[6%] lg:px-[7.5%]">
                         <Image src={Logo} alt="Unneu" className="w-[85px] lg:w-[125px] lg:h-[44px]" />
                         <div className="w-[30%] md:w-[40%] relative">
-                            <Image src={Search} alt="Search" className="w-[24px] h-[24px] absolute top-5 left-2" />
+                            <Image src={Search} alt="Search" className="w-[24px] h-[24px] absolute top-5 left-4" />
                             <input type="text" placeholder="Search for product" className={`rounded-[24px] w-full h-[64px] pl-[48px] ${poppins.className}`} style={{
                                 boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
                             }} />
@@ -64,12 +64,12 @@ export default function Header() {
                             hideHamburger();
                             setShowSignIn(true);
                         }}>Log in</div>
-                        <button className="px-[16px] py-[18px] text-center rounded-[12px] bg-[#FE9135] text-white hover:bg-[#FBC246]" onClick={() => {
+                        <button className="px-[28px] py-[16px] text-center rounded-[12px] bg-[#FE9135] text-white hover:bg-[#FBC246]" onClick={() => {
                             hideHamburger();
                             setShowSignUp(true);
                         }}>Sign up</button>
                     </div>
-                    <nav className="border-t border-t-[#dcdcdc99] border-b border-b-[#dcdcdc99] w-full px-[9%] py-[25px] list-none flex gap-x-[38px]">
+                    <nav className="border-t border-t-[#dcdcdc99] border-b border-b-[#dcdcdc99] w-full px-[10%] py-[25px] list-none flex gap-x-[38px] bg-white">
                         <li className="hover:cursor-pointer">Home</li>
                         <li className="hover:cursor-pointer">Shop</li>
                         <li className="hover:cursor-pointer">Sell</li>
@@ -80,10 +80,10 @@ export default function Header() {
                 </header>)}
         {
             pathname === "/" && showHamburger && (
-                <nav className="block md:hidden bg-white max-w-[363px] w-[60%] h-[560px] list-none absolute z-50 rounded-tr-[24px] rounded-br-[24px]" style={{
+                <nav className="block md:hidden bg-white max-w-[363px] w-[80%] h-[560px] list-none absolute z-50 rounded-tr-[24px] rounded-br-[24px]" style={{
                     boxShadow: "0px 4px 78px 0px rgba(0, 0, 0, 0.25)"
                 }}>
-                    <Image src={CloseIcon} alt="close" className="w-[14px] h-[14px] absolute top-10 right-5" onClick={hideHamburger} />
+                    <Image src={CloseIcon} alt="close" className="w-[14px] h-[14px] absolute top-[90px] right-5" onClick={hideHamburger} />
                     <Image src={Like} alt="wishlist" className="w-[20px] h-[17px] absolute left-5 top-10" />
                     <div className="absolute top-10 left-[50px] text-[14px]">Wish list</div>
                     <li className="bg-[#FE9135] text-white py-[8px] px-[16px] text-center absolute left-5 top-20 rounded-[6px] font-medium hover:cursor-pointer" onClick={() => {
@@ -135,11 +135,11 @@ export default function Header() {
         }
         {
             pathname === "/" && (
-                <header className={`${lbFont.className} h-[135px] block md:hidden h-[36px] flex items-center px-[15px] mt-[20px]`}>
+                <header className={`${lbFont.className} block md:hidden h-[76px] flex items-center px-[15px] pt-[20px] pb-[20px] z-[200] sticky top-0 bg-white`}>
                     <Image src={Hamburger} alt="details" className="w-[20px] h-[14px]" onClick={() => {
                         setShowHamburger(true);
                     }} />
-                    <Image src={Logo} alt="Unneu" className={`w-[103px] h-[36px] ${showSearch ? "ml-[4%] sm:ml-[10%]" : "ml-[29%] sm:ml-[32%]"}`} />
+                    <Image src={Logo} alt="Unneu" className={`w-[103px] h-[36px] ${showSearch ? "ml-[4%] sm:ml-[10%]" : "ml-[29%] sm:ml-[36%]"}`} />
                     {
                         showSearch && (
                             <input type="text" placeholder="Search here" className="w-[112px] sm:w-[210px] py-[5px] pl-[2px] text-[14px] font-medium ml-4 border-b border-[#9C9C9C] outline-0" />

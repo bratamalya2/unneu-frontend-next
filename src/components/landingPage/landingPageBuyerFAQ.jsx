@@ -1,4 +1,6 @@
-import { useState } from "react";
+"use client";
+
+import { useState, useEffect } from "react";
 
 import LandingPageFAQQuestion from "./landingPageFAQquestion"
 
@@ -25,12 +27,22 @@ const answer = {
 
 export default function LandingPageBuyerFAQ({ isVisible }) {
     const [currentQuestion, setCurrentQuestion] = useState(null);
+    const [clickedQuestion, setClickedQuestion] = useState(null);
+    const [prevHeight, setPrevHeight] = useState(0);
 
-    return <section className={`${isVisible ? "block" : "hidden"} mx-auto w-[95%] py-[24px]`}>
-        <LandingPageFAQQuestion tag="buyer" question="Why should I buy from Unneu.com?" id={0} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
-        <LandingPageFAQQuestion tag="buyer" question="What is the delivery timeline?" id={1} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
-        <LandingPageFAQQuestion tag="buyer" question="What are the cancellation and return policies?" id={2} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
-        <LandingPageFAQQuestion tag="buyer" question="What are the refund policies?" id={3} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
-        <LandingPageFAQQuestion tag="buyer" question="How is the shipping cost calculated?" id={4} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} answer={answer} />
+    useEffect(() => {
+        if (isVisible === false) {
+            setPrevHeight(0);
+            setCurrentQuestion(null);
+            setClickedQuestion(null);
+        }
+    }, [isVisible]);
+
+    return <section className={`${isVisible ? "block" : "hidden mb-[10px]"} mx-auto w-[95%] pt-[24px]`}>
+        <LandingPageFAQQuestion tag="buyer" question="Why should I buy from Unneu.com?" id={0} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} clickedQuestion={clickedQuestion} setClickedQuestion={setClickedQuestion} answer={answer} prevHeight={prevHeight} setPrevHeight={setPrevHeight} />
+        <LandingPageFAQQuestion tag="buyer" question="What is the delivery timeline?" id={1} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} clickedQuestion={clickedQuestion} setClickedQuestion={setClickedQuestion} answer={answer} prevHeight={prevHeight} setPrevHeight={setPrevHeight} />
+        <LandingPageFAQQuestion tag="buyer" question="What are the cancellation and return policies?" id={2} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} clickedQuestion={clickedQuestion} setClickedQuestion={setClickedQuestion} answer={answer} prevHeight={prevHeight} setPrevHeight={setPrevHeight} />
+        <LandingPageFAQQuestion tag="buyer" question="What are the refund policies?" id={3} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} clickedQuestion={clickedQuestion} setClickedQuestion={setClickedQuestion} answer={answer} prevHeight={prevHeight} setPrevHeight={setPrevHeight} />
+        <LandingPageFAQQuestion tag="buyer" question="How is the shipping cost calculated?" id={4} currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} clickedQuestion={clickedQuestion} setClickedQuestion={setClickedQuestion} answer={answer} prevHeight={prevHeight} setPrevHeight={setPrevHeight} />
     </section>
 }

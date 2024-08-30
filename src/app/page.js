@@ -8,10 +8,10 @@ import LandingPageNewsletter from "@/components/landingPage/landingPageNewslette
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main>
       <LandingPageHero />
       <LandingPageNavSection />
-      <article className="my-[45px] xl:my-[35px] md:my-[56px] lg:max-w-[64%] xl:max-w-[50%] 2xl:max-w-[42%] mx-auto flex flex-col items-center">
+      <article className="relative z-0 my-[45px] xl:my-[35px] md:my-[56px] lg:max-w-[64%] xl:max-w-[50%] 2xl:max-w-[42%] mx-auto flex flex-col items-center">
         <p className="font-bold text-2xl sm:text-4xl text-center sm:leading-[64px]">Economic empowerment:</p>
         <p className="font-bold text-2xl sm:text-4xl text-center sm:leading-[64px] text-[#FE9135]">Resell. Rent</p>
         <p className="my-[32px] sm:text-[18px] text-center px-5 sm:px-0">

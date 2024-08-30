@@ -9,6 +9,8 @@ import LandingPageBuyerFAQ from "./landingPageBuyerFAQ";
 
 import ExpandButton from "@/../public/accordion-button.png";
 
+import "@/styles/landingPageFAQ.css";
+
 export default function LandingPageFAQ() {
     const [isResellerVisible, setIsResellerVisible] = useState(false);
     const [isSellerVisible, setIsSellerVisible] = useState(false);
@@ -41,7 +43,7 @@ export default function LandingPageFAQ() {
         }
     }, [isResellerVisible, isSellerVisible, isBuyerVisible]);
 
-    return <section id="faq-section" className="relative top-[510px] sm:top-[800px] md:top-[870px] lg:top-[1100px] xl:top-[1400px] 2xl:top-[1800px] px-[10%] min-h-[550px] sm:min-h-[600px] md:min-h-[650px]">
+    return <section id="faq-section" className="relative px-[10%] min-h-[550px] sm:min-h-[600px] md:min-h-[650px]">
         <p className="text-[#2D2D2D] text-3xl sm:text-4xl md:text-[42px] font-bold">
             Frequently Asked <span className="text-[#FE9135]">Question</span>
         </p>

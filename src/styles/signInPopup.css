@@ -1,0 +1,6 @@
+#login-side-img-container {
+    background-image: url("../../public/login-side.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
