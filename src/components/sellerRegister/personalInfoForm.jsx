@@ -1,10 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import Image from "next/image";
 import { Libre_Baskerville } from "next/font/google";
-
-import Hero from "@/../public/sellerRegister-hero.png";
 
 import "@/styles/personalInfoForm.css";
 
@@ -24,7 +21,7 @@ export default function PersonalInfoForm() {
     const dateRef = useRef(null);
 
     return <section className="mt-[105px] flex flex-row flex-nowrap justify-between pr-[5%]">
-        <Image src={Hero} alt="hero" className="h-[900px] w-[46%] rounded-tr-[36px] rounded-br-[36px]" />
+        <aside className="h-[900px] w-[46%] rounded-tr-[36px] rounded-br-[36px]" id="seller-register-personal-info-form-hero"></aside>
         <aside className="w-[50%]">
             <p className={`${lbFont.className} text-3xl`}>Add Personal info</p>
             {

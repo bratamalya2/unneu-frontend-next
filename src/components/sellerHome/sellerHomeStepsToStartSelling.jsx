@@ -10,21 +10,19 @@ import List from "@/../public/sellerHome-list.png";
 import Manage from "@/../public/sellerHome-manage.png";
 import Shipping from "@/../public/sellerHome-shipping.png";
 import Payments from "@/../public/sellerHome-payments.png";
-import HeroImg from "@/../public/sellerHome-steps-to-start-selling.png";
 
 import "@/styles/sellerHomeStepsToStartSelling.css";
 
 export default function SellerHomeStepsToStartSelling() {
     const router = useRouter();
 
-    return <section className="absolute px-[5%] lg:top-[530px] top-[650px] 2xl:top-[450px] mt-[85px] w-full">
+    return <section className="absolute px-[5%] lg:top-[580px] xl:top-[650px] 2xl:top-[750px] mt-[85px] w-full">
         <p className="text-4xl font-medium">Steps to <span className="text-[#D57A2D] font-semibold">Start Selling</span></p>
         <section className="flex flex-row flex-nowrap justify-between mt-[48px] w-full">
-            <aside className="relative w-[50%] xl:w-[46%]">
+            <aside className="relative w-[50%] rounded-[36px] xl:w-[46%] min-h-[692px]" id="seller-home-steps-tostart-selling-hero-div">
                 <button className="absolute top-0 right-0 text-white text-[18px] font-semibold px-[54px] py-[10px] bg-[#FBC246] rounded-tr-[32px] rounded-bl-[32px]" onClick={() => {
                     router.push("/seller/register/1");
                 }}>Register now</button>
-                <Image src={HeroImg} alt="hero" className="w-full min-h-[692px]" />
             </aside>
             <aside className="w-[50%] xl:w-[54%] relative">
                 <Image src={Circle} alt="circle" className="w-[86px] h-[86px] absolute top-0 left-[30%]" />

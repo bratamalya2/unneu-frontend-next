@@ -21,3 +21,10 @@ input[type="date"]::-ms-clear {
     top: 10px;
     right: 15px;
 }
+
+#seller-register-personal-info-form-hero {
+    background-image: url("../../public/sellerRegister-hero.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

@@ -14,11 +14,12 @@ export default function Footer() {
     return <>
         <footer className={`w-full relative list-none text-[#282828] text-[18px] font-medium hidden lg:flex
                 ${pathname === "/" ? "h-[850px] xl:h-[550px] top-[1100px] min-[1100px]:top-[1200px] min-[1150px]:top-[1250px] min-[1200px]:top-[1300px] min-[1250px]:top-[1350px] xl:top-[1570px] 2xl:top-[1800px] min-[1640px]:top-[1850px] min-[1760px]:top-[1970px] min-[1860px]:top-[2070px] hidden gap-x-14 pt-[100px] px-[9%]" :
-                pathname === "/seller/home" ? "lg:top-[2500px] xl:top-[2500px] h-[800px] xl:h-[600px] gap-x-14 pt-[100px] px-[5%]" :
-                    (pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3") ? "h-[850px] gap-x-14 pt-[100px] px-[9%]" : ""
+                pathname === "/seller/home" ? "lg:top-[2500px] xl:top-[2600px] 2xl:top-[2700px] h-[800px] xl:h-[600px] gap-x-14 pt-[100px] px-[5%]" :
+                    (pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3") ? "h-[550px] gap-x-14 pt-[100px] px-[9%]" : ""
             }
                 ${pathname === "/seller/register/1" && "top-[200px]"}
-                ${pathname === "/seller/register/2" && "top-[1200px]"}
+                ${pathname === "/seller/register/2" && "top-[200px]"}
+                ${pathname === "/seller/register/3" && "top-[200px]"}
             `} style={{
                 background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)",
                 boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"

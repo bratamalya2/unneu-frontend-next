@@ -1,3 +1,10 @@
+#seller-home-steps-tostart-selling-hero-div {
+    background-image: url("../../public/sellerHome-steps-to-start-selling.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 @media only screen and (min-width: 1024px) {
     .seller-home-dotted-line {
         left: 39.5%;
