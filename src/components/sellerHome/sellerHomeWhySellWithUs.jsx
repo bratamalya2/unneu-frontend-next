@@ -8,7 +8,7 @@ import SocialMedia from "@/../public/sellerHome-social-media.png";
 import Payments from "@/../public/sellerHome-receive-payments.png";
 
 export default function SellerHomeWhySellWithUs() {
-    return <section className="mt-[120px] absolute lg:top-[1400px] xl:top-[1500px] 2xl:top-[1600px] px-[5%] w-full">
+    return <section className="mt-[120px] absolute lg:top-[1400px] xl:top-[1500px] 2xl:top-[1600px] px-[10%] w-full">
         <p className="text-4xl font-medium">Why <span className="text-[#FE9135] font-semibold">Sell with Us?</span></p>
         <Image src={LeftLeaf} alt="leaf" className="w-[75px] h-[558px] absolute left-0 top-[155px] z-[-10]" />
         <Image src={RightLeaf} alt="leaf" className="w-[75px] h-[558px] absolute right-0 top-[155px] z-[-10]" />

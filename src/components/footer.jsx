@@ -13,9 +13,9 @@ export default function Footer() {
 
     return <>
         <footer className={`w-full relative list-none text-[#282828] text-[18px] font-medium hidden lg:flex
-                ${pathname === "/" ? "h-[850px] xl:h-[550px] top-[1100px] min-[1100px]:top-[1200px] min-[1150px]:top-[1250px] min-[1200px]:top-[1300px] min-[1250px]:top-[1350px] xl:top-[1570px] 2xl:top-[1800px] min-[1640px]:top-[1850px] min-[1760px]:top-[1970px] min-[1860px]:top-[2070px] hidden gap-x-14 pt-[100px] px-[9%]" :
-                pathname === "/seller/home" ? "lg:top-[2500px] xl:top-[2600px] 2xl:top-[2700px] h-[800px] xl:h-[600px] gap-x-14 pt-[100px] px-[5%]" :
-                    (pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3") ? "h-[550px] gap-x-14 pt-[100px] px-[9%]" : ""
+                ${pathname === "/" ? "h-[1050px] xl:h-[550px] top-[1100px] min-[1100px]:top-[1200px] min-[1150px]:top-[1250px] min-[1200px]:top-[1300px] min-[1250px]:top-[1350px] xl:top-[1570px] 2xl:top-[1800px] min-[1640px]:top-[1850px] min-[1760px]:top-[1970px] min-[1860px]:top-[2070px] hidden gap-x-14 pt-[100px] px-[9%]" :
+                pathname === "/seller/home" ? "lg:top-[2500px] xl:top-[2600px] 2xl:top-[2700px] h-[950px] xl:h-[600px] gap-x-14 pt-[100px] px-[5%]" :
+                    (pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3") ? "h-[1050px] xl:h-[650px] gap-x-14 pt-[100px] px-[9%]" : ""
             }
                 ${pathname === "/seller/register/1" && "top-[200px]"}
                 ${pathname === "/seller/register/2" && "top-[200px]"}
@@ -30,7 +30,7 @@ export default function Footer() {
                     Unneu is a peer to peer marketplace to buy- sell- rent your pre-owned sarees at a negotiable fee from the convenience of your door step.We aim to create a pool of micro entrepreneurs offering social recognition for their contribution to sustainability while making money. A platform to exchange your favourite sarees for a purpose while experiencing varieties everyday.
                 </p>
             </li>
-            <li className="w-[23%]">
+            <li className="ml-10 w-[23%]">
                 <p className="uppercase font-bold">Policies</p>
                 <p className="mt-[32px] hover:cursor-pointer">Shipping</p>
                 <p className="mt-[16px] hover:cursor-pointer">Return & refund</p>
@@ -38,14 +38,14 @@ export default function Footer() {
                 <p className="mt-[16px] hover:cursor-pointer">FAQ&apos;s</p>
                 <p className="mt-[16px] hover:cursor-pointer">Privacy</p>
             </li>
-            <li className="w-[23%]">
+            <li className="ml-2 xl:ml-10 w-[23%]">
                 <p className="uppercase font-bold">Follow us</p>
                 <Image src={Facebook} alt="fb" className="w-[32px] h-[32px] mt-[32px] hover:cursor-pointer" />
                 <Image src={Instagram} alt="insta" className="w-[34px] h-[32px] mt-[32px] hover:cursor-pointer" />
                 <Image src={LinkedIn} alt="linkedin" className="w-[28px] h-[32px] mt-[32px] hover:cursor-pointer" />
                 <Image src={X} alt="x" className="w-[28px] h-[32px] mt-[32px] hover:cursor-pointer" />
             </li>
-            <li className="w-[23%] xl:w-[32%]">
+            <li className="w-[38%] xl:w-[32%]">
                 <Image src={Logo} alt="unneu logo" className="w-[180px] h-[50px]" />
                 <p className="mt-[20px]">Unneu Fashion Pvt Ltd</p>
                 <p className="mt-[16px]">

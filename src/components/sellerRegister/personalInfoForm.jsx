@@ -22,8 +22,8 @@ export default function PersonalInfoForm() {
 
     return <section className="mt-[105px] flex flex-row flex-nowrap justify-between pr-[5%]">
         <aside className="h-[900px] w-[46%] rounded-tr-[36px] rounded-br-[36px]" id="seller-register-personal-info-form-hero"></aside>
-        <aside className="w-[50%]">
-            <p className={`${lbFont.className} text-3xl`}>Add Personal info</p>
+        <aside className="w-[50%] mt-[20px]">
+            <p className={`${lbFont.className} text-3xl mb-[20px]`}>Add Personal info</p>
             {
                 !isEmailOtpSent && (
                     <>
@@ -34,7 +34,7 @@ export default function PersonalInfoForm() {
                                 onChange={e => setEmail(e.target.value)}
                                 value={email}
                                 placeholder="Enter your email"
-                                className="mt-[18px] w-full py-[12px] pl-5 pr-[100px] rounded-[12px] border-[0.6px] border-[#00000080] bg-[#F9F9F9]"
+                                className="mt-[18px] mb-[15px] w-full py-[12px] pl-5 pr-[100px] rounded-[12px] border-[0.6px] border-[#00000080] bg-[#F9F9F9]"
                                 style={{
                                     boxShadow: " 0px 11px 53.8px 4px rgba(81, 69, 55, 0.05)"
                                 }}
@@ -56,7 +56,7 @@ export default function PersonalInfoForm() {
                                 onChange={e => setEmailOtp(e.target.value)}
                                 value={emailOtp}
                                 placeholder="Enter OTP"
-                                className="mt-[18px] w-full py-[12px] pl-5 pr-[100px] rounded-[12px] border-[0.6px] border-[#00000080] bg-[#F9F9F9]"
+                                className="mt-[18px] mb-[15px] w-full py-[12px] pl-5 pr-[100px] rounded-[12px] border-[0.6px] border-[#00000080] bg-[#F9F9F9]"
                                 style={{
                                     boxShadow: " 0px 11px 53.8px 4px rgba(81, 69, 55, 0.05)"
                                 }}
@@ -78,7 +78,7 @@ export default function PersonalInfoForm() {
                                 onChange={e => setPhoneNo(e.target.value)}
                                 value={phoneNo}
                                 placeholder="+91 (Enter 10 digit phone number)"
-                                className="mt-[18px] w-full py-[12px] pl-5 pr-[100px] rounded-[12px] border-[0.6px] border-[#00000080] bg-[#F9F9F9]"
+                                className="mt-[18px] mb-[15px] w-full py-[12px] pl-5 pr-[100px] rounded-[12px] border-[0.6px] border-[#00000080] bg-[#F9F9F9]"
                                 style={{
                                     boxShadow: " 0px 11px 53.8px 4px rgba(81, 69, 55, 0.05)"
                                 }}
@@ -100,7 +100,7 @@ export default function PersonalInfoForm() {
                                 onChange={e => setPhoneOtp(e.target.value)}
                                 value={phoneOtp}
                                 placeholder="Enter OTP"
-                                className="mt-[18px] w-full py-[12px] pl-5 pr-[100px] rounded-[12px] border-[0.6px] border-[#00000080] bg-[#F9F9F9]"
+                                className="mt-[18px] mb-[15px] w-full py-[12px] pl-5 pr-[100px] rounded-[12px] border-[0.6px] border-[#00000080] bg-[#F9F9F9]"
                                 style={{
                                     boxShadow: " 0px 11px 53.8px 4px rgba(81, 69, 55, 0.05)"
                                 }}
@@ -123,7 +123,7 @@ export default function PersonalInfoForm() {
                     boxShadow: " 0px 11px 53.8px 4px rgba(81, 69, 55, 0.05)"
                 }}
             />
-            <div className="mt-[18px] flex flex-row flex-nowrap items-center justify-between">
+            <div className="mt-[18px] mb-[15px] flex flex-row flex-nowrap items-center justify-between">
                 <input
                     type="text"
                     value={fullName}
@@ -161,12 +161,12 @@ export default function PersonalInfoForm() {
                 value={gst}
                 onChange={e => setGst(e.target.value)}
                 placeholder="15 digit GST number"
-                className="mt-[18px] w-full py-[12px] pl-5 pr-5 rounded-[12px] border-[0.6px] border-[#00000080] bg-[#F9F9F9]"
+                className="mt-[18px] mb-[15px] w-full py-[12px] pl-5 pr-5 rounded-[12px] border-[0.6px] border-[#00000080] bg-[#F9F9F9]"
                 style={{
                     boxShadow: " 0px 11px 53.8px 4px rgba(81, 69, 55, 0.05)"
                 }}
             />
-            <button className="bg-[#FE9135] rounded-[24px] w-full py-[25px] text-xl mt-[50px] text-white">Save and Continue</button>
+            <button className="bg-[#FE9135] rounded-[24px] w-full py-[25px] text-xl mt-[70px] text-white">Save and Continue</button>
         </aside>
     </section>
 }

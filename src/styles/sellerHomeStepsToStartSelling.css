@@ -7,36 +7,72 @@
 
 @media only screen and (min-width: 1024px) {
     .seller-home-dotted-line {
-        left: 39.5%;
+        left: 31%;
     }
 }
 
-@media only screen and (min-width: 1114px) {
+@media only screen and (min-width: 1080px) {
     .seller-home-dotted-line {
-        left: 38.5%;
+        left: 30.5%;
+    }
+}
+
+@media only screen and (min-width: 1120px) {
+    .seller-home-dotted-line {
+        left: 30%;
+    }
+}
+
+@media only screen and (min-width: 1160px) {
+    .seller-home-dotted-line {
+        left: 29.5%;
     }
 }
 
 @media only screen and (min-width: 1250px) {
     .seller-home-dotted-line {
-        left: 37.5%;
+        left: 29%;
     }
 }
 
-@media only screen and (min-width: 1425px) {
+@media only screen and (min-width: 1280px) {
     .seller-home-dotted-line {
-        left: 36.5%;
+        left: 28.5%;
     }
 }
 
-@media only screen and (min-width: 1625px) {
+@media only screen and (min-width: 1320px) {
     .seller-home-dotted-line {
-        left: 35.5%;
+        left: 28%;
     }
 }
 
-@media only screen and (min-width: 1925px) {
+@media only screen and (min-width: 1420px) {
     .seller-home-dotted-line {
-        left: 35%;
+        left: 27.5%;
+    }
+}
+
+@media only screen and (min-width: 1590px) {
+    .seller-home-dotted-line {
+        left: 27%;
+    }
+}
+
+@media only screen and (min-width: 1700px) {
+    .seller-home-dotted-line {
+        left: 26.2%;
+    }
+}
+
+@media only screen and (min-width: 1770px) {
+    .seller-home-dotted-line {
+        left: 25.8%;
+    }
+}
+
+@media only screen and (min-width: 1825px) {
+    .seller-home-dotted-line {
+        left: 25.8%;
     }
 }
