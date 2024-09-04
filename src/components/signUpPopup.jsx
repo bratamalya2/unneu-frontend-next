@@ -2,6 +2,7 @@
 
 import { Libre_Baskerville } from "next/font/google";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 
@@ -19,6 +20,7 @@ const libreBaskerville = Libre_Baskerville({
 });
 
 export default function SignUpPopup({ showSignUp, hideSignUp }) {
+    const router = useRouter();
     const [isSellerSelected, setIsSellerSelected] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState("");
     const [isOTPSent, setIsOTPSent] = useState(false);
@@ -174,7 +176,9 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                     }
                     {
                         isSellerSelected && (
-                            <button className="bg-[#FE9135] text-white uppercase font-semibold text-xl py-[12px] px-[50px] rounded-[16px] mt-[80px] sm:mt-[50px] mb-[30px]">
+                            <button className="bg-[#FE9135] text-white uppercase font-semibold text-xl py-[12px] px-[50px] rounded-[16px] mt-[80px] sm:mt-[50px] mb-[30px]" onClick={() => {
+                                router.push("/seller/home");
+                            }}>
                                 start selling
                             </button>
                         )

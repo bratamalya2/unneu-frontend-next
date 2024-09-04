@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { Libre_Baskerville } from "next/font/google";
 import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
+
+import { useUnneuDataStore } from "@/store/store";
 
 import Camera from "@/../public/camera.png";
 import Plus from "@/../public/plus-icon.svg";
@@ -15,6 +17,8 @@ import "@/styles/sellerPickupProfile.css";
 const lbFont = Libre_Baskerville({ subsets: ["latin"], weight: ["400", "700"] });
 
 export default function SellerPickupProfile() {
+    const setSellerProfilePhoto = useUnneuDataStore(store => store.setSellerProfilePhoto);
+    const setSellerCoverPhoto = useUnneuDataStore(store => store.setSellerCoverPhoto);
     const [showCoverModal, setShowCoverModal] = useState(false);
     const [showProfileModal, setShowProfileModal] = useState(false);
     const [hoverProfileImage, setHoverProfileImage] = useState(false);
@@ -36,13 +40,15 @@ export default function SellerPickupProfile() {
         profileFileInputRef.current.click();
     };
 
-    const handleFileChange = (event, setImagePreview, closeModal) => {
+    const handleFileChange = (event, setImagePreview, setImage, closeModal) => {
         if (event.target.files.length > 0) {
             if (event.target.files[0].type.split("/")[0] !== "image") {
-                setCoverImagePreview(null);
+                setImagePreview(null);
+                setImage(null);
             }
             else {
                 const file = event.target.files[0];
+                setImage(file);
                 const reader = new FileReader();
                 reader.onloadend = () => {
                     setImagePreview(reader.result);
@@ -50,7 +56,8 @@ export default function SellerPickupProfile() {
                 reader.readAsDataURL(file);
             }
         } else {
-            setCoverImagePreview(null);
+            setImagePreview(null);
+            setImage(null);
         }
         closeModal();
     };
@@ -97,7 +104,7 @@ export default function SellerPickupProfile() {
                     name="myfile"
                     className="hidden"
                     ref={coverFileInputRef}
-                    onChange={(e) => handleFileChange(e, setCoverImagePreview, handleCoverClose)}
+                    onChange={(e) => handleFileChange(e, setCoverImagePreview, setSellerCoverPhoto, handleCoverClose)}
                 />
             </Modal.Body>
         </Modal>
@@ -118,7 +125,7 @@ export default function SellerPickupProfile() {
                     name="myfile"
                     className="hidden"
                     ref={profileFileInputRef}
-                    onChange={(e) => handleFileChange(e, setProfileImagePreview, handleProfileClose)}
+                    onChange={(e) => handleFileChange(e, setProfileImagePreview, setSellerProfilePhoto, handleProfileClose)}
                 />
             </Modal.Body>
         </Modal>

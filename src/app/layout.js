@@ -16,26 +16,26 @@ const poppins = Poppins({
 
 export default function RootLayout({ children }) {
   return (
-    <SnackbarProvider>
-      <html lang="en">
-        <head>
-          <title>Unneu</title>
-          <link rel="icon" href="/favicon.ico" sizes="any" />
-          <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js" crossOrigin="true" async />
-          <script
-            src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"
-            crossOrigin="true" async />
-          <script
-            src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js"
-            crossOrigin="true" async />
-        </head>
+    <html lang="en">
+      <head>
+        <title>Unneu</title>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js" crossOrigin="true" async />
+        <script
+          src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"
+          crossOrigin="true" async />
+        <script
+          src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js"
+          crossOrigin="true" async />
+      </head>
 
-        <body className={`${poppins.className} h-screen`}>
+      <body className={`${poppins.className} h-screen`}>
+        <SnackbarProvider>
           <Header />
           {children}
           <Footer />
-        </body>
-      </html>
-    </SnackbarProvider>
+        </SnackbarProvider>
+      </body>
+    </html>
   );
 }
