@@ -1,16 +1,76 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { enqueueSnackbar } from "notistack";
 import { Libre_Baskerville } from "next/font/google";
+
+import { useUnneuDataStore } from "@/store/store";
 
 import Bank from "@/../public/bank.png";
 
 const lbFont = Libre_Baskerville({ subsets: ["latin"], weight: ["400", "700"] });
 
 export default function SetupPaymentType() {
+    const router = useRouter();
+    const sellerPhoneNumber = useUnneuDataStore(store => store.phoneNumber);
     const [selectedPaymentType, setSelectedPaymentType] = useState("");
+    const [upiId, setUpiId] = useState("");
+    const [accountHolderName, setAccountHolderName] = useState("");
+    const [bankName, setBankName] = useState("");
+    const [accountNumber, setAccountNumber] = useState("");
+    const [accountNumber2, setAccountNumber2] = useState("");
+    const [accountNumberErrorText, setAccountNumberErrorText] = useState("");
+    const [branch, setBranch] = useState("");
+    const [ifscCode, setIfscCode] = useState("");
     const [accountType, setAccountType] = useState("");
+
+    const handleSubmit = async () => {
+        try {
+            if (accountNumber.length === accountNumber2.length && accountNumber2.length === 0 && selectedPaymentType === "bank") {
+                enqueueSnackbar("Please enter bank account number!", {
+                    variant: "error"
+                });
+            }
+            else if (accountNumber.length === accountNumber2.length) {
+                const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/register/3`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        "phoneNumber": sellerPhoneNumber,
+                        "paymentType": selectedPaymentType,
+                        "upiId": upiId,
+                        "accountHolderName": accountHolderName,
+                        "bankName": bankName,
+                        "accountType": accountType,
+                        "accountNumber": accountNumber,
+                        "branch": branch,
+                        "ifscCode": ifscCode
+                    })
+                });
+                const y = await x.json();
+                if (y.success)
+                    router.push("/seller");
+                else
+                    enqueueSnackbar(y.err, {
+                        variant: "error"
+                    });
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        if (accountNumber.length > 0 && accountNumber2.length > 0 && accountNumber !== accountNumber2)
+            setAccountNumberErrorText("Bank account numbers don't match!");
+        else
+            setAccountNumberErrorText("");
+    }, [accountNumber, accountNumber2]);
 
     return <section className="mt-[105px] px-[10%]">
         <p className={`${lbFont.className} text-4xl`}>Set up Payment type</p>
@@ -33,6 +93,8 @@ export default function SetupPaymentType() {
                             type="text"
                             className="w-[70%] border border-[#BFBFBF] bg-[#F9F9F9] rounded-[12px] py-[20px] px-3"
                             placeholder="Enter your UPI Id here"
+                            value={upiId}
+                            onChange={e => setUpiId(e.target.value)}
                         />
                         <button className="w-[25%] rounded-[24px] py-[20px] bg-[#FE9135] text-white text-xl font-medium">Verify</button>
                     </div>
@@ -59,12 +121,16 @@ export default function SetupPaymentType() {
                     <input
                         type="text"
                         className="mt-[18px] w-full h-[64px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] rounded-[12px] px-3"
+                        value={accountHolderName}
+                        onChange={e => setAccountHolderName(e.target.value)}
                     />
                     <p className="mt-[36px] text-xl font-medium">Bank name</p>
                     <input
                         type="text"
                         className="mt-[18px] w-full h-[64px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] rounded-[12px] px-3"
                         placeholder="HDFC , Kotak etc.."
+                        value={bankName}
+                        onChange={e => setBankName(e.target.value)}
                     />
                     <p className="mt-[36px] text-xl font-medium">Account Type</p>
                     <div className="mt-[18px] w-[70%] flex flex-row items-center justify-between">
@@ -94,26 +160,39 @@ export default function SetupPaymentType() {
                         type="text"
                         className="mt-[18px] w-full h-[64px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] rounded-[12px] px-3"
                         placeholder="Type here"
+                        value={accountNumber}
+                        onChange={e => setAccountNumber(e.target.value)}
                     />
                     <p className="mt-[36px] text-xl font-medium">Re-enter Bank account number</p>
                     <input
                         type="text"
                         className="mt-[18px] w-full h-[64px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] rounded-[12px] px-3"
                         placeholder="Type here"
+                        value={accountNumber2}
+                        onChange={e => setAccountNumber2(e.target.value)}
                     />
+                    {
+                        accountNumberErrorText.length > 0 && (
+                            <p className="mt-[12px] text-sm font-medium text-red-500">{accountNumberErrorText}</p>
+                        )
+                    }
                     <p className="mt-[36px] text-xl font-medium">Branch</p>
                     <input
                         type="text"
                         className="mt-[18px] w-full h-[64px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] rounded-[12px] px-3"
                         placeholder="Type here"
+                        value={branch}
+                        onChange={e => setBranch(e.target.value)}
                     />
                     <p className="mt-[36px] text-xl font-medium">IFSC code</p>
                     <input
                         type="text"
                         className="mt-[18px] w-full h-[64px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] rounded-[12px] px-3"
                         placeholder="Type here"
+                        value={ifscCode}
+                        onChange={e => setIfscCode(e.target.value)}
                     />
-                    <button className="mt-[36px] bg-[#FE9135] rounded-[24px] py-[25px] w-full text-xl font-medium text-white">Save & submit</button>
+                    <button className="mt-[36px] bg-[#FE9135] rounded-[24px] py-[25px] w-full text-xl font-medium text-white" onClick={handleSubmit}>Save & submit</button>
                 </div>
             )
         }

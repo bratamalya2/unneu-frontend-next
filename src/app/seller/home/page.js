@@ -36,11 +36,6 @@ export default function Home() {
     }, [phoneNumber]);
 
     useEffect(() => {
-        if (!phoneNumber.length)
-            router.push(`/seller/register/1`);
-    }, [phoneNumber, router]);
-
-    useEffect(() => {
         fetchStage();
     }, [fetchStage]);
 

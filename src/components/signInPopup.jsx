@@ -30,6 +30,7 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
     const [showError, setShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
 
+    const setLoginPhoneNumber = useUnneuDataStore(store => store.setPhoneNumber);
     const setJwtToken = useUnneuDataStore(store => store.setJwtToken);
     const setRefreshToken = useUnneuDataStore(store => store.setRefreshToken);
     const setBuyerSelected = useUnneuDataStore(store => store.setBuyerSelected);
@@ -67,8 +68,10 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                     setTimeout(() => {
                         setShowError(false);
                     }, 3000);
+                    setLoginPhoneNumber("");
                 }
                 else {
+                    setLoginPhoneNumber(phoneNumber);
                     setJwtToken(y.jwtToken);
                     setRefreshToken(y.refreshToken);
                     if (isSellerSelected)

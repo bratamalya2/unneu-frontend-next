@@ -155,10 +155,10 @@ export default function Header() {
             )
         }
         {
-            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3") && (
+            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller") && (
                 <header className={`${lbFont.className} h-[90px] flex flex-row flex-nowrap items-center justify-between px-[5%]`}>
                     <Image src={Logo} alt="Unneu" className="w-[125px] h-[44px]" />
-                    <nav className="list-none w-[40%] flex flex-row flex-nowrap items-center justify-between">
+                    <nav className="list-none w-[30%] flex flex-row flex-nowrap items-center justify-between">
                         <li className="text-[18px] hover:cursor-pointer">Home</li>
                         <li className="text-[18px] hover:cursor-pointer">Shop</li>
                         <li className="text-[18px] hover:cursor-pointer">Stories</li>
