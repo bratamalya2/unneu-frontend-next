@@ -52,7 +52,7 @@ export default function Register({ params }) {
                     if (x.stage === '4')
                         router.push("/seller");
                     else if (x.stage === '0')
-                        router.push("/seller/home");
+                        router.push("/seller/register/1");
                     else
                         router.push(`/seller/register/${x.stage}`);
                 }
