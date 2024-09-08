@@ -11,21 +11,39 @@
     }
 }
 
-@media only screen and (min-width: 1080px) {
+@media only screen and (min-width: 1050px) {
     .seller-home-dotted-line {
         left: 30.5%;
     }
 }
 
-@media only screen and (min-width: 1120px) {
+@media only screen and (min-width: 1080px) {
     .seller-home-dotted-line {
-        left: 30%;
+        left: 30.3%;
+    }
+}
+
+@media only screen and (min-width: 1110px) {
+    .seller-home-dotted-line {
+        left: 30.1%;
+    }
+}
+
+@media only screen and (min-width: 1140px) {
+    .seller-home-dotted-line {
+        left: 29.8%;
     }
 }
 
 @media only screen and (min-width: 1160px) {
     .seller-home-dotted-line {
         left: 29.5%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .seller-home-dotted-line {
+        left: 29.3%;
     }
 }
 
@@ -50,6 +68,12 @@
 @media only screen and (min-width: 1420px) {
     .seller-home-dotted-line {
         left: 27.5%;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .seller-home-dotted-line {
+        left: 26.8%;
     }
 }
 

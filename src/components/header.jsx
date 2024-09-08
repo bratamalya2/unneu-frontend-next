@@ -155,16 +155,16 @@ export default function Header() {
             )
         }
         {
-            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller") && (
+            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem") && (
                 <header className={`${lbFont.className} h-[90px] flex flex-row flex-nowrap items-center justify-between px-[5%]`}>
                     <Image src={Logo} alt="Unneu" className="w-[125px] h-[44px]" />
-                    <nav className="list-none w-[30%] flex flex-row flex-nowrap items-center justify-between">
+                    <nav className="list-none lg:ml-[5%] xl:ml-[8%] 2xl:ml-[10%] lg:w-[33%] xl:w-[30%] 2xl:w-[28%] flex flex-row flex-nowrap items-center justify-between">
                         <li className="text-[18px] hover:cursor-pointer">Home</li>
                         <li className="text-[18px] hover:cursor-pointer">Shop</li>
                         <li className="text-[18px] hover:cursor-pointer">Stories</li>
                         <li className="text-[18px] hover:cursor-pointer">About Us</li>
                     </nav>
-                    <div className="w-[15%] flex flex-row flex-nowrap items-center justify-between">
+                    <div className="lg:w-[14%] xl:w-[13%] 2xl:w-[12%] flex flex-row flex-nowrap items-center justify-between">
                         <Image src={Search} alt="Search" className="w-[24px] h-[24px] hover:cursor-pointer" />
                         <Image src={User} alt="User" className="w-[24px] h-[24px] hover:cursor-pointer" />
                         <Image src={Cart} alt="Cart" className="w-[24px] h-[24px] hover:cursor-pointer" />

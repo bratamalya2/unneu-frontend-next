@@ -35,6 +35,7 @@ export default function Home() {
         }
     }, [phoneNumber]);
 
+    /*
     useEffect(() => {
         fetchStage();
     }, [fetchStage]);
@@ -56,6 +57,7 @@ export default function Home() {
 
     if (isLoading)
         return null;
+    */
 
     return <main className="relative">
         <SellerHomeHero />

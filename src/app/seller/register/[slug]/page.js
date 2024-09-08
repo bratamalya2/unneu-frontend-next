@@ -35,6 +35,7 @@ export default function Register({ params }) {
         }
     }, [phoneNumber]);
 
+    /*
     useEffect(() => {
         if (!phoneNumber.length)
             router.push(`/seller/register/1`);
@@ -59,6 +60,7 @@ export default function Register({ params }) {
             }
         }
     }, [x, router, params.slug]);
+    */
 
     if (isNaN(parseInt(params.slug)) || parseInt(params.slug) > 3 || parseInt(params.slug) < 1)
         return <Error statusCode={404} />

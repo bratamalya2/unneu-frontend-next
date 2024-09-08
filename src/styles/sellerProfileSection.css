@@ -1,0 +1,7 @@
+.default-cover-photo {
+    background-image: url("../../public/sellerRegister-coverPhoto.svg");
+}
+
+.default-profile-photo {
+    background-image: url("../../public/sellerRegister-profile-photo.svg");
+}

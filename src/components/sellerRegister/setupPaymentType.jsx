@@ -98,7 +98,7 @@ export default function SetupPaymentType() {
                         />
                         <button className="w-[25%] rounded-[24px] py-[20px] bg-[#FE9135] text-white text-xl font-medium">Verify</button>
                     </div>
-                    <button className="mt-[36px] bg-[#FE9135] rounded-[24px] py-[20px] w-[60%] text-xl font-medium text-white">Save & submit</button>
+                    <button className="mt-[36px] bg-[#FE9135] rounded-[24px] py-[20px] w-[60%] text-xl font-medium text-white" onClick={handleSubmit}>Save & submit</button>
                 </>
             )
         }

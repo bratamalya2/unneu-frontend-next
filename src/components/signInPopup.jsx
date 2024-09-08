@@ -50,7 +50,6 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
     const submitOTP = async () => {
         try {
             if (otp.length === 6) {
-                console.log(process.env.NEXT_PUBLIC_BACKEND_URL);
                 const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
                     method: "POST",
                     headers: {
