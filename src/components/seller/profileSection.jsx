@@ -1,8 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 
-import { getImageUrl } from "@/components/getS3ImageUrl";
-
 import Location from "@/../public/location.png";
 import Verified from "@/../public/verified.png";
 import Followers from "@/../public/followers.png";
@@ -10,6 +8,8 @@ import RatingSelected from "@/../public/rating-selected.png";
 import RatingUnselected from "@/../public/rating-unselected.png";
 import LeftLeaf from "@/../public/Left-Leaf-Seller-profile.svg";
 import RightLeaf from "@/../public/Right-Leaf-Seller-profile.svg";
+import Share from "@/../public/share-seller-profile.png";
+import Dot from "@/../public/options-dot.svg";
 
 import "@/styles/sellerProfileSection.css";
 
@@ -20,13 +20,28 @@ export default function ProfileSection({ sellerDetails }) {
 
     const getProfileAndCoverPhotos = useCallback(async () => {
         try {
+            console.log('Inside');
             if (sellerDetails.coverPhoto) {
-                const x = await getImageUrl(sellerDetails.coverPhoto);
-                setCoverPhotoUrl(x);
+                const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/fetchImage`, {
+                    method: "GET",
+                    headers: {
+                        imageKey: sellerDetails.coverPhoto
+                    }
+                });
+                const y = await x.json();
+                if (y.success)
+                    setCoverPhotoUrl(y.imgUrl);
             }
             if (sellerDetails.profilePhoto) {
-                const x = await getImageUrl(sellerDetails.profilePhoto);
-                setProfilePhotoUrl(x);
+                const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/fetchImage`, {
+                    method: "GET",
+                    headers: {
+                        imageKey: sellerDetails.profilePhoto
+                    }
+                });
+                const y = await x.json();
+                if (y.success)
+                    setProfilePhotoUrl(y.imgUrl);
             }
         }
         catch (err) {
@@ -56,6 +71,12 @@ export default function ProfileSection({ sellerDetails }) {
                 </div>
             </aside>
             <aside className="w-[40%] relative">
+                <div className="absolute top-2 right-2 flex flex-col items-center gap-y-1 hover:cursor-pointer">
+                    <Image src={Dot} alt="dot" className="w-[5px] h-[5px]" />
+                    <Image src={Dot} alt="dot" className="w-[5px] h-[5px]" />
+                    <Image src={Dot} alt="dot" className="w-[5px] h-[5px]" />
+                </div>
+                <Image src={Share} alt="share" className="w-[20px] h-[24px] absolute top-2 right-10 hover:cursor-pointer" />
                 <p className="text-3xl font-medium">{sellerDetails.storeName}</p>
                 {
                     sellerDetails.storeDescription.length > 0 && <>
