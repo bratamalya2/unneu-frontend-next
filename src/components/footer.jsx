@@ -18,9 +18,9 @@ export default function Footer() {
                     (pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller/uploadItem") ? "h-[1050px] xl:h-[650px] gap-x-14 pt-[100px] px-[9%]" :
                         pathname === "/seller" ? "h-[1050px] xl:h-[650px] gap-x-14 pt-[100px] px-[9%]" : ""
             }
-                ${pathname === "/seller/register/1" && "top-[200px]"}
-                ${pathname === "/seller/register/2" && "top-[200px]"}
-                ${pathname === "/seller/register/3" && "top-[200px]"}
+                ${pathname === "/seller/register/1" && "top-[100px]"}
+                ${pathname === "/seller/register/2" && "top-[100px]"}
+                ${pathname === "/seller/register/3" && "top-[100px]"}
             `} style={{
                 background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)",
                 boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"

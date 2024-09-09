@@ -54,7 +54,7 @@ export default function Home() {
         //fetch user details
         if (jwtToken && refreshToken)
             fetchSellerDetails();
-    }, [jwtToken, refreshToken, router]);
+    }, [jwtToken, refreshToken, router, fetchSellerDetails]);
 
     useEffect(() => {
         const unneuDataStore = JSON.parse(localStorage.getItem("unneuDataStore"));

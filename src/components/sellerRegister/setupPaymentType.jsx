@@ -8,6 +8,7 @@ import { Libre_Baskerville } from "next/font/google";
 
 import { useUnneuDataStore } from "@/store/store";
 
+import UPI from "@/../public/upi-icon.svg";
 import Bank from "@/../public/bank.png";
 
 const lbFont = Libre_Baskerville({ subsets: ["latin"], weight: ["400", "700"] });
@@ -75,8 +76,8 @@ export default function SetupPaymentType() {
     return <section className="mt-[105px] px-[10%]">
         <p className={`${lbFont.className} text-4xl`}>Set up Payment type</p>
         <div className="relative mt-[56px] w-[60%] h-[95px] rounded-[24px] border border-[#BFBFBF]">
-            <p className="absolute font-medium top-[20px] left-[3%]">Enter UPI ID</p>
-            <p className="absolute bottom-[20px] left-[3%]">Pay with installed apps or others</p>
+            <Image src={UPI} alt="upi" className="w-[74px] h-[20px] absolute top-[40%] left-[3%]" />
+            <p className="absolute text-[18px] font-medium top-[35%] left-[15%]">Enter UPI ID</p>
             <input
                 type="radio"
                 name="payment_type"
@@ -98,14 +99,12 @@ export default function SetupPaymentType() {
                         />
                         <button className="w-[25%] rounded-[24px] py-[20px] bg-[#FE9135] text-white text-xl font-medium">Verify</button>
                     </div>
-                    <button className="mt-[36px] bg-[#FE9135] rounded-[24px] py-[20px] w-[60%] text-xl font-medium text-white" onClick={handleSubmit}>Save & submit</button>
                 </>
             )
         }
         <div className="relative mt-[56px] w-[60%] h-[95px] rounded-[24px] border border-[#BFBFBF]">
-            <Image src={Bank} alt="bank" className="w-[24px] h-[24px] absolute top-[20px] left-[3%]" />
-            <p className="absolute font-medium top-[20px] left-[9%]">Enter bank details</p>
-            <p className="absolute bottom-[20px] left-[3%]">Pay with installed apps or others</p>
+            <Image src={Bank} alt="bank" className="w-[24px] h-[24px] absolute top-[40%] left-[3%]" />
+            <p className="absolute text-[18px] font-medium top-[40%] left-[9%]">Enter bank details</p>
             <input
                 type="radio"
                 name="payment_type"
@@ -192,9 +191,9 @@ export default function SetupPaymentType() {
                         value={ifscCode}
                         onChange={e => setIfscCode(e.target.value)}
                     />
-                    <button className="mt-[36px] bg-[#FE9135] rounded-[24px] py-[25px] w-full text-xl font-medium text-white" onClick={handleSubmit}>Save & submit</button>
                 </div>
             )
         }
+        <button className="mt-[36px] bg-[#FE9135] rounded-[24px] py-[25px] w-[60%] text-xl font-medium text-white" onClick={handleSubmit}>Save & submit</button>
     </section >
 }

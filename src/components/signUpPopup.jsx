@@ -141,7 +141,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                 <div className="hidden sm:inline-block w-[35%] h-full rounded-tl-[32px] rounded-bl-[32px]" id="signup-popup-side-img-container"></div>
                 <div className="relative flex flex-col items-center h-full w-full sm:w-[65%]">
                     <Image src={CloseIcon} alt="close" className="w-[20px] h-[20px] absolute top-5 right-5" onClick={hideSignUp} />
-                    <p className={`${libreBaskerville.className} text-2xl text-[32px] text-[#4C4C4C] sm:hidden md:block mt-[25px] mb-4`}>Sign up</p>
+                    <p className={`${libreBaskerville.className} text-2xl text-[32px] text-[#4C4C4C] sm:hidden md:block ${isOTPSent ? "mt-[25px] mb-4" : "mt-[65px] mb-8"}`}>Sign up</p>
                     <div className={`flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-2xl mt-8`}>
                         <div
                             className={`py-[9px] sm:py-[6px] lg:py-[10px] px-[25px] lg:px-[25px] rounded-tl-[8px] rounded-bl-[8px] ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
@@ -156,7 +156,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                             Buyer
                         </div>
                     </div>
-                    <p className={`${libreBaskerville.className} text-2xl uppercase mt-6 sm:mt-4 mb-2`}>{isSellerSelected ? "For Reseller" : "For Buyer"}</p>
+                    <p className={`${libreBaskerville.className} text-2xl uppercase ${!isOTPSent ? "xl:mt-12 sm:mt-4 mb-2" : "mt-6 sm:mt-4 mb-2"}`}>{isSellerSelected ? "For Reseller" : "For Buyer"}</p>
                     {
                         isSellerSelected ? (
                             <>

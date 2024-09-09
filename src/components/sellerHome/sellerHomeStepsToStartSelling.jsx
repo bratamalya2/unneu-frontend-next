@@ -19,7 +19,7 @@ export default function SellerHomeStepsToStartSelling() {
         <p className="text-4xl font-medium">Steps to <span className="text-[#D57A2D] font-semibold">Start Selling</span></p>
         <section className="flex flex-row flex-nowrap mt-[48px] w-full">
             <aside className="relative w-[50%] rounded-[36px] xl:w-[46%] min-h-[692px]" id="seller-home-steps-tostart-selling-hero-div">
-                <button className="absolute top-0 right-0 text-white text-[18px] font-semibold px-[54px] py-[10px] bg-[#FBC246] rounded-tr-[32px] rounded-bl-[32px]" onClick={() => {
+                <button className="absolute top-0 right-0 text-[#5A5A5A] text-[18px] font-semibold px-[54px] py-[10px] bg-[#FFF] rounded-tr-[32px] rounded-bl-[32px] !border !border-[#FBC246]" onClick={() => {
                     router.push("/seller/register/1");
                 }}>Register now</button>
             </aside>
@@ -33,25 +33,25 @@ export default function SellerHomeStepsToStartSelling() {
                 <Image src={Shipping} alt="shipping" className="w-[86px] h-[86px] absolute top-[440px] left-[20%]" />
                 <Image src={DottedLine} alt="line" className="w-[1px] h-[57px] absolute top-[525px] seller-home-dotted-line" />
                 <Image src={Payments} alt="payments" className="w-[86px] h-[86px] absolute top-[582px] left-[20%]" />
-                <div className="absolute top-[30px] lg:left-[43%] min-[1100px]:left-[42%] min-[1200px]:left-[41%] xl:left-[40%] min-[1400px]:left-[39%] min-[1450px]:left-[38%] min-[1500px]:left-[37%] 2xl:left-[35%]">
+                <div className="absolute top-[20px] lg:left-[43%] min-[1100px]:left-[42%] min-[1200px]:left-[41%] xl:left-[40%] min-[1400px]:left-[39%] min-[1450px]:left-[38%] min-[1500px]:left-[37%] 2xl:left-[35%]">
                     <p className="text-xl font-medium">Register as a seller</p>
-                    <p className="mt-1 text-[14px] max-w-[78%]">Fill out our simple form to join our seller community.</p>
+                    <p className="mt-2 text-[14px] max-w-[78%]">Fill out our simple form to join our seller community.</p>
                 </div>
-                <div className="absolute top-[170px] lg:left-[43%] min-[1100px]:left-[42%] min-[1200px]:left-[41%] xl:left-[40%] min-[1400px]:left-[39%] min-[1450px]:left-[38%] min-[1500px]:left-[37%] 2xl:left-[35%]">
+                <div className="absolute top-[160px] lg:left-[43%] min-[1100px]:left-[42%] min-[1200px]:left-[41%] xl:left-[40%] min-[1400px]:left-[39%] min-[1450px]:left-[38%] min-[1500px]:left-[37%] 2xl:left-[35%]">
                     <p className="text-xl font-medium">List your saree</p>
-                    <p className="mt-1 text-[14px] max-w-[78%]">Add detailed descriptions and high-quality photos.</p>
+                    <p className="mt-2 text-[14px] max-w-[78%]">Add detailed descriptions and high-quality photos.</p>
                 </div>
-                <div className="absolute top-[310px] lg:left-[43%] min-[1100px]:left-[42%] min-[1200px]:left-[41%] xl:left-[40%] min-[1400px]:left-[39%] min-[1450px]:left-[38%] min-[1500px]:left-[37%] 2xl:left-[35%]">
+                <div className="absolute top-[300px] lg:left-[43%] min-[1100px]:left-[42%] min-[1200px]:left-[41%] xl:left-[40%] min-[1400px]:left-[39%] min-[1450px]:left-[38%] min-[1500px]:left-[37%] 2xl:left-[35%]">
                     <p className="text-xl font-medium">Manage your listing</p>
-                    <p className="mt-1 text-[14px] max-w-[78%]">Easily track your inventory and sales.</p>
+                    <p className="mt-2 text-[14px] max-w-[78%]">Easily track your inventory and sales.</p>
                 </div>
-                <div className="absolute top-[450px] lg:left-[43%] min-[1100px]:left-[42%] min-[1200px]:left-[41%] xl:left-[40%] min-[1400px]:left-[39%] min-[1450px]:left-[38%] min-[1500px]:left-[37%] 2xl:left-[35%]">
+                <div className="absolute top-[440px] lg:left-[43%] min-[1100px]:left-[42%] min-[1200px]:left-[41%] xl:left-[40%] min-[1400px]:left-[39%] min-[1450px]:left-[38%] min-[1500px]:left-[37%] 2xl:left-[35%]">
                     <p className="text-xl font-medium">Free shipping</p>
-                    <p className="mt-1 text-[14px] max-w-[78%]">Ship promptly and securely to buyers.</p>
+                    <p className="mt-2 text-[14px] max-w-[78%]">Ship promptly and securely to buyers.</p>
                 </div>
-                <div className="absolute top-[595px] lg:left-[43%] min-[1100px]:left-[42%] min-[1200px]:left-[41%] xl:left-[40%] min-[1400px]:left-[39%] min-[1450px]:left-[38%] min-[1500px]:left-[37%] 2xl:left-[35%]">
+                <div className="absolute top-[585px] lg:left-[43%] min-[1100px]:left-[42%] min-[1200px]:left-[41%] xl:left-[40%] min-[1400px]:left-[39%] min-[1450px]:left-[38%] min-[1500px]:left-[37%] 2xl:left-[35%]">
                     <p className="text-xl font-medium">Receive Payments</p>
-                    <p className="mt-1 text-[14px] max-w-[78%]">Get paid every Friday, securely.</p>
+                    <p className="mt-2 text-[14px] max-w-[78%]">Get paid every Friday, securely.</p>
                 </div>
             </aside>
         </section>

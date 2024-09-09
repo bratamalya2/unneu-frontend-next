@@ -45,7 +45,7 @@
 
 .custom-select {
     appearance: none;
-    background-image: url("../../public/select-tag-down-arrow.png");
+    background-image: url("../../public/select-tag-down-arrow.svg");
     background-repeat: no-repeat;
     background-position: right 20px center;
     background-size: 20px;
@@ -93,4 +93,48 @@
     padding: 20px;
     text-align: center;
     cursor: pointer;
+}
+
+.slider {
+    cursor: pointer;
+    -webkit-appearance: none;
+    /* Override default CSS styles */
+    appearance: none;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    /* Full-width */
+    height: 5px;
+    /* Specified height */
+    background: #d3d3d3;
+    /* Grey background */
+    outline: none;
+    /* Remove outline */
+    opacity: 0.7;
+    /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s;
+    /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+    /* Fully shown on mouse-over */
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    background: rgb(254 163 85);
+}
+
+.slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    background: rgb(254 163 85);
 }

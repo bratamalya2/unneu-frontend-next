@@ -144,8 +144,8 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                 <div className="sm:h-[500px] lg:h-[600px] w-[52%] rounded-tl-[32px] rounded-bl-[32px] hidden sm:inline-block" id="login-side-img-container"></div>
                 <div className="relative w-full sm:max-w-[45%] pl-1 pl-1 sm:pr-10 inline-flex flex-col flex-nowrap items-center">
                     <Image src={CloseIcon} alt="close" className="w-[20px] h-[20px] absolute top-5 right-5" onClick={hideSignIn} />
-                    <p className={`text-[#4C4C4C] ${libreBaskerville.className} text-2xl lg:text-3xl mt-[25px] mb-4`}>Log in</p>
-                    <div className={`max-w-[90%] flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-2xl sm:mt-0`}>
+                    <p className={`text-[#4C4C4C] ${libreBaskerville.className} text-2xl lg:text-3xl ${isOTPSent ? "mt-[25px]" : "mt-[65px]"} mb-4`}>Log in</p>
+                    <div className={`max-w-[90%] flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-xl sm:mt-0`}>
                         <div
                             className={`py-[9px] sm:py-[6px] lg:py-[10px] px-[25px] lg:px-[25px] rounded-tl-[8px] rounded-bl-[8px] ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
                             onClick={() => setIsSellerSelected(true)}
@@ -159,11 +159,11 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                             Buyer
                         </div>
                     </div>
-                    <p className="text-[15px] sm:text-sm lg:text-base text-center text-[#646464] my-4 sm:my-0 lg:my-4">Enter your contact number to log in</p>
+                    <p className={`text-[15px] sm:text-xs md:text-[14px] lg:text-[15px] text-center text-[#646464] ${isOTPSent ? "my-4 sm:my-0 lg:my-[10px]" : "my-4 sm:my-0 lg:my-[20px]"}`}>Enter your contact number to log in</p>
                     <p className="text-[#646464] font-medium self-start ml-[46px] sm:ml-2 sm:text-sm lg:text-base">Enter phone number</p>
                     <input
                         type="text"
-                        className="rounded-[12px] py-[10px] sm:py-[5px] lg:py-[10px] px-[12px] my-2 sm:self-start w-[80%] sm:w-[95%]"
+                        className={`rounded-[12px] py-[10px] sm:py-[5px] lg:py-[10px] px-[12px] ${isOTPSent ? "my-2" : "my-3"} sm:self-start w-[80%] sm:w-[95%]`}
                         placeholder="+91 94XXXXXXXX"
                         style={{
                             boxShadow: "0px 11px 40px 4px rgba(81, 69, 55, 0.05)"

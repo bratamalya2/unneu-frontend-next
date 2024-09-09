@@ -12,6 +12,8 @@ import States from "./stateOfIndia.json";
 import UpArrow from "@/../public/up-arrow.png";
 import DownArrow from "@/../public/down-arrow.png";
 
+import "@/styles/sellerPickupForm.css";
+
 export default function SellerPickupForm() {
     const router = useRouter();
     const sellerProfilePhoto = useUnneuDataStore(store => store.sellerProfilePhoto);
@@ -119,16 +121,16 @@ export default function SellerPickupForm() {
         />
         <p className="text-xl font-medium mt-[42px]">Gender <span className="text-[#B73636]">*</span></p>
         <div className="mt-[42px] flex flex-row flex-nowrap items-center text-xl gap-x-7">
-            <div>
-                <input type="radio" id="male" name="gender" value="Male" className="mr-[13px] h-[16px] w-[16px]" onClick={() => setGender("Male")} />
+            <div className="flex flex-row flex-nowrap items-center">
+                <input type="radio" id="male" name="gender" value="Male" className="mr-[13px] h-[16px] w-[16px] local-custom-radio" onClick={() => setGender("Male")} />
                 <label htmlFor="male">Male</label>
             </div>
-            <div>
-                <input type="radio" id="female" name="gender" value="Female" className="mr-[13px] h-[16px] w-[16px]" onClick={() => setGender("Female")} />
+            <div className="flex flex-row flex-nowrap items-center">
+                <input type="radio" id="female" name="gender" value="Female" className="mr-[13px] h-[16px] w-[16px] local-custom-radio" onClick={() => setGender("Female")} />
                 <label htmlFor="female">Female</label>
             </div>
-            <div>
-                <input type="radio" id="other" name="gender" value="Other" className="mr-[13px] h-[16px] w-[16px]" onClick={() => setGender("Other")} />
+            <div className="flex flex-row flex-nowrap items-center">
+                <input type="radio" id="other" name="gender" value="Other" className="mr-[13px] h-[16px] w-[16px] local-custom-radio" onClick={() => setGender("Other")} />
                 <label htmlFor="other">Other</label>
             </div>
         </div>
@@ -136,7 +138,7 @@ export default function SellerPickupForm() {
         <div className="w-[60%] border border-[#CACACA] rounded-[24px] p-[16px] mt-[55px]">
             <div className="my-[29px] mx-[25px] flex flex-row flex-nowrap items-center justify-between">
                 <div className="text-xl font-medium">Add a new pickup address</div>
-                <Image src={showAddressForm ? UpArrow : DownArrow} alt={showAddressForm ? "hide" : "show"} className="w-[18px] h-[8px]" onClick={() => {
+                <Image src={showAddressForm ? UpArrow : DownArrow} alt={showAddressForm ? "hide" : "show"} className="w-[18px] h-[8px] hover:cursor-pointer" onClick={() => {
                     setShowAddressForm(x => !x);
                 }} />
             </div>
@@ -189,7 +191,7 @@ export default function SellerPickupForm() {
                         ))
                     }
                 </select>
-                <div className="mt-[36px] flex flex-row items-center justify-between w-full">
+                <div className="mt-[36px] mb-[60px] flex flex-row items-center justify-between w-full">
                     <button className="text-[#5C5C5C] font-medium text-xl rounded-[12px] border-[0.6px] border-[#FE9135] py-[11px] px-[39px]" onClick={() => {
                         setAddress("");
                         setContactPhoneNumber("");
