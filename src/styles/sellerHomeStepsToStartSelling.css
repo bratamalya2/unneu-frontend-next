@@ -5,6 +5,66 @@
     background-position: center;
 }
 
+#register-now-button {
+    animation: moveLeftRight 2s ease-in-out infinite;
+}
+
+@keyframes moveLeftRight {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-30px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@media only screen and (min-width: 330px) {
+    .seller-home-dotted-line {
+        left: 19.5%;
+    }
+}
+
+@media only screen and (min-width: 360px) {
+    .seller-home-dotted-line {
+        left: 19%;
+    }
+}
+
+@media only screen and (min-width: 390px) {
+    .seller-home-dotted-line {
+        left: 18.5%;
+    }
+}
+
+@media only screen and (min-width: 420px) {
+    .seller-home-dotted-line {
+        left: 18%;
+    }
+}
+
+@media only screen and (min-width: 450px) {
+    .seller-home-dotted-line {
+        left: 17.5%;
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    .seller-home-dotted-line {
+        left: 17%;
+    }
+}
+
+@media only screen and (min-width: 510px) {
+    .seller-home-dotted-line {
+        left: 16.5%;
+    }
+}
+
 @media only screen and (min-width: 1024px) {
     .seller-home-dotted-line {
         left: 31%;

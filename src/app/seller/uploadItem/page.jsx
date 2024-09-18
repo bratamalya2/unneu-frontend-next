@@ -24,10 +24,10 @@ export default function UploadItem() {
         setRefreshToken(store.refreshToken);
     }, []);
 
-    return <main className="relative px-[5%] mb-[90px]">
-        <p className="mt-[60px] mb-[45px] text-4xl font-medium">Product information</p>
-        <div className="flex flex-row flex-nowrap justify-between">
-            <div className="w-[48%] flex flex-col flex-nowrap items-center">
+    return <main className="relative px-[10%] lg:px-[5%] mb-[90px]">
+        <p className="mt-[35px] lg:mt-[60px] mb-[45px] text-2xl lg:text-4xl font-medium">Product information</p>
+        <div className="flex flex-col lg:flex-row flex-nowrap justify-between">
+            <div className="w-full lg:w-[48%] flex flex-col flex-nowrap items-center">
                 <Left />
                 <Color />
             </div>

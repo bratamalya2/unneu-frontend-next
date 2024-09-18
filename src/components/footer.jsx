@@ -18,9 +18,9 @@ export default function Footer() {
                     (pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller/uploadItem") ? "h-[1050px] xl:h-[650px] gap-x-14 pt-[100px] px-[9%]" :
                         pathname === "/seller" ? "h-[1050px] xl:h-[650px] gap-x-14 pt-[100px] px-[9%]" : ""
             }
-                ${pathname === "/seller/register/1" && "top-[100px]"}
-                ${pathname === "/seller/register/2" && "top-[100px]"}
-                ${pathname === "/seller/register/3" && "top-[100px]"}
+                ${pathname === "/seller/register/1" && "lg:top-[100px]"}
+                ${pathname === "/seller/register/2" && "lg:top-[100px]"}
+                ${pathname === "/seller/register/3" && "lg:top-[100px]"}
             `} style={{
                 background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)",
                 boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
@@ -60,9 +60,14 @@ export default function Footer() {
                 </p>
             </li>
         </footer>
-        <footer className="lg:hidden flex flex-col flex-nowrap min-[300px]:top-[430px] min-[420px]:top-[460px] min-[470px]:top-[560px] min-[570px]:top-[680px] sm:top-[760px] min-[730px]:top-[840px] md:top-[820px] min-[780px]:top-[880px] min-[848px]:top-[910px] min-[880px]:top-[950px] min-[910px]:top-[990px] min-[950px]:top-[1040px] min-[1000px]:top-[1100px] h-[1050px] sm:h-[950px] px-[5%] py-[41px] list-none relative" style={{
-            background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)"
-        }}>
+        <footer className={`lg:hidden flex flex-col flex-nowrap 
+        ${pathname === "/" && "min-[300px]:top-[430px] min-[420px]:top-[460px] min-[470px]:top-[560px] min-[570px]:top-[680px] sm:top-[760px] min-[730px]:top-[840px] md:top-[820px] min-[780px]:top-[880px] min-[848px]:top-[910px] min-[880px]:top-[950px] min-[910px]:top-[990px] min-[950px]:top-[1040px] min-[1000px]:top-[1100px] h-[1050px] sm:h-[950px] px-[5%] py-[41px]"}
+        ${pathname === "/seller/home" && "min-[300px]:top-[2460px] min-[570px]:top-[2460px] sm:top-[760px] min-[730px]:top-[840px] md:top-[820px] min-[780px]:top-[880px] min-[848px]:top-[910px] min-[880px]:top-[950px] min-[910px]:top-[990px] min-[950px]:top-[1040px] min-[1000px]:top-[1100px] h-[1100px] sm:h-[950px] px-[5%] py-[41px]"}
+        ${pathname === "/seller/register/1" && "min-[300px]:top-[1460px] min-[570px]:top-[680px] sm:top-[760px] min-[730px]:top-[840px] md:top-[820px] min-[780px]:top-[880px] min-[848px]:top-[910px] min-[880px]:top-[950px] min-[910px]:top-[990px] min-[950px]:top-[1040px] min-[1000px]:top-[1100px] h-[1000px] sm:h-[950px] px-[5%] py-[41px]"} 
+        ${(pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem") && "min-[300px]:top-[70px] sm:top-[760px] min-[730px]:top-[840px] md:top-[820px] min-[780px]:top-[880px] min-[848px]:top-[910px] min-[880px]:top-[950px] min-[910px]:top-[990px] min-[950px]:top-[1040px] min-[1000px]:top-[1100px] h-[1000px] sm:h-[950px] px-[5%] py-[41px]"}
+        list-none relative`} style={{
+                background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)"
+            }}>
             <li className="w-full">
                 <p className="uppercase font-bold text-lg">About us</p>
                 <p className="mt-[20px] font-medium leading-8">
@@ -86,7 +91,7 @@ export default function Footer() {
                     <Image src={X} alt="x" className="w-[28px] h-[30px] mt-[16px] hover:cursor-pointer" />
                 </li>
             </div>
-            <li className="w-full mt-[42px]">
+            <li className="w-full mt-[12px]">
                 <Image src={Logo} alt="unneu logo" className="w-[180px] h-[50px] mt-5" />
                 <p className="mt-[20px] font-medium">Unneu Fashion Pvt Ltd</p>
                 <p className="mt-[16px] max-w-[90%] font-medium">

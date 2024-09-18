@@ -79,7 +79,7 @@ export default function Header() {
                     </nav>
                 </header>)}
         {
-            pathname === "/" && showHamburger && (
+            showHamburger && (
                 <nav className="block md:hidden bg-white max-w-[363px] w-[80%] h-[560px] list-none absolute z-50 rounded-tr-[24px] rounded-br-[24px]" style={{
                     boxShadow: "0px 4px 78px 0px rgba(0, 0, 0, 0.25)"
                 }}>
@@ -148,7 +148,7 @@ export default function Header() {
                     <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[1%] sm:ml-[20%]" : "ml-[17%] sm:ml-[27%]"}`} onClick={() => {
                         setShowSearch(x => !x);
                     }} />
-                    <Image src={Cart} alt="Cart" className="w-[20px] h-[20px] hover:cursor-pointer ml-[7%]" />
+                    <Image src={Cart} alt="Cart" className="w-[20px] h-[20px] hover:cursor-pointer ml-[5%]" />
                     <SignInPopup showSignIn={showSignIn} hideSignIn={hideSignIn} />
                     <SignUpPopup showSignUp={showSignUp} hideSignUp={hideSignUp} />
                 </header>
@@ -156,7 +156,7 @@ export default function Header() {
         }
         {
             (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem") && (
-                <header className={`${lbFont.className} h-[90px] flex flex-row flex-nowrap items-center justify-between px-[5%]`}>
+                <header className={`hidden ${lbFont.className} h-[90px] lg:flex flex-row flex-nowrap items-center justify-between px-[5%]`}>
                     <Image src={Logo} alt="Unneu" className="w-[125px] h-[44px]" />
                     <nav className="list-none lg:ml-[5%] xl:ml-[8%] 2xl:ml-[10%] lg:w-[33%] xl:w-[30%] 2xl:w-[28%] flex flex-row flex-nowrap items-center justify-between">
                         <li className="text-[18px] hover:cursor-pointer">Home</li>
@@ -170,6 +170,27 @@ export default function Header() {
                         <Image src={Cart} alt="Cart" className="w-[24px] h-[24px] hover:cursor-pointer" />
                     </div>
                     <button className="text-[18px] font-bold bg-[#FE9135] py-[12px] px-[38px] rounded-[12px] text-white">Sell</button>
+                </header>
+            )
+        }
+        {
+            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem") && (
+                <header className={`${lbFont.className} block lg:hidden h-[76px] flex items-center px-[15px] pt-[20px] pb-[20px] z-[200] sticky top-0 bg-white`}>
+                    <Image src={Hamburger} alt="details" className="w-[20px] h-[14px]" onClick={() => {
+                        setShowHamburger(true);
+                    }} />
+                    <Image src={Logo} alt="Unneu" className={`w-[103px] h-[36px] ${showSearch ? "ml-[4%] sm:ml-[10%]" : "ml-[29%] sm:ml-[36%]"}`} />
+                    {
+                        showSearch && (
+                            <input type="text" placeholder="Search here" className="w-[112px] sm:w-[210px] py-[5px] pl-[2px] text-[14px] font-medium ml-4 border-b border-[#9C9C9C] outline-0" />
+                        )
+                    }
+                    <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[1%] min-[400px]:ml-[14%] min-[430px]:ml-[16%] min-[460px]:ml-[17%] min-[500px]:ml-[18%] sm:ml-[20%]" : "ml-[17%] min-[400px]:ml-[22%] min-[430px]:ml-[24%] min-[460px]:ml-[25%] min-[500px]:ml-[26%] sm:ml-[27%]"}`} onClick={() => {
+                        setShowSearch(x => !x);
+                    }} />
+                    <Image src={Cart} alt="Cart" className="w-[20px] h-[20px] hover:cursor-pointer ml-[5%]" />
+                    <SignInPopup showSignIn={showSignIn} hideSignIn={hideSignIn} />
+                    <SignUpPopup showSignUp={showSignUp} hideSignUp={hideSignUp} />
                 </header>
             )
         }

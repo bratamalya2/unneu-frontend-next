@@ -98,52 +98,52 @@ export default function SellerPickupForm() {
         }
     };
 
-    return <section className="mt-[250px] pl-[25%] pr-[5%] flex flex-col flex-nowrap">
-        <p className="text-xl font-medium">Enter full name <span className="text-[#B73636]">*</span></p>
+    return <section className="mt-[110px] lg:mt-[250px] pl-[10%] lg:pl-[25%] pr-[10%] lg:pr-[5%] flex flex-col flex-nowrap">
+        <p className="text-[15px] lg:text-xl font-medium">Enter full name <span className="text-[#B73636]">*</span></p>
         <input
             type="text"
-            className="mt-[24px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] rounded-[12px] h-[64px] w-[60%] px-3"
+            className="mt-[16px] lg:mt-[24px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] rounded-[12px] h-[55px] lg:h-[64px] w-full lg:w-[60%] px-3"
             style={{
                 boxShadow: "0px 11px 53.8px 4px rgba(81, 69, 55, 0.05)"
             }}
             value={fullName}
             onChange={e => setFullName(e.target.value)}
         />
-        <p className="text-xl font-medium mt-[42px]">Enter store name <span className="text-[#B73636]">*</span></p>
+        <p className="text-[15px] lg:text-xl font-medium mt-[21px] lg:mt-[42px]">Enter store name <span className="text-[#B73636]">*</span></p>
         <input
             type="text"
-            className="mt-[24px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] rounded-[12px] h-[64px] w-[60%] px-3"
+            className="mt-[16px] lg:mt-[24px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] rounded-[12px] h-[55px] lg:h-[64px] w-full lg:w-[60%] px-3"
             style={{
                 boxShadow: "0px 11px 53.8px 4px rgba(81, 69, 55, 0.05)"
             }}
             value={storeName}
             onChange={e => setStoreName(e.target.value)}
         />
-        <p className="text-xl font-medium mt-[42px]">Gender <span className="text-[#B73636]">*</span></p>
-        <div className="mt-[42px] flex flex-row flex-nowrap items-center text-xl gap-x-7">
+        <p className="text-[15px] lg:text-xl font-medium mt-[21px] lg:mt-[42px]">Gender <span className="text-[#B73636]">*</span></p>
+        <div className="mt-[21px] lg:mt-[42px] flex flex-row flex-nowrap items-center text-xl gap-x-4 lg:gap-x-7">
             <div className="flex flex-row flex-nowrap items-center">
                 <input type="radio" id="male" name="gender" value="Male" className="mr-[13px] h-[16px] w-[16px] local-custom-radio" onClick={() => setGender("Male")} />
-                <label htmlFor="male">Male</label>
+                <label htmlFor="male" className="text-[15px] lg:text-base">Male</label>
             </div>
             <div className="flex flex-row flex-nowrap items-center">
                 <input type="radio" id="female" name="gender" value="Female" className="mr-[13px] h-[16px] w-[16px] local-custom-radio" onClick={() => setGender("Female")} />
-                <label htmlFor="female">Female</label>
+                <label htmlFor="female" className="text-[15px] lg:text-base">Female</label>
             </div>
             <div className="flex flex-row flex-nowrap items-center">
                 <input type="radio" id="other" name="gender" value="Other" className="mr-[13px] h-[16px] w-[16px] local-custom-radio" onClick={() => setGender("Other")} />
-                <label htmlFor="other">Other</label>
+                <label htmlFor="other" className="text-[15px] lg:text-base">Other</label>
             </div>
         </div>
-        <p className="text-[26px] font-medium mt-[48px]">Store & Pick up details <span className="text-[#B73636]">*</span></p>
-        <div className="w-[60%] border border-[#CACACA] rounded-[24px] p-[16px] mt-[55px]">
-            <div className="my-[29px] mx-[25px] flex flex-row flex-nowrap items-center justify-between">
-                <div className="text-xl font-medium">Add a new pickup address</div>
+        <p className="text-xl lg:text-[26px] font-medium mt-[35px] lg:mt-[48px]">Store & Pick up details <span className="text-[#B73636]">*</span></p>
+        <div className="w-full lg:w-[60%] border border-[#CACACA] rounded-[24px] p-[16px] mt-[24px] lg:mt-[55px]">
+            <div className="lg:my-[29px] lg:mx-[25px] flex flex-row flex-nowrap items-center justify-between">
+                <div className="text-[15px] lg:text-xl font-medium">Add a new pickup address</div>
                 <Image src={showAddressForm ? UpArrow : DownArrow} alt={showAddressForm ? "hide" : "show"} className="w-[18px] h-[8px] hover:cursor-pointer" onClick={() => {
                     setShowAddressForm(x => !x);
                 }} />
             </div>
-            {showAddressForm && <div className="mx-[25px]">
-                <p className="mt-[36px] font-medium">Address <span className="text-[#B73636]">*</span></p>
+            {showAddressForm && <div className="lg:mx-[25px]">
+                <p className="mt-[25px] lg:mt-[36px] font-medium text-[15px] lg:text-base">Address <span className="text-[#B73636]">*</span></p>
                 <input
                     type="text"
                     className="mt-[12px] rounded-[12px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] h-[52px] w-full px-3" style={{
@@ -152,7 +152,7 @@ export default function SellerPickupForm() {
                     value={address}
                     onChange={e => setAddress(e.target.value)}
                 />
-                <p className="mt-[20px] font-medium">Phone No. <span className="text-[#B73636]">*</span></p>
+                <p className="mt-[10px] lg:mt-[20px] font-medium text-[15px] lg:text-base">Phone No. <span className="text-[#B73636]">*</span></p>
                 <input
                     type="text"
                     className="mt-[12px] rounded-[12px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] h-[52px] w-full px-3" style={{
@@ -162,7 +162,7 @@ export default function SellerPickupForm() {
                     value={contactPhoneNumber}
                     onChange={e => setContactPhoneNumber(e.target.value)}
                 />
-                <p className="mt-[20px] font-medium">Pincode <span className="text-[#B73636]">*</span></p>
+                <p className="mt-[10px] lg:mt-[20px] font-medium text-[15px] lg:text-base">Pincode <span className="text-[#B73636]">*</span></p>
                 <input
                     type="text"
                     className="mt-[12px] rounded-[12px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] h-[52px] w-full px-3" style={{
@@ -172,7 +172,7 @@ export default function SellerPickupForm() {
                     value={pincode}
                     onChange={e => setPincode(e.target.value)}
                 />
-                <p className="mt-[20px] font-medium">City <span className="text-[#B73636]">*</span></p>
+                <p className="mt-[10px] lg:mt-[20px] font-medium text-[15px] lg:text-base">City <span className="text-[#B73636]">*</span></p>
                 <input
                     type="text"
                     className="mt-[12px] rounded-[12px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] h-[52px] w-full px-3" style={{
@@ -181,7 +181,7 @@ export default function SellerPickupForm() {
                     value={city}
                     onChange={e => setCity(e.target.value)}
                 />
-                <p className="mt-[20px] font-medium">State <span className="text-[#B73636]">*</span></p>
+                <p className="mt-[10px] lg:mt-[20px] font-medium text-[15px] lg:text-base">State <span className="text-[#B73636]">*</span></p>
                 <select name="state" id="state" className="mt-[12px] rounded-[12px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] h-[52px] w-full px-3 custom-select" onChange={e => {
                     setState(e.target.value);
                 }}>
@@ -191,8 +191,8 @@ export default function SellerPickupForm() {
                         ))
                     }
                 </select>
-                <div className="mt-[36px] mb-[60px] flex flex-row items-center justify-between w-full">
-                    <button className="text-[#5C5C5C] font-medium text-xl rounded-[12px] border-[0.6px] border-[#FE9135] py-[11px] px-[39px]" onClick={() => {
+                <div className="mt-[36px] mb-[36px] lg:mb-[60px] flex flex-row items-center justify-between w-full">
+                    <button className="w-[110px] lg:w-[150px] text-[#5C5C5C] font-medium text-base lg:text-xl rounded-[12px] border-[0.6px] border-[#FE9135] py-[11px] px-[25px] lg:px-[39px]" onClick={() => {
                         setAddress("");
                         setContactPhoneNumber("");
                         setPincode("");
@@ -200,14 +200,14 @@ export default function SellerPickupForm() {
                         setState(States[0]);
                         setShowAddressForm(false);
                     }}>Cancel</button>
-                    <button className="w-[150px] text-white font-medium text-xl rounded-[12px] bg-[#FE9135] border-[0.6px] border-[#FE9135] py-[11px] px-[39px]" onClick={handleAddressSubmit}>Save</button>
+                    <button className="w-[110px] lg:w-[150px] text-white font-medium text-base lg:text-xl rounded-[12px] bg-[#FE9135] border-[0.6px] border-[#FE9135] py-[11px] px-[25px] lg:px-[39px]" onClick={handleAddressSubmit}>Save</button>
                 </div>
             </div>}
         </div>
-        <p className="mt-[56px] mb-[18px] text-xl font-medium">Enter store description </p>
-        <textarea className="h-[196px] w-[60%] bg-[#ECECEC] rounded-[24px] py-[18px] px-[27px]" placeholder="Welcome to our pre-owned saree store!....." value={storeDescription} onChange={e => {
+        <p className="mt-[30px] lg:mt-[56px] mb-[18px] lg:text-xl font-medium text-[15px]">Enter store description </p>
+        <textarea className="h-[196px] w-full lg:w-[60%] bg-[#ECECEC] rounded-[24px] py-[18px] px-[15px] lg:px-[27px]" placeholder="Welcome to our pre-owned saree store!....." value={storeDescription} onChange={e => {
             setStoreDescription(e.target.value);
         }} />
-        <button className="mt-[57px] w-[60%] py-[25px] bg-[#FE9135] rounded-[24px] text-xl text-white font-medium" onClick={handleFormSubmit}>Save and Continue</button>
+        <button className="mt-[24px] lg:mt-[57px] w-full lg:w-[60%] py-[12px] lg:py-[25px] bg-[#FE9135] rounded-[24px] text-lg lg:text-xl text-white font-medium" onClick={handleFormSubmit}>Save and Continue</button>
     </section>
 }

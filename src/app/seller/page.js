@@ -8,7 +8,6 @@ import { useUnneuDataStore } from "@/store/store";
 
 import ProfileSection from "@/components/seller/profileSection";
 import ItemsSections from "@/components/seller/itemsSections";
-import ReviewsSection from "@/components/seller/reviewsSection";
 
 export default function Home() {
     const router = useRouter();
@@ -48,7 +47,7 @@ export default function Home() {
         catch (err) {
             console.log(err);
         }
-    }, [jwtToken, refreshToken]);
+    }, [jwtToken, refreshToken, router, setJwtToken]);
 
     useEffect(() => {
         //fetch user details
@@ -69,6 +68,5 @@ export default function Home() {
     return <main className="relative">
         <ProfileSection sellerDetails={sellerDetails} />
         <ItemsSections sellerDetails={sellerDetails} />
-        <ReviewsSection />
     </main>
 }

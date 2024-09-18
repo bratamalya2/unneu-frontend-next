@@ -21,14 +21,16 @@ const availableColors = [
 export default function Color() {
     const [selectedColor, setSelectedColor] = useState(null);
 
-    return <section className="mt-[20px] w-full rounded-[26px] border border-[#CACACA] p-[25px]">
-        <p className="text-[18px] font-medium">Select color *</p>
-        <div className="mt-[20px] w-full flex flex-row items-center justify-between">
-            <Image src={NoSelection} alt="no-color" className="w-[26px] h-[26px] hover:cursor-pointer" onClick={() => setSelectedColor(null)} />
+    return <section className="mt-[20px] w-full rounded-[26px] border border-[#CACACA] p-[20px] lg:p-[25px]">
+        <p className="text-[18px] font-medium">Select color <span className="text-[#B63636]">*</span></p>
+        <div className="mt-[20px] w-full flex flex-row flex-wrap items-center lg:justify-between gap-x-1.5 lg:gap-x-0">
+            <Image src={NoSelection} alt="no-color" className="mx-[6px] lg:mx-0 w-[24px] lg:w-[26px] h-[24px] lg:h-[26px] hover:cursor-pointer" onClick={() => setSelectedColor(null)} />
             {
                 availableColors.map((color, i) => (
-                    <div key={i} className={`w-[38px] h-[38px] rounded-[100%] border ${selectedColor === color ? "!border-[#FE9135]" : "!border-transparent"} flex flex-row flex-nowrap items-center justify-center`}>
-                        <div className={`w-[26px] h-[26px] rounded-[100%] bg-[${color}] hover:cursor-pointer`} onClick={() => setSelectedColor(color)}></div>
+                    <div key={i} className={`w-[36px] h-[36px] rounded-[100%] border ${selectedColor === color ? "!border-[#FE9135]" : "!border-transparent"} flex flex-row flex-nowrap items-center justify-center`}>
+                        <div className={`w-[24px] lg:w-[26px] h-[24px] lg:h-[26px] rounded-[100%] hover:cursor-pointer`} onClick={() => setSelectedColor(color)} style={{
+                            backgroundColor: color
+                        }}></div>
                     </div>
                 ))
             }

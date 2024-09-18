@@ -156,7 +156,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                             Buyer
                         </div>
                     </div>
-                    <p className={`${libreBaskerville.className} text-2xl uppercase ${!isOTPSent ? "xl:mt-12 sm:mt-4 mb-2" : "mt-6 sm:mt-4 mb-2"}`}>{isSellerSelected ? "For Reseller" : "For Buyer"}</p>
+                    <p className={`${libreBaskerville.className} text-2xl uppercase ${!isOTPSent ? "xl:mt-12 mt-4 mb-2" : "mt-6 sm:mt-4 mb-2"}`}>{isSellerSelected ? "For Reseller" : "For Buyer"}</p>
                     {
                         isSellerSelected ? (
                             <>
@@ -178,6 +178,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                         isSellerSelected && (
                             <button className="bg-[#FE9135] text-white uppercase font-semibold text-xl py-[12px] px-[50px] rounded-[16px] mt-[80px] sm:mt-[50px] mb-[30px]" onClick={() => {
                                 router.push("/seller/home");
+                                hideSignUp();
                             }}>
                                 start selling
                             </button>
@@ -186,7 +187,9 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                     {
                         !isSellerSelected && (
                             <>
-                                <p className="text-[#646464] font-medium self-start ml-[46px] mt-10 sm:mt-5">Enter phone number</p>
+                                <p className="text-[#646464] font-medium self-start ml-[46px] min-[500px]:ml-[50px] min-[550px]:ml-[55px] min-[600px]:ml-[60px] sm:ml-[45px] min-[670px]:ml-[50px] md:ml-[55px] min-[830px]:ml-[60px] min-[880px]:ml-[65px] min-[900px]:ml-[70px] min-[1045px]:ml-[75px] min-[1125px]:ml-[80px] min-[1250px]:ml-[90px] min-[1400px]:ml-[100px] min-[1600px]:ml-[110px] min-[1700px]:ml-[115px] min-[1800px]:ml-[120px] mt-10 sm:mt-5">
+                                    Enter phone number
+                                </p>
                                 <input
                                     type="text"
                                     className="bg-[#F0F0F0] rounded-[12px] w-[80%] py-[10px] px-[12px] my-2 sm:ml-2 max-w-[100%]"
