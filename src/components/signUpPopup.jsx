@@ -59,10 +59,14 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                 else {
                     setJwtToken(y.jwtToken);
                     setRefreshToken(y.refreshToken);
-                    if (isSellerSelected)
+                    if (isSellerSelected) {
                         router.push("/seller/home");
-                    else
+                        hideSignUp();
+                    }
+                    else {
                         router.push("/buyer/home");
+                        hideSignUp();
+                    }
                 }
             }
             else {

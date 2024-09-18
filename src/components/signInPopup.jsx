@@ -73,10 +73,14 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                     setLoginPhoneNumber(phoneNumber);
                     setJwtToken(y.jwtToken);
                     setRefreshToken(y.refreshToken);
-                    if (isSellerSelected)
+                    if (isSellerSelected) {
                         router.push("/seller/home");
-                    else
+                        hideSignIn();
+                    }
+                    else {
                         router.push("/buyer/home");
+                        hideSignIn();
+                    }
                 }
             }
             else {
