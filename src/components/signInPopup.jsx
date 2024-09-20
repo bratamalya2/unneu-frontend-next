@@ -143,12 +143,12 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
     }, [isSellerSelected, setBuyerSelected, setSellerSelected]);
 
     return <>
-        <Modal show={showSignIn} onHide={hideSignIn} className="mt-[20px] mb-[50px]">
+        <Modal show={showSignIn} onHide={hideSignIn} className="mt-[20px] mb-[50px] xl:max-w-[80%] xl:left-[10%]">
             <Modal.Body className="bg-[#FEE9BC] rounded-[32px] flex flex-row flex-nowrap sm:justify-between p-0 h-[550px] sm:h-fit">
                 <div className="sm:h-[500px] lg:h-[600px] w-[52%] rounded-tl-[32px] rounded-bl-[32px] hidden sm:inline-block" id="login-side-img-container"></div>
                 <div className="relative w-full sm:max-w-[45%] pl-1 pl-1 sm:pr-10 inline-flex flex-col flex-nowrap items-center">
                     <Image src={CloseIcon} alt="close" className="w-[20px] h-[20px] absolute top-5 right-5" onClick={hideSignIn} />
-                    <p className={`text-[#4C4C4C] ${libreBaskerville.className} text-2xl lg:text-3xl ${isOTPSent ? "mt-[25px]" : "mt-[65px]"} mb-4`}>Log in</p>
+                    <p className={`text-[#4C4C4C] ${libreBaskerville.className} text-2xl lg:text-3xl ${isOTPSent ? "mt-[45px]" : "mt-[95px]"} mb-4`}>Log in</p>
                     <div className={`max-w-[90%] flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-xl sm:mt-0`}>
                         <div
                             className={`py-[9px] sm:py-[6px] lg:py-[10px] px-[25px] lg:px-[25px] rounded-tl-[8px] rounded-bl-[8px] ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
