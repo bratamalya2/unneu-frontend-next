@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 
 import NoSelection from "@/../public/no-color-selected.png";
@@ -18,13 +17,11 @@ const availableColors = [
     "#C49240"
 ];
 
-export default function Color() {
-    const [selectedColor, setSelectedColor] = useState(null);
-
+export default function Color({ selectedColor, setSelectedColor }) {
     return <section className="mt-[20px] w-full rounded-[26px] border border-[#CACACA] p-[20px] lg:p-[25px]">
         <p className="text-[18px] font-medium">Select color <span className="text-[#B63636]">*</span></p>
         <div className="mt-[20px] w-full flex flex-row flex-wrap items-center lg:justify-between gap-x-1.5 lg:gap-x-0">
-            <Image src={NoSelection} alt="no-color" className="mx-[6px] lg:mx-0 w-[24px] lg:w-[26px] h-[24px] lg:h-[26px] hover:cursor-pointer" onClick={() => setSelectedColor(null)} />
+            <Image src={NoSelection} alt="no-color" className="mx-[6px] lg:mx-0 w-[24px] lg:w-[26px] h-[24px] lg:h-[26px] hover:cursor-pointer" onClick={() => setSelectedColor("#FFF")} />
             {
                 availableColors.map((color, i) => (
                     <div key={i} className={`w-[36px] h-[36px] rounded-[100%] border ${selectedColor === color ? "!border-[#FE9135]" : "!border-transparent"} flex flex-row flex-nowrap items-center justify-center`}>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import Dropzone from "@/components/dropzone";
 
@@ -8,16 +8,7 @@ import UploadImage from "@/../public/upload-image.png";
 import AddProductFile from "@/../public/add product image.png";
 import Close from "@/../public/close-2.png";
 
-export default function Left() {
-    const [noOfFilesAdded, setNoOfFilesAdded] = useState(0);
-    const [file1, setFile1] = useState(null);
-    const [file1Preview, setFile1Preview] = useState(null);
-    const [file2, setFile2] = useState(null);
-    const [file2Preview, setFile2Preview] = useState(null);
-    const [file3, setFile3] = useState(null);
-    const [file3Preview, setFile3Preview] = useState(null);
-    const [file4, setFile4] = useState(null);
-    const [file4Preview, setFile4Preview] = useState(null);
+export default function Left({ noOfFilesAdded, setNoOfFilesAdded, file1, setFile1, file2, setFile2, file3, setFile3, file4, setFile4, file1Preview, setFile1Preview, file2Preview, setFile2Preview, file3Preview, setFile3Preview, file4Preview, setFile4Preview }) {
     const fileRef = useRef(null);
 
     const handleDelete = (setFileHandler, setFilePreview, i) => {

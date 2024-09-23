@@ -1,5 +1,8 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+
+import Item from "./item";
 
 import NoItemsToDisplays from "@/../public/seller-profile-no-items-to-display.svg";
 import NoReviews from "@/../public/seller-profile-no-reviews-yet.svg";
@@ -7,6 +10,28 @@ import DownArrow from "@/../public/down-arrow-2.png";
 
 export default function ItemsSections({ sellerDetails }) {
     const router = useRouter();
+    const [itemDetails, setItemDetails] = useState([]);
+
+    const fetchItemDetails = async () => {
+        try {
+            const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/getSellerItems`, {
+                method: "GET",
+                headers: {
+                    sellerid: sellerDetails.sellerId
+                }
+            });
+            const y = await x.json();
+            if (y.success)
+                setItemDetails(y.items);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        fetchItemDetails();
+    }, []);
 
     return <section className="relative z-10 top-[-30px] px-[5%] lg:mb-[85px] flex flex-col">
         <div className="flex flex-row flex-nowrap items-center">
@@ -38,6 +63,15 @@ export default function ItemsSections({ sellerDetails }) {
                         router.push(`/seller/uploadItem`);
                     }}>List item</button>
                 </>
+            )
+        }
+        {
+            sellerDetails.noOfItemsListed !== "0" && (
+                <div className="w-full max-h-[800px] mt-[32px] flex flex-row flex-wrap gap-4">
+                    {
+                        itemDetails.map((x, i) => <Item itemDetail={x} key={i} />)
+                    }
+                </div>
             )
         }
         <p className="mt-[50px] lg:mt-[100px] font-medium text-2xl lg:text-4xl">Rating & Reviews</p>

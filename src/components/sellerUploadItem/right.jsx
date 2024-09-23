@@ -2,6 +2,10 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { enqueueSnackbar } from "notistack";
+import { useRouter } from "next/navigation";
+
+import { useUnneuDataStore } from "@/store/store";
 
 import DownArrow from "@/../public/select-tag-down-arrow.png";
 
@@ -22,52 +26,234 @@ const conditions = [
     "Defective piece"
 ];
 
-export default function Right() {
+export default function Right({ file1, file2, file3, file4, selectedColor }) {
+    const router = useRouter();
+    const [isPublishing, setIsPublishing] = useState(false);
+    const [jwtToken, setJwtToken] = useState(null);
+    const [refreshToken, setRefreshToken] = useState(null);
+    const setJwtTokenGlobal = useUnneuDataStore(store => store.setJwtToken);
+    const [itemName, setItemName] = useState(null);
+    const [sellingPrice, setSellingPrice] = useState(null);
+    const [marketPrice, setMarketPrice] = useState(null);
+    const [description, setDescription] = useState(null);
     const [showCategories, setShowCategories] = useState(false);
     const [showConditions, setShowConditions] = useState(false);
-    const [selectedCategories, setSelectedCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState(null);
     const [selectedCondition, setSelectedCondition] = useState(null);
+    const [productHistory, setProductHistory] = useState(null);
 
-    const modifyCategory = (i) => {
-        setSelectedCategories((curr) => {
-            let a = [...curr];
-            a = a.map(x => JSON.parse(JSON.stringify(x)));
-            a[i].isSelected = !a[i].isSelected;
-            return a;
-        });
+    const modifyCategory = (cat) => {
+        setSelectedCategory(cat);
+        setShowCategories(curr => !curr);
+    };
+
+    const handleSubmit = async () => {
+        try {
+            if (isPublishing)
+                return;
+            setIsPublishing(true);
+            const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/addSellerItem`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "jwttoken": jwtToken,
+                    "refreshtoken": refreshToken
+                },
+                body: JSON.stringify({
+                    itemName,
+                    sellingPrice,
+                    marketPrice,
+                    description,
+                    category: selectedCategory,
+                    condition: selectedCondition,
+                    productHistory,
+                    color: selectedColor
+                })
+            });
+            const y = await x.json();
+            if (!y.success) {
+                if (y.err === "No token provided!") {
+                    router.push("/");
+                    setIsPublishing(false);
+                }
+                else if (y.err === "Refresh JWT Token!") {
+                    setJwtTokenGlobal(y.jwt);
+                    setJwtToken(y.jwt);
+                    const x2 = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/addSellerItem`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "jwttoken": y.jwt,
+                            "refreshtoken": refreshToken
+                        },
+                        body: JSON.stringify({
+                            itemName,
+                            sellingPrice,
+                            marketPrice,
+                            description,
+                            category: selectedCategory,
+                            condition: selectedCondition,
+                            productHistory,
+                            color: selectedColor
+                        })
+                    });
+                    const y2 = await x2.json();
+                    if (!y2.success)
+                        enqueueSnackbar(y2.err, {
+                            variant: "error"
+                        });
+                    else {
+                        //y2.itemId
+                        const formdata = new FormData();
+                        if (file1)
+                            formdata.append("file", file1);
+                        if (file2)
+                            formdata.append("file", file2);
+                        if (file3)
+                            formdata.append("file", file3);
+                        if (file4)
+                            formdata.append("file", file4);
+                        formdata.append("itemId", y2.itemId);
+                        const a = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/addProductImagesAndVideos`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "jwttoken": y.jwt,
+                                "refreshtoken": refreshToken
+                            },
+                            body: formdata
+                        });
+                        const b = await a.json();
+                        if (!b.success) {
+                            if (y.err === "Refresh JWT Token!") {
+                                setJwtTokenGlobal(b.jwt);
+                                setJwtToken(b.jwt);
+                                const a2 = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/addProductImagesAndVideos`, {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                        "jwttoken": b.jwt,
+                                        "refreshtoken": refreshToken
+                                    },
+                                    body: formdata
+                                });
+                                const b2 = await a.json();
+                                if (!b2.success)
+                                    enqueueSnackbar(b2.err, {
+                                        variant: "error"
+                                    });
+                                else {
+                                    enqueueSnackbar("Item uploaded successfully!", {
+                                        variant: "success"
+                                    });
+                                    router.push("/seller");
+                                }
+                            }
+                            else
+                                enqueueSnackbar(b.err, {
+                                    variant: "error"
+                                });
+                        }
+                        else
+                            enqueueSnackbar("Item uploaded successfully!", {
+                                variant: "success"
+                            });
+                    }
+                    setIsPublishing(false);
+                }
+                else {
+                    console.log("Inside!");
+                    enqueueSnackbar(y.err, {
+                        variant: "error"
+                    });
+                    setIsPublishing(false);
+                }
+            }
+            else {
+                //y.itemId
+                const formdata = new FormData();
+                if (file1)
+                    formdata.append("file", file1);
+                if (file2)
+                    formdata.append("file", file2);
+                if (file3)
+                    formdata.append("file", file3);
+                if (file4)
+                    formdata.append("file", file4);
+                formdata.append("itemId", y.itemId);
+                const a = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/addProductImagesAndVideos`, {
+                    method: "POST",
+                    headers: {
+                        "jwttoken": jwtToken,
+                        "refreshtoken": refreshToken
+                    },
+                    body: formdata
+                });
+                const b = await a.json();
+                setIsPublishing(false);
+                if (!b.success)
+                    enqueueSnackbar(b.err, {
+                        variant: "error"
+                    });
+                else {
+                    enqueueSnackbar("Item uploaded successfully!", {
+                        variant: "success"
+                    });
+                    router.push("/seller");
+                }
+            }
+        }
+        catch (err) {
+            console.log(err);
+            setIsPublishing(false);
+        }
     };
 
     useEffect(() => {
-        setSelectedCategories(() => {
-            return categories.map(c => ({
-                category: c,
-                isSelected: false
-            }));
-        });
+        const unneuDataStore = JSON.parse(localStorage.getItem("unneuDataStore"));
+        const store = unneuDataStore.state;
+        setJwtToken(store.jwtToken);
+        setRefreshToken(store.refreshToken);
     }, []);
 
     return <section className="mt-[20px] lg:mt-0 relative w-full lg:w-[48%] rounded-[26px] border border-[#CACACA] p-[24px] z-0">
         <p className="text-xl lg:text-2xl text-[#393939] font-medium">Item detail</p>
         <p className="mt-[24px] text-[15px] lg:text-[18px] font-medium">Product name <span className="text-[#B63636]">*</span></p>
-        <input type="text" placeholder="Emerald Green Kanjivaram Silk Saree" className="mt-[12px] lg:mt-[16px] w-full p-[12px] lg:p-[15px] rounded-[16px] bg-[#F4F4F4] text-[15px] lg:text-[18px]" />
+        <input
+            type="text"
+            placeholder="Emerald Green Kanjivaram Silk Saree"
+            className="mt-[12px] lg:mt-[16px] w-full p-[12px] lg:p-[15px] rounded-[16px] bg-[#F4F4F4] text-[15px] lg:text-[18px]"
+            onChange={e => setItemName(e.target.value)}
+        />
         <div className="mt-[20px] flex flex-row flex-nowrap items-center justify-between">
             <div className="w-[46%] flex flex-col gap-y-[12px] lg:gap-y-[16px]">
                 <p className="text-[15px] lg:text-[18px] font-medium">Selling Price <span className="text-[#B63636]">*</span></p>
-                <input type="number" placeholder="₹2,500" className="w-full p-[12px] lg:p-[15px] rounded-[16px] bg-[#F4F4F4] text-[15px] lg:text-[18px]" />
+                <input
+                    type="number"
+                    placeholder="₹2,500"
+                    className="w-full p-[12px] lg:p-[15px] rounded-[16px] bg-[#F4F4F4] text-[15px] lg:text-[18px]"
+                    onChange={e => setSellingPrice(e.target.value)}
+                />
             </div>
             <div className="w-[46%] flex flex-col gap-y-[12px] lg:gap-y-[16px]">
                 <p className="text-[15px] lg:text-[18px] font-medium">Market Price <span className="text-[#B63636]">*</span></p>
-                <input type="number" placeholder="₹5,000" className="w-full p-[12px] lg:p-[15px] rounded-[16px] bg-[#F4F4F4] text-[15px] lg:text-[18px]" />
+                <input
+                    type="number"
+                    placeholder="₹5,000"
+                    className="w-full p-[12px] lg:p-[15px] rounded-[16px] bg-[#F4F4F4] text-[15px] lg:text-[18px]"
+                    onChange={e => setMarketPrice(e.target.value)}
+                />
             </div>
         </div>
         <p className="mt-[24px] lg:mt-[34px] text-[15px] lg:text-[18px] font-medium">Description <span className="text-[#B63636]">*</span></p>
         <textarea
             placeholder="This beautiful Emerald Green Kanjivaram Silk Saree features intricate golden zari work with traditional motifs......"
             className="mt-[12px] lg:mt-[16px] w-full h-[170px] lg:h-[200px] p-[12px] lg:p-[16px] rounded-[16px] bg-[#F4F4F4]"
+            onChange={e => setDescription(e.target.value)}
         />
         <p className="mt-[24px] text-[15px] lg:text-[18px] font-medium">Category <span className="text-[#B63636]">*</span></p>
         <div className={`mt-[12px] w-full h-[60px] relative ${showCategories ? "" : "rounded-[16px]"} p-[12px] lg:p-[16px] bg-[#F4F4F4] flex flex-row flex-nowrap items-center justify-between`}>
-            <div className="text-[#ABABAB] text-[15px] lg:text-[18px]">Select a category</div>
+            <div className="text-[#ABABAB] text-[15px] lg:text-[18px]">{!selectedCategory ? "Select a category" : selectedCategory}</div>
             <Image src={DownArrow} alt="arrow-down" className="w-[18px] h-[10px] hover:cursor-pointer" onClick={() => setShowCategories(curr => !curr)} />
             {
                 showCategories && (
@@ -78,20 +264,20 @@ export default function Right() {
                                     return <div key={i} className="relative w-full h-[60px] p-[16px] flex flex-row flex-nowrap items-center justify-between bg-white">
                                         {cat}
                                         <input
-                                            type="checkbox"
-                                            checked={selectedCategories[0].isSelected}
-                                            className="absolute right-3 custom-radio"
-                                            onChange={() => modifyCategory(i)}
+                                            type="radio"
+                                            name="category"
+                                            className="absolute right-3 custom-radio hover:cursor-pointer"
+                                            onChange={() => modifyCategory(cat)}
                                         />
                                     </div>
                                 else
                                     return <div key={i} className="relative w-full h-[60px] p-[16px] flex flex-row flex-nowrap items-center justify-between border-t border-t-black bg-white">
                                         {cat}
                                         <input
-                                            type="checkbox"
-                                            checked={selectedCategories[i].isSelected}
-                                            className="absolute right-3 custom-radio"
-                                            onChange={() => modifyCategory(i)}
+                                            type="radio"
+                                            name="category"
+                                            className="absolute right-3 custom-radio hover:cursor-pointer"
+                                            onChange={() => modifyCategory(cat)}
                                         />
                                     </div>
                             })
@@ -102,7 +288,7 @@ export default function Right() {
         </div>
         <p className="mt-[24px] text-[15px] lg:text-[18px] font-medium">Condition <span className="text-[#B63636]">*</span></p>
         <div className={`mt-[12px] w-full h-[60px] relative ${showConditions ? "" : "rounded-[16px]"} p-[12px] lg:p-[16px] bg-[#F4F4F4] flex flex-row flex-nowrap items-center justify-between`}>
-            <div className="text-[#ABABAB] text-[15px] lg:text-[18px]">Select condition</div>
+            <div className="text-[#ABABAB] text-[15px] lg:text-[18px]">{!selectedCondition ? "Select condition" : selectedCondition}</div>
             <Image src={DownArrow} alt="arrow-down" className="w-[18px] h-[10px] hover:cursor-pointer" onClick={() => setShowConditions(curr => !curr)} />
             {
                 showConditions && (
@@ -115,9 +301,10 @@ export default function Right() {
                                         <input
                                             type="radio"
                                             name="condition"
-                                            className="absolute right-3 custom-radio"
+                                            className="absolute right-3 custom-radio hover:cursor-pointer"
                                             onChange={() => {
                                                 setSelectedCondition(condition);
+                                                setShowConditions(curr => !curr);
                                             }}
                                         />
                                     </div>
@@ -127,9 +314,10 @@ export default function Right() {
                                         <input
                                             type="radio"
                                             name="condition"
-                                            className="absolute right-3 custom-radio"
+                                            className="absolute right-3 custom-radio hover:cursor-pointer"
                                             onChange={() => {
                                                 setSelectedCondition(condition);
+                                                setShowConditions(curr => !curr);
                                             }}
                                         />
                                     </div>
@@ -143,7 +331,10 @@ export default function Right() {
         <textarea
             placeholder="This saree has been cherished and worn only twice for family gatherings. It was originally purchased from a renowned silk emporium in Chennai,"
             className="mt-[15px] w-full h-[170px] lg:h-[200px] rounded-[16px] bg-[#F4F4F4] p-[16px]"
+            onChange={e => setProductHistory(e.target.value)}
         />
-        <button className="mt-[30px] lg:mt-[40px] w-full bg-[#FE9135] rounded-[16px] p-[12px] lg:p-[20px] text-white lg:text-[18px] font-semibold lg:font-medium">Publish Product</button>
+        <button className="mt-[30px] lg:mt-[40px] w-full bg-[#FE9135] rounded-[16px] p-[12px] lg:p-[20px] text-white lg:text-[18px] font-semibold lg:font-medium" onClick={handleSubmit}>
+            {isPublishing ? "Publishing..." : "Publish Product"}
+        </button>
     </section>
 }

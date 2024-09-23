@@ -80,7 +80,7 @@ export default function Header() {
                 </header>)}
         {
             showHamburger && (
-                <nav className="block md:hidden bg-white max-w-[363px] w-[80%] h-[560px] list-none absolute z-50 rounded-tr-[24px] rounded-br-[24px]" style={{
+                <nav className={`block ${pathname === "/" ? "md:hidden" : "lg:hidden"} bg-white max-w-[363px] w-[80%] h-[560px] list-none absolute z-50 rounded-tr-[24px] rounded-br-[24px]`} style={{
                     boxShadow: "0px 4px 78px 0px rgba(0, 0, 0, 0.25)"
                 }}>
                     <Image src={CloseIcon} alt="close" className="w-[14px] h-[14px] absolute top-[90px] right-5" onClick={hideHamburger} />
@@ -185,7 +185,7 @@ export default function Header() {
                             <input type="text" placeholder="Search here" className="w-[112px] sm:w-[210px] py-[5px] pl-[2px] text-[14px] font-medium ml-4 border-b border-[#9C9C9C] outline-0" />
                         )
                     }
-                    <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[1%] min-[400px]:ml-[14%] min-[430px]:ml-[16%] min-[460px]:ml-[17%] min-[500px]:ml-[18%] sm:ml-[20%]" : "ml-[17%] min-[400px]:ml-[22%] min-[430px]:ml-[24%] min-[460px]:ml-[25%] min-[500px]:ml-[26%] sm:ml-[27%]"}`} onClick={() => {
+                    <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[1%] min-[400px]:ml-[14%] min-[430px]:ml-[16%] min-[460px]:ml-[17%] min-[500px]:ml-[18%] sm:ml-[20%]" : "ml-[17%] min-[400px]:ml-[22%] min-[430px]:ml-[24%] min-[460px]:ml-[25%] min-[500px]:ml-[26%] sm:ml-[27%] md:ml-[32%]"}`} onClick={() => {
                         setShowSearch(x => !x);
                     }} />
                     <Image src={Cart} alt="Cart" className="w-[20px] h-[20px] hover:cursor-pointer ml-[5%]" />

@@ -103,7 +103,7 @@ export default function PersonalInfoForm() {
     }
 
     return <>
-        <section className="hidden mt-[105px] lg:flex flex-row flex-nowrap justify-between pr-[5%]">
+        <section className="hidden mt-[105px] md:flex flex-row flex-nowrap justify-between pr-[5%]">
             <aside className="h-[1000px] w-[46%] rounded-tr-[36px] rounded-br-[36px]" id="seller-register-personal-info-form-hero"></aside>
             <aside className="w-[50%] mt-[20px]">
                 <p className={`${lbFont.className} text-3xl mb-[20px]`}>Add Personal info</p>
@@ -318,10 +318,10 @@ export default function PersonalInfoForm() {
                                 className="hidden"
                             />
                             <div className="mt-[24px] mb-[56px] h-[300px] w-full border !border-dashed rounded-[32px] flex flex-col flex-nowrap items-center justify-center gap-y-[5px]">
-                                <Image src={Upload} alt="upload" className="lg:w-[12%] xl:w-[10%] 2xl:w-[9%] h-[15%]" />
-                                <p className="text-xl font-medium">Drag and drop image here</p>
-                                <p className="text-xl font-medium">or</p>
-                                <button className="relative py-[16px] px-[125px] rounded-[16px] text-white bg-[#FEA355] text-xl font-medium" onClick={handlePanButtonClick}>
+                                <Image src={Upload} alt="upload" className="md:w-[14%] lg:w-[12%] xl:w-[10%] 2xl:w-[9%] h-[15%]" />
+                                <p className="md:text-lg lg:text-xl font-medium">Drag and drop image here</p>
+                                <p className="md:text-lg lg:text-xl font-medium">or</p>
+                                <button className="relative py-[16px] px-[125px] rounded-[16px] text-white bg-[#FEA355] md:text-lg lg:text-xl font-medium" onClick={handlePanButtonClick}>
                                     Browse files
                                     <Image src={UploadFile} alt="file-upload" className="w-[30px] h-[30px] absolute top-[13px] right-[20%]" />
                                 </button>
@@ -333,7 +333,7 @@ export default function PersonalInfoForm() {
                     panImagePreview && (
                         <>
                             <p className="mt-[42px] text-xl">PAN image <span className="text-[#B73636]">*</span></p>
-                            <div className="mt-[24px] mb-[56px] h-[300px] w-[60%] border !border-dashed rounded-[32px] default-background-svg" style={{
+                            <div className="mt-[24px] mb-[56px] h-[300px] md:w-full lg:w-[80%] xl:w-[70%] border !border-dashed rounded-[32px] default-background-svg" style={{
                                 backgroundImage: `url(${panImagePreview})`
                             }}>
                             </div>
@@ -354,7 +354,7 @@ export default function PersonalInfoForm() {
                 <button className="bg-[#FE9135] rounded-[24px] w-full py-[25px] text-xl mt-[20px] text-white" onClick={handleFormSubmit}>Save and Continue</button>
             </aside>
         </section>
-        <section className="relative mt-[50px] lg:hidden pr-[5%]">
+        <section className="relative mt-[50px] md:hidden pr-[5%]">
             <aside className="absolute h-[600px] w-[100vw] left-0 z-0" id="seller-register-personal-info-form-hero">
             </aside>
             <aside className="absolute w-[90vw] h-fit z-10 top-[450px] left-[5vw] rounded-tl-[24px] rounded-tr-[24px] bg-white py-[36px] px-[16px]" style={{
