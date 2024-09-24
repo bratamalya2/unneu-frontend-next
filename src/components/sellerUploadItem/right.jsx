@@ -26,7 +26,7 @@ const conditions = [
     "Defective piece"
 ];
 
-export default function Right({ file1, file2, file3, file4, selectedColor }) {
+export default function Right({ file1, file2, file3, file4, file5, selectedColor }) {
     const router = useRouter();
     const [isPublishing, setIsPublishing] = useState(false);
     const [jwtToken, setJwtToken] = useState(null);
@@ -113,6 +113,8 @@ export default function Right({ file1, file2, file3, file4, selectedColor }) {
                             formdata.append("file", file3);
                         if (file4)
                             formdata.append("file", file4);
+                        if (file5)
+                            formdata.append("file", file5);
                         formdata.append("itemId", y2.itemId);
                         const a = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/addProductImagesAndVideos`, {
                             method: "POST",
@@ -180,6 +182,8 @@ export default function Right({ file1, file2, file3, file4, selectedColor }) {
                     formdata.append("file", file3);
                 if (file4)
                     formdata.append("file", file4);
+                if (file5)
+                    formdata.append("file", file5);
                 formdata.append("itemId", y.itemId);
                 const a = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/addProductImagesAndVideos`, {
                     method: "POST",

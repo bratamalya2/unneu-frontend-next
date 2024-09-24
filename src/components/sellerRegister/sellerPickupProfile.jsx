@@ -164,7 +164,7 @@ export default function SellerPickupProfile() {
         <div className={`relative mt-[16px] w-full h-[264px] lg:h-[254px] z-0 default-background-svg ${!coverImagePreview ? "default-cover-photo" : ""}`} style={{
             backgroundImage: coverImagePreview && `url(${coverImagePreview})`
         }}>
-            <div className="right-0 lg:right-4 top-0 lg:bottom-5 absolute rounded-bl-[8px] lg:rounded-[16px] px-[12px] lg:px-[22px] py-[8px] lg:py-[14px] gap-x-[8px] flex justify-between items-center text-sm lg:text-[18px] font-medium lg:font-normal bg-white hover:cursor-pointer" onClick={handleCoverShow}>
+            <div className="right-0 lg:right-2 top-2 absolute rounded-bl-[8px] lg:rounded-[16px] px-[12px] lg:px-[22px] py-[8px] lg:py-[14px] gap-x-[8px] flex justify-between items-center text-sm lg:text-[18px] font-medium lg:font-normal bg-white hover:cursor-pointer" onClick={handleCoverShow}>
                 <Image src={Camera} alt="change cover" className="w-[31px] h-[27px]" />
                 <div>Edit cover photo</div>
             </div>
@@ -182,7 +182,7 @@ export default function SellerPickupProfile() {
             >
                 <Image src={Plus} alt="modify" className={`absolute ${hoverProfileImage ? "opacity-100" : "opacity-0"} top-[40%] left-[37%]`} />
                 <div className="absolute bg-stone-200 w-[36px] lg:w-[58px] h-[36px] lg:h-[58px] rounded-[58px] bottom-1 lg:bottom-2 right-1 lg:right-2 z-20">
-                    <Image src={Camera} alt="change photo" className="absolute top-[9px] left-[8px] w-[20px] h-[17px]" />
+                    <Image src={Camera} alt="change photo" className="absolute top-[9px] lg:top-[15px] left-[8px] lg:left-[14px] w-[20px] h-[17px] lg:w-[28px] lg:h-[25px]" />
                 </div>
             </div>
         </div>

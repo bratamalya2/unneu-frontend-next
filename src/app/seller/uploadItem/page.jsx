@@ -10,16 +10,14 @@ export default function UploadItem() {
     const [noOfFilesAdded, setNoOfFilesAdded] = useState(0);
     const [file1, setFile1] = useState(null);
     const [file1Preview, setFile1Preview] = useState(null);
-    const [file1Upload, setFile1Upload] = useState(null);
     const [file2, setFile2] = useState(null);
     const [file2Preview, setFile2Preview] = useState(null);
-    const [file2Upload, setFile2Upload] = useState(null);
     const [file3, setFile3] = useState(null);
     const [file3Preview, setFile3Preview] = useState(null);
-    const [file3Upload, setFile3Upload] = useState(null);
     const [file4, setFile4] = useState(null);
     const [file4Preview, setFile4Preview] = useState(null);
-    const [file4Upload, setFile4Upload] = useState(null);
+    const [file5, setFile5] = useState(null);
+    const [file5Preview, setFile5Preview] = useState(null);
     const [selectedColor, setSelectedColor] = useState("#FFF");
 
     const isBase64Video = (base64) => {
@@ -97,6 +95,8 @@ export default function UploadItem() {
                     setFile3={setFile3}
                     file4={file4}
                     setFile4={setFile4}
+                    file5={file5}
+                    setFile5={setFile5}
                     file1Preview={file1Preview}
                     setFile1Preview={setFile1Preview}
                     file2Preview={file2Preview}
@@ -105,6 +105,8 @@ export default function UploadItem() {
                     setFile3Preview={setFile3Preview}
                     file4Preview={file4Preview}
                     setFile4Preview={setFile4Preview}
+                    file5Preview={file5Preview}
+                    setFile5Preview={setFile5Preview}
                     noOfFilesAdded={noOfFilesAdded}
                     setNoOfFilesAdded={setNoOfFilesAdded}
                 />
@@ -118,6 +120,7 @@ export default function UploadItem() {
                 file2={file2}
                 file3={file3}
                 file4={file4}
+                file5={file5}
                 selectedColor={selectedColor}
             />
         </div>
