@@ -2,6 +2,7 @@
 
 import { Poppins } from "next/font/google";
 import { SnackbarProvider } from "notistack";
+import { Suspense } from "react";
 
 import Header from "@/components/header";
 import Footer from "@/components/footer";
@@ -31,9 +32,11 @@ export default function RootLayout({ children }) {
 
       <body className={`${poppins.className} h-screen`}>
         <SnackbarProvider>
-          <Header />
-          {children}
-          <Footer />
+          <Suspense>
+            <Header />
+            {children}
+            <Footer />
+          </Suspense>
         </SnackbarProvider>
       </body>
     </html>

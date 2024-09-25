@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { enqueueSnackbar } from "notistack";
 import Error from "next/error";
@@ -106,24 +105,22 @@ export default function Home() {
         return null;
 
     return <main className="relative">
-        <Suspense>
-            {
-                !searchParams.get("sellerId") && isLoaded && <>
-                    <ProfileSection sellerDetails={sellerDetails} />
-                    <ItemsSections sellerDetails={sellerDetails} />
-                </>
-            }
-            {
-                searchParams.get("sellerId") && isSellerProfileExists && isLoaded && <>
-                    <ProfileSectionForBuyer sellerDetails={sellerDetails} />
-                    <ItemsSectionsForBuyer sellerDetails={sellerDetails} />
-                </>
-            }
-            {
-                !isSellerProfileExists && isLoaded && (
-                    <Error statusCode={404} />
-                )
-            }
-        </Suspense>
+        {
+            !searchParams.get("sellerId") && isLoaded && <>
+                <ProfileSection sellerDetails={sellerDetails} />
+                <ItemsSections sellerDetails={sellerDetails} />
+            </>
+        }
+        {
+            searchParams.get("sellerId") && isSellerProfileExists && isLoaded && <>
+                <ProfileSectionForBuyer sellerDetails={sellerDetails} />
+                <ItemsSectionsForBuyer sellerDetails={sellerDetails} />
+            </>
+        }
+        {
+            !isSellerProfileExists && isLoaded && (
+                <Error statusCode={404} />
+            )
+        }
     </main>
 }
