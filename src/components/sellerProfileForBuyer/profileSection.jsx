@@ -120,10 +120,8 @@ export default function ProfileSection({ sellerDetails }) {
                     </p>
                 </div>
                 <div className="mt-[36px] lg:mt-[50px] flex flex-row flex-nowrap gap-x-[36px]">
-                    <button className="rounded-[8px] text-sm lg:text-lg font-medium bg-[#FE9135] py-[12px] lg:py-[16px] px-[21px] lg:px-[40px] text-white" onClick={() => {
-                        router.push(`/seller/uploadItem`);
-                    }}>List an item</button>
-                    <button className="rounded-[8px] border-2 border-[#939393] text-sm lg:text-lg font-medium py-[12px] lg:py-[16px] px-[21px] lg:px-[40px]">Edit profile</button>
+                    <button className="rounded-[8px] text-sm lg:text-lg font-medium bg-[#FE9135] py-[12px] lg:py-[16px] px-[21px] lg:px-[64px] text-white">Follow</button>
+                    <button className="rounded-[8px] border-2 border-[#939393] text-sm lg:text-lg font-medium py-[12px] lg:py-[16px] px-[21px] lg:px-[40px]">Send message</button>
                 </div>
             </aside>
         </section>

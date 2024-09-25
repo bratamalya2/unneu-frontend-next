@@ -2,19 +2,26 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { enqueueSnackbar } from "notistack";
+import Error from "next/error";
 
 import { useUnneuDataStore } from "@/store/store";
 
 import ProfileSection from "@/components/seller/profileSection";
 import ItemsSections from "@/components/seller/itemsSections";
+import ProfileSectionForBuyer from "@/components/sellerProfileForBuyer/profileSection";
+import ItemsSectionsForBuyer from "@/components/sellerProfileForBuyer/itemsSections";
 
 export default function Home() {
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [jwtToken, setJwtToken] = useState(null);
     const [refreshToken, setRefreshToken] = useState(null);
-    const setJwtTokenGlobal = useUnneuDataStore(store => store.setJwtToken);
     const [sellerDetails, setSellerDetails] = useState(null);
+    const [isSellerProfileExists, setIsSellerProfileExists] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const setJwtTokenGlobal = useUnneuDataStore(store => store.setJwtToken);
 
     const fetchSellerDetails = useCallback(async () => {
         try {
@@ -42,18 +49,50 @@ export default function Home() {
             }
             else {
                 setSellerDetails(y.sellerDetails);
+                setIsLoaded(true);
             }
         }
         catch (err) {
             console.log(err);
+            setIsLoaded(true);
         }
     }, [jwtToken, refreshToken, router, setJwtToken]);
 
+    const fetchSellerDetailsForBuyer = async () => {
+        try {
+            const sellerid = searchParams.get("sellerId");
+            const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/sellerProfileForBuyer`, {
+                method: "GET",
+                headers: {
+                    sellerid
+                }
+            });
+            const y = await x.json();
+            if (y.success) {
+                setIsSellerProfileExists(true);
+                setSellerDetails(y.sellerDetails);
+            }
+            else
+                setIsSellerProfileExists(false);
+            setIsLoaded(true);
+        }
+        catch (err) {
+            console.log(err);
+            setIsLoaded(true);
+        }
+    };
+
     useEffect(() => {
         //fetch user details
-        if (jwtToken && refreshToken)
+        if (jwtToken && refreshToken && !searchParams.get("sellerId"))
             fetchSellerDetails();
     }, [jwtToken, refreshToken, router, fetchSellerDetails]);
+
+    useEffect(() => {
+        //fetch for buyer
+        if (searchParams.get("sellerId"))
+            fetchSellerDetailsForBuyer();
+    }, [searchParams.get("sellerId")]);
 
     useEffect(() => {
         const unneuDataStore = JSON.parse(localStorage.getItem("unneuDataStore"));
@@ -62,11 +101,26 @@ export default function Home() {
         setRefreshToken(store.refreshToken);
     }, []);
 
-    if (!sellerDetails)
-        return <main className="h-full w-full"></main>
+    if (!isLoaded)
+        return null;
 
     return <main className="relative">
-        <ProfileSection sellerDetails={sellerDetails} />
-        <ItemsSections sellerDetails={sellerDetails} />
+        {
+            !searchParams.get("sellerId") && isLoaded && <>
+                <ProfileSection sellerDetails={sellerDetails} />
+                <ItemsSections sellerDetails={sellerDetails} />
+            </>
+        }
+        {
+            searchParams.get("sellerId") && isSellerProfileExists && isLoaded && <>
+                <ProfileSectionForBuyer sellerDetails={sellerDetails} />
+                <ItemsSectionsForBuyer sellerDetails={sellerDetails} />
+            </>
+        }
+        {
+            !isSellerProfileExists && isLoaded && (
+                <Error statusCode={404} />
+            )
+        }
     </main>
 }

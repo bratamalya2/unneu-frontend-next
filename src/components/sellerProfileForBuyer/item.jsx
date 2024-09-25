@@ -79,7 +79,7 @@ function Item({ itemDetail }) {
         </div>
         <div className="px-2 mt-[16px] w-full flex flex-row justify-between">
             <p className="text-sm lg:text-[18px] font-medium max-w-[70%]">{itemDetail.itemName}</p>
-            <div className="hidden lg:flex flex-row flex-nowrap gap-x-2">
+            <div className="hidden lg:flex flex-row flex-nowrap items-start gap-x-2">
                 <p className="font-medium">{itemDetail.noOfLikes}</p>
                 <Image src={Likes} alt="likes" className="relative w-[18px] h-[16px] top-1" />
             </div>

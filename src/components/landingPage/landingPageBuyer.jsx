@@ -18,7 +18,7 @@ export default function LandingPageBuyer() {
                     share the warmth of sisterhood that each saree carries
                     through its memory.
                 </p>
-                <button className="text-[18px] font-medium bg-[#FBC246] rounded-[20px] py-[16px] px-[32px] w-[168px]">Explore</button>
+                <button className="text-[18px] font-medium bg-[#FBC246] rounded-[20px] py-[16px] px-[32px] w-[168px] hover:bg-[#FE9135]">Explore</button>
             </aside>
             <Image src={LandingPageSellerBackground} alt="circles" className="w-[366px] h-[373px] absolute z-[-10] lg:left-[22%] xl:left-[34%] 2xl:left-[42%] lg:bottom-[-120px] xl:bottom-[-80px] 2xl:bottom-[-65px]" />
         </section>
