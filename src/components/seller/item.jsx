@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import Options from "@/../public/options (2).png";
 import Options2 from "@/../public/options (2) dark.png";
 import Likes from "@/../public/like (2).png";
-import LeftArrowLight from "@/../public/light arrow.svg";
-import RightArrowDark from "@/../public/dark arrow.svg";
 
-function Item({ itemDetail }) {
+function Item({ itemDetail, sellerId }) {
+    const router = useRouter();
     const [itemFiles, setItemFiles] = useState([]);
     const [itemUrls, setItemUrls] = useState([]);
+    const [showOptions, setShowOptions] = useState(false);
 
     const fetchItemFiles = async () => {
         try {
@@ -20,8 +21,10 @@ function Item({ itemDetail }) {
                 }
             });
             const y = await x.json();
-            if (y.success)
+            if (y.success) {
                 setItemFiles(y.itemFiles);
+                console.log(y.itemFiles[0]);
+            }
         }
         catch (err) {
             console.log(err);
@@ -72,7 +75,16 @@ function Item({ itemDetail }) {
                 </video>
             )
         }
-        <Image src={Options} alt="options" className="hidden lg:inline-block absolute w-[40px] h-[40px] top-2 right-2 z-10 hover:cursor-pointer" />
+        <Image src={Options} alt="options" className="hidden lg:inline-block absolute w-[40px] h-[40px] top-2 right-2 z-10 hover:cursor-pointer" onClick={() => {
+            setShowOptions(x => !x);
+        }} />
+        <div className={`${showOptions ? "block" : "hidden"} absolute w-[100px] flex flex-col flex-nowrap items-center bg-white top-[50px] right-2`}>
+            <div className="w-full" onClick={() => {
+                router.push(`/seller/editItem?sellerId=${sellerId}&itemId=${itemDetail.itemId}`);
+            }}>Edit listing</div>
+            <div className="h-[1px] w-full bg-black"></div>
+            <div className="w-full">Delete</div>
+        </div>
         <div className="absolute block lg:hidden flex flex-row flex-nowrap items-center gap-x-[8px] top-[260px] right-2 bg-white py-[4px] px-[10px] rounded-[6px]">
             <p className="text-sm font-medium">{itemDetail.noOfLikes}</p>
             <Image src={Likes} alt="likes" className="w-[14px] h-[13px]" />

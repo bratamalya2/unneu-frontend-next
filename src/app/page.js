@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import Modal from "react-bootstrap/Modal";
 import { Libre_Baskerville } from "next/font/google";
 
+import { useUnneuDataStore } from "@/store/store";
+
 import VerticalLeafLeft from "@/../public/vertical-leaf-left.png";
 import VerticalLeafRight from "@/../public/vertical-leaf-right.png";
 import Close from "@/../public/close.png";
@@ -22,6 +24,7 @@ const lbFont = Libre_Baskerville({ subsets: ["latin"], weight: ["400", "700"] })
 
 export default function Home() {
   const router = useRouter();
+  const setShowSignUp = useUnneuDataStore(store => store.setShowSignUp);
   const [showRentalPopup, setShowRentalPopup] = useState(false);
 
   const handleCloseRentalPopup = () => {
@@ -29,12 +32,15 @@ export default function Home() {
   }
 
   const handleScroll = () => {
-    setShowRentalPopup(true);
+    setShowSignUp(true);
     window.removeEventListener("scroll", handleScroll);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (

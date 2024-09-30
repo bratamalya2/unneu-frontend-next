@@ -30,6 +30,10 @@ export default function ItemsSections({ sellerDetails }) {
     };
 
     useEffect(() => {
+        console.log(sellerDetails);
+    }, [sellerDetails]);
+
+    useEffect(() => {
         fetchItemDetails();
     }, []);
 
@@ -69,7 +73,7 @@ export default function ItemsSections({ sellerDetails }) {
             sellerDetails.noOfItemsListed !== "0" && (
                 <div className="w-full max-h-[800px] mt-[32px] flex flex-row flex-wrap gap-4">
                     {
-                        itemDetails.map((x, i) => <Item itemDetail={x} key={i} />)
+                        itemDetails.map((x, i) => <Item itemDetail={x} sellerId={sellerDetails.sellerId} key={i} />)
                     }
                 </div>
             )

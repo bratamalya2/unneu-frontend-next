@@ -48,12 +48,14 @@ export default function Home() {
                 }
             }
             else {
+                setIsSellerProfileExists(true);
                 setSellerDetails(y.sellerDetails);
                 setIsLoaded(true);
             }
         }
         catch (err) {
             console.log(err);
+            setIsSellerProfileExists(false);
             setIsLoaded(true);
         }
     }, [jwtToken, refreshToken, router, setJwtToken]);
