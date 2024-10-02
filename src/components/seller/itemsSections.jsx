@@ -71,7 +71,7 @@ export default function ItemsSections({ sellerDetails }) {
         }
         {
             sellerDetails.noOfItemsListed !== "0" && (
-                <div className="w-full max-h-[800px] mt-[32px] flex flex-row flex-wrap gap-4">
+                <div className="w-full max-h-[900px] mt-[32px] flex flex-row flex-wrap gap-x-4 lg:gap-x-[10px] xl:gap-x-10 gap-y-4 overflow-y-auto">
                     {
                         itemDetails.map((x, i) => <Item itemDetail={x} sellerId={sellerDetails.sellerId} key={i} />)
                     }

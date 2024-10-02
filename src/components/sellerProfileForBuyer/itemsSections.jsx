@@ -42,7 +42,7 @@ export default function ItemsSections({ sellerDetails }) {
         <div className="absolute top-[35px] left-[5%] w-[90px] lg:w-[135px] h-[3px] bg-[#FE9135] rounded-[5px]"></div>
         <div className="mt-[24px] lg:mt-[50px] w-full flex flex-row flex-nowrap items-center justify-between">
             <div className="text-sm lg:text-[18px] font-semibold">Total {sellerDetails.noOfItemsListed} items</div>
-            <div className="w-[55%] lg:w-[25%] flex flex-row flex-nowrap items-center justify-between">
+            <div className="w-[55%] lg:w-[25%] xl:w-[20%] 2xl:w-[17%] flex flex-row flex-nowrap items-center justify-between">
                 <div className="flex flex-row flex-nowrap items-center text-sm lg:text-[18px] font-medium hover:cursor-pointer">
                     Category
                     <Image src={DownArrow} alt="expand" className="w-[11px] h-[7px] ml-[15px]" />
@@ -67,7 +67,7 @@ export default function ItemsSections({ sellerDetails }) {
         }
         {
             sellerDetails.noOfItemsListed !== "0" && (
-                <div className="w-full max-h-[800px] mt-[32px] flex flex-row flex-wrap gap-4">
+                <div className="w-full max-h-[900px] mt-[32px] flex flex-row flex-wrap gap-x-4 lg:gap-x-[10px] xl:gap-x-10 gap-y-4 overflow-y-auto">
                     {
                         itemDetails.map((x, i) => <Item itemDetail={x} key={i} />)
                     }

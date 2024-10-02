@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Modal from "react-bootstrap/Modal";
 
 import Location from "@/../public/location.png";
 import Verified from "@/../public/verified.png";
@@ -11,14 +12,26 @@ import LeftLeaf from "@/../public/Left-Leaf-Seller-profile.svg";
 import RightLeaf from "@/../public/Right-Leaf-Seller-profile.svg";
 import Share from "@/../public/share-seller-profile.png";
 import Dot from "@/../public/options-dot.svg";
+import Close from "@/../public/close.png";
+import Facebook from "@/../public/facebook-share.svg";
+import Linkedin from "@/../public/linkedin-share.svg";
+import X from "@/../public/x-share.svg";
+import Whatsapp from "@/../public/whatsapp-share.svg";
+import ShareLink from "@/../public/share-link.svg";
 
 import "@/styles/sellerProfileSection.css";
 
 export default function ProfileSection({ sellerDetails }) {
     const router = useRouter();
+    const pageUrl = encodeURIComponent(`https://unneu.com/seller?sellerId=${sellerDetails.sellerId}`);
+    const shareText = encodeURIComponent("Check out this awesome page!");
     const [profilePhotoUrl, setProfilePhotoUrl] = useState(null);
     const [coverPhotoUrl, setCoverPhotoUrl] = useState(null);
     const [ratingArr, setRatingArr] = useState([]);
+    const [showShareModal, setShowShareModal] = useState(false);
+
+    const handleCloseShareModal = () => setShowShareModal(false);
+    const handleShowShareModal = () => setShowShareModal(true);
 
     const getProfileAndCoverPhotos = useCallback(async () => {
         try {
@@ -50,6 +63,10 @@ export default function ProfileSection({ sellerDetails }) {
         }
     }, [sellerDetails.coverPhoto, sellerDetails.profilePhoto]);
 
+    const openShareLink = (url) => {
+        window.open(url, "_blank");
+    };
+
     useEffect(() => {
         getProfileAndCoverPhotos();
         const rating = parseInt(sellerDetails.avgRating);
@@ -62,6 +79,48 @@ export default function ProfileSection({ sellerDetails }) {
     }, [sellerDetails, getProfileAndCoverPhotos]);
 
     return <>
+        <Modal show={showShareModal} onHide={handleCloseShareModal} className="lg:w-[65%] lg:left-[17.5%] xl:w-[55%] xl:left-[22.5%] mt-[200px]">
+            <Modal.Body className="relative bg-[#F6F6F6] rounded-[20px] px-[25px] py-[15px]" style={{
+                boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
+            }}>
+                <Image src={Close} alt="close" onClick={handleCloseShareModal} className="w-[18px] h-[18px] absolute top-5 right-5 hover:cursor-pointer" />
+                <p className="text-2xl text-[#FE9135] font-semibold">Social Share</p>
+                <p className="mt-[30px] text-[18px] font-medium">
+                    Share this link via
+                </p>
+                <div className="mt-[15px] flex flex-row flex-nowrap items-center gap-x-[16px]">
+                    <Image src={Facebook} alt="facebook" className="w-[50px] h-[54px] hover:cursor-pointer" onClick={() => {
+                        openShareLink(`https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`);
+                    }} />
+                    <Image src={Linkedin} alt="linkedin" className="w-[50px] h-[54px] hover:cursor-pointer" onClick={() => {
+                        openShareLink(`https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`);
+                    }} />
+                    <Image src={X} alt="x" className="w-[50px] h-[54px] hover:cursor-pointer" onClick={() => {
+                        openShareLink(`https://twitter.com/intent/tweet?url=${pageUrl}&text=${shareText}`);
+                    }} />
+                    <Image src={Whatsapp} alt="whatsapp" className="w-[50px] h-[54px] hover:cursor-pointer" onClick={() => {
+                        openShareLink(`https://api.whatsapp.com/send?text=${shareText}%20${pageUrl}`);
+                    }} />
+                </div>
+                <p className="mt-[20px] font-medium">
+                    Copy link
+                </p>
+                <div className="mt-[12px] w-full border-[1.5px] border-[#5AA7BB] py-[23px] px-[17px] rounded-[8px] flex flex-row items-center flex-nowrap gap-x-1">
+                    <Image src={ShareLink} alt="copy-link" className="w-[27px] h-[19px]" />
+                    <p className="text-sm">https://unneu.com/seller?sellerId={sellerDetails.sellerId}</p>
+                </div>
+                <button className="mt-[25px] bg-[#FE9135] text-white w-full py-[10px] rounded-[8px] text-xl font-medium" onClick={async () => {
+                    try {
+                        await navigator.clipboard.writeText(`https://unneu.com/seller?sellerId=${sellerDetails.sellerId}`);
+                    }
+                    catch (err) {
+                        console.log(err);
+                    }
+                }}>
+                    Copy
+                </button>
+            </Modal.Body>
+        </Modal>
         <section className="w-full h-fit flex flex-col lg:flex-row flex-nowrap justify-between mt-[35px] lg:mt-[100px] px-[10%] lg:px-[5%]">
             <aside className={`w-full lg:w-[50%] h-[300px] lg:h-[500px] rounded-[10px] lg:rounded-[0px] relative default-background-svg ${!coverPhotoUrl && "default-cover-photo"}`} style={{
                 backgroundImage: coverPhotoUrl && `url(${coverPhotoUrl})`
@@ -77,7 +136,7 @@ export default function ProfileSection({ sellerDetails }) {
                     <Image src={Dot} alt="dot" className="w-[5px] h-[5px]" />
                     <Image src={Dot} alt="dot" className="w-[5px] h-[5px]" />
                 </div>
-                <Image src={Share} alt="share" className="w-[20px] h-[24px] absolute top-1 lg:top-2 right-10 hover:cursor-pointer" />
+                <Image src={Share} alt="share" className="w-[20px] h-[24px] absolute top-1 lg:top-2 right-10 hover:cursor-pointer" onClick={handleShowShareModal} />
                 <p className="text-2xl lg:text-3xl font-medium">{sellerDetails.storeName}</p>
                 {
                     sellerDetails.storeDescription.length > 0 && <>

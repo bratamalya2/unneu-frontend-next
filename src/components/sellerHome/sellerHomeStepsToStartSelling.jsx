@@ -9,6 +9,7 @@ import List from "@/../public/sellerHome-list.png";
 import Manage from "@/../public/sellerHome-manage.png";
 import Shipping from "@/../public/sellerHome-shipping.png";
 import Payments from "@/../public/sellerHome-payments.svg";
+import RightArrow from "@/../public/dark arrow.svg";
 
 import "@/styles/sellerHomeStepsToStartSelling.css";
 
@@ -20,6 +21,7 @@ export default function SellerHomeStepsToStartSelling() {
         <section className="absolute lg:static flex flex-col md:flex-row flex-nowrap mt-[20px] md:mt-[48px] w-[90%] md:w-[90%] left-[5%] md:left-[10%]">
             <aside className="relative w-full md:w-[50%] rounded-[36px] lg:w-[60%] xl:w-[70%] md:min-h-[692px] h-[400px]" id="seller-home-steps-tostart-selling-hero-div">
                 <div className="absolute top-0 right-0 w-[100px] h-[50px] bg-yellow-400 rounded-[36px] z-0">
+                    <Image src={RightArrow} alt="arrow" className="absolute w-[24px] h-[18px] absolute top-4 right-2" />
                 </div>
                 <button
                     className="absolute top-0 right-0 h-[50px] text-[#5A5A5A] text-[18px] font-semibold px-[54px] py-[10px] bg-[#FFF] rounded-tr-[32px] rounded-bl-[32px] rounded-br-[32px] !border !border-[#FBC246] z-10"
