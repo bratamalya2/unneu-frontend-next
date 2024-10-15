@@ -130,7 +130,7 @@ function Item({ itemDetail, sellerId }) {
             <Modal.Body>
                 <Image src={Close} alt="close" className="absolute w-[18px] h-[18px] right-5 top-5 hover:cursor-pointer" onClick={handleClose} />
                 {
-                    ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[0].split(".")[itemFiles[0].split(".").length - 1]) ? (
+                    ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[currentIndex].split(".")[itemFiles[currentIndex].split(".").length - 1]) ? (
                         <img src={itemUrls[currentIndex]} alt="item image" className="mx-auto h-full max-w-[94%] rounded-[6px]" />
                     ) : (
                         <video className="mx-auto h-full max-w-[94%] rounded-[6px] object-cover" loop={true} autoPlay="autoplay" muted>

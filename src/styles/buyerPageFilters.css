@@ -1,0 +1,23 @@
+.custom-filter-checkbox {
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    border-radius: 50%;
+    border: 1px solid #666565;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.custom-filter-checkbox:checked {
+    background-color: #FE9135;
+    border: 2px solid #FE9135;
+}
+
+.custom-filter-checkbox:checked::before {
+    position: absolute;
+    bottom: -25%;
+    left: 5%;
+    content: '✓';
+    color: white;
+}

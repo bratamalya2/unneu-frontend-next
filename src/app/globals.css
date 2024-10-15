@@ -137,3 +137,7 @@
     border-radius: 100%;
     background: rgb(254 163 85);
 }
+
+.custom-horizontal-scroll-with-btns {
+    scroll-behavior: smooth;
+}
