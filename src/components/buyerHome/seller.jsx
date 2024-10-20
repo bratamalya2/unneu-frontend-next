@@ -172,20 +172,20 @@ export default function Seller({ seller, index }) {
     if (!seller)
         return null;
 
-    return <div className={`relative inline-flex ${index > 0 && "ml-[20px] lg:ml-[48px]"} bg-[#FFF] rounded-[24px] w-[170px] lg:w-[271px] h-[300px] lg:h-[344px] flex-col items-center`} style={{
+    return <div className={`relative inline-flex ${index > 0 && "ml-[20px] lg:ml-[48px]"} bg-[#FFF] rounded-[24px] w-[170px] lg:w-[271px] h-[270px] lg:h-[344px] flex-col items-center`} style={{
         boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
     }}>
-        <Image src={sellerProfilePhotoUrl} alt="profile photo" width={88} height={88} className="mt-[24px] rounded-[100%]" />
+        <Image src={sellerProfilePhotoUrl} alt="profile photo" width={window.innerWidth > 500 ? 80 : 70} height={window.innerWidth > 500 ? 80 : 70} className="mt-[12px] rounded-[100%]" />
         {
             seller.isVerified.BOOL && (
-                <Image src={Verified} alt="verified" className="absolute w-[20px] h-[20px] top-[80px] left-[65%] lg:left-[60%]" />
+                <Image src={Verified} alt="verified" className="absolute w-[20px] h-[20px] top-[55px] lg:top-[65px] left-[60%] lg:left-[57%]" />
             )
         }
         <Link href={`/seller?sellerId=${seller.sellerId.S}`}>
             <p className="mt-[20px] text-sm lg:text-[18px] font-medium hover:underline">{seller.storeName.S}</p>
         </Link>
         <p className="mt-[8px] flex flex-row items-center gap-x-[3px] lg:gap-x-[7px] text-[#9C9C9C] text-xs lg:text-[18px] font-medium">
-            <Image src={Location} alt="loc" className="w-[14px] h-[20px] opacity-45" />
+            <Image src={Location} alt="loc" className="w-[14px] h-[17px] opacity-45" />
             {seller.city.S}, {seller.state.S}
         </p>
         <div className="mt-[15px] flex flex-row flex-nowrap items-center gap-x-[3px] lg:gap-x-[7px]">
@@ -196,7 +196,7 @@ export default function Seller({ seller, index }) {
             }
             <div className="ml-1 lg:ml-3 text-[#8D8D8D] text-sm">({seller.numberOfReviews.N})</div>
         </div>
-        <button className={`mt-[20px] lg:mt-[40px] ${isFollowing ? "bg-green-500" : "bg-[#FBC246]"} rounded-[16px] py-[7px] lg:py-[12px] px-[15px] px-[50px] font-medium flex flex-row flex-nowrap items-center text-sm lg:text-base`} onClick={modifyFollow}>
+        <button className={`mt-[20px] lg:mt-[40px] ${isFollowing ? "bg-green-500" : "bg-[#FBC246]"} rounded-[16px] py-[7px] lg:py-[12px] px-[28px] lg:px-[50px] font-medium flex flex-row flex-nowrap items-center text-sm lg:text-base`} onClick={modifyFollow}>
             {
                 isFollowing ? (
                     <>

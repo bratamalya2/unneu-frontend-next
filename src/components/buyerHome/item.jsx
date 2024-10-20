@@ -37,6 +37,7 @@ export default function Item({ item }) {
     const [sellerProfilePhoto, setSellerProfilePhoto] = useState(null);
     const [sellerProfilePhotoUrl, setSellerProfilePhotoUrl] = useState("");
     const [showAnimation, setShowAnimation] = useState(false);
+    const [showMobileShare, setShowMobileShare] = useState(false);
     const [showWishlistAndShare, setShowWishlistAndShare] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [modalCurrentIndex, setModalCurrentIndex] = useState(0);
@@ -431,9 +432,22 @@ export default function Item({ item }) {
                 <p className="lg:text-xl font-medium">₹ {item.sellingPrice.N}</p>
                 <p className="text-sm lg:text-base text-[#00000066] line-through">₹ {item.marketPrice.N}</p>
             </div>
-            <div className="lg:hidden px-[5%] mt-[15px] w-full flex flex-row flex-nowrap items-center justify-between">
+            <div className="relative lg:hidden px-[5%] mt-[15px] w-full flex flex-row flex-nowrap items-center justify-between">
+                {
+                    showMobileShare && (
+                        <div className="z-50 absolute py-[8px] px-[18px] text-sm border-[0.5px] border-[#E0E0E0] bg-white flex flex-row flex-nowrap items-center gap-x-[9px] right-2 top-[-50px]" style={{
+                            boxShadow: "0px 11px 40px 4px rgba(81, 69, 55, 0.05)"
+                        }} onClick={() => {
+                            setShowMobileShare(false);
+                            handleShowShareModal();
+                        }}>
+                            <Image src={ShareProfile} alt="share" className="w-[12px] h-[14px]" />
+                            Share
+                        </div>
+                    )
+                }
                 <button className="py-[5px] px-[24px] rounded-[4px] bg-[#FE9135] active:bg-[#FBC246] text-white text-sm font-medium">Add to cart</button>
-                <Image src={Options} alt="options" className="w-[5px] h-[22px]" />
+                <Image src={Options} alt="options" className="w-[5px] h-[22px]" onClick={() => setShowMobileShare(x => !x)} />
             </div>
             {
                 showWishlistAndShare && (
@@ -507,11 +521,11 @@ export default function Item({ item }) {
                 </button>
             </Modal.Body>
         </Modal>
-        <Modal show={showQuickView} onHide={handleCloseQuickView} className="mt-[100px] lg:max-w-[70%] lg:left-[15%] xl:max-w-[55%] xl:left-[22.5%] 2xl:max-w-[45%] 2xl:left-[27.5%] rounded-b-[16px] lg:rounded-b-0">
-            <Modal.Body className="w-full h-[450px] flex flex-col lg:flex-row lg:justify-between p-0 overflow-y-hidden rounded-b-[16px] lg:rounded-b-0">
-                <section className="relative w-full lg:w-[45%] h-[65%] lg:h-full">
+        <Modal show={showQuickView} onHide={handleCloseQuickView} className="left-[15%] lg:left-0 w-[70%] lg:w-full mt-[100px] lg:max-w-[70%] lg:left-[15%] xl:max-w-[55%] xl:left-[22.5%] 2xl:max-w-[45%] 2xl:left-[27.5%] rounded-b-[16px] rounded-t-[16px] lg:rounded-b-0">
+            <Modal.Body className="w-full h-[450px] flex flex-col lg:flex-row lg:justify-between p-0 overflow-y-hidden rounded-b-[16px] rounded-t-[16px] lg:rounded-b-0">
+                <section className="relative w-full lg:w-[45%] h-[60%] lg:h-full">
                     <Image src={Close} alt="close" className="lg:hidden absolute top-4 right-4 w-[16px] h-[16px] hover:cursor-pointer z-10" onClick={handleCloseQuickView} />
-                    <img src={imgUrls[modalCurrentIndex]} alt="item-img" className="absolute z-0 w-full h-full rounded-l-[16px] lg:rounded-l-[32px] lg:rounded-r-0" />
+                    <img src={imgUrls[modalCurrentIndex]} alt="item-img" className="absolute z-0 w-full h-full lg:rounded-l-[32px] lg:rounded-r-0" />
                     {
                         modalCurrentIndex === 0 ? (
                             <div className="absolute z-10 w-[42px] h-[42px] rounded-[100%] bg-[#FFFFFF] hover:cursor-pointer top-[45%] left-3 flex flex-row flex-nowrap items-center justify-center">
@@ -530,29 +544,35 @@ export default function Item({ item }) {
                             </div>
                         )
                     }
-                    <div className="absolute bottom-2 flex flex-row flex-nowrap items-center gap-x-[7px]" style={{
-                        left: `calc(50% - ${itemImagesOffset}px)`
-                    }}>
-                        {
-                            imgUrls.map((url, index) => (
-                                <div className={`w-[8px] h-[8px] rounded-[100%] bg-[${index === modalCurrentIndex ? "#FBC246" : "#D9D9D9"}]`} key={index}>
-                                </div>
-                            ))
-                        }
-                    </div>
+                    {
+                        imgUrls.length > 1 && (
+                            <div className="absolute bottom-2 flex flex-row flex-nowrap items-center gap-x-[7px]" style={{
+                                left: `calc(50% - ${itemImagesOffset}px)`
+                            }}>
+                                {
+                                    imgUrls.map((url, index) => (
+                                        <div className={`w-[8px] h-[8px] rounded-[100%] bg-[${index === modalCurrentIndex ? "#FBC246" : "#D9D9D9"}]`} key={index}>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        )
+                    }
                 </section>
-                <section className="relative w-full lg:w-[50%] h-[35%] lg:h-full">
+                <section className="relative w-full lg:w-[50%] h-[40%] lg:h-full">
                     <Image src={LeftLeaf} alt="leaf" className="hidden lg:block absolute h-[70px] w-[218px] top-[-10px] left-[-30px]" />
                     <Image src={RightLeaf} alt="leaf" className="hidden lg:block absolute h-[70px] w-[218px] top-[-10px] right-[30px]" />
                     <Image src={Close} alt="close" className="hidden lg:block absolute top-10 right-4 w-[16px] h-[16px] hover:cursor-pointer" onClick={handleCloseQuickView} />
                     <div className="mt-[15px] px-[5%] lg:hidden flex flex-row flex-nowrap items-center justify-between">
-                        <div className="font-medium text-[15px] max-w-[65%]">{item.itemName.S}</div>
+                        <div className="font-medium text-[15px] max-w-[65%] max-h-[20px] overflow-hidden">{item.itemName.S}</div>
                         <div className="font-semibold text-[17px] max-w-[30%]">₹ {item.sellingPrice.N}</div>
                     </div>
                     <p className="hidden lg:block lg:mt-[60px] font-medium text-[18px]">{item.itemName.S}</p>
                     <div className="px-[5%] lg:px-0 mt-[10px] lg:mt-[20px] flex flex-row flex-nowrap items-center gap-x-[10px]">
                         <img src={sellerProfilePhotoUrl} alt="seller-img" className="w-[36px] h-[36px] rounded-[100%]" />
-                        <p className="text-sm">{sellerStoreName}</p>
+                        <Link href={`/seller?sellerId=${item.sellerId}`}>
+                            <p className="text-sm">{sellerStoreName}</p>
+                        </Link>
                     </div>
                     <div className="hidden mt-[20px] w-full lg:flex flex-row flex-nowrap items-center gap-x-[10px]">
                         <p className="text-xl font-medium">₹ {item.sellingPrice.N}</p>
@@ -564,7 +584,7 @@ export default function Item({ item }) {
                     <button className="hidden lg:block mt-[20px] border border-[#9D9D9D] rounded-[24px] py-[10px] px-[95px] font-medium">More Details</button>
                     <div className="lg:hidden w-full absolute bottom-0 left-0 flex flex-row flex-nowrap items-center justify-between">
                         <div className="py-[12px] w-[50%] text-white text-[15px] font-medium bg-[#FE9135] text-center">Add to cart</div>
-                        <div className="py-[12px] w-[50%] text-[#787878] text-[15px] font-medium text-center border-t border-t-[#C8C8C8]">More detail</div>
+                        <div className="py-[12px] w-[50%] text-[#787878] text-[15px] font-medium text-center border-t border-t-[#C8C8C8]">More details</div>
                     </div>
                 </section>
             </Modal.Body>

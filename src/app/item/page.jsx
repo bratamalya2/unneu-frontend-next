@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Error from "next/error";
 
+import Left from "@/components/itemDetailsPage/left";
+
 export default function ItemHome() {
     const searchParams = useSearchParams();
     const [isItemProfileExists, setIsItemProfileExists] = useState(false);
@@ -47,7 +49,10 @@ export default function ItemHome() {
     return <main className="w-full relative my-[48px] px-[5%]">
         {
             searchParams.get("itemId") && isItemProfileExists && isLoaded && <>
-                <p className="mt-[35px] text-[#494949]">Home / shop / {itemDetails.itemName}</p>
+                <p className="mt-[35px] mb-[20px] text-[#494949]">Home / shop / {itemDetails.itemName}</p>
+                <section className="w-full flex flex-row flex-nowrap justify-between">
+                    <Left itemId={searchParams.get("itemId")} itemDetails={itemDetails} />
+                </section>
             </>
         }
         {
