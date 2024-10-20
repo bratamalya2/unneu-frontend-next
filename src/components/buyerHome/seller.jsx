@@ -6,13 +6,12 @@ import Link from "next/link";
 
 import { useUnneuDataStore } from "@/store/store";
 
-import SignInPopup from "../signInPopup";
-import SignUpPopup from "../signUpPopup";
-
 import Location from "@/../public/location.png";
 import RatingSelected from "@/../public/rating-selected.png";
 import RatingUnselected from "@/../public/rating-unselected.png";
 import Verified from "@/../public/verified.png";
+import LeftLeaf from "@/../public/aboutUs-left-leaf.png";
+import RightLeaf from "@/../public/aboutUs-right-leaf.png";
 
 export default function Seller({ seller, index }) {
     const [sellerProfilePhotoUrl, setSellerProfilePhotoUrl] = useState("");
@@ -172,9 +171,11 @@ export default function Seller({ seller, index }) {
     if (!seller)
         return null;
 
-    return <div className={`relative inline-flex ${index > 0 && "ml-[20px] lg:ml-[48px]"} bg-[#FFF] rounded-[24px] w-[170px] lg:w-[271px] h-[270px] lg:h-[344px] flex-col items-center`} style={{
+    return <div className={`relative inline-flex ${index > 0 && "ml-[20px] lg:ml-[48px]"} bg-[#FFF] rounded-[24px] w-[170px] lg:w-[271px] h-[270px] lg:h-[344px] flex-col items-center overflow-hidden`} style={{
         boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
     }}>
+        <Image src={LeftLeaf} alt="leaf" className="absolute h-[50%] left-[-17px] bottom-0 w-[30px] lg:w-[40px] z-0" />
+        <Image src={RightLeaf} alt="leaf" className="absolute h-[50%] right-[-17px] bottom-0 w-[30px] lg:w-[40px] z-0" />
         <Image src={sellerProfilePhotoUrl} alt="profile photo" width={window.innerWidth > 500 ? 80 : 70} height={window.innerWidth > 500 ? 80 : 70} className="mt-[12px] rounded-[100%]" />
         {
             seller.isVerified.BOOL && (

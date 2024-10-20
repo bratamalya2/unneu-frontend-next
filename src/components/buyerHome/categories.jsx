@@ -39,7 +39,7 @@ export default function Categories() {
     }, []);
 
     return <>
-        <section className="hidden lg:block relative mt-[80px] h-[380px] overflow-y-hidden whitespace-nowrap overflow-x-hidden pl-[5%] custom-horizontal-scroll-with-btns z-0" id="scroll-container-buyer-home">
+        <section className="pl-[3%] hidden lg:block relative mt-[80px] h-[380px] overflow-y-hidden whitespace-nowrap overflow-x-hidden pl-[5%] custom-horizontal-scroll-with-btns z-0" id="scroll-container-buyer-home">
             <section className="inline-block relative lg:w-[30%] xl:w-[25%] 2xl:w-[22%] h-full rounded-[24px]">
                 <Image src={NewArrivals} alt="new-arrivals" className="absolute w-full h-full z-0 rounded-[24px]" />
                 <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] px-[34px] font-bold rounded-[16px]" style={{
@@ -134,7 +134,7 @@ export default function Categories() {
             {
                 scrollAmount === 0 ? (
                     <div className="border border-neutral-600 rounded-[100%] w-[50px] h-[50px] flex flex-row flex-nowrap items-center justify-center">
-                        <Image src={LeftLightArrow} alt="left-arrow" className="w-[25px] h-[25px]" />
+                        <Image src={LeftLightArrow} alt="left-arrow" className="w-[20px] h-[20px]" />
                     </div>
                 ) : (
                     <Image src={LeftDarkArrow} alt="left-arrow" className="w-[50px] h-[50px] hover:cursor-pointer" onClick={scrollLeft} />
@@ -145,7 +145,7 @@ export default function Categories() {
                     <Image src={RightLightArrow} alt="right-arrow" className="w-[50px] h-[50px]" />
                 ) : (
                     <div className="border border-neutral-600 rounded-[100%] w-[50px] h-[50px] flex flex-row flex-nowrap items-center justify-center hover:cursor-pointer" onClick={scrollRight}>
-                        <Image src={RightDarkArrow} alt="right-arrow" className="w-[25px] h-[25px]" />
+                        <Image src={RightDarkArrow} alt="right-arrow" className="w-[20px] h-[20px]" />
                     </div>
                 ))
             }

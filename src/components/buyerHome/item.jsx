@@ -6,9 +6,6 @@ import Modal from "react-bootstrap/Modal";
 
 import { useUnneuDataStore } from "@/store/store";
 
-import SignInPopup from "../signInPopup";
-import SignUpPopup from "../signUpPopup";
-
 import QuickView from "@/../public/buyer-page-quick-view.svg";
 import Like from "@/../public/like.png";
 import Like2 from "@/../public/like (2).png";
@@ -48,9 +45,7 @@ export default function Item({ item }) {
     const [isWishlistModified, setIsWishlistModified] = useState(false);
     const setJwtTokenAtStore = useUnneuDataStore(store => store.setJwtToken);
     const [showShareModal, setShowShareModal] = useState(false);
-    const showSignIn = useUnneuDataStore(store => store.showSignIn);
     const setShowSignIn = useUnneuDataStore(store => store.setShowSignIn);
-    const showSignUp = useUnneuDataStore(store => store.showSignUp);
     const setShowSignUp = useUnneuDataStore(store => store.setShowSignUp);
 
     const handleCloseShareModal = () => setShowShareModal(false);
@@ -58,14 +53,6 @@ export default function Item({ item }) {
 
     const handleCloseQuickView = () => setShowQuickView(false);
     const handleShowQuickView = () => setShowQuickView(true);
-
-    const hideSignIn = () => {
-        setShowSignIn(false);
-    };
-
-    const hideSignUp = () => {
-        setShowSignUp(false);
-    };
 
     const reduceModalCurrentIndex = () => {
         setModalCurrentIndex((curr) => {
@@ -364,8 +351,6 @@ export default function Item({ item }) {
         return null;
 
     return <>
-        <SignInPopup showSignIn={showSignIn} hideSignIn={hideSignIn} />
-        <SignUpPopup showSignUp={showSignUp} hideSignUp={hideSignUp} />
         <div className="bg-[#F4F4F4] lg:bg-white relative shadow-xl w-[48%] lg:w-[31%] xl:w-[28%] min-[1400px]:w-[22%] 2xl:w-[23%] min-[1715px]:w-[20%] h-[370px] lg:h-[470px] xl:h-[550px] min-[1400px]:h-[450px] 2xl:h-[500px] min-[1715px]:h-[550px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
             {
                 ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[currentIndex].split(".")[itemFiles[currentIndex].split(".").length - 1]) ? (
@@ -521,7 +506,7 @@ export default function Item({ item }) {
                 </button>
             </Modal.Body>
         </Modal>
-        <Modal show={showQuickView} onHide={handleCloseQuickView} className="left-[15%] lg:left-0 w-[70%] lg:w-full mt-[100px] lg:max-w-[70%] lg:left-[15%] xl:max-w-[55%] xl:left-[22.5%] 2xl:max-w-[45%] 2xl:left-[27.5%] rounded-b-[16px] rounded-t-[16px] lg:rounded-b-0">
+        <Modal show={showQuickView} onHide={handleCloseQuickView} className="left-[20%] lg:left-0 w-[60%] lg:w-full mt-[100px] lg:max-w-[70%] lg:left-[15%] xl:max-w-[55%] xl:left-[22.5%] 2xl:max-w-[45%] 2xl:left-[27.5%] rounded-b-[16px] rounded-t-[16px] lg:rounded-b-0">
             <Modal.Body className="w-full h-[450px] flex flex-col lg:flex-row lg:justify-between p-0 overflow-y-hidden rounded-b-[16px] rounded-t-[16px] lg:rounded-b-0">
                 <section className="relative w-full lg:w-[45%] h-[60%] lg:h-full">
                     <Image src={Close} alt="close" className="lg:hidden absolute top-4 right-4 w-[16px] h-[16px] hover:cursor-pointer z-10" onClick={handleCloseQuickView} />

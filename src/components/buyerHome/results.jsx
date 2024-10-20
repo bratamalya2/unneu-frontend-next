@@ -18,10 +18,10 @@ export default function Results({ items, appliedFilters, removeFilter, sortBy, s
     const [showSortOptions, setShowSortOptions] = useState(false);
 
     return <>
-        <aside className="px-[5%] lg:pl-[5%] lg:pr-0 hidden lg:block lg:w-[70%] xl:w-[75%] 2xl:w-[78%]">
+        <aside className="relative px-[5%] lg:pl-[5%] lg:pr-0 hidden lg:block lg:w-[70%] xl:w-[75%] 2xl:w-[78%]">
             <p className="text-3xl">Pre-owned Sarees <span className="text-xl">({items.length} results)</span></p>
             <div className="mt-[2px] w-full h-[1px] bg-gray-500"></div>
-            <section className="relative w-full flex flex-row flex-nowrap justify-between">
+            <section className="w-full flex flex-row flex-nowrap justify-between">
                 <div className="mt-[20px] lg:w-[61%] xl:w-[70%] 2xl:w-[75%] flex flex-row items-center flex-wrap gap-x-[18px] gap-y-[18px]">
                     {
                         appliedFilters.length > 0 && <p>Applied filters:</p>
@@ -51,18 +51,18 @@ export default function Results({ items, appliedFilters, removeFilter, sortBy, s
                         })
                     }
                 </div>
-                <div className="mt-[20px] lg:w-[45%] xl:w-[30%] 2xl:w-[25%] flex flex-row flex-nowrap gap-x-[18px]">
-                    <div className="flex flex-row flex-nowrap py-[13px]">
+                <div className="absolute right-0 mt-[20px] lg:w-[35%] xl:w-[30%] min-[1400px]:w-[25%] 2xl:w-[22%] flex flex-row flex-nowrap gap-x-[10px]">
+                    <div className="flex flex-row flex-nowrap py-[9px]">
                         <p>Sort by</p>
                     </div>
-                    <div className="relative py-[13px] px-[20px] min-w-[180px] justify-end flex flex-row flex-nowrap self-start gap-x-[16px] rounded-[16px] text-xs border border-black hover:cursor-pointer" onClick={() => {
+                    <div className="py-[13px] px-[20px] justify-end flex flex-row flex-nowrap self-start gap-x-[16px] rounded-[16px] text-xs border border-black hover:cursor-pointer" onClick={() => {
                         setShowSortOptions(x => !x);
                     }}>
                         {sortBy}
                         <Image src={DownArrow} alt="expand" className="w-[12px] h-[5px] self-center" />
                         {
                             showSortOptions && (
-                                <div className="bg-white top-[50px] absolute w-full right-0 z-10 border border-black">
+                                <div className="bg-white top-[50px] absolute min-w-[180px] right-0 z-10 border border-black">
                                     {
                                         sortOptions.map((option, i) => (
                                             <>
@@ -83,7 +83,7 @@ export default function Results({ items, appliedFilters, removeFilter, sortBy, s
                     </div>
                 </div>
             </section>
-            <section className="mt-[30px] w-full flex flex-row flex-wrap items-center lg:gap-x-[16px] xl:gap-x-[30px] min-[1400px]:gap-x-[36px] 2xl:gap-x-[16px] min-[1715px]:gap-x-[42px] gap-y-[32px]">
+            <section className="relative mt-[70px] w-full flex flex-row flex-wrap items-center lg:gap-x-[16px] xl:gap-x-[30px] min-[1400px]:gap-x-[36px] 2xl:gap-x-[16px] min-[1715px]:gap-x-[42px] gap-y-[32px]">
                 {
                     items.map((item) => <Item key={item.itemId.S} item={item} />)
                 }

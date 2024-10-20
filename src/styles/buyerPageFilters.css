@@ -21,3 +21,10 @@
     content: '✓';
     color: white;
 }
+
+@media screen and (min-width: 1024px) {
+    .custom-filter-checkbox:checked::before {
+        bottom: -25%;
+        left: 10%;
+    }
+}

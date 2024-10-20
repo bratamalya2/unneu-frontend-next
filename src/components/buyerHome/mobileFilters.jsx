@@ -68,7 +68,7 @@ export default function MobileFilters({ appliedFilters, addFilter, removeFilter,
             setSearchedSeller("");
     }, [showSellerProfiles]);
 
-    return <section className={`${showMobileFilters ? "w-full h-fit mt-[30px] pb-[50px]" : "w-0 h-0"} transition-[width] duration-500 ease-in-out absolute border-y-2 border-y-black rounded-t-[10px] sticky bg-white top-[20vh] z-50 overflow-y-auto`}>
+    return <section className={`${showMobileFilters ? "w-full h-fit mt-[30px] pb-[50px]" : "w-0 h-0"} transition-[width] duration-500 ease-in-out absolute border-y-[0.5px] border-y-black rounded-t-[10px] sticky bg-white top-[20vh] z-50 overflow-y-auto`}>
         <div className="w-full px-[5%] mt-[20px] flex flex-row flex-nowrap items-center justify-between">
             <Image src={Close} alt="close" className="w-[15px] h-[15px]" onClick={handleCloseMobileFilters} />
             <div className="text-xl font-medium">Filter</div>

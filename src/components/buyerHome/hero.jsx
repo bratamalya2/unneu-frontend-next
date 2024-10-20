@@ -19,7 +19,7 @@ export default function Hero() {
             <Image src={Gradient} alt="bg" className="absolute w-full h-full z-0" />
             <Image src={HeroImg} alt="hero" className="absolute right-0 bottom-0 h-full max-w-[50%] z-10" />
             <div className="absolute left-[50%] top-[17px] z-20">
-                <div className="relative w-[13px] h-[13px] top-4 left-[60%] rounded-[100%] bg-[#595959]"></div>
+                <div className="relative w-[13px] h-[13px] top-4 left-[55%] rounded-[100%] bg-[#595959]"></div>
                 <Image src={SampleSeller1} alt="sample-seller-1" className="lg:h-[140px] xl:h-[160px] lg:w-[110px] xl:w-[130px]" />
             </div>
             <div className="absolute left-[50%] bottom-[17px] z-20">
@@ -48,12 +48,12 @@ export default function Hero() {
                 <Image src={Gradient} alt="bg" className="absolute w-full h-full z-0" />
                 <Image src={HeroImg} alt="hero" className="absolute right-0 top-0 w-[95%] max-h-[232px] z-10" />
                 <div className="absolute left-[2%] top-[17px] z-20">
-                    <div className="relative w-[8px] h-[8px] left-[35%] top-3 rounded-[100%] bg-[#595959]"></div>
-                    <Image src={SampleSeller2} alt="sample-seller-2" className="w-[70px] h-[87px]" />
+                    <div className="relative w-[8px] h-[8px] left-[35%] top-4 rounded-[100%] bg-[#595959]"></div>
+                    <Image src={SampleSeller2} alt="sample-seller-2" className="w-[70px] h-[100px]" />
                 </div>
                 <div className="absolute left-[20%] top-[155px] z-20">
-                    <div className="relative w-[8px] h-[8px] left-[50%] top-2 rounded-[100%] bg-[#595959]"></div>
-                    <Image src={SampleSeller1} alt="sample-seller-1" className="w-[70px] h-[87px]" />
+                    <div className="relative w-[8px] h-[8px] left-[50%] top-4 rounded-[100%] bg-[#595959]"></div>
+                    <Image src={SampleSeller1} alt="sample-seller-1" className="w-[70px] h-[100px]" />
                 </div>
             </aside>
             <aside className="absolute top-[270px] self-center text-center">
