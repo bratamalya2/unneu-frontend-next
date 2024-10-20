@@ -182,6 +182,7 @@ export default function EditItem() {
             if (y.success) {
                 setItemDetails(y.items.find(x => x.itemId === searchParams.get("itemId")));
                 setIsItemProfileExists(true);
+                setIsLoaded(true);
             }
             else {
                 setIsItemProfileExists(false);

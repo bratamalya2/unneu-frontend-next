@@ -91,7 +91,7 @@ export default function Header() {
             showHamburger && (
                 <nav className={`block ${pathname === "/" ? "md:hidden" : "lg:hidden"} bg-white max-w-[363px] w-[80%] h-[560px] list-none absolute z-50 rounded-tr-[24px] rounded-br-[24px]`} style={{
                     boxShadow: "0px 4px 78px 0px rgba(0, 0, 0, 0.25)"
-                }}>
+                }} id="mobile-nav">
                     <Image src={CloseIcon} alt="close" className="w-[14px] h-[14px] absolute top-[90px] right-5" onClick={hideHamburger} />
                     <Image src={Like} alt="wishlist" className="w-[20px] h-[17px] absolute left-5 top-10" />
                     <div className="absolute top-10 left-[50px] text-[14px]">Wish list</div>
@@ -166,7 +166,7 @@ export default function Header() {
             )
         }
         {
-            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home") && (
+            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item") && (
                 <header className={`hidden ${lbFont.className} h-[90px] lg:flex flex-row flex-nowrap items-center justify-between px-[5%]`}>
                     <Image src={Logo} alt="Unneu" className="w-[125px] h-[44px]" />
                     <nav className="list-none lg:ml-[5%] xl:ml-[8%] 2xl:ml-[10%] lg:w-[33%] xl:w-[30%] 2xl:w-[28%] flex flex-row flex-nowrap items-center justify-between">
@@ -183,7 +183,7 @@ export default function Header() {
                         <Image src={Cart} alt="Cart" className="w-[24px] h-[24px] hover:cursor-pointer" />
                     </div>
                     {
-                        pathname !== "/buyer/home" && (
+                        (pathname !== "/buyer/home" && pathname !== "/item") && (
                             <button className="text-[18px] font-bold bg-[#FE9135] py-[12px] px-[38px] rounded-[12px] text-white">Sell</button>
                         )
                     }
@@ -191,11 +191,13 @@ export default function Header() {
             )
         }
         {
-            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home") && (
+            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item") && (
                 <header className={`${lbFont.className} block lg:hidden h-[76px] flex items-center px-[15px] pt-[20px] pb-[20px] z-[200] sticky top-0 bg-white`}>
-                    <Image src={Hamburger} alt="details" className="w-[20px] h-[14px]" onClick={() => {
-                        setShowHamburger(true);
-                    }} />
+                    <a href="#mobile-nav">
+                        <Image src={Hamburger} alt="details" className="w-[20px] h-[14px]" onClick={() => {
+                            setShowHamburger(true);
+                        }} />
+                    </a>
                     <Image src={Logo} alt="Unneu" className={`w-[103px] h-[36px] ${showSearch ? "ml-[4%] sm:ml-[10%]" : "ml-[29%] sm:ml-[36%]"}`} />
                     {
                         showSearch && (

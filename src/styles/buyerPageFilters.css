@@ -16,8 +16,8 @@
 
 .custom-filter-checkbox:checked::before {
     position: absolute;
-    bottom: -25%;
-    left: 5%;
+    bottom: -15%;
+    left: 10%;
     content: '✓';
     color: white;
 }

@@ -109,7 +109,7 @@ export default function ProfileSection({ sellerDetails }) {
                     <Image src={ShareLink} alt="copy-link" className="w-[27px] h-[19px]" />
                     <p className="text-sm">https://unneu.com/seller?sellerId={sellerDetails.sellerId}</p>
                 </div>
-                <button className="mt-[25px] bg-[#FE9135] text-white w-full py-[10px] rounded-[8px] text-xl font-medium" onClick={async () => {
+                <button className="mt-[25px] bg-[#FE9135] text-white w-full py-[10px] rounded-[8px] text-xl font-medium active:bg-[#FBC246]" onClick={async () => {
                     try {
                         await navigator.clipboard.writeText(`https://unneu.com/seller?sellerId=${sellerDetails.sellerId}`);
                     }

@@ -7,13 +7,18 @@ import Categories from "@/components/buyerHome/categories";
 import Filters from "@/components/buyerHome/filters";
 import Results from "@/components/buyerHome/results";
 import TopSellers from "@/components/buyerHome/topSellers";
+import MobileFilters from "@/components/buyerHome/mobileFilters";
 
 export default function BuyerHome() {
     const [items, setItems] = useState([]);
     const [appliedFilters, setAppliedFilters] = useState([]);
-    const [sortBy, setSortBy] = useState("Price Low to High");
+    const [sortBy, setSortBy] = useState("Unsorted");
     const [top10Sellers, setTop10Sellers] = useState([]);
     const [sortedAndFilteredItems, setSortedAndFilteredItems] = useState(items);
+    const [showMobileFilters, setShowMobileFilters] = useState(false);
+
+    const handleCloseMobileFilters = () => setShowMobileFilters(false);
+    const handleShowMobileFilters = () => setShowMobileFilters(true);
 
     const fetchTop10Sellers = async () => {
         try {
@@ -53,6 +58,10 @@ export default function BuyerHome() {
         });
     };
 
+    const removeAllFilters = () => {
+        setAppliedFilters([]);
+    };
+
     useEffect(() => {
         fetchItems();
         fetchTop10Sellers();
@@ -61,6 +70,12 @@ export default function BuyerHome() {
     useEffect(() => {
         setSortedAndFilteredItems(items);
     }, [items]);
+
+    /*
+    useEffect(() => {
+        console.log(sortedAndFilteredItems);
+    }, [sortedAndFilteredItems]);
+    */
 
     useEffect(() => {
         if (sortBy === "Price Low to High")
@@ -137,8 +152,17 @@ export default function BuyerHome() {
     return <main className="w-full relative">
         <Hero />
         <Categories />
-        <section className="pl-[10%] mt-[100px] mb-[150px] w-full flex flex-row flex-nowrap justify-between lg:gap-x-[100px]">
-            <Filters appliedFilters={appliedFilters} addFilter={addFilter} removeFilter={removeFilter} />
+        <section className="mt-[42px] lg:mt-[100px] mb-[70px] lg:mb-[150px] w-full flex flex-col lg:flex-row flex-nowrap lg:justify-between gap-x-[16px] lg:gap-x-0">
+            <p className="px-[5%] lg:hidden text-[18px] font-medium">Pre-owned Sarees <span className="text-sm text-[#BEBEBE]">({sortedAndFilteredItems.length} results)</span></p>
+            <Filters
+                appliedFilters={appliedFilters}
+                addFilter={addFilter}
+                removeFilter={removeFilter}
+                handleShowMobileFilters={handleShowMobileFilters}
+                sortBy={sortBy}
+                setSortBy={setSortBy}
+            />
+            <MobileFilters appliedFilters={appliedFilters} addFilter={addFilter} removeFilter={removeFilter} removeAllFilters={removeAllFilters} showMobileFilters={showMobileFilters} handleCloseMobileFilters={handleCloseMobileFilters} />
             <Results items={sortedAndFilteredItems} appliedFilters={appliedFilters} removeFilter={removeFilter} sortBy={sortBy} setSortBy={setSortBy} />
         </section>
         <TopSellers top10Sellers={top10Sellers} />

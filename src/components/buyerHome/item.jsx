@@ -3,9 +3,11 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Modal from "react-bootstrap/Modal";
-import { useRouter } from "next/navigation";
 
 import { useUnneuDataStore } from "@/store/store";
+
+import SignInPopup from "../signInPopup";
+import SignUpPopup from "../signUpPopup";
 
 import QuickView from "@/../public/buyer-page-quick-view.svg";
 import Like from "@/../public/like.png";
@@ -18,11 +20,19 @@ import RightLightArrow from "@/../public/right light arrow.svg";
 import LeftLeaf from "@/../public/buyer-home-left-leaf.svg";
 import RightLeaf from "@/../public/buyer-home-right-leaf.svg";
 import Close from "@/../public/close.png";
+import Facebook from "@/../public/facebook-share.svg";
+import Linkedin from "@/../public/linkedin-share.svg";
+import X from "@/../public/x-share.svg";
+import Whatsapp from "@/../public/whatsapp-share.svg";
+import ShareLink from "@/../public/share-link.svg";
+import Options from "@/../public/options.png";
 
 export default function Item({ item }) {
-    const router = useRouter();
+    const pageUrl = encodeURIComponent(`https://unneu.com/buyer/item?itemId=${item.sellerId}`);
+    const shareText = encodeURIComponent("Check out this awesome page!");
     const [itemFiles, setItemFiles] = useState([]);
     const [imgUrls, setImgUrls] = useState([]);
+    const [itemImagesOffset, setItemImagesOffset] = useState(0);
     const [sellerStoreName, setSellerStoreName] = useState(null);
     const [sellerProfilePhoto, setSellerProfilePhoto] = useState(null);
     const [sellerProfilePhotoUrl, setSellerProfilePhotoUrl] = useState("");
@@ -36,10 +46,25 @@ export default function Item({ item }) {
     const [isWishlisted, setIsWishlisted] = useState(false);
     const [isWishlistModified, setIsWishlistModified] = useState(false);
     const setJwtTokenAtStore = useUnneuDataStore(store => store.setJwtToken);
-    const [top10Sellers, setTop10Sellers] = useState([]);
+    const [showShareModal, setShowShareModal] = useState(false);
+    const showSignIn = useUnneuDataStore(store => store.showSignIn);
+    const setShowSignIn = useUnneuDataStore(store => store.setShowSignIn);
+    const showSignUp = useUnneuDataStore(store => store.showSignUp);
+    const setShowSignUp = useUnneuDataStore(store => store.setShowSignUp);
+
+    const handleCloseShareModal = () => setShowShareModal(false);
+    const handleShowShareModal = () => setShowShareModal(true);
 
     const handleCloseQuickView = () => setShowQuickView(false);
     const handleShowQuickView = () => setShowQuickView(true);
+
+    const hideSignIn = () => {
+        setShowSignIn(false);
+    };
+
+    const hideSignUp = () => {
+        setShowSignUp(false);
+    };
 
     const reduceModalCurrentIndex = () => {
         setModalCurrentIndex((curr) => {
@@ -133,12 +158,19 @@ export default function Item({ item }) {
 
     const addToWishlist = async () => {
         try {
-            console.log(item.itemId.S);
+            const store = JSON.parse(localStorage.getItem("unneuDataStore"));
+            const jwt = store.state.jwtToken;
+            const refresh = store.state.refreshToken;
+            setJwtToken(jwt);
+            setRefreshToken(refresh);
+            if (!jwt) {
+                setShowSignUp(true);
+            }
             const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/buyer/addToWishlist`, {
                 method: "POST",
                 headers: {
-                    jwttoken: jwtToken,
-                    refreshToken: refreshToken,
+                    jwttoken: jwt,
+                    refreshToken: refresh,
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
@@ -153,8 +185,8 @@ export default function Item({ item }) {
                     const x2 = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/buyer/addToWishlist`, {
                         method: "POST",
                         headers: {
-                            jwttoken: jwtToken,
-                            refreshToken: refreshToken,
+                            jwttoken: y.jwt,
+                            refreshToken: refresh,
                             "Content-Type": "application/json"
                         },
                         body: JSON.stringify({
@@ -164,7 +196,11 @@ export default function Item({ item }) {
                     const y2 = await x2.json();
                     if (y2.success)
                         setIsWishlistModified(true);
+                    else
+                        setShowSignUp(true);
                 }
+                else
+                    setShowSignUp(true);
             }
             else {
                 setIsWishlistModified(true);
@@ -177,12 +213,19 @@ export default function Item({ item }) {
 
     const removeFromWishlist = async () => {
         try {
-            console.log(item.itemId.S);
+            const store = JSON.parse(localStorage.getItem("unneuDataStore"));
+            const jwt = store.state.jwtToken;
+            const refresh = store.state.refreshToken;
+            setJwtToken(jwt);
+            setRefreshToken(refresh);
+            if (!jwt) {
+                setShowSignUp(true);
+            }
             const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/buyer/removeFromWishlist`, {
                 method: "POST",
                 headers: {
-                    jwttoken: jwtToken,
-                    refreshToken: refreshToken,
+                    jwttoken: jwt,
+                    refreshToken: refresh,
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
@@ -197,8 +240,8 @@ export default function Item({ item }) {
                     const x2 = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/buyer/removeFromWishlist`, {
                         method: "POST",
                         headers: {
-                            jwttoken: jwtToken,
-                            refreshToken: refreshToken,
+                            jwttoken: y.jwt,
+                            refreshToken: refresh,
                             "Content-Type": "application/json"
                         },
                         body: JSON.stringify({
@@ -208,7 +251,11 @@ export default function Item({ item }) {
                     const y2 = await x2.json();
                     if (y2.success)
                         setIsWishlistModified(true);
+                    else
+                        setShowSignUp(true);
                 }
+                else
+                    setShowSignUp(true);
             }
             else {
                 setIsWishlistModified(true);
@@ -257,14 +304,18 @@ export default function Item({ item }) {
         }
     };
 
+    const openShareLink = (url) => {
+        window.open(url, "_blank");
+    };
+
     useEffect(() => {
         if (item) {
             //console.log(item);
             fetchFiles();
             fetchSellerDetails();
-            const store = JSON.parse(localStorage.getItem("unneuDataStore")).state;
-            setJwtToken(store.jwtToken);
-            setRefreshToken(store.refreshToken);
+            const store = JSON.parse(localStorage.getItem("unneuDataStore"));
+            setJwtToken(store.state.jwtToken);
+            setRefreshToken(store.state.refreshToken);
         }
     }, [item]);
 
@@ -279,6 +330,10 @@ export default function Item({ item }) {
         if (itemFiles.length > 0)
             fetchImgUrls();
     }, [itemFiles]);
+
+    useEffect(() => {
+        setItemImagesOffset((imgUrls.length / 2) * 12);
+    }, [imgUrls]);
 
     useEffect(() => {
         if (sellerProfilePhoto)
@@ -308,19 +363,50 @@ export default function Item({ item }) {
         return null;
 
     return <>
-        <div className="relative shadow-xl lg:w-[46%] xl:w-[30%] h-[630px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
+        <SignInPopup showSignIn={showSignIn} hideSignIn={hideSignIn} />
+        <SignUpPopup showSignUp={showSignUp} hideSignUp={hideSignUp} />
+        <div className="bg-[#F4F4F4] lg:bg-white relative shadow-xl w-[48%] lg:w-[31%] xl:w-[28%] min-[1400px]:w-[22%] 2xl:w-[23%] min-[1715px]:w-[20%] h-[370px] lg:h-[470px] xl:h-[550px] min-[1400px]:h-[450px] 2xl:h-[500px] min-[1715px]:h-[550px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
             {
                 ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[currentIndex].split(".")[itemFiles[currentIndex].split(".").length - 1]) ? (
-                    <img src={imgUrls[currentIndex]} alt="item image" className="h-[70%] w-full rounded-t-[32px] hover:cursor-pointer" onMouseEnter={() => setShowAnimation(true)} onMouseLeave={() => setShowAnimation(false)} />
+                    <img src={imgUrls[currentIndex]} alt="item image" className="h-[55%] lg:h-[55%] min-[1400px]:h-[55%] w-full rounded-t-[32px] hover:cursor-pointer" onMouseEnter={() => {
+                        if (window.innerWidth >= 1024)
+                            setShowAnimation(true);
+                    }}
+                        onMouseLeave={() => {
+                            if (window.innerWidth >= 1024);
+                            setShowAnimation(false);
+                        }} />
                 ) : (
-                    <video className="h-[70%] w-full rounded-t-[32px] object-cover hover:cursor-pointer" loop={true} autoPlay="autoplay" muted onMouseEnter={() => setShowAnimation(true)} onMouseLeave={() => setShowAnimation(false)}>
+                    <video className="h-[55%] lg:h-[55%] min-[1400px]:h-[60%] w-full rounded-t-[32px] object-cover hover:cursor-pointer" loop={true} autoPlay="autoplay" muted onMouseEnter={() => {
+                        if (window.innerWidth >= 1024)
+                            setShowAnimation(true);
+                    }}
+                        onMouseLeave={() => {
+                            if (window.innerWidth >= 1024)
+                                setShowAnimation(false);
+                        }}>
                         <source src={imgUrls[currentIndex]} />
                     </video>
                 )
             }
+            <aside className="lg:hidden absolute w-[75px] h-[40px] bottom-[46%] left-[25%] flex flex-row flex-nowrap items-center justify-between">
+                <div className="w-[29px] h-[29px] rounded-[100%] bg-white flex flex-row flex-nowrap items-center justify-center">
+                    <Image src={isWishlisted ? Like2 : Like} alt="wishlist" className="w-[18px] h-[15px]" onClick={() => {
+                        if (isWishlisted)
+                            removeFromWishlist();
+                        else
+                            addToWishlist();
+                    }} />
+                </div>
+                <div className="w-[29px] h-[29px] rounded-[100%] bg-white flex flex-row flex-nowrap items-center justify-center">
+                    <Image src={QuickView} alt="quick-view" className="w-[15px] h-[18px]" onClick={handleShowQuickView} />
+                </div>
+            </aside>
             {
-                showAnimation && (
-                    <div className="absolute bottom-[35%] left-[40%] flex flex-row items-center gap-x-[7px]">
+                showAnimation && imgUrls.length > 1 && (
+                    <div className="hidden absolute bottom-[46%] lg:flex flex-row items-center gap-x-[7px]" style={{
+                        left: `calc(50% - ${itemImagesOffset}px)`
+                    }}>
                         {
                             imgUrls.map((img, index) => (
                                 <div className={`bg-${index === currentIndex ? "[#FE9135]" : "white"} w-[5px] h-[5px] rounded-[100%]`} key={index}>
@@ -331,23 +417,27 @@ export default function Item({ item }) {
                     </div>
                 )
             }
-            <div className="px-[5%] mt-[20px] w-full flex flex-row flex-nowrap justify-between">
-                <p className="max-w-[65%] max-h-[30px] text-[18px] overflow-y-hidden text-ellipsis">{item.itemName.S}</p>
-                <Image src={QuickView} alt="expand" className="w-[27px] h-[24px] hover:cursor-pointer" onClick={handleShowQuickView} />
+            <div className="px-[5%] mt-[20px] lg:mt-[30px] w-full flex flex-row flex-nowrap justify-between">
+                <p className="lg:max-w-[65%] max-h-[20px] text-sm lg:text-[18px] overflow-y-hidden text-ellipsis">{item.itemName.S}</p>
+                <Image src={QuickView} alt="expand" className="hidden lg:block w-[27px] h-[24px] hover:cursor-pointer" onClick={handleShowQuickView} />
             </div>
             <div className="px-[5%] mt-[10px] w-full flex flex-row flex-nowrap items-center gap-x-[10px]">
-                <img src={sellerProfilePhotoUrl} alt="seller-img" className="w-[36px] h-[36px] rounded-[100%]" />
+                <img src={sellerProfilePhotoUrl} alt="seller-img" className="w-[24px] lg:w-[36px] h-[24px] lg:h-[36px] rounded-[100%]" />
                 <Link href={`/seller?sellerId=${item.sellerId}`}>
-                    <p className="text-sm max-h-[30px] overflow-y-hidden text-ellipsis hover:underline">{sellerStoreName}</p>
+                    <p className="text-xs lg:text-sm max-h-[30px] overflow-y-hidden text-ellipsis hover:underline">{sellerStoreName}</p>
                 </Link>
             </div>
             <div className="px-[5%] mt-[10px] w-full flex flex-row flex-nowrap items-center gap-x-[10px]">
-                <p className="text-xl font-medium">₹ {item.sellingPrice.N}</p>
-                <p className="text-[#00000066] line-through">₹ {item.marketPrice.N}</p>
+                <p className="lg:text-xl font-medium">₹ {item.sellingPrice.N}</p>
+                <p className="text-sm lg:text-base text-[#00000066] line-through">₹ {item.marketPrice.N}</p>
+            </div>
+            <div className="lg:hidden px-[5%] mt-[15px] w-full flex flex-row flex-nowrap items-center justify-between">
+                <button className="py-[5px] px-[24px] rounded-[4px] bg-[#FE9135] active:bg-[#FBC246] text-white text-sm font-medium">Add to cart</button>
+                <Image src={Options} alt="options" className="w-[5px] h-[22px]" />
             </div>
             {
                 showWishlistAndShare && (
-                    <div className="absolute bg-gray-200 left-0 bottom-0 w-full flex flex-row items-center justify-between bg-[#FFF]">
+                    <div className="px-[1%] hidden absolute bg-gray-200 left-0 bottom-0 w-full lg:flex flex-row items-center justify-between bg-[#FFF]">
                         {
                             !isWishlisted ? (
                                 <div className="py-[12px] w-[50%] flex flex-row items-center justify-center gap-x-[10px] hover:cursor-pointer" style={{
@@ -367,7 +457,7 @@ export default function Item({ item }) {
                         }
                         <div className="py-[12px] w-[50%] flex flex-row items-center justify-center gap-x-[10px] hover:cursor-pointer" style={{
                             boxShadow: "0px 11px 40px 4px rgba(81, 69, 55, 0.05)"
-                        }}>
+                        }} onClick={handleShowShareModal}>
                             <Image src={ShareProfile} alt="share-profile" className="w-[15px] h-[18px]" />
                             <p className="font-light">Share</p>
                         </div>
@@ -375,10 +465,53 @@ export default function Item({ item }) {
                 )
             }
         </div>
-        <Modal show={showQuickView} onHide={handleCloseQuickView} className="mt-[100px] lg:max-w-[70%] lg:left-[15%] xl:max-w-[55%] xl:left-[22.5%] 2xl:max-w-[45%] 2xl:left-[27.5%]">
-            <Modal.Body className="w-full h-[450px] flex flex-row justify-between p-0 overflow-y-hidden">
-                <section className="relative w-[45%] h-full">
-                    <img src={imgUrls[modalCurrentIndex]} alt="item-img" className="absolute z-0 w-full h-full rounded-l-[32px]" />
+        <Modal show={showShareModal} onHide={handleCloseShareModal} className="lg:w-[65%] lg:left-[17.5%] xl:w-[55%] xl:left-[22.5%] mt-[200px]">
+            <Modal.Body className="relative bg-[#F6F6F6] rounded-[20px] px-[25px] py-[15px]" style={{
+                boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
+            }}>
+                <Image src={Close} alt="close" onClick={handleCloseShareModal} className="w-[18px] h-[18px] absolute top-5 right-5 hover:cursor-pointer" />
+                <p className="text-2xl text-[#FE9135] font-semibold">Social Share</p>
+                <p className="mt-[30px] text-[18px] font-medium">
+                    Share this link via
+                </p>
+                <div className="mt-[15px] flex flex-row flex-nowrap items-center gap-x-[16px]">
+                    <Image src={Facebook} alt="facebook" className="w-[50px] h-[54px] hover:cursor-pointer" onClick={() => {
+                        openShareLink(`https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`);
+                    }} />
+                    <Image src={Linkedin} alt="linkedin" className="w-[50px] h-[54px] hover:cursor-pointer" onClick={() => {
+                        openShareLink(`https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`);
+                    }} />
+                    <Image src={X} alt="x" className="w-[50px] h-[54px] hover:cursor-pointer" onClick={() => {
+                        openShareLink(`https://twitter.com/intent/tweet?url=${pageUrl}&text=${shareText}`);
+                    }} />
+                    <Image src={Whatsapp} alt="whatsapp" className="w-[50px] h-[54px] hover:cursor-pointer" onClick={() => {
+                        openShareLink(`https://api.whatsapp.com/send?text=${shareText}%20${pageUrl}`);
+                    }} />
+                </div>
+                <p className="mt-[20px] font-medium">
+                    Copy link
+                </p>
+                <div className="mt-[12px] w-full border-[1.5px] border-[#5AA7BB] py-[23px] px-[17px] rounded-[8px] flex flex-row items-center flex-nowrap gap-x-1">
+                    <Image src={ShareLink} alt="copy-link" className="w-[27px] h-[19px]" />
+                    <p className="text-sm">https://unneu.com/buyer/item?itemId={item.sellerId}</p>
+                </div>
+                <button className="mt-[25px] bg-[#FE9135] text-white w-full py-[10px] rounded-[8px] text-xl font-medium active:bg-[#FBC246]" onClick={async () => {
+                    try {
+                        await navigator.clipboard.writeText(`https://unneu.com/buyer/item?itemId=${item.sellerId}`);
+                    }
+                    catch (err) {
+                        console.log(err);
+                    }
+                }}>
+                    Copy
+                </button>
+            </Modal.Body>
+        </Modal>
+        <Modal show={showQuickView} onHide={handleCloseQuickView} className="mt-[100px] lg:max-w-[70%] lg:left-[15%] xl:max-w-[55%] xl:left-[22.5%] 2xl:max-w-[45%] 2xl:left-[27.5%] rounded-b-[16px] lg:rounded-b-0">
+            <Modal.Body className="w-full h-[450px] flex flex-col lg:flex-row lg:justify-between p-0 overflow-y-hidden rounded-b-[16px] lg:rounded-b-0">
+                <section className="relative w-full lg:w-[45%] h-[65%] lg:h-full">
+                    <Image src={Close} alt="close" className="lg:hidden absolute top-4 right-4 w-[16px] h-[16px] hover:cursor-pointer z-10" onClick={handleCloseQuickView} />
+                    <img src={imgUrls[modalCurrentIndex]} alt="item-img" className="absolute z-0 w-full h-full rounded-l-[16px] lg:rounded-l-[32px] lg:rounded-r-0" />
                     {
                         modalCurrentIndex === 0 ? (
                             <div className="absolute z-10 w-[42px] h-[42px] rounded-[100%] bg-[#FFFFFF] hover:cursor-pointer top-[45%] left-3 flex flex-row flex-nowrap items-center justify-center">
@@ -397,7 +530,9 @@ export default function Item({ item }) {
                             </div>
                         )
                     }
-                    <div className="absolute bottom-2 left-[35%] flex flex-row flex-nowrap items-center gap-x-[7px]">
+                    <div className="absolute bottom-2 flex flex-row flex-nowrap items-center gap-x-[7px]" style={{
+                        left: `calc(50% - ${itemImagesOffset}px)`
+                    }}>
                         {
                             imgUrls.map((url, index) => (
                                 <div className={`w-[8px] h-[8px] rounded-[100%] bg-[${index === modalCurrentIndex ? "#FBC246" : "#D9D9D9"}]`} key={index}>
@@ -406,23 +541,31 @@ export default function Item({ item }) {
                         }
                     </div>
                 </section>
-                <section className="relative w-[50%] h-full">
-                    <Image src={LeftLeaf} alt="leaf" className="absolute h-[70px] w-[218px] top-[-10px] left-[-30px]" />
-                    <Image src={RightLeaf} alt="leaf" className="absolute h-[70px] w-[218px] top-[-10px] right-[30px]" />
-                    <Image src={Close} alt="close" className="absolute top-10 right-4 w-[16px] h-[16px] hover:cursor-pointer" onClick={handleCloseQuickView} />
-                    <p className="mt-[60px] font-medium text-[18px]">{item.itemName.S}</p>
-                    <div className="mt-[20px] flex flex-row flex-nowrap items-center gap-x-[10px]">
+                <section className="relative w-full lg:w-[50%] h-[35%] lg:h-full">
+                    <Image src={LeftLeaf} alt="leaf" className="hidden lg:block absolute h-[70px] w-[218px] top-[-10px] left-[-30px]" />
+                    <Image src={RightLeaf} alt="leaf" className="hidden lg:block absolute h-[70px] w-[218px] top-[-10px] right-[30px]" />
+                    <Image src={Close} alt="close" className="hidden lg:block absolute top-10 right-4 w-[16px] h-[16px] hover:cursor-pointer" onClick={handleCloseQuickView} />
+                    <div className="mt-[15px] px-[5%] lg:hidden flex flex-row flex-nowrap items-center justify-between">
+                        <div className="font-medium text-[15px] max-w-[65%]">{item.itemName.S}</div>
+                        <div className="font-semibold text-[17px] max-w-[30%]">₹ {item.sellingPrice.N}</div>
+                    </div>
+                    <p className="hidden lg:block lg:mt-[60px] font-medium text-[18px]">{item.itemName.S}</p>
+                    <div className="px-[5%] lg:px-0 mt-[10px] lg:mt-[20px] flex flex-row flex-nowrap items-center gap-x-[10px]">
                         <img src={sellerProfilePhotoUrl} alt="seller-img" className="w-[36px] h-[36px] rounded-[100%]" />
                         <p className="text-sm">{sellerStoreName}</p>
                     </div>
-                    <div className="mt-[20px] w-full flex flex-row flex-nowrap items-center gap-x-[10px]">
+                    <div className="hidden mt-[20px] w-full lg:flex flex-row flex-nowrap items-center gap-x-[10px]">
                         <p className="text-xl font-medium">₹ {item.sellingPrice.N}</p>
                         <p className="text-[#00000066] line-through">₹ {item.marketPrice.N}</p>
                     </div>
-                    <p className="mt-[15px] text-sm font-medium">Condition: <span className="font-normal">{item.condition.S}</span></p>
-                    <p className="mt-[15px] text-sm font-medium">Category: <span className="font-normal">{item.category.S}</span></p>
-                    <button className="block mt-[30px] bg-[#FE9135] text-white rounded-[24px] py-[10px] px-[100px] font-medium">Add to cart</button>
-                    <button className="block mt-[20px] border border-[#9D9D9D] rounded-[24px] py-[10px] px-[95px] font-medium">More Details</button>
+                    <p className="hidden lg:block mt-[15px] text-sm font-medium">Condition: <span className="font-normal">{item.condition.S}</span></p>
+                    <p className="hidden lg:block mt-[15px] text-sm font-medium">Category: <span className="font-normal">{item.category.S}</span></p>
+                    <button className="hidden lg:block mt-[30px] bg-[#FE9135] text-white rounded-[24px] py-[10px] px-[100px] font-medium">Add to cart</button>
+                    <button className="hidden lg:block mt-[20px] border border-[#9D9D9D] rounded-[24px] py-[10px] px-[95px] font-medium">More Details</button>
+                    <div className="lg:hidden w-full absolute bottom-0 left-0 flex flex-row flex-nowrap items-center justify-between">
+                        <div className="py-[12px] w-[50%] text-white text-[15px] font-medium bg-[#FE9135] text-center">Add to cart</div>
+                        <div className="py-[12px] w-[50%] text-[#787878] text-[15px] font-medium text-center border-t border-t-[#C8C8C8]">More detail</div>
+                    </div>
                 </section>
             </Modal.Body>
         </Modal>
