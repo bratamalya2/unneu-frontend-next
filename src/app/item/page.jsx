@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Error from "next/error";
 
 import Left from "@/components/itemDetailsPage/left";
+import Right from "@/components/itemDetailsPage/right";
 
 export default function ItemHome() {
     const searchParams = useSearchParams();
@@ -50,8 +51,9 @@ export default function ItemHome() {
         {
             searchParams.get("itemId") && isItemProfileExists && isLoaded && <>
                 <p className="mt-[35px] mb-[20px] text-[#494949]">Home / shop / {itemDetails.itemName}</p>
-                <section className="w-full flex flex-row flex-nowrap justify-between">
+                <section className="w-full flex flex-row flex-nowrap justify-between pb-[100px]">
                     <Left itemId={searchParams.get("itemId")} itemDetails={itemDetails} />
+                    <Right itemId={searchParams.get("itemId")} itemDetails={itemDetails} />
                 </section>
             </>
         }

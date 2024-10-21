@@ -354,25 +354,29 @@ export default function Item({ item }) {
         <div className="bg-[#F4F4F4] lg:bg-white relative shadow-xl w-[48%] lg:w-[31%] xl:w-[28%] min-[1400px]:w-[22%] 2xl:w-[23%] min-[1715px]:w-[20%] h-[370px] lg:h-[470px] xl:h-[550px] min-[1400px]:h-[450px] 2xl:h-[500px] min-[1715px]:h-[550px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
             {
                 ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[currentIndex].split(".")[itemFiles[currentIndex].split(".").length - 1]) ? (
-                    <img src={imgUrls[currentIndex]} alt="item image" className="h-[55%] lg:h-[55%] min-[1400px]:h-[55%] w-full rounded-t-[32px] hover:cursor-pointer" onMouseEnter={() => {
-                        if (window.innerWidth >= 1024)
-                            setShowAnimation(true);
-                    }}
-                        onMouseLeave={() => {
-                            if (window.innerWidth >= 1024);
-                            setShowAnimation(false);
-                        }} />
-                ) : (
-                    <video className="h-[55%] lg:h-[55%] min-[1400px]:h-[60%] w-full rounded-t-[32px] object-cover hover:cursor-pointer" loop={true} autoPlay="autoplay" muted onMouseEnter={() => {
-                        if (window.innerWidth >= 1024)
-                            setShowAnimation(true);
-                    }}
-                        onMouseLeave={() => {
+                    <Link href={`/item?itemId=${item.itemId.S}`}>
+                        <img src={imgUrls[currentIndex]} alt="item image" className="h-[55%] lg:h-[55%] min-[1400px]:h-[55%] w-full rounded-t-[32px] hover:cursor-pointer" onMouseEnter={() => {
                             if (window.innerWidth >= 1024)
+                                setShowAnimation(true);
+                        }}
+                            onMouseLeave={() => {
+                                if (window.innerWidth >= 1024);
                                 setShowAnimation(false);
-                        }}>
-                        <source src={imgUrls[currentIndex]} />
-                    </video>
+                            }} />
+                    </Link>
+                ) : (
+                    <Link href={`/item?itemId=${item.itemId.S}`}>
+                        <video className="h-[55%] lg:h-[55%] min-[1400px]:h-[60%] w-full rounded-t-[32px] object-cover hover:cursor-pointer" loop={true} autoPlay="autoplay" muted onMouseEnter={() => {
+                            if (window.innerWidth >= 1024)
+                                setShowAnimation(true);
+                        }}
+                            onMouseLeave={() => {
+                                if (window.innerWidth >= 1024)
+                                    setShowAnimation(false);
+                            }}>
+                            <source src={imgUrls[currentIndex]} />
+                        </video>
+                    </Link>
                 )
             }
             <aside className="lg:hidden absolute w-[75px] h-[40px] bottom-[46%] left-[25%] flex flex-row flex-nowrap items-center justify-between">
@@ -492,11 +496,11 @@ export default function Item({ item }) {
                 </p>
                 <div className="mt-[12px] w-full border-[1.5px] border-[#5AA7BB] py-[23px] px-[17px] rounded-[8px] flex flex-row items-center flex-nowrap gap-x-1">
                     <Image src={ShareLink} alt="copy-link" className="w-[27px] h-[19px]" />
-                    <p className="text-sm">https://unneu.com/buyer/item?itemId={item.sellerId}</p>
+                    <p className="text-sm">https://unneu.com/buyer/item?itemId={item.itemId.S}</p>
                 </div>
                 <button className="mt-[25px] bg-[#FE9135] text-white w-full py-[10px] rounded-[8px] text-xl font-medium active:bg-[#FBC246]" onClick={async () => {
                     try {
-                        await navigator.clipboard.writeText(`https://unneu.com/buyer/item?itemId=${item.sellerId}`);
+                        await navigator.clipboard.writeText(`https://unneu.com/buyer/item?itemId=${item.itemId.S}`);
                     }
                     catch (err) {
                         console.log(err);
@@ -566,10 +570,14 @@ export default function Item({ item }) {
                     <p className="hidden lg:block mt-[15px] text-sm font-medium">Condition: <span className="font-normal">{item.condition.S}</span></p>
                     <p className="hidden lg:block mt-[15px] text-sm font-medium">Category: <span className="font-normal">{item.category.S}</span></p>
                     <button className="hidden lg:block mt-[30px] bg-[#FE9135] text-white rounded-[24px] py-[10px] px-[100px] font-medium">Add to cart</button>
-                    <button className="hidden lg:block mt-[20px] border border-[#9D9D9D] rounded-[24px] py-[10px] px-[95px] font-medium">More Details</button>
+                    <Link href={`/item?itemId=${item.itemId.S}`}>
+                        <button className="hidden lg:block mt-[20px] border border-[#9D9D9D] rounded-[24px] py-[10px] px-[95px] font-medium">More Details</button>
+                    </Link>
                     <div className="lg:hidden w-full absolute bottom-0 left-0 flex flex-row flex-nowrap items-center justify-between">
                         <div className="py-[12px] w-[50%] text-white text-[15px] font-medium bg-[#FE9135] text-center">Add to cart</div>
-                        <div className="py-[12px] w-[50%] text-[#787878] text-[15px] font-medium text-center border-t border-t-[#C8C8C8]">More details</div>
+                        <Link href={`/item?itemId=${item.itemId.S}`}>
+                            <div className="py-[12px] w-[50%] text-[#787878] text-[15px] font-medium text-center border-t border-t-[#C8C8C8]">More details</div>
+                        </Link>
                     </div>
                 </section>
             </Modal.Body>
