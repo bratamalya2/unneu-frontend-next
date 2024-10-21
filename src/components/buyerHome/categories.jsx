@@ -89,7 +89,7 @@ export default function Categories() {
                 </button>
             </section>
         </section>
-        <section className="lg:hidden relative mt-[35px] pl-[10%] z-0">
+        <section className="lg:hidden relative mt-[35px] pl-[5%] z-0">
             <p className="text-xl font-medium mb-[20px]">Categories</p>
             <aside className="w-full h-[250px] overflow-y-hidden overflow-x-scroll whitespace-nowrap">
                 <section className="inline-flex flex-col items-center w-[47%] h-full rounded-[8px]">

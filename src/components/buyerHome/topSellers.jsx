@@ -41,7 +41,7 @@ export default function TopSellers({ top10Sellers }) {
         <Image src={MobileIllustration} alt="bg" className="lg:hidden absolute w-full h-full top-0 left-0" />
         <div className="px-[5%] pt-[30px] px-[10%]">
             <p className="text-[#3B3333] font-medium text-2xl lg:text-4xl">Explore <span className="font-semibold text-[#FE9135]">Seller Store</span></p>
-            <p className="text-[#3B3333] text-sm lg:text-[17px]">Explore sellers tailored to your needs.</p>
+            <p className="mt-3 text-[#3B3333] text-sm lg:text-[17px]">Explore sellers tailored to your needs.</p>
         </div>
         <section className="relative z-0 overflow-y-hidden whitespace-nowrap overflow-x-auto lg:overflow-x-hidden custom-horizontal-scroll-with-btns w-full px-[5%] pt-[30px] pb-[50px]" id="scroll-container-buyer-home-top-seller">
             {

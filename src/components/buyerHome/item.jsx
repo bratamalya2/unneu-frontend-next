@@ -351,11 +351,11 @@ export default function Item({ item }) {
         return null;
 
     return <>
-        <div className="bg-[#F4F4F4] lg:bg-white relative shadow-xl w-[48%] lg:w-[31%] xl:w-[28%] min-[1400px]:w-[22%] 2xl:w-[23%] min-[1715px]:w-[20%] h-[370px] lg:h-[470px] xl:h-[550px] min-[1400px]:h-[450px] 2xl:h-[500px] min-[1715px]:h-[550px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
+        <div className="bg-[#F4F4F4] lg:bg-white relative shadow-xl w-[47%] lg:w-[31.5%] xl:w-[28.5%] min-[1400px]:w-[24%] 2xl:w-[23%] min-[1715px]:w-[20%] h-[420px] lg:h-[600px] min-[1400px]:h-[550px] 2xl:h-[500px] min-[1715px]:h-[550px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
             {
                 ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[currentIndex].split(".")[itemFiles[currentIndex].split(".").length - 1]) ? (
                     <Link href={`/item?itemId=${item.itemId.S}`}>
-                        <img src={imgUrls[currentIndex]} alt="item image" className="h-[55%] lg:h-[55%] min-[1400px]:h-[55%] w-full rounded-t-[32px] hover:cursor-pointer" onMouseEnter={() => {
+                        <img src={imgUrls[currentIndex]} alt="item image" className="h-[60%] lg:h-[60%] min-[1400px]:h-[62%] w-full rounded-t-[32px] hover:cursor-pointer" onMouseEnter={() => {
                             if (window.innerWidth >= 1024)
                                 setShowAnimation(true);
                         }}
@@ -379,7 +379,7 @@ export default function Item({ item }) {
                     </Link>
                 )
             }
-            <aside className="lg:hidden absolute w-[75px] h-[40px] bottom-[46%] left-[25%] flex flex-row flex-nowrap items-center justify-between">
+            <aside className="lg:hidden absolute w-[75px] h-[40px] bottom-[42%] left-[25%] flex flex-row flex-nowrap items-center justify-between">
                 <div className="w-[29px] h-[29px] rounded-[100%] bg-white flex flex-row flex-nowrap items-center justify-center">
                     <Image src={isWishlisted ? Like2 : Like} alt="wishlist" className="w-[18px] h-[15px]" onClick={() => {
                         if (isWishlisted)
@@ -394,7 +394,7 @@ export default function Item({ item }) {
             </aside>
             {
                 showAnimation && imgUrls.length > 1 && (
-                    <div className="hidden absolute bottom-[46%] lg:flex flex-row items-center gap-x-[7px]" style={{
+                    <div className="hidden absolute bottom-[42%] lg:flex flex-row items-center gap-x-[7px]" style={{
                         left: `calc(50% - ${itemImagesOffset}px)`
                     }}>
                         {
@@ -511,8 +511,8 @@ export default function Item({ item }) {
             </Modal.Body>
         </Modal>
         <Modal show={showQuickView} onHide={handleCloseQuickView} className="left-[20%] lg:left-0 w-[60%] lg:w-full mt-[100px] lg:max-w-[70%] lg:left-[15%] xl:max-w-[55%] xl:left-[22.5%] 2xl:max-w-[45%] 2xl:left-[27.5%] rounded-b-[16px] rounded-t-[16px] lg:rounded-b-0">
-            <Modal.Body className="w-full h-[450px] flex flex-col lg:flex-row lg:justify-between p-0 overflow-y-hidden rounded-b-[16px] rounded-t-[16px] lg:rounded-b-0">
-                <section className="relative w-full lg:w-[45%] h-[60%] lg:h-full">
+            <Modal.Body className="w-full h-[450px] flex flex-col lg:flex-row p-0 overflow-y-hidden rounded-b-[16px] rounded-t-[16px] lg:rounded-b-0 gap-x-[45px]">
+                <section className="relative w-full lg:w-[45%] min-[1400px]:w-[40%] h-[60%] lg:h-full">
                     <Image src={Close} alt="close" className="lg:hidden absolute top-4 right-4 w-[16px] h-[16px] hover:cursor-pointer z-10" onClick={handleCloseQuickView} />
                     <img src={imgUrls[modalCurrentIndex]} alt="item-img" className="absolute z-0 w-full h-full lg:rounded-l-[32px] lg:rounded-r-0" />
                     {

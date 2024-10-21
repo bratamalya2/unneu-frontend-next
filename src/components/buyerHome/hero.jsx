@@ -46,17 +46,17 @@ export default function Hero() {
         <section className="lg:hidden relative w-full h-[540px] flex flex-col flex-nowrap">
             <aside>
                 <Image src={Gradient} alt="bg" className="absolute w-full h-full z-0" />
-                <Image src={HeroImg} alt="hero" className="absolute right-0 top-0 w-[95%] max-h-[232px] z-10" />
-                <div className="absolute left-[2%] top-[17px] z-20">
+                <Image src={HeroImg} alt="hero" className="absolute right-0 bottom-0 w-[95%] max-h-[232px] z-10" />
+                <div className="absolute left-[2%] bottom-[115px] z-20">
                     <div className="relative w-[8px] h-[8px] left-[35%] top-4 rounded-[100%] bg-[#595959]"></div>
                     <Image src={SampleSeller2} alt="sample-seller-2" className="w-[70px] h-[100px]" />
                 </div>
-                <div className="absolute left-[20%] top-[155px] z-20">
+                <div className="absolute left-[20%] bottom-2 z-20">
                     <div className="relative w-[8px] h-[8px] left-[50%] top-4 rounded-[100%] bg-[#595959]"></div>
                     <Image src={SampleSeller1} alt="sample-seller-1" className="w-[70px] h-[100px]" />
                 </div>
             </aside>
-            <aside className="absolute top-[270px] self-center text-center">
+            <aside className="absolute top-[25px] self-center text-center">
                 <p className="text-[#AD6324] font-bold text-xl">Pre-Owned Paradise:</p>
                 <p className="font-medium text-xl max-w-[65%] mx-auto">Where aspiration meets affordability.</p>
                 <a href="#top-sellers">
