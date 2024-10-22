@@ -90,7 +90,7 @@ export default function Results({ items, appliedFilters, removeFilter, sortBy, s
             </section>
         </aside>
         <aside className="lg:hidden">
-            <section className="px-[2%] mt-[20px] w-full flex flex-row flex-wrap items-center gap-x-[10px] gap-y-[50px]">
+            <section className="px-[2%] mt-[20px] w-full flex flex-row flex-wrap items-center justify-around gap-y-[50px]">
                 {
                     items.map((item) => <Item key={item.itemId.S} item={item} />)
                 }

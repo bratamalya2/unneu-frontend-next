@@ -146,7 +146,7 @@ export default function BuyerHome() {
     return <main className="w-full relative">
         <Hero />
         <Categories />
-        <section className="mt-[42px] lg:mt-[100px] mb-[70px] lg:mb-[150px] w-full flex flex-col lg:flex-row flex-nowrap lg:justify-between gap-x-[16px] lg:gap-x-0">
+        <section className="mt-[21px] lg:mt-[100px] mb-[70px] lg:mb-[150px] w-full flex flex-col lg:flex-row flex-nowrap lg:justify-between gap-x-[16px] lg:gap-x-0">
             <p className="px-[5%] lg:hidden text-[18px] font-medium">Pre-owned Sarees <span className="text-sm text-[#BEBEBE]">({sortedAndFilteredItems.length} results)</span></p>
             <Filters
                 appliedFilters={appliedFilters}

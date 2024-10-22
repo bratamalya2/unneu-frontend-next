@@ -40,61 +40,61 @@ export default function Categories() {
     }, []);
 
     return <>
-        <section className="pl-[3%] hidden lg:block relative mt-[80px] h-[380px] overflow-y-hidden whitespace-nowrap overflow-x-hidden pl-[5%] custom-horizontal-scroll-with-btns z-0" id="scroll-container-buyer-home">
-            <section className="inline-block relative lg:w-[30%] xl:w-[25%] 2xl:w-[22%] h-full rounded-[24px]">
+        <section className="pl-[3%] hidden lg:block relative mt-[80px] h-[300px] min-[1700px]:h-[360px] overflow-y-hidden whitespace-nowrap overflow-x-hidden pl-[5%] custom-horizontal-scroll-with-btns z-0" id="scroll-container-buyer-home">
+            <section className="inline-block relative lg:w-[25%] xl:w-[22%] min-[1400px]:w-[20%] 2xl:w-[18%] h-full rounded-[24px]">
                 <Image src={NewArrivals} alt="new-arrivals" className="absolute w-full h-full z-0 rounded-[24px]" />
                 <Link href="/buyer/category?category=New Arrivals">
-                    <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] px-[34px] font-bold rounded-[16px]" style={{
+                    <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] font-bold rounded-[16px]" style={{
                         background: "linear-gradient(90deg, #F0E7DE 0%, #FBC246 100%)"
                     }}>
                         New Arrivals
                     </button>
                 </Link>
             </section>
-            <section className="inline-block ml-[32px] relative lg:w-[30%] xl:w-[25%] 2xl:w-[22%] h-full rounded-[24px]">
+            <section className="inline-block ml-[32px] relative lg:w-[25%] xl:w-[22%] min-[1400px]:w-[20%] 2xl:w-[18%] h-full rounded-[24px]">
                 <Image src={FestiveWear} alt="festive-wear" className="absolute w-full h-full z-0 rounded-[24px]" />
                 <Link href="/buyer/category?category=Festive Wear">
-                    <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] px-[34px] font-bold rounded-[16px]" style={{
+                    <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] font-bold rounded-[16px]" style={{
                         background: "linear-gradient(90deg, #F0E7DE 0%, #FBC246 100%)"
                     }}>
                         Festive Wear
                     </button>
                 </Link>
             </section>
-            <section className="inline-block ml-[32px] relative lg:w-[30%] xl:w-[25%] 2xl:w-[22%] h-full rounded-[24px]">
+            <section className="inline-block ml-[32px] relative lg:w-[25%] xl:w-[22%] min-[1400px]:w-[20%] 2xl:w-[18%] h-full rounded-[24px]">
                 <Image src={BridalWear} alt="bridal-wear" className="absolute w-full h-full z-0 rounded-[24px]" />
                 <Link href="/buyer/category?category=Bridal Wear">
-                    <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] px-[34px] font-bold rounded-[16px]" style={{
+                    <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] font-bold rounded-[16px]" style={{
                         background: "linear-gradient(90deg, #F0E7DE 0%, #FBC246 100%)"
                     }}>
                         Bridal Wear
                     </button>
                 </Link>
             </section>
-            <section className="inline-block ml-[32px] relative lg:w-[30%] xl:w-[25%] 2xl:w-[22%] h-full rounded-[24px]">
+            <section className="inline-block ml-[32px] relative lg:w-[25%] xl:w-[22%] min-[1400px]:w-[20%] 2xl:w-[18%] h-full rounded-[24px]">
                 <Image src={PartyWear} alt="party-wear" className="absolute w-full h-full z-0 rounded-[24px]" />
                 <Link href="/buyer/category?category=Party Wear">
-                    <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] px-[34px] font-bold rounded-[16px]" style={{
+                    <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] font-bold rounded-[16px]" style={{
                         background: "linear-gradient(90deg, #F0E7DE 0%, #FBC246 100%)"
                     }}>
                         Party Wear
                     </button>
                 </Link>
             </section>
-            <section className="inline-block ml-[32px] relative lg:w-[30%] xl:w-[25%] 2xl:w-[22%] h-full rounded-[24px]">
+            <section className="inline-block ml-[32px] relative lg:w-[25%] xl:w-[22%] min-[1400px]:w-[20%] 2xl:w-[18%] h-full rounded-[24px]">
                 <Image src={CasualWear} alt="casual-wear" className="absolute w-full h-full z-0 rounded-[24px]" />
                 <Link href="/buyer/category?category=Casual Wear">
-                    <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] px-[34px] font-bold rounded-[16px]" style={{
+                    <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] font-bold rounded-[16px]" style={{
                         background: "linear-gradient(90deg, #F0E7DE 0%, #FBC246 100%)"
                     }}>
                         Casual Wear
                     </button>
                 </Link>
             </section>
-            <section className="inline-block ml-[32px] relative lg:w-[30%] xl:w-[25%] 2xl:w-[22%] h-full rounded-[24px]">
+            <section className="inline-block ml-[32px] relative lg:w-[25%] xl:w-[22%] min-[1400px]:w-[20%] 2xl:w-[18%] h-full rounded-[24px]">
                 <Image src={DailyWear} alt="daily-wear" className="absolute w-full h-full z-0 rounded-[24px]" />
                 <Link href="/buyer/category?category=Daily Wear">
-                    <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] px-[34px] font-bold rounded-[16px]" style={{
+                    <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] font-bold rounded-[16px]" style={{
                         background: "linear-gradient(90deg, #F0E7DE 0%, #FBC246 100%)"
                     }}>
                         Daily Wear
@@ -104,9 +104,9 @@ export default function Categories() {
         </section>
         <section className="lg:hidden relative mt-[35px] pl-[5%] z-0">
             <p className="text-xl font-medium mb-[20px]">Categories</p>
-            <aside className="w-full h-[250px] overflow-y-hidden overflow-x-scroll whitespace-nowrap">
+            <aside className="w-full h-[220px] overflow-y-hidden overflow-x-scroll whitespace-nowrap">
                 <Link href="/buyer/category?category=New Arrivals">
-                    <section className="inline-flex flex-col items-center w-[47%] h-full rounded-[8px]">
+                    <section className="inline-flex flex-col items-center w-[42%] h-full rounded-[8px]">
                         <Image src={NewArrivals} alt="new-arrivals" className="w-full h-[70%] rounded-[8px]" />
                         <div className="mt-[16px] font-medium">
                             New Arrivals
@@ -114,7 +114,7 @@ export default function Categories() {
                     </section>
                 </Link>
                 <Link href="/buyer/category?category=Festive Wear">
-                    <section className="ml-[16px] inline-flex flex-col items-center w-[47%] h-full rounded-[8px]">
+                    <section className="ml-[16px] inline-flex flex-col items-center w-[42%] h-full rounded-[8px]">
                         <Image src={FestiveWear} alt="festive-wear" className="w-full h-[70%] rounded-[8px]" />
                         <div className="mt-[16px] font-medium">
                             Festive Wear
@@ -122,7 +122,7 @@ export default function Categories() {
                     </section>
                 </Link>
                 <Link href="/buyer/category?category=Bridal Wear">
-                    <section className="ml-[16px] inline-flex flex-col items-center w-[47%] h-full rounded-[8px]">
+                    <section className="ml-[16px] inline-flex flex-col items-center w-[42%] h-full rounded-[8px]">
                         <Image src={BridalWear} alt="bridal-wear" className="w-full h-[70%] rounded-[8px]" />
                         <div className="mt-[16px] font-medium">
                             Bridal Wear
@@ -130,7 +130,7 @@ export default function Categories() {
                     </section>
                 </Link>
                 <Link href="/buyer/category?category=Party Wear">
-                    <section className="ml-[16px] inline-flex flex-col items-center w-[47%] h-full rounded-[8px]">
+                    <section className="ml-[16px] inline-flex flex-col items-center w-[42%] h-full rounded-[8px]">
                         <Image src={PartyWear} alt="party-wear" className="w-full h-[70%] rounded-[8px]" />
                         <div className="mt-[16px] font-medium">
                             Party Wear
@@ -138,7 +138,7 @@ export default function Categories() {
                     </section>
                 </Link>
                 <Link href="/buyer/category?category=Casual Wear">
-                    <section className="ml-[16px] inline-flex flex-col items-center w-[47%] h-full rounded-[8px]">
+                    <section className="ml-[16px] inline-flex flex-col items-center w-[42%] h-full rounded-[8px]">
                         <Image src={CasualWear} alt="casual-wear" className="w-full h-[70%] rounded-[8px]" />
                         <div className="mt-[16px] font-medium">
                             Casual Wear
@@ -146,7 +146,7 @@ export default function Categories() {
                     </section>
                 </Link>
                 <Link href="/buyer/category?category=Daily Wear">
-                    <section className="ml-[16px] inline-flex flex-col items-center w-[47%] h-full rounded-[8px]">
+                    <section className="ml-[16px] inline-flex flex-col items-center w-[42%] h-full rounded-[8px]">
                         <Image src={DailyWear} alt="daily-wear" className="w-full h-[70%] rounded-[8px]" />
                         <div className="mt-[16px] font-medium">
                             Daily Wear

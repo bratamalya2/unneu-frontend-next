@@ -9,7 +9,7 @@ export default function Hero({ category }) {
         <div className="w-[30%] h-full default-background-svg" id="buyer-category-hero-3">
         </div>
         <div className="absolute bottom-[140px] lg:bottom-[120px] left-[5vw] text-white text-2xl lg:text-4xl font-semibold">{category}</div>
-        <p className="absolute bottom-[50px] max-w-[65%] lg:max-w-[40%] lg:bottom-[70px] left-[5vw] text-white text-base lg:text-[18px]">
+        <p className="absolute bottom-[65px] max-w-[65%] lg:max-w-[40%] lg:bottom-[70px] left-[5vw] text-white text-base lg:text-[18px]">
             Explore the latest Pre-Owned sarees listed freshly by our sellers.
         </p>
     </section>

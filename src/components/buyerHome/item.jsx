@@ -351,7 +351,7 @@ export default function Item({ item }) {
         return null;
 
     return <>
-        <div className="bg-[#F4F4F4] lg:bg-white relative shadow-xl w-[48%] lg:w-[31.5%] xl:w-[28.5%] min-[1400px]:w-[24%] 2xl:w-[23%] min-[1715px]:w-[20%] h-[390px] lg:h-[600px] min-[1400px]:h-[550px] 2xl:h-[500px] min-[1715px]:h-[550px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
+        <div className="bg-[#F4F4F4] lg:bg-white relative shadow-xl w-[46%] lg:w-[31.5%] xl:w-[28.5%] min-[1400px]:w-[24%] 2xl:w-[23%] min-[1715px]:w-[20%] h-[390px] lg:h-[500px] xl:h-[520px] min-[1715px]:h-[550px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
             {
                 ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[currentIndex].split(".")[itemFiles[currentIndex].split(".").length - 1]) ? (
                     <Link href={`/item?itemId=${item.itemId.S}`}>
@@ -514,7 +514,15 @@ export default function Item({ item }) {
             <Modal.Body className="w-full h-[450px] flex flex-col lg:flex-row p-0 overflow-y-hidden rounded-b-[16px] rounded-t-[16px] lg:rounded-b-0 gap-x-[45px]">
                 <section className="relative w-full lg:w-[45%] min-[1400px]:w-[40%] h-[60%] lg:h-full">
                     <Image src={Close} alt="close" className="lg:hidden absolute top-4 right-4 w-[16px] h-[16px] hover:cursor-pointer z-10" onClick={handleCloseQuickView} />
-                    <img src={imgUrls[modalCurrentIndex]} alt="item-img" className="absolute z-0 w-full h-full lg:rounded-l-[32px] lg:rounded-r-0" />
+                    {
+                        ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[modalCurrentIndex].split(".")[itemFiles[modalCurrentIndex].split(".").length - 1]) ? (
+                            <img src={imgUrls[modalCurrentIndex]} alt="item-img" className="absolute z-0 w-full h-full lg:rounded-l-[32px] lg:rounded-r-0" />
+                        ) : (
+                            <video className="absolute z-0 w-full h-full lg:rounded-l-[32px] lg:rounded-r-0 object-cover" loop={true} autoPlay="autoplay" muted>
+                                <source src={imgUrls[modalCurrentIndex]} />
+                            </video>
+                        )
+                    }
                     {
                         modalCurrentIndex === 0 ? (
                             <div className="absolute z-10 w-[42px] h-[42px] rounded-[100%] bg-[#FFFFFF] hover:cursor-pointer top-[45%] left-3 flex flex-row flex-nowrap items-center justify-center">
