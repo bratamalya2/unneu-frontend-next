@@ -35,7 +35,6 @@ const availableColors = [
 
 export default function Filters({ appliedFilters, addFilter, removeFilter, handleShowMobileFilters, sortBy, setSortBy }) {
     const [showNewlyListed, setShowNewlyListed] = useState(false);
-    const [showOccasion, setShowOccasion] = useState(false);
     const [showColors, setShowColors] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
     const [matchingStores, setMatchingStores] = useState([]);
@@ -115,70 +114,6 @@ export default function Filters({ appliedFilters, addFilter, removeFilter, handl
                                 removeFilter("newly-listed=30");
                         }} />
                         <label>Within Last 30 Days</label>
-                    </li>
-                </ul>
-            }
-            <div className="mt-[25px] w-full flex flex-row flex-nowrap items-center justify-between">
-                <p className="text-xl">By Occasion</p>
-                <Image src={showOccasion ? UpArrow : DownArrow} alt="show/hide" className="w-[11px] h-[5px] hover:cursor-pointer" onClick={() => {
-                    setShowOccasion(x => !x);
-                }} />
-            </div>
-            {
-                showOccasion && <ul className="mt-[30px] list-none flex flex-col gap-y-2">
-                    <li className="w-full flex flex-row flex-nowrap items-center gap-x-2">
-                        <input type="checkbox" className="custom-filter-checkbox" checked={appliedFilters.includes("occasion=New Arrivals")} onChange={e => {
-                            if (e.target.checked)
-                                addFilter("occasion=New Arrivals");
-                            else
-                                removeFilter("occasion=New Arrivals");
-                        }} />
-                        <label>New Arrivals</label>
-                    </li>
-                    <li className="w-full flex flex-row flex-nowrap items-center gap-x-2">
-                        <input type="checkbox" className="custom-filter-checkbox" checked={appliedFilters.includes("occasion=Festive Wear")} onChange={e => {
-                            if (e.target.checked)
-                                addFilter("occasion=Festive Wear");
-                            else
-                                removeFilter("occasion=Festive Wear");
-                        }} />
-                        <label>Festive Wear</label>
-                    </li>
-                    <li className="w-full flex flex-row flex-nowrap items-center gap-x-2">
-                        <input type="checkbox" className="custom-filter-checkbox" checked={appliedFilters.includes("occasion=Bridal Wear")} onChange={e => {
-                            if (e.target.checked)
-                                addFilter("occasion=Bridal Wear");
-                            else
-                                removeFilter("occasion=Bridal Wear");
-                        }} />
-                        <label>Bridal Wear</label>
-                    </li>
-                    <li className="w-full flex flex-row flex-nowrap items-center gap-x-2">
-                        <input type="checkbox" className="custom-filter-checkbox" checked={appliedFilters.includes("occasion=Party Wear")} onChange={e => {
-                            if (e.target.checked)
-                                addFilter("occasion=Party Wear");
-                            else
-                                removeFilter("occasion=Party Wear");
-                        }} />
-                        <label>Party Wear</label>
-                    </li>
-                    <li className="w-full flex flex-row flex-nowrap items-center gap-x-2">
-                        <input type="checkbox" className="custom-filter-checkbox" checked={appliedFilters.includes("occasion=Casual Wear")} onChange={e => {
-                            if (e.target.checked)
-                                addFilter("occasion=Casual Wear");
-                            else
-                                removeFilter("occasion=Casual Wear");
-                        }} />
-                        <label>Casual Wear</label>
-                    </li>
-                    <li className="w-full flex flex-row flex-nowrap items-center gap-x-2">
-                        <input type="checkbox" className="custom-filter-checkbox" checked={appliedFilters.includes("occasion=Daily Wear")} onChange={e => {
-                            if (e.target.checked)
-                                addFilter("occasion=Daily Wear");
-                            else
-                                removeFilter("occasion=Daily Wear");
-                        }} />
-                        <label>Daily Wear</label>
                     </li>
                 </ul>
             }

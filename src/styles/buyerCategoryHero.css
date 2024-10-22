@@ -1,0 +1,21 @@
+#buyer-category-main {
+    background-image: url("../../public/category-page-hero-2.svg");
+}
+
+@media only screen and (min-width: 1024px) {
+    #buyer-category-main {
+        background-image: none;
+    }
+
+    #buyer-category-hero-1 {
+        background-image: url("../../public/category-page-hero-1.svg");
+    }
+
+    #buyer-category-hero-2 {
+        background-image: url("../../public/category-page-hero-2.svg");
+    }
+
+    #buyer-category-hero-3 {
+        background-image: url("../../public/category-page-hero-3.svg");
+    }
+}

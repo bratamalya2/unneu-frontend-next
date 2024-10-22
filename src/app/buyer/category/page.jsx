@@ -1,21 +1,25 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import Error from "next/error";
 
-import Hero from "@/components/buyerHome/hero";
-import Categories from "@/components/buyerHome/categories";
-import Filters from "@/components/buyerHome/filters";
+import Hero from "@/components/buyerCategoryPage/hero";
+import Filters from "@/components/buyerCategoryPage/filter";
 import Results from "@/components/buyerHome/results";
 import TopSellers from "@/components/buyerHome/topSellers";
-import MobileFilters from "@/components/buyerHome/mobileFilters";
+import MobileFilters from "@/components/buyerCategoryPage/mobileFilters";
 
-export default function BuyerHome() {
+export default function Category() {
+    const searchParams = useSearchParams();
     const [items, setItems] = useState([]);
     const [appliedFilters, setAppliedFilters] = useState([]);
     const [sortBy, setSortBy] = useState("Unsorted");
     const [top10Sellers, setTop10Sellers] = useState([]);
     const [sortedAndFilteredItems, setSortedAndFilteredItems] = useState(items);
     const [showMobileFilters, setShowMobileFilters] = useState(false);
+    const [isCategoryProfileExists, setIsCategoryProfileExists] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const handleCloseMobileFilters = () => setShowMobileFilters(false);
     const handleShowMobileFilters = () => setShowMobileFilters(true);
@@ -36,14 +40,26 @@ export default function BuyerHome() {
 
     const fetchItems = async () => {
         try {
-            const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/buyer/getAllItems`);
+            const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/buyer/getAllItemsOfACategory`, {
+                method: "GET",
+                headers: {
+                    category: searchParams.get("category")
+                }
+            });
             const y = await x.json();
             if (y.success) {
                 setItems(y.items);
+                setIsLoaded(true);
+                setIsCategoryProfileExists(true);
+            }
+            else {
+                setIsLoaded(true);
+                setIsCategoryProfileExists(false);
             }
         }
         catch (err) {
             console.log(err);
+            setIsLoaded(true);
         }
     };
 
@@ -61,11 +77,6 @@ export default function BuyerHome() {
     const removeAllFilters = () => {
         setAppliedFilters([]);
     };
-
-    useEffect(() => {
-        fetchItems();
-        fetchTop10Sellers();
-    }, []);
 
     useEffect(() => {
         setSortedAndFilteredItems(items);
@@ -102,7 +113,6 @@ export default function BuyerHome() {
         setSortedAndFilteredItems(() => {
             let arr = [...items];
             let maxDays = 0;
-            const selectedCategories = [];
             const selectedColors = [];
             const selectedStoreNames = [];
             appliedFilters.forEach((filter) => {
@@ -111,10 +121,6 @@ export default function BuyerHome() {
                         const noOfDays = parseInt(filter.split("=")[1]);
                         if (noOfDays > maxDays)
                             maxDays = noOfDays;
-                        break;
-                    case "occasion":
-                        const category = filter.split("=")[1];
-                        selectedCategories.push(category);
                         break;
                     case "color":
                         const color = filter.split("=")[1];
@@ -130,9 +136,6 @@ export default function BuyerHome() {
                 const minDateInMiliseconds = (new Date()).getTime() - maxDays * 24 * 60 * 60 * 1000;
                 arr = arr.filter((item) => (new Date(item.uploadDateTime.S)).getTime() > minDateInMiliseconds);
             }
-            if (selectedCategories.length > 0) {
-                arr = arr.filter(x => selectedCategories.includes(x.category.S));
-            }
             if (selectedColors.length > 0) {
                 arr = arr.filter(x => selectedColors.includes(x.color.S));
             }
@@ -143,22 +146,42 @@ export default function BuyerHome() {
         });
     }, [appliedFilters, items]);
 
+    useEffect(() => {
+        if (searchParams.get("category")) {
+            fetchItems();
+            fetchTop10Sellers();
+        }
+        else
+            setIsLoaded(true);
+    }, []);
+
     return <main className="w-full relative">
-        <Hero />
-        <Categories />
-        <section className="mt-[42px] lg:mt-[100px] mb-[70px] lg:mb-[150px] w-full flex flex-col lg:flex-row flex-nowrap lg:justify-between gap-x-[16px] lg:gap-x-0">
-            <p className="px-[5%] lg:hidden text-[18px] font-medium">Pre-owned Sarees <span className="text-sm text-[#BEBEBE]">({sortedAndFilteredItems.length} results)</span></p>
-            <Filters
-                appliedFilters={appliedFilters}
-                addFilter={addFilter}
-                removeFilter={removeFilter}
-                handleShowMobileFilters={handleShowMobileFilters}
-                sortBy={sortBy}
-                setSortBy={setSortBy}
-            />
-            <MobileFilters appliedFilters={appliedFilters} addFilter={addFilter} removeFilter={removeFilter} removeAllFilters={removeAllFilters} showMobileFilters={showMobileFilters} handleCloseMobileFilters={handleCloseMobileFilters} />
-            <Results items={sortedAndFilteredItems} appliedFilters={appliedFilters} removeFilter={removeFilter} sortBy={sortBy} setSortBy={setSortBy} />
-        </section>
-        <TopSellers top10Sellers={top10Sellers} />
+        {
+            searchParams.get("category") && isCategoryProfileExists && isLoaded && <>
+                <p className="mt-[32px] text-[#494949] px-[5%]">
+                    Home&nbsp;/&nbsp;shop&nbsp;/&nbsp;{searchParams.get("category")}
+                </p>
+                <Hero category={searchParams.get("category")} />
+                <section className="mt-[42px] lg:mt-[100px] mb-[70px] lg:mb-[150px] w-full flex flex-col lg:flex-row flex-nowrap lg:justify-between gap-x-[16px] lg:gap-x-0">
+                    <p className="px-[5%] lg:hidden text-[18px] font-medium">Pre-owned Sarees <span className="text-sm text-[#BEBEBE]">({sortedAndFilteredItems.length} results)</span></p>
+                    <Filters
+                        appliedFilters={appliedFilters}
+                        addFilter={addFilter}
+                        removeFilter={removeFilter}
+                        handleShowMobileFilters={handleShowMobileFilters}
+                        sortBy={sortBy}
+                        setSortBy={setSortBy}
+                    />
+                    <MobileFilters appliedFilters={appliedFilters} addFilter={addFilter} removeFilter={removeFilter} removeAllFilters={removeAllFilters} showMobileFilters={showMobileFilters} handleCloseMobileFilters={handleCloseMobileFilters} />
+                    <Results items={sortedAndFilteredItems} appliedFilters={appliedFilters} removeFilter={removeFilter} sortBy={sortBy} setSortBy={setSortBy} />
+                </section>
+                <TopSellers top10Sellers={top10Sellers} />
+            </>
+        }
+        {
+            !isCategoryProfileExists && isLoaded && (
+                <Error statusCode={404} />
+            )
+        }
     </main>
 }

@@ -38,7 +38,7 @@ export default function Results({ items, appliedFilters, removeFilter, sortBy, s
                                         <Image src={Close} alt="remove" className="absolute w-[8px] h-[8px] top-4 right-2 opacity-50 hover:cursor-pointer" onClick={() => removeFilter(filter)} />
                                     </div>
                                 case "color":
-                                    return <div className="relative py-[10px] pl-[5px] pr-[25px] rounded-[16px] border border-[#000] text-[#767676] flex flex-row flex-nowrap text-sm" key={index}>Color: <div className={`ml-3 rounded-[100%] w-[20px] h-[20px]`} style={{
+                                    return <div className="relative py-[10px] pl-[5px] pr-[25px] rounded-[16px] border border-[#000] text-[#767676] flex flex-row flex-nowrap text-sm" key={index}>Color: <div className={`ml-3 rounded-[100%] w-[20px] h-[20px] ${filter.split("=")[1] === "#FFF" && "border-[0.5px] border-black"}`} style={{
                                         backgroundColor: filter.split("=")[1]
                                     }}></div>
                                         <Image src={Close} alt="remove" className="absolute w-[8px] h-[8px] top-4 right-2 opacity-50 hover:cursor-pointer" onClick={() => removeFilter(filter)} />

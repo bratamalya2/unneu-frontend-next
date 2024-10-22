@@ -166,7 +166,7 @@ export default function Header() {
             )
         }
         {
-            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item") && (
+            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category") && (
                 <header className={`hidden ${lbFont.className} h-[90px] lg:flex flex-row flex-nowrap items-center justify-between px-[5%]`}>
                     <Image src={Logo} alt="Unneu" className="w-[125px] h-[44px]" />
                     <nav className="list-none lg:ml-[5%] xl:ml-[8%] 2xl:ml-[10%] lg:w-[33%] xl:w-[30%] 2xl:w-[28%] flex flex-row flex-nowrap items-center justify-between">
@@ -191,7 +191,7 @@ export default function Header() {
             )
         }
         {
-            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item") && (
+            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category") && (
                 <header className={`${lbFont.className} block lg:hidden h-[76px] flex items-center px-[15px] pt-[20px] pb-[20px] z-[200] sticky top-0 bg-white`}>
                     <a href="#mobile-nav">
                         <Image src={Hamburger} alt="details" className="w-[20px] h-[14px]" onClick={() => {
