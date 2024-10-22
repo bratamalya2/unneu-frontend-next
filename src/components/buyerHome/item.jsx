@@ -351,7 +351,7 @@ export default function Item({ item }) {
         return null;
 
     return <>
-        <div className="bg-[#F4F4F4] lg:bg-white relative shadow-xl w-[47%] lg:w-[31.5%] xl:w-[28.5%] min-[1400px]:w-[24%] 2xl:w-[23%] min-[1715px]:w-[20%] h-[420px] lg:h-[600px] min-[1400px]:h-[550px] 2xl:h-[500px] min-[1715px]:h-[550px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
+        <div className="bg-[#F4F4F4] lg:bg-white relative shadow-xl w-[48%] lg:w-[31.5%] xl:w-[28.5%] min-[1400px]:w-[24%] 2xl:w-[23%] min-[1715px]:w-[20%] h-[420px] lg:h-[600px] min-[1400px]:h-[550px] 2xl:h-[500px] min-[1715px]:h-[550px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
             {
                 ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[currentIndex].split(".")[itemFiles[currentIndex].split(".").length - 1]) ? (
                     <Link href={`/item?itemId=${item.itemId.S}`}>
@@ -496,7 +496,7 @@ export default function Item({ item }) {
                 </p>
                 <div className="mt-[12px] w-full border-[1.5px] border-[#5AA7BB] py-[23px] px-[17px] rounded-[8px] flex flex-row items-center flex-nowrap gap-x-1">
                     <Image src={ShareLink} alt="copy-link" className="w-[27px] h-[19px]" />
-                    <p className="text-sm">https://unneu.com/buyer/item?itemId={item.itemId.S}</p>
+                    <p className="text-xs lg:text-sm">https://unneu.com/buyer/item?itemId={item.itemId.S}</p>
                 </div>
                 <button className="mt-[25px] bg-[#FE9135] text-white w-full py-[10px] rounded-[8px] text-xl font-medium active:bg-[#FBC246]" onClick={async () => {
                     try {
@@ -574,9 +574,9 @@ export default function Item({ item }) {
                         <button className="hidden lg:block mt-[20px] border border-[#9D9D9D] rounded-[24px] py-[10px] px-[95px] font-medium">More Details</button>
                     </Link>
                     <div className="lg:hidden w-full absolute bottom-0 left-0 flex flex-row flex-nowrap items-center justify-between">
-                        <div className="py-[12px] w-[50%] text-white text-[15px] font-medium bg-[#FE9135] text-center">Add to cart</div>
-                        <Link href={`/item?itemId=${item.itemId.S}`}>
-                            <div className="py-[12px] w-[50%] text-[#787878] text-[15px] font-medium text-center border-t border-t-[#C8C8C8]">More details</div>
+                        <div className="py-[12px] w-[50%] h-full text-white text-[15px] font-medium bg-[#FE9135] text-center">Add to cart</div>
+                        <Link href={`/item?itemId=${item.itemId.S}`} className="w-[50%] h-full">
+                            <div className="py-[12px] text-[#787878] text-[15px] font-medium text-center border-t border-t-[#C8C8C8]">More details</div>
                         </Link>
                     </div>
                 </section>
