@@ -47,11 +47,11 @@ export default function ItemHome() {
             setIsLoaded(true);
     }, []);
 
-    return <main className="w-full relative my-[48px] px-[5%]">
+    return <main className="w-full relative my-[12px] lg:my-[48px] px-[5%]">
         {
             searchParams.get("itemId") && isItemProfileExists && isLoaded && <>
-                <p className="mt-[35px] mb-[20px] text-[#494949]">Home / shop / {itemDetails.itemName}</p>
-                <section className="w-full flex flex-row flex-nowrap justify-between pb-[100px]">
+                <p className="text-sm lg:text-base mt-[16px] lg:mt-[35px] mb-[20px] text-[#494949]">Home / shop / {itemDetails.itemName}</p>
+                <section className="w-full flex flex-col lg:flex-row flex-nowrap justify-between pb-[30px] lg:pb-[100px]">
                     <Left itemId={searchParams.get("itemId")} itemDetails={itemDetails} />
                     <Right itemId={searchParams.get("itemId")} itemDetails={itemDetails} />
                 </section>
