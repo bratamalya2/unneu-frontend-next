@@ -351,11 +351,11 @@ export default function Item({ item }) {
         return null;
 
     return <>
-        <div className="bg-[#F4F4F4] lg:bg-white relative shadow-xl w-[48%] lg:w-[31.5%] xl:w-[28.5%] min-[1400px]:w-[24%] 2xl:w-[23%] min-[1715px]:w-[20%] h-[420px] lg:h-[600px] min-[1400px]:h-[550px] 2xl:h-[500px] min-[1715px]:h-[550px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
+        <div className="bg-[#F4F4F4] lg:bg-white relative shadow-xl w-[48%] lg:w-[31.5%] xl:w-[28.5%] min-[1400px]:w-[24%] 2xl:w-[23%] min-[1715px]:w-[20%] h-[390px] lg:h-[600px] min-[1400px]:h-[550px] 2xl:h-[500px] min-[1715px]:h-[550px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
             {
                 ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[currentIndex].split(".")[itemFiles[currentIndex].split(".").length - 1]) ? (
                     <Link href={`/item?itemId=${item.itemId.S}`}>
-                        <img src={imgUrls[currentIndex]} alt="item image" className="h-[60%] lg:h-[60%] min-[1400px]:h-[62%] w-full rounded-t-[32px] hover:cursor-pointer" onMouseEnter={() => {
+                        <img src={imgUrls[currentIndex]} alt="item image" className="h-[55%] lg:h-[60%] min-[1400px]:h-[62%] w-full rounded-t-[32px] hover:cursor-pointer" onMouseEnter={() => {
                             if (window.innerWidth >= 1024)
                                 setShowAnimation(true);
                         }}
@@ -366,7 +366,7 @@ export default function Item({ item }) {
                     </Link>
                 ) : (
                     <Link href={`/item?itemId=${item.itemId.S}`}>
-                        <video className="h-[55%] lg:h-[55%] min-[1400px]:h-[60%] w-full rounded-t-[32px] object-cover hover:cursor-pointer" loop={true} autoPlay="autoplay" muted onMouseEnter={() => {
+                        <video className="h-[55%] lg:h-[60%] min-[1400px]:h-[62%] w-full rounded-t-[32px] object-cover hover:cursor-pointer" loop={true} autoPlay="autoplay" muted onMouseEnter={() => {
                             if (window.innerWidth >= 1024)
                                 setShowAnimation(true);
                         }}
@@ -379,7 +379,7 @@ export default function Item({ item }) {
                     </Link>
                 )
             }
-            <aside className="lg:hidden absolute w-[75px] h-[40px] bottom-[42%] left-[25%] flex flex-row flex-nowrap items-center justify-between">
+            <aside className="lg:hidden absolute w-[75px] h-[40px] bottom-[46%] left-[25%] flex flex-row flex-nowrap items-center justify-between">
                 <div className="w-[29px] h-[29px] rounded-[100%] bg-white flex flex-row flex-nowrap items-center justify-center">
                     <Image src={isWishlisted ? Like2 : Like} alt="wishlist" className="w-[18px] h-[15px]" onClick={() => {
                         if (isWishlisted)
