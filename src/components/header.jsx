@@ -54,7 +54,7 @@ export default function Header() {
         {
             pathname === "/" && (
                 <header className={`${lbFont.className} h-[182px] hidden md:block z-[200] bg-white`}>
-                    <div className="py-[33px] flex justify-around items-center mg:px-[6%] lg:px-[7.5%]">
+                    <div className="py-[33px] flex justify-around items-center mg:px-[6%] lg:px-[5%]">
                         <Image src={Logo} alt="Unneu" className="w-[85px] lg:w-[125px] lg:h-[44px]" />
                         <div className="w-[30%] md:w-[40%] relative">
                             <Image src={Search} alt="Search" className="w-[24px] h-[24px] absolute top-5 left-4" />
@@ -74,7 +74,7 @@ export default function Header() {
                             setShowSignUp(true);
                         }}>Sign up</button>
                     </div>
-                    <nav className="border-t border-t-[#dcdcdc99] border-b border-b-[#dcdcdc99] w-full px-[10%] py-[25px] list-none flex gap-x-[38px] bg-white">
+                    <nav className="border-t border-t-[#dcdcdc99] border-b border-b-[#dcdcdc99] w-full px-[6%] 2xl:px-[7%] py-[25px] list-none flex gap-x-[38px] bg-white">
                         <li className="hover:cursor-pointer">Home</li>
                         <li className="hover:cursor-pointer">Shop</li>
                         <li className="hover:cursor-pointer" onClick={() => {

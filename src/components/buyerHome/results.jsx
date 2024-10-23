@@ -51,11 +51,11 @@ export default function Results({ items, appliedFilters, removeFilter, sortBy, s
                         })
                     }
                 </div>
-                <div className="absolute right-0 mt-[20px] lg:w-[35%] xl:w-[30%] min-[1400px]:w-[25%] 2xl:w-[22%] flex flex-row flex-nowrap gap-x-[10px]">
+                <div className="absolute right-0 mt-[20px] lg:w-[35%] xl:w-[30%] min-[1400px]:w-[25%] 2xl:w-[22%] flex flex-row flex-nowrap justify-end gap-x-[10px] mr-3">
                     <div className="flex flex-row flex-nowrap py-[9px]">
                         <p>Sort by</p>
                     </div>
-                    <div className="py-[13px] px-[20px] justify-end flex flex-row flex-nowrap self-start gap-x-[16px] rounded-[16px] text-xs border border-black hover:cursor-pointer" onClick={() => {
+                    <div className="py-[13px] px-[20px] flex flex-row flex-nowrap self-start gap-x-[16px] rounded-[16px] text-xs border border-black hover:cursor-pointer" onClick={() => {
                         setShowSortOptions(x => !x);
                     }}>
                         {sortBy}
@@ -83,7 +83,7 @@ export default function Results({ items, appliedFilters, removeFilter, sortBy, s
                     </div>
                 </div>
             </section>
-            <section className="relative mt-[70px] w-full flex flex-row flex-wrap items-center lg:gap-x-[10px] xl:gap-x-[30px] min-[1400px]:gap-x-[10px] 2xl:gap-x-[16px] min-[1715px]:gap-x-[42px] gap-y-[32px]">
+            <section className="relative mt-[70px] w-full flex flex-row flex-wrap items-center justify-around gap-y-[32px]">
                 {
                     items.map((item) => <Item key={item.itemId.S} item={item} />)
                 }

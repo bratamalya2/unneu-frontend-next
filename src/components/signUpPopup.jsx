@@ -140,13 +140,13 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
     }, [isSellerSelected, setBuyerSelected, setSellerSelected]);
 
     return <>
-        <Modal show={showSignUp} onHide={hideSignUp} className="mt-[20px] xl:max-w-[80%] xl:left-[10%]">
-            <Modal.Body className="flex flex-row flex-nowrap justify-center sm:justify-start rounded-[32px] h-[700px] sm:h-[600px] md:h-[640px] lg:h-[750px] p-0">
+        <Modal show={showSignUp} onHide={hideSignUp} className="mt-[20px] xl:max-w-[60%] xl:left-[20%]">
+            <Modal.Body className="flex flex-row flex-nowrap justify-center sm:justify-start rounded-[32px] h-[700px] sm:h-[600px] md:h-[640px] p-0">
                 <div className="hidden sm:inline-block w-[35%] h-full rounded-tl-[32px] rounded-bl-[32px]" id="signup-popup-side-img-container"></div>
                 <div className="relative flex flex-col items-center h-full w-full sm:w-[65%]">
                     <Image src={CloseIcon} alt="close" className="w-[20px] h-[20px] absolute top-5 right-5" onClick={hideSignUp} />
                     <p className={`${libreBaskerville.className} text-2xl text-[32px] text-[#4C4C4C] sm:hidden md:block ${isOTPSent ? "mt-[25px] mb-4" : "mt-[65px] mb-8"}`}>Sign up</p>
-                    <div className={`flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-2xl mt-8`}>
+                    <div className={`flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-2xl ${showError ? "mt-2" : "mt-8"}`}>
                         <div
                             className={`py-[9px] sm:py-[6px] lg:py-[10px] px-[25px] lg:px-[25px] rounded-tl-[8px] rounded-bl-[8px] hover:cursor-pointer ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
                             onClick={() => setIsSellerSelected(true)}
@@ -235,13 +235,13 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                     }
                     {
                         showError && !isSellerSelected && (
-                            <p className="text-[#8F8F8F] text-[14px] text-red-500 font-bold text-center my-2 sm:my-0 lg:my-4">{errorMessage}</p>
+                            <p className="text-[#8F8F8F] text-[14px] text-red-500 font-bold text-center my-2 sm:my-0">{errorMessage}</p>
                         )
                     }
                     {
                         isOTPSent && !isSellerSelected && (
                             <>
-                                <p className="text-[#8F8F8F] text-[14px] lg:text-[18px] text-center">Didnt get OTP ? <span className={`text-[#6C6C6C] font-medium ${timer === 0 ? "hover:cursor-pointer" : "hover:cursor-wait"}`} onClick={resendOTP}>Resend</span> {
+                                <p className="text-[#8F8F8F] text-sm text-center">Didnt get OTP ? <span className={`text-[#6C6C6C] font-medium ${timer === 0 ? "hover:cursor-pointer" : "hover:cursor-wait"}`} onClick={resendOTP}>Resend</span> {
                                     timer > 0 && timer && (
                                         <span>
                                             OTP in <span className="text-red-500">{timer} seconds</span>

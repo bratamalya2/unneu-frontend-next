@@ -143,7 +143,7 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
     }, [isSellerSelected, setBuyerSelected, setSellerSelected]);
 
     return <>
-        <Modal show={showSignIn} onHide={hideSignIn} className="mt-[20px] mb-[50px] xl:max-w-[80%] xl:left-[10%]">
+        <Modal show={showSignIn} onHide={hideSignIn} className="mt-[20px] mb-[50px] xl:max-w-[60%] xl:left-[20%]">
             <Modal.Body className="bg-[#FEE9BC] rounded-[32px] flex flex-row flex-nowrap sm:justify-between p-0 h-[550px] sm:h-fit">
                 <div className="sm:h-[500px] lg:h-[600px] w-[52%] rounded-tl-[32px] rounded-bl-[32px] hidden sm:inline-block" id="login-side-img-container"></div>
                 <div className="relative w-full sm:max-w-[45%] pl-1 pl-1 sm:pr-10 inline-flex flex-col flex-nowrap items-center">

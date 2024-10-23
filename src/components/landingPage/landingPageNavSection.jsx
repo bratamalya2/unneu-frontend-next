@@ -27,7 +27,9 @@ export default function LandingPageNavSection({ setShowRentalPopup }) {
             <p className="sm:text-sm sm:text-center lg:text-base">
                 Own a piece of history, drape yourself in preloved elegance: &quot;as every drape tells a beautiful story.&quot;
             </p>
-            <button className="bg-[#FBC246] py-[12px] px-[47px] sm:px-[35px] rounded-[12px] mt-[32px] text-black font-medium text-[18px] hover:bg-[#FE9135]">Buy now</button>
+            <button className="bg-[#FBC246] py-[12px] px-[47px] sm:px-[35px] rounded-[12px] mt-[32px] text-black font-medium text-[18px] hover:bg-[#FE9135]" onClick={() => {
+                router.push("/buyer/home");
+            }}>Buy now</button>
         </section>
         <section className="flex flex-col items-center md:max-w-[23%]">
             <Image src={Rental} alt="resell" className="lg:w-[50px] lg:h-[70px] xl:w-[55px] xl:h-[80px]" />
