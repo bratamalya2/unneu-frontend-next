@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const months = [
     "Jan",
@@ -22,6 +23,8 @@ export default function Left({ itemId, itemDetails }) {
     const [imgUrls, setImgUrls] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [uploadDate, setUploadDate] = useState("");
+    const [itemWidth, setItemWidth] = useState(0);
+    const [itemHeight, setItemHeight] = useState(0);
 
     const fetchFiles = async () => {
         try {
@@ -72,6 +75,26 @@ export default function Left({ itemId, itemDetails }) {
     }, [itemFiles]);
 
     useEffect(() => {
+        const width = window.innerWidth;
+        if (width < 1024) {
+            setItemWidth(0.9 * width);
+            setItemHeight(0.8 * 560);
+        }
+        else if (width < 1280) {
+            setItemWidth(0.9 * width * 0.5 * 0.75);
+            setItemHeight(560);
+        }
+        else if (width >= 1400 && width < 1536) {
+            setItemWidth(0.9 * width * 0.45 * 0.8);
+            setItemHeight(560);
+        }
+        else {
+            setItemWidth(0.9 * width * 0.4 * 0.75);
+            setItemHeight(560);
+        }
+    }, []);
+
+    useEffect(() => {
         const date = new Date(itemDetails.uploadDateTime);
         let dateSuffix;
         switch (date.getDate()) {
@@ -115,7 +138,11 @@ export default function Left({ itemId, itemDetails }) {
         <div className="relative lg:w-[75%] min-[1400px]:w-[80%] 2xl:w-[75%] h-[80%] lg:h-full">
             {
                 ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[currentIndex].split(".")[itemFiles[currentIndex].split(".").length - 1]) ? (
-                    <img src={imgUrls[currentIndex]} alt="item image" className="w-full h-full rounded-[24px] hover:cursor-pointer" />
+                    //<img src={imgUrls[currentIndex]} alt="item image" className="w-full h-full rounded-[24px] hover:cursor-pointer" />
+                    <Image src={imgUrls[currentIndex]} alt="item image" width={itemWidth} height={itemHeight} className="rounded-[24px] hover:cursor-pointer" style={{
+                        height: `${itemHeight}px`,
+                        objectFit: "cover"
+                    }} />
                 ) : (
                     <video className="w-full h-full rounded-[24px] object-cover hover:cursor-pointer" loop={true} autoPlay="autoplay" muted >
                         <source src={imgUrls[currentIndex]} />

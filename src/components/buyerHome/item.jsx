@@ -28,6 +28,8 @@ export default function Item({ item }) {
     const pageUrl = encodeURIComponent(`https://unneu.com/buyer/item?itemId=${item.sellerId}`);
     const shareText = encodeURIComponent("Check out this awesome page!");
     const [itemFiles, setItemFiles] = useState([]);
+    const [itemWidth, setItemWidth] = useState(0);
+    const [itemHeight, setItemHeight] = useState(0);
     const [imgUrls, setImgUrls] = useState([]);
     const [itemImagesOffset, setItemImagesOffset] = useState(0);
     const [sellerStoreName, setSellerStoreName] = useState(null);
@@ -329,6 +331,34 @@ export default function Item({ item }) {
     }, [sellerProfilePhoto]);
 
     useEffect(() => {
+        const width = window.innerWidth;
+        if (width < 1024) {
+            setItemWidth(0.46 * width);
+            setItemHeight(0.55 * 390);
+        }
+        else if (width < 1280) {
+            setItemWidth(0.315 * width);
+            setItemHeight(0.6 * 500);
+        }
+        else if (width < 1400) {
+            setItemWidth(0.285 * width);
+            setItemHeight(0.6 * 520);
+        }
+        else if (width < 1536) {
+            setItemWidth(0.24 * width);
+            setItemHeight(0.62 * 520);
+        }
+        else if (width < 1715) {
+            setItemWidth(0.23 * width);
+            setItemHeight(0.62 * 520);
+        }
+        else {
+            setItemWidth(0.195 * width);
+            setItemHeight(0.62 * 550);
+        }
+    }, []);
+
+    useEffect(() => {
         let x;
         if (showAnimation) {
             x = setInterval(() => {
@@ -351,14 +381,18 @@ export default function Item({ item }) {
         return null;
 
     return <>
-        <div className="bg-[#F4F4F4] lg:bg-white relative shadow-xl w-[46%] lg:w-[31.5%] xl:w-[28.5%] min-[1400px]:w-[24%] 2xl:w-[23%] min-[1715px]:w-[19.5%] h-[390px] lg:h-[500px] xl:h-[520px] min-[1715px]:h-[550px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
+        <div className="bg-[#F4F4F4] lg:bg-white relative shadow-xl w-full h-[390px] lg:h-[500px] xl:h-[520px] min-[1715px]:h-[550px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
             {
                 ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[currentIndex].split(".")[itemFiles[currentIndex].split(".").length - 1]) ? (
                     <Link href={`/item?itemId=${item.itemId.S}`}>
-                        <img src={imgUrls[currentIndex]} alt="item image" className="h-[55%] lg:h-[60%] min-[1400px]:h-[62%] w-full rounded-t-[32px] hover:cursor-pointer" onMouseEnter={() => {
-                            if (window.innerWidth >= 1024)
-                                setShowAnimation(true);
+                        <Image src={imgUrls[currentIndex]} alt="item image" width={itemWidth} height={itemHeight} className="rounded-t-[32px] hover:cursor-pointer" style={{
+                            height: `${itemHeight}px`,
+                            objectFit: "cover"
                         }}
+                            onMouseEnter={() => {
+                                if (window.innerWidth >= 1024)
+                                    setShowAnimation(true);
+                            }}
                             onMouseLeave={() => {
                                 if (window.innerWidth >= 1024);
                                 setShowAnimation(false);

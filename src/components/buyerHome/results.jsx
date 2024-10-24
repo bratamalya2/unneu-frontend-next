@@ -83,14 +83,14 @@ export default function Results({ items, appliedFilters, removeFilter, sortBy, s
                     </div>
                 </div>
             </section>
-            <section className="relative mt-[70px] w-full flex flex-row flex-wrap items-center justify-around gap-y-[32px]">
+            <section className="relative mt-[70px] w-full grid lg:grid-cols-3 xl:grid-cols-4 lg:gap-x-[6px] xl:gap-x-[16px] min-[1400px]:gap-x-[32px] min-[1650px]:gap-x-[40px] min-[1750px]:gap-x-[60px] gap-y-[32px]">
                 {
                     items.map((item) => <Item key={item.itemId.S} item={item} />)
                 }
             </section>
         </aside>
         <aside className="lg:hidden">
-            <section className="px-[2%] mt-[20px] w-full flex flex-row flex-wrap items-center justify-around gap-y-[50px]">
+            <section className="px-[2%] mt-[20px] w-full grid grid-cols-2 gap-x-[10px] min-[360px]:gap-x-[15px] gap-y-[50px]">
                 {
                     items.map((item) => <Item key={item.itemId.S} item={item} />)
                 }
