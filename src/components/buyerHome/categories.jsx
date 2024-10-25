@@ -40,9 +40,9 @@ export default function Categories() {
     }, []);
 
     return <>
-        <section className="pl-[3%] hidden lg:block relative mt-[80px] h-[300px] min-[1700px]:h-[360px] overflow-y-hidden whitespace-nowrap overflow-x-hidden pl-[5%] custom-horizontal-scroll-with-btns z-0" id="scroll-container-buyer-home">
-            <section className="inline-block relative lg:w-[25%] xl:w-[22%] min-[1400px]:w-[20%] 2xl:w-[18%] h-full rounded-[24px]">
-                <Image src={NewArrivals} alt="new-arrivals" className="absolute w-full h-full z-0 rounded-[24px]" />
+        <section className="px-[3%] hidden lg:block relative mt-[80px] h-[250px] min-[1700px]:h-[300px] overflow-y-hidden whitespace-nowrap overflow-x-hidden pl-[5%] custom-horizontal-scroll-with-btns z-0" id="scroll-container-buyer-home">
+            <section className="inline-block relative lg:w-[22%] xl:w-[20%] min-[1400px]:w-[17%] 2xl:w-[15%] h-full rounded-[24px]">
+                <Image src={NewArrivals} alt="new-arrivals" className="absolute w-full h-full z-0 rounded-[24px] object-cover" />
                 <Link href="/buyer/category?category=New Arrivals">
                     <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] font-bold rounded-[16px]" style={{
                         background: "linear-gradient(90deg, #F0E7DE 0%, #FBC246 100%)"
@@ -51,8 +51,8 @@ export default function Categories() {
                     </button>
                 </Link>
             </section>
-            <section className="inline-block ml-[32px] relative lg:w-[25%] xl:w-[22%] min-[1400px]:w-[20%] 2xl:w-[18%] h-full rounded-[24px]">
-                <Image src={FestiveWear} alt="festive-wear" className="absolute w-full h-full z-0 rounded-[24px]" />
+            <section className="inline-block ml-[32px] relative lg:w-[22%] xl:w-[20%] min-[1400px]:w-[17%] 2xl:w-[15%] h-full rounded-[24px]">
+                <Image src={FestiveWear} alt="festive-wear" className="absolute w-full h-full z-0 rounded-[24px] object-cover" />
                 <Link href="/buyer/category?category=Festive Wear">
                     <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] font-bold rounded-[16px]" style={{
                         background: "linear-gradient(90deg, #F0E7DE 0%, #FBC246 100%)"
@@ -61,8 +61,8 @@ export default function Categories() {
                     </button>
                 </Link>
             </section>
-            <section className="inline-block ml-[32px] relative lg:w-[25%] xl:w-[22%] min-[1400px]:w-[20%] 2xl:w-[18%] h-full rounded-[24px]">
-                <Image src={BridalWear} alt="bridal-wear" className="absolute w-full h-full z-0 rounded-[24px]" />
+            <section className="inline-block ml-[32px] relative lg:w-[22%] xl:w-[20%] min-[1400px]:w-[17%] 2xl:w-[15%] h-full rounded-[24px]">
+                <Image src={BridalWear} alt="bridal-wear" className="absolute w-full h-full z-0 rounded-[24px] object-cover" />
                 <Link href="/buyer/category?category=Bridal Wear">
                     <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] font-bold rounded-[16px]" style={{
                         background: "linear-gradient(90deg, #F0E7DE 0%, #FBC246 100%)"
@@ -71,8 +71,8 @@ export default function Categories() {
                     </button>
                 </Link>
             </section>
-            <section className="inline-block ml-[32px] relative lg:w-[25%] xl:w-[22%] min-[1400px]:w-[20%] 2xl:w-[18%] h-full rounded-[24px]">
-                <Image src={PartyWear} alt="party-wear" className="absolute w-full h-full z-0 rounded-[24px]" />
+            <section className="inline-block ml-[32px] relative lg:w-[22%] xl:w-[20%] min-[1400px]:w-[17%] 2xl:w-[15%] h-full rounded-[24px]">
+                <Image src={PartyWear} alt="party-wear" className="absolute w-full h-full z-0 rounded-[24px] object-cover" />
                 <Link href="/buyer/category?category=Party Wear">
                     <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] font-bold rounded-[16px]" style={{
                         background: "linear-gradient(90deg, #F0E7DE 0%, #FBC246 100%)"
@@ -81,8 +81,8 @@ export default function Categories() {
                     </button>
                 </Link>
             </section>
-            <section className="inline-block ml-[32px] relative lg:w-[25%] xl:w-[22%] min-[1400px]:w-[20%] 2xl:w-[18%] h-full rounded-[24px]">
-                <Image src={CasualWear} alt="casual-wear" className="absolute w-full h-full z-0 rounded-[24px]" />
+            <section className="inline-block ml-[32px] relative lg:w-[22%] xl:w-[20%] min-[1400px]:w-[17%] 2xl:w-[15%] h-full rounded-[24px]">
+                <Image src={CasualWear} alt="casual-wear" className="absolute w-full h-full z-0 rounded-[24px] object-cover" />
                 <Link href="/buyer/category?category=Casual Wear">
                     <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] font-bold rounded-[16px]" style={{
                         background: "linear-gradient(90deg, #F0E7DE 0%, #FBC246 100%)"
@@ -91,8 +91,8 @@ export default function Categories() {
                     </button>
                 </Link>
             </section>
-            <section className="inline-block ml-[32px] relative lg:w-[25%] xl:w-[22%] min-[1400px]:w-[20%] 2xl:w-[18%] h-full rounded-[24px]">
-                <Image src={DailyWear} alt="daily-wear" className="absolute w-full h-full z-0 rounded-[24px]" />
+            <section className="inline-block ml-[32px] relative lg:w-[22%] xl:w-[20%] min-[1400px]:w-[17%] 2xl:w-[15%] h-full rounded-[24px]">
+                <Image src={DailyWear} alt="daily-wear" className="absolute w-full h-full z-0 rounded-[24px] object-cover" />
                 <Link href="/buyer/category?category=Daily Wear">
                     <button className="absolute w-[60%] left-[20%] bottom-5 py-[12px] font-bold rounded-[16px]" style={{
                         background: "linear-gradient(90deg, #F0E7DE 0%, #FBC246 100%)"
@@ -155,7 +155,7 @@ export default function Categories() {
                 </Link>
             </aside>
         </section>
-        <div className="w-fit absolute right-5 hidden lg:flex flex-row flex-nowrap items-center gap-x-3 mt-[30px] mb-[60px]">
+        <div className="w-fit absolute right-[35px] hidden lg:flex flex-row flex-nowrap items-center gap-x-3 mt-[30px] mb-[60px]">
             {
                 scrollAmount === 0 ? (
                     <div className="border border-neutral-600 rounded-[100%] w-[50px] h-[50px] flex flex-row flex-nowrap items-center justify-center">

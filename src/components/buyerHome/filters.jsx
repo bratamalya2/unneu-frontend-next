@@ -79,7 +79,7 @@ export default function Filters({ appliedFilters, addFilter, removeFilter, handl
     }, [showProfile]);
 
     return <>
-        <aside className="lg:pl-[5%] lg:pr-0 hidden lg:block lg:w-[25%] xl:w-[25%] 2xl:w-[22%]">
+        <aside className="lg:pl-[5%] lg:pr-0 hidden lg:block lg:w-[25%] xl:w-[22%] 2xl:w-[20%]">
             <p className="mb-[70px] lg:text-3xl">Filters</p>
             <div className="w-full flex flex-row flex-nowrap items-center justify-between">
                 <p className="text-xl">Newly Listed</p>

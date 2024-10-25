@@ -117,12 +117,12 @@ export default function Left({ itemId, itemDetails }) {
     if (imgUrls.length === 0)
         return null;
 
-    return <aside className="relative lg:w-[50%] min-[1400px]:w-[45%] 2xl:w-[40%] h-[560px] flex flex-col-reverse lg:flex-row justify-between">
-        <div className={`w-full lg:w-[20%] min-[1400px]:w-[15%] flex ${window.innerWidth < 1024 ? "flex-row" : "flex-col"} gap-x-[5px] lg:gap-x-0 lg:gap-y-[6px] h-[15%] lg:h-full`}>
+    return <aside className="relative lg:w-[50%] min-[1400px]:w-[55%] h-[600px] lg:h-[950px] flex flex-col-reverse lg:flex-row justify-between">
+        <div className={`w-full lg:w-[20%] min-[1400px]:w-[20%] 2xl:w-[15%] flex ${window.innerWidth < 1024 ? "flex-row" : "flex-col"} gap-x-[5px] lg:gap-x-0 lg:gap-y-[6px] h-[15%] lg:h-full`}>
             {
                 imgUrls.map((url, tmpIndex) => {
                     return ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[tmpIndex].split(".")[itemFiles[tmpIndex].split(".").length - 1]) ? (
-                        <img src={url} alt="item image" className={`w-[19%] lg:w-full h-full lg:h-[19%] rounded-[8px] hover:cursor-pointer ${currentIndex === tmpIndex && "border-[3px] border-[#101010]"}`} onClick={() => setCurrentIndex(tmpIndex)} />
+                        <img src={url} alt="item image" className={`w-[19%] lg:w-full h-full lg:h-[15%] rounded-[8px] hover:cursor-pointer ${currentIndex === tmpIndex && "border-[3px] border-[#101010]"}`} onClick={() => setCurrentIndex(tmpIndex)} />
                     ) : (
                         <video className={`w-[19%] lg:w-full h-full lg:h-[19%] rounded-[8px] object-cover hover:cursor-pointer ${currentIndex === tmpIndex && "border-[3px] border-[#101010]"}`} loop={true} autoPlay="autoplay" muted onClick={() => setCurrentIndex(tmpIndex)} >
                             <source src={url} />
@@ -135,16 +135,17 @@ export default function Left({ itemId, itemDetails }) {
                 Product listed on {uploadDate}
             </p>
         </div>
-        <div className="relative lg:w-[75%] min-[1400px]:w-[80%] 2xl:w-[75%] h-[80%] lg:h-full">
+        <div className="relative lg:w-[75%] min-[1400px]:w-[75%] 2xl:w-[80%] h-[80%] lg:h-full">
             {
                 ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[currentIndex].split(".")[itemFiles[currentIndex].split(".").length - 1]) ? (
                     //<img src={imgUrls[currentIndex]} alt="item image" className="w-full h-full rounded-[24px] hover:cursor-pointer" />
-                    <Image src={imgUrls[currentIndex]} alt="item image" width={itemWidth} height={itemHeight} className="rounded-[24px] hover:cursor-pointer" style={{
-                        height: `${itemHeight}px`,
-                        objectFit: "cover"
-                    }} />
+                    <div className="w-full h-full rounded-[24px] default-background-svg"
+                        style={{
+                            backgroundImage: `url("${imgUrls[currentIndex]}")`
+                        }}
+                    />
                 ) : (
-                    <video className="w-full h-full rounded-[24px] object-cover hover:cursor-pointer" loop={true} autoPlay="autoplay" muted >
+                    <video className="w-full h-full rounded-[24px] object-cover" loop={true} autoPlay="autoplay" muted >
                         <source src={imgUrls[currentIndex]} />
                     </video>
                 )

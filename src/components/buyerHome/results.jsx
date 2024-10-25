@@ -18,7 +18,7 @@ export default function Results({ items, appliedFilters, removeFilter, sortBy, s
     const [showSortOptions, setShowSortOptions] = useState(false);
 
     return <>
-        <aside className="relative px-[5%] lg:pl-[5%] lg:pr-0 hidden lg:block lg:w-[75%] xl:w-[75%] 2xl:w-[78%]">
+        <aside className="relative px-[5%] lg:px-[0%] lg:pr-0 hidden lg:block lg:w-[75%] xl:w-[75%] 2xl:w-[78%]">
             <p className="text-3xl">Pre-owned Sarees <span className="text-xl">({items.length} results)</span></p>
             <div className="mt-[2px] w-full h-[1px] bg-gray-500"></div>
             <section className="w-full flex flex-row flex-nowrap justify-between">
@@ -83,7 +83,7 @@ export default function Results({ items, appliedFilters, removeFilter, sortBy, s
                     </div>
                 </div>
             </section>
-            <section className="relative mt-[70px] w-full grid lg:grid-cols-3 xl:grid-cols-4 lg:gap-x-[6px] xl:gap-x-[16px] min-[1400px]:gap-x-[32px] min-[1650px]:gap-x-[40px] min-[1750px]:gap-x-[60px] gap-y-[32px]">
+            <section className="pr-[2%] relative mt-[70px] w-full grid lg:grid-cols-3 xl:grid-cols-4 lg:gap-x-[6px] xl:gap-x-[16px] min-[1400px]:gap-x-[32px] min-[1650px]:gap-x-[40px] min-[1750px]:gap-x-[60px] gap-y-[32px]">
                 {
                     items.map((item) => <Item key={item.itemId.S} item={item} />)
                 }

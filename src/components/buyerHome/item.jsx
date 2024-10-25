@@ -25,11 +25,9 @@ import ShareLink from "@/../public/share-link.svg";
 import Options from "@/../public/options.png";
 
 export default function Item({ item }) {
-    const pageUrl = encodeURIComponent(`https://unneu.com/buyer/item?itemId=${item.sellerId}`);
+    const pageUrl = encodeURIComponent(`https://unneu.com/item?itemId=${item.itemId.S}`);
     const shareText = encodeURIComponent("Check out this awesome page!");
     const [itemFiles, setItemFiles] = useState([]);
-    const [itemWidth, setItemWidth] = useState(0);
-    const [itemHeight, setItemHeight] = useState(0);
     const [imgUrls, setImgUrls] = useState([]);
     const [itemImagesOffset, setItemImagesOffset] = useState(0);
     const [sellerStoreName, setSellerStoreName] = useState(null);
@@ -331,34 +329,6 @@ export default function Item({ item }) {
     }, [sellerProfilePhoto]);
 
     useEffect(() => {
-        const width = window.innerWidth;
-        if (width < 1024) {
-            setItemWidth(0.46 * width);
-            setItemHeight(0.55 * 390);
-        }
-        else if (width < 1280) {
-            setItemWidth(0.315 * width);
-            setItemHeight(0.6 * 500);
-        }
-        else if (width < 1400) {
-            setItemWidth(0.285 * width);
-            setItemHeight(0.6 * 520);
-        }
-        else if (width < 1536) {
-            setItemWidth(0.24 * width);
-            setItemHeight(0.62 * 520);
-        }
-        else if (width < 1715) {
-            setItemWidth(0.23 * width);
-            setItemHeight(0.62 * 520);
-        }
-        else {
-            setItemWidth(0.195 * width);
-            setItemHeight(0.62 * 550);
-        }
-    }, []);
-
-    useEffect(() => {
         let x;
         if (showAnimation) {
             x = setInterval(() => {
@@ -381,14 +351,14 @@ export default function Item({ item }) {
         return null;
 
     return <>
-        <div className="bg-[#F4F4F4] lg:bg-white relative shadow-xl w-full h-[390px] lg:h-[500px] xl:h-[520px] min-[1715px]:h-[550px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
+        <div className="bg-[#F4F4F4] lg:bg-white relative shadow-xl w-full h-[450px] lg:h-[600px] xl:h-[620px] min-[1715px]:h-[650px] rounded-t-[32px]" onMouseEnter={() => setShowWishlistAndShare(true)} onMouseLeave={() => setShowWishlistAndShare(false)}>
             {
                 ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[currentIndex].split(".")[itemFiles[currentIndex].split(".").length - 1]) ? (
                     <Link href={`/item?itemId=${item.itemId.S}`}>
-                        <Image src={imgUrls[currentIndex]} alt="item image" width={itemWidth} height={itemHeight} className="rounded-t-[32px] hover:cursor-pointer" style={{
-                            height: `${itemHeight}px`,
-                            objectFit: "cover"
-                        }}
+                        <div className="w-full h-[60%] lg:h-[65%] min-[1400px]:h-[67%] rounded-t-[32px] hover:cursor-pointer default-background-svg"
+                            style={{
+                                backgroundImage: `url("${imgUrls[currentIndex]}")`
+                            }}
                             onMouseEnter={() => {
                                 if (window.innerWidth >= 1024)
                                     setShowAnimation(true);
@@ -396,11 +366,13 @@ export default function Item({ item }) {
                             onMouseLeave={() => {
                                 if (window.innerWidth >= 1024);
                                 setShowAnimation(false);
-                            }} />
+                            }}>
+
+                        </div>
                     </Link>
                 ) : (
                     <Link href={`/item?itemId=${item.itemId.S}`}>
-                        <video className="h-[55%] lg:h-[60%] min-[1400px]:h-[62%] w-full rounded-t-[32px] object-cover hover:cursor-pointer" loop={true} autoPlay="autoplay" muted onMouseEnter={() => {
+                        <video className="w-full h-[60%] lg:h-[65%] min-[1400px]:h-[67%] rounded-t-[32px] object-cover hover:cursor-pointer" loop={true} autoPlay="autoplay" muted onMouseEnter={() => {
                             if (window.innerWidth >= 1024)
                                 setShowAnimation(true);
                         }}
@@ -413,7 +385,7 @@ export default function Item({ item }) {
                     </Link>
                 )
             }
-            <aside className="lg:hidden absolute w-[75px] h-[40px] bottom-[46%] left-[25%] flex flex-row flex-nowrap items-center justify-between">
+            <aside className="lg:hidden absolute w-[75px] h-[40px] bottom-[42%] left-[25%] flex flex-row flex-nowrap items-center justify-between">
                 <div className="w-[29px] h-[29px] rounded-[100%] bg-white flex flex-row flex-nowrap items-center justify-center">
                     <Image src={isWishlisted ? Like2 : Like} alt="wishlist" className="w-[18px] h-[15px]" onClick={() => {
                         if (isWishlisted)
@@ -428,7 +400,7 @@ export default function Item({ item }) {
             </aside>
             {
                 showAnimation && imgUrls.length > 1 && (
-                    <div className="hidden absolute bottom-[42%] lg:flex flex-row items-center gap-x-[7px]" style={{
+                    <div className="hidden absolute bottom-[36%] lg:flex flex-row items-center gap-x-[7px]" style={{
                         left: `calc(50% - ${itemImagesOffset}px)`
                     }}>
                         {
@@ -534,7 +506,8 @@ export default function Item({ item }) {
                 </div>
                 <button className="mt-[25px] bg-[#FE9135] text-white w-full py-[10px] rounded-[8px] text-xl font-medium active:bg-[#FBC246]" onClick={async () => {
                     try {
-                        await navigator.clipboard.writeText(`https://unneu.com/buyer/item?itemId=${item.itemId.S}`);
+                        console.log(`https://unneu.com/item?itemId=${item.itemId.S}`);
+                        await navigator.clipboard.writeText(`https://unneu.com/item?itemId=${item.itemId.S}`);
                     }
                     catch (err) {
                         console.log(err);
