@@ -44,6 +44,7 @@ export default function Right({ itemId, itemDetails }) {
     const [showValue, setShowValue] = useState(false);
     const setShowSignIn = useUnneuDataStore(store => store.setShowSignIn);
     const setShowSignUp = useUnneuDataStore(store => store.setShowSignUp);
+    const addToCart = useUnneuDataStore(store => store.addToCart);
     const [showShareModal, setShowShareModal] = useState(false);
 
     const handleCloseShareModal = () => setShowShareModal(false);
@@ -376,7 +377,9 @@ export default function Right({ itemId, itemDetails }) {
                     </p>
                 </Link>
             </div>
-            <button className="my-[14px] lg:my-[32px] py-[19px] w-full rounded-[24px] bg-[#FE9135] text-[15px] lg:text-[22px] font-semibold lg:font-medium xl:font-semibold text-white">Add to cart</button>
+            <button className="my-[14px] lg:my-[32px] py-[19px] w-full rounded-[24px] bg-[#FE9135] text-[15px] lg:text-[22px] font-semibold lg:font-medium xl:font-semibold text-white active:bg-yellow-200" onClick={() => {
+                addToCart(itemId);
+            }}>Add to cart</button>
             <p className="mb-[12px] text-[15px] lg:text-[18px] font-semibold">Product Description</p>
             <p className="text-sm lg:text-base overflow-hidden">{itemDetails.description}</p>
             <p className="my-[32px] text-[15px] lg:text-[18px] font-semibold flex flex-row flex-nowrap items-center gap-x-[13px]">Category&nbsp;:<span className="text-[15px] lg:text-base font-normal">{itemDetails.category}</span></p>

@@ -47,6 +47,7 @@ export default function Item({ item }) {
     const [showShareModal, setShowShareModal] = useState(false);
     const setShowSignIn = useUnneuDataStore(store => store.setShowSignIn);
     const setShowSignUp = useUnneuDataStore(store => store.setShowSignUp);
+    const addToCart = useUnneuDataStore(store => store.addToCart);
 
     const handleCloseShareModal = () => setShowShareModal(false);
     const handleShowShareModal = () => setShowShareModal(true);
@@ -584,7 +585,9 @@ export default function Item({ item }) {
                     </div>
                     <p className="hidden lg:block mt-[15px] text-sm font-medium">Condition: <span className="font-normal">{item.condition.S}</span></p>
                     <p className="hidden lg:block mt-[15px] text-sm font-medium">Category: <span className="font-normal">{item.category.S}</span></p>
-                    <button className="hidden lg:block mt-[30px] bg-[#FE9135] text-white rounded-[24px] py-[10px] px-[100px] font-medium">Add to cart</button>
+                    <button className="hidden lg:block mt-[30px] bg-[#FE9135] text-white rounded-[24px] py-[10px] px-[100px] font-medium active:bg-yellow-200" onClick={() => {
+                        addToCart(item.itemId.S);
+                    }}>Add to cart</button>
                     <Link href={`/item?itemId=${item.itemId.S}`}>
                         <button className="hidden lg:block mt-[20px] border border-[#9D9D9D] rounded-[24px] py-[10px] px-[95px] font-medium">More Details</button>
                     </Link>

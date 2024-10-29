@@ -118,7 +118,7 @@ export default function Left({ itemId, itemDetails }) {
         return null;
 
     return <aside className="relative lg:w-[50%] min-[1400px]:w-[55%] h-[600px] lg:h-[950px] flex flex-col-reverse lg:flex-row justify-between">
-        <div className={`w-full lg:w-[20%] min-[1400px]:w-[20%] 2xl:w-[15%] flex ${window.innerWidth < 1024 ? "flex-row" : "flex-col"} gap-x-[5px] lg:gap-x-0 lg:gap-y-[6px] h-[15%] lg:h-full`}>
+        <div className={`w-full lg:w-[20%] min-[1400px]:w-[17%] 2xl:w-[14%] flex ${window.innerWidth < 1024 ? "flex-row" : "flex-col"} gap-x-[5px] lg:gap-x-0 lg:gap-y-[6px] h-[15%] lg:h-full`}>
             {
                 imgUrls.map((url, tmpIndex) => {
                     return ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[tmpIndex].split(".")[itemFiles[tmpIndex].split(".").length - 1]) ? (

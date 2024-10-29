@@ -50,6 +50,10 @@
     background-size: 20px;
 }
 
+.cart-icon {
+    background-image: url("../../public/cart.png");
+}
+
 .custom-select::-webkit-scrollbar {
     width: 2px;
 }

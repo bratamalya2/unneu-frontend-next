@@ -12,6 +12,7 @@ export const useUnneuDataStore = create(
             sellerCoverPhoto: null,
             showSignIn: false,
             showSignUp: false,
+            cart: [],
             setShowSignIn: (p) => set({ showSignIn: p }),
             setShowSignUp: (p) => set({ showSignUp: p }),
             setPhoneNumber: (p) => set({ phoneNumber: p }),
@@ -20,7 +21,20 @@ export const useUnneuDataStore = create(
             setBuyerSelected: () => set({ isSellerSelected: false }),
             setSellerSelected: () => set({ isSellerSelected: true }),
             setSellerProfilePhoto: (p) => set({ sellerProfilePhoto: p }),
-            setSellerCoverPhoto: (p) => set({ sellerCoverPhoto: p })
+            setSellerCoverPhoto: (p) => set({ sellerCoverPhoto: p }),
+            addToCart: (p) => set((state) => {
+                if (!state.cart.find(x => x === p))
+                    return {
+                        cart: [...state.cart, p]
+                    };
+            }),
+            removeFromCart: (p) => set((state) => {
+                let arr = [...state.cart];
+                arr = arr.filter(x => x !== p);
+                return {
+                    cart: arr
+                }
+            })
         }),
         {
             name: "unneuDataStore"

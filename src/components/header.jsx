@@ -35,6 +35,7 @@ export default function Header() {
     const setShowSignIn = useUnneuDataStore(store => store.setShowSignIn);
     const showSignUp = useUnneuDataStore(store => store.showSignUp);
     const setShowSignUp = useUnneuDataStore(store => store.setShowSignUp);
+    const cart = useUnneuDataStore(store => store.cart);
     const [showHamburger, setShowHamburger] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
 
@@ -64,7 +65,19 @@ export default function Header() {
                         </div>
                         <Image src={Like} alt="Like" className="w-[24px] h-[24px] hover:cursor-pointer" />
                         <Image src={User} alt="User" className="w-[24px] h-[24px] hover:cursor-pointer" />
-                        <Image src={Cart} alt="Cart" className="w-[24px] h-[24px] hover:cursor-pointer" />
+                        <div className="relative w-[24px] h-[24px] hover:cursor-pointer default-background-svg cart-icon" onClick={() => {
+                            if (cart.length > 0)
+                                router.push("/purchase?slug=cart");
+                        }}>
+                            {
+                                cart.length > 0 && (
+                                    <div className="z-10 absolute bg-[#FBC246] rounded-[100%] h-[18px] w-[18px] top-[-5px] right-[-5px] text-[10px] font-medium flex flex-row flex-nowrap items-center justify-center">
+                                        {cart.length}
+                                    </div>
+                                )
+                            }
+                        </div>
+                        {/* <Image src={Cart} alt="Cart" className="w-[24px] h-[24px] hover:cursor-pointer" /> */}
                         <div className="hover:cursor-pointer" onClick={() => {
                             hideHamburger();
                             setShowSignIn(true);
@@ -159,14 +172,25 @@ export default function Header() {
                     <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[1%] sm:ml-[20%]" : "ml-[17%] sm:ml-[27%]"}`} onClick={() => {
                         setShowSearch(x => !x);
                     }} />
-                    <Image src={Cart} alt="Cart" className="w-[20px] h-[20px] hover:cursor-pointer ml-[5%]" />
+                    <div className="relative w-[24px] h-[24px] ml-[5%] hover:cursor-pointer default-background-svg cart-icon" onClick={() => {
+                        if (cart.length > 0)
+                            router.push("/purchase?slug=cart");
+                    }}>
+                        {
+                            cart.length > 0 && (
+                                <div className="z-10 absolute bg-[#FBC246] rounded-[100%] h-[18px] w-[18px] top-[-5px] right-[-5px] text-[10px] font-medium flex flex-row flex-nowrap items-center justify-center">
+                                    {cart.length}
+                                </div>
+                            )
+                        }
+                    </div>
                     <SignInPopup showSignIn={showSignIn} hideSignIn={hideSignIn} />
                     <SignUpPopup showSignUp={showSignUp} hideSignUp={hideSignUp} />
                 </header>
             )
         }
         {
-            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category") && (
+            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") && (
                 <header className={`hidden ${lbFont.className} h-[90px] lg:flex flex-row flex-nowrap items-center justify-between px-[5%]`}>
                     <Image src={Logo} alt="Unneu" className="w-[125px] h-[44px]" />
                     <nav className="list-none lg:ml-[5%] xl:ml-[8%] 2xl:ml-[10%] lg:w-[33%] xl:w-[30%] 2xl:w-[28%] flex flex-row flex-nowrap items-center justify-between">
@@ -180,7 +204,18 @@ export default function Header() {
                     <div className="lg:w-[14%] xl:w-[13%] 2xl:w-[12%] flex flex-row flex-nowrap items-center justify-between">
                         <Image src={Search} alt="Search" className="w-[24px] h-[24px] hover:cursor-pointer" />
                         <Image src={User} alt="User" className="w-[24px] h-[24px] hover:cursor-pointer" />
-                        <Image src={Cart} alt="Cart" className="w-[24px] h-[24px] hover:cursor-pointer" />
+                        <div className="relative w-[24px] h-[24px] hover:cursor-pointer default-background-svg cart-icon" onClick={() => {
+                            if (cart.length > 0)
+                                router.push("/purchase?slug=cart");
+                        }}>
+                            {
+                                cart.length > 0 && (
+                                    <div className="z-10 absolute bg-[#FBC246] rounded-[100%] h-[18px] w-[18px] top-[-5px] right-[-5px] text-[10px] font-medium flex flex-row flex-nowrap items-center justify-center">
+                                        {cart.length}
+                                    </div>
+                                )
+                            }
+                        </div>
                     </div>
                     {
                         (pathname !== "/buyer/home" && pathname !== "/item") && (
@@ -191,7 +226,7 @@ export default function Header() {
             )
         }
         {
-            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category") && (
+            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") && (
                 <header className={`${lbFont.className} block lg:hidden h-[76px] flex items-center px-[15px] pt-[20px] pb-[20px] z-[200] sticky top-0 bg-white`}>
                     <a href="#mobile-nav">
                         <Image src={Hamburger} alt="details" className="w-[20px] h-[14px]" onClick={() => {
@@ -207,7 +242,18 @@ export default function Header() {
                     <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[1%] min-[400px]:ml-[14%] min-[430px]:ml-[16%] min-[460px]:ml-[17%] min-[500px]:ml-[18%] sm:ml-[20%]" : "ml-[17%] min-[400px]:ml-[22%] min-[430px]:ml-[24%] min-[460px]:ml-[25%] min-[500px]:ml-[26%] sm:ml-[27%] md:ml-[32%]"}`} onClick={() => {
                         setShowSearch(x => !x);
                     }} />
-                    <Image src={Cart} alt="Cart" className="w-[20px] h-[20px] hover:cursor-pointer ml-[5%]" />
+                    <div className="ml-[5%] relative w-[20px] h-[20px] hover:cursor-pointer default-background-svg cart-icon" onClick={() => {
+                        if (cart.length > 0)
+                            router.push("/purchase?slug=cart");
+                    }}>
+                        {
+                            cart.length > 0 && (
+                                <div className="z-10 absolute bg-[#FBC246] rounded-[100%] h-[12px] w-[12px] top-[-5px] right-[-5px] text-[10px] font-medium flex flex-row flex-nowrap items-center justify-center">
+                                    {cart.length}
+                                </div>
+                            )
+                        }
+                    </div>
                     <SignInPopup showSignIn={showSignIn} hideSignIn={hideSignIn} />
                     <SignUpPopup showSignUp={showSignUp} hideSignUp={hideSignUp} />
                 </header>
