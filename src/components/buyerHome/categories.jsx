@@ -104,9 +104,9 @@ export default function Categories() {
         </section>
         <section className="lg:hidden relative mt-[35px] pl-[5%] z-0">
             <p className="text-xl font-medium mb-[20px]">Categories</p>
-            <aside className="w-full h-[220px] overflow-y-hidden overflow-x-scroll whitespace-nowrap">
+            <aside className="w-full h-[180px] overflow-y-hidden overflow-x-scroll whitespace-nowrap">
                 <Link href="/buyer/category?category=New Arrivals">
-                    <section className="inline-flex flex-col items-center w-[42%] h-full rounded-[8px]">
+                    <section className="inline-flex flex-col items-center w-[125px] h-full rounded-[8px]">
                         <Image src={NewArrivals} alt="new-arrivals" className="w-full h-[70%] rounded-[8px]" />
                         <div className="mt-[16px] font-medium">
                             New Arrivals
@@ -114,7 +114,7 @@ export default function Categories() {
                     </section>
                 </Link>
                 <Link href="/buyer/category?category=Festive Wear">
-                    <section className="ml-[16px] inline-flex flex-col items-center w-[42%] h-full rounded-[8px]">
+                    <section className="ml-[16px] inline-flex flex-col items-center w-[125px] h-full rounded-[8px]">
                         <Image src={FestiveWear} alt="festive-wear" className="w-full h-[70%] rounded-[8px]" />
                         <div className="mt-[16px] font-medium">
                             Festive Wear
@@ -122,7 +122,7 @@ export default function Categories() {
                     </section>
                 </Link>
                 <Link href="/buyer/category?category=Bridal Wear">
-                    <section className="ml-[16px] inline-flex flex-col items-center w-[42%] h-full rounded-[8px]">
+                    <section className="ml-[16px] inline-flex flex-col items-center w-[125px] h-full rounded-[8px]">
                         <Image src={BridalWear} alt="bridal-wear" className="w-full h-[70%] rounded-[8px]" />
                         <div className="mt-[16px] font-medium">
                             Bridal Wear
@@ -130,7 +130,7 @@ export default function Categories() {
                     </section>
                 </Link>
                 <Link href="/buyer/category?category=Party Wear">
-                    <section className="ml-[16px] inline-flex flex-col items-center w-[42%] h-full rounded-[8px]">
+                    <section className="ml-[16px] inline-flex flex-col items-center w-[125px] h-full rounded-[8px]">
                         <Image src={PartyWear} alt="party-wear" className="w-full h-[70%] rounded-[8px]" />
                         <div className="mt-[16px] font-medium">
                             Party Wear
@@ -138,7 +138,7 @@ export default function Categories() {
                     </section>
                 </Link>
                 <Link href="/buyer/category?category=Casual Wear">
-                    <section className="ml-[16px] inline-flex flex-col items-center w-[42%] h-full rounded-[8px]">
+                    <section className="ml-[16px] inline-flex flex-col items-center w-[125px] h-full rounded-[8px]">
                         <Image src={CasualWear} alt="casual-wear" className="w-full h-[70%] rounded-[8px]" />
                         <div className="mt-[16px] font-medium">
                             Casual Wear
@@ -146,7 +146,7 @@ export default function Categories() {
                     </section>
                 </Link>
                 <Link href="/buyer/category?category=Daily Wear">
-                    <section className="ml-[16px] inline-flex flex-col items-center w-[42%] h-full rounded-[8px]">
+                    <section className="ml-[16px] inline-flex flex-col items-center w-[125px] h-full rounded-[8px]">
                         <Image src={DailyWear} alt="daily-wear" className="w-full h-[70%] rounded-[8px]" />
                         <div className="mt-[16px] font-medium">
                             Daily Wear

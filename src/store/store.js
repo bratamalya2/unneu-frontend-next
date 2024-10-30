@@ -4,6 +4,7 @@ import { persist } from "zustand/middleware";
 export const useUnneuDataStore = create(
     persist(
         (set) => ({
+            bodyOpacity: 1,
             phoneNumber: "",
             jwtToken: "",
             refreshToken: "",
@@ -13,6 +14,7 @@ export const useUnneuDataStore = create(
             showSignIn: false,
             showSignUp: false,
             cart: [],
+            setBodyOpacity: (p) => set({ bodyOpacity: p }),
             setShowSignIn: (p) => set({ showSignIn: p }),
             setShowSignUp: (p) => set({ showSignUp: p }),
             setPhoneNumber: (p) => set({ phoneNumber: p }),
@@ -26,6 +28,10 @@ export const useUnneuDataStore = create(
                 if (!state.cart.find(x => x === p))
                     return {
                         cart: [...state.cart, p]
+                    };
+                else
+                    return {
+                        cart: state.cart
                     };
             }),
             removeFromCart: (p) => set((state) => {
