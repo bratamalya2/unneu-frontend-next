@@ -16,10 +16,10 @@ import "@/styles/sellerHomeStepsToStartSelling.css";
 export default function SellerHomeStepsToStartSelling() {
     const router = useRouter();
 
-    return <section className="absolute px-[5%] md:px-[10%] top-[700px] md:top-[900px] lg:top-[520px] xl:top-[570px] 2xl:top-[750px] lg:mt-[85px] w-full">
+    return <section className="absolute px-[5%] top-[700px] md:top-[900px] lg:top-[520px] xl:top-[570px] 2xl:top-[750px] lg:mt-[85px] w-full">
         <p className="text-2xl lg:text-4xl font-medium">Steps to <span className="text-[#D57A2D] font-semibold">Start Selling</span></p>
         <section className="absolute lg:static flex flex-col md:flex-row flex-nowrap mt-[20px] md:mt-[48px] w-[90%] md:w-[90%] left-[5%] md:left-[10%]">
-            <aside className="relative w-full md:w-[50%] rounded-[36px] lg:w-[60%] xl:w-[70%] md:min-h-[692px] h-[400px]" id="seller-home-steps-tostart-selling-hero-div">
+            <aside className="relative w-full md:w-[50%] rounded-[36px] lg:w-[50%] xl:w-[60%] md:min-h-[692px] h-[400px]" id="seller-home-steps-tostart-selling-hero-div">
                 <div className="absolute top-0 right-0 w-[100px] h-[50px] bg-yellow-400 rounded-[36px] z-0">
                     <Image src={RightArrow} alt="arrow" className="absolute w-[24px] h-[18px] absolute top-4 right-2" />
                 </div>

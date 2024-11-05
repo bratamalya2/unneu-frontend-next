@@ -201,25 +201,38 @@ export default function Header() {
                             router.push("/aboutUs");
                         }}>About Us</li>
                     </nav>
-                    <div className="lg:w-[14%] xl:w-[13%] 2xl:w-[12%] flex flex-row flex-nowrap items-center justify-between">
-                        <Image src={Search} alt="Search" className="w-[24px] h-[24px] hover:cursor-pointer" />
-                        <Image src={User} alt="User" className="w-[24px] h-[24px] hover:cursor-pointer" />
-                        <div className="relative w-[24px] h-[24px] hover:cursor-pointer default-background-svg cart-icon" onClick={() => {
-                            if (cart.length > 0)
-                                router.push("/purchase?slug=cart");
-                        }}>
-                            {
-                                cart.length > 0 && (
-                                    <div className="z-10 absolute bg-[#FBC246] rounded-[100%] h-[18px] w-[18px] top-[-5px] right-[-5px] text-[10px] font-medium flex flex-row flex-nowrap items-center justify-center">
-                                        {cart.length}
-                                    </div>
-                                )
-                            }
-                        </div>
-                    </div>
+                    {
+                        (pathname !== "/seller/home" && pathname !== "/seller" && pathname !== "/seller/editItem" && pathname !== "/seller/register" && pathname !== "/seller/uploadItem") && (
+                            <div className="lg:w-[14%] xl:w-[13%] 2xl:w-[12%] flex flex-row flex-nowrap items-center justify-between">
+                                <Image src={Search} alt="Search" className="w-[24px] h-[24px] hover:cursor-pointer" />
+                                <Image src={User} alt="User" className="w-[24px] h-[24px] hover:cursor-pointer" />
+                                <div className="relative w-[24px] h-[24px] hover:cursor-pointer default-background-svg cart-icon" onClick={() => {
+                                    if (cart.length > 0)
+                                        router.push("/purchase?slug=cart");
+                                }}>
+                                    {
+                                        cart.length > 0 && (
+                                            <div className="z-10 absolute bg-[#FBC246] rounded-[100%] h-[18px] w-[18px] top-[-5px] right-[-5px] text-[10px] font-medium flex flex-row flex-nowrap items-center justify-center">
+                                                {cart.length}
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                            </div>
+                        )
+                    }
                     {
                         (pathname !== "/buyer/home" && pathname !== "/item") && (
-                            <button className="text-[18px] font-bold bg-[#FE9135] py-[12px] px-[38px] rounded-[12px] text-white">Sell</button>
+                            <button className="text-[18px] font-bold bg-[#FE9135] py-[12px] px-[38px] rounded-[12px] text-white" onClick={() => {
+                                router.push("/buyer/home");
+                            }}>Shop</button>
+                        )
+                    }
+                    {
+                        (pathname !== "/seller/home" && pathname !== "/seller" && pathname !== "/seller/editItem" && pathname !== "/seller/register" && pathname !== "/seller/uploadItem") && (
+                            <button className="text-[18px] font-bold bg-[#FE9135] py-[12px] px-[38px] rounded-[12px] text-white" onClick={() => {
+                                router.push("/seller/home");
+                            }}>Sell</button>
                         )
                     }
                 </header>

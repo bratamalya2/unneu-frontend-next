@@ -8,6 +8,23 @@ import NoItemsToDisplays from "@/../public/seller-profile-no-items-to-display.sv
 import NoReviews from "@/../public/seller-profile-no-reviews-yet.svg";
 import DownArrow from "@/../public/down-arrow-2.png";
 
+const availableCategories = [
+    "All",
+    "New Arrivals",
+    "Festive Wear",
+    "Bridal Wear",
+    "Party Wear",
+    "Casual Wear",
+    "Daily Wear"
+];
+
+const sortOptions = [
+    "Price Low to High",
+    "Price High to Low",
+    "Listed recently",
+    "Listed early"
+];
+
 export default function ItemsSections({ sellerDetails }) {
     const router = useRouter();
     const [itemDetails, setItemDetails] = useState([]);

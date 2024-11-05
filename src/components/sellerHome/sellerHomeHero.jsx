@@ -18,11 +18,11 @@ export default function SellerHomeHero() {
             <Image src={Saree1} alt="saree" className="absolute w-[180px] xl:w-[225px] h-[208px] xl:h-[270px] top-[39px] xl:top-[50px] 2xl:top-[85px] lg:right-[36%] xl:right-[38%] 2xl:right-[36%]" />
             <Image src={PixelDots} alt="dots" className="absolute w-[78px] h-[58px] z-[-10] top-[14px] xl:top-[48px] 2xl:top-[88px] lg:right-[45%] xl:right-[48%] 2xl:right-[45%]" />
             <Image src={PixelDots} alt="dots" className="absolute w-[78px] h-[58px] z-[-10] bottom-[134px] 2xl:bottom-[194px] lg:right-[48%] 2xl:right-[46%]" />
-            <p className="lg:text-[26px] xl:text-3xl 2xl:text-4xl lg:font-medium max-w-[34%] absolute z-10 left-[10%] lg:top-[106px] xl:top-[130px] 2xl:top-[205px]">
+            <p className="lg:text-[30px] xl:text-4xl 2xl:text-5xl lg:font-medium max-w-[38%] absolute z-10 left-[5%] lg:top-[106px] xl:top-[130px] 2xl:top-[205px]">
                 Launch your reselling business with us in <span className="text-[#FEA355] font-semibold">2 mins.</span>
             </p>
-            <p className="lg:text-base xl:text-[18px] max-w-[32%] absolute z-10 left-[10%] lg:top-[220px] xl:top-[250px] 2xl:top-[330px]">Login or register as a seller at unneu.com. Become verified as a seller, list your products with us and streamline your business.</p>
-            <button className="absolute left-[10%] lg:text-lg xl:text-xl lg:font-medium xl:font-semibold rounded-[24px] bg-[#FE9135] py-[12px] px-[48px] lg:bottom-[130px] xl:bottom-[80px] text-white" onClick={() => {
+            <p className="lg:text-lg xl:text-[22px] max-w-[32%] absolute z-10 left-[5%] lg:top-[250px] xl:top-[250px] 2xl:top-[330px]">Login or register as a seller at unneu.com. Become verified as a seller, list your products with us and streamline your business.</p>
+            <button className="absolute left-[5%] lg:text-lg xl:text-xl lg:font-medium xl:font-semibold rounded-[24px] bg-[#FE9135] py-[12px] px-[48px] lg:bottom-[90px] xl:bottom-[50px] text-white" onClick={() => {
                 router.push("/seller/register/1");
             }}>Start selling</button>
         </section>
