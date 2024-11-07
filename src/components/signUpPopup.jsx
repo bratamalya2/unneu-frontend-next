@@ -71,7 +71,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
     const submitOTP = async () => {
         try {
             if (otp.length === 6) {
-                const x = await fetch(`${process.env.BACKEND_URL}/login`, {
+                const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"
