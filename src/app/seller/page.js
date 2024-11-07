@@ -106,7 +106,7 @@ export default function Home() {
     if (!isLoaded)
         return null;
 
-    return <main className="relative">
+    return <main className="relative top-[80px]">
         {
             !searchParams.get("sellerId") && isLoaded && <>
                 <ProfileSection sellerDetails={sellerDetails} />

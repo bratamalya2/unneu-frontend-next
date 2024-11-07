@@ -110,15 +110,18 @@ export default function SellerPickupForm() {
             onChange={e => setFullName(e.target.value)}
         />
         <p className="text-[15px] lg:text-xl font-medium mt-[21px] lg:mt-[42px]">Enter store name <span className="text-[#B73636]">*</span></p>
-        <input
-            type="text"
-            className="mt-[16px] lg:mt-[24px] border-[0.6px] border-[#00000080] bg-[#F9F9F9] rounded-[12px] h-[55px] lg:h-[64px] w-full lg:w-[60%] px-3"
-            style={{
-                boxShadow: "0px 11px 53.8px 4px rgba(81, 69, 55, 0.05)"
-            }}
-            value={storeName}
-            onChange={e => setStoreName(e.target.value)}
-        />
+        <div className="mt-[16px] lg:mt-[24px] w-[70%] lg:w-[60%] h-[55px] lg:h-[64px] flex flex-row flex-nowrap items-center justify-between">
+            <input
+                type="text"
+                className="border-[0.6px] border-[#00000080] bg-[#F9F9F9] rounded-[12px] h-full w-[70%] lg:w-[60%] px-3"
+                style={{
+                    boxShadow: "0px 11px 53.8px 4px rgba(81, 69, 55, 0.05)"
+                }}
+                value={storeName}
+                onChange={e => setStoreName(e.target.value)}
+            />
+            <button className="w-[25%] lg:w-[35%] h-full bg-[#FE9135] text-white rounded-[12px]">Check Availability</button>
+        </div>
         <p className="text-[15px] lg:text-xl font-medium mt-[21px] lg:mt-[42px]">Gender <span className="text-[#B73636]">*</span></p>
         <div className="mt-[21px] lg:mt-[42px] flex flex-row flex-nowrap items-center text-xl gap-x-4 lg:gap-x-7">
             <div className="flex flex-row flex-nowrap items-center">

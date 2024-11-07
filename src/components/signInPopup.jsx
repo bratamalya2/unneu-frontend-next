@@ -22,6 +22,8 @@ const libreBaskerville = Libre_Baskerville({
 export default function SignInPopup({ showSignIn, hideSignIn }) {
     const router = useRouter();
     const [isSellerSelected, setIsSellerSelected] = useState(false);
+    const setShowSignIn = useUnneuDataStore(store => store.setShowSignIn);
+    const setShowSignUp = useUnneuDataStore(store => store.setShowSignUp);
     const [phoneNumber, setPhoneNumber] = useState("");
     const [isOTPSent, setIsOTPSent] = useState(false);
     const [otp, setOtp] = useState("");
@@ -36,6 +38,37 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
     const setBuyerSelected = useUnneuDataStore(store => store.setBuyerSelected);
     const setSellerSelected = useUnneuDataStore(store => store.setSellerSelected);
 
+    const generateOtp = async () => {
+        try {
+            const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login/generateOtp`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    phoneNumber
+                })
+            });
+            const y = await x.json();
+            if (y.success) {
+                setIsOTPSent(true);
+                setShowError(false);
+            }
+            else {
+                setShowError(true);
+                setErrorMessage(y.err);
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    };
+
+    const routeToSignUp = () => {
+        setShowSignIn(false);
+        setShowSignUp(true);
+    };
+
     const resendOTP = () => {
         if (timer === 0) {
             setTimerObj(null);
@@ -43,7 +76,7 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
             setTimeout(() => {
                 setIsOTPSent(true);
             }, 1000);
-            //send OTP; communicate with backend
+            generateOtp();
         }
     };
 
@@ -129,7 +162,6 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
     useEffect(() => {
         if (timer === 0) {
             clearInterval(timerObj);
-            setTimerObj(null);
         }
     }, [timer, timerObj]);
 
@@ -177,9 +209,7 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                     />
                     {
                         !isOTPSent && (
-                            <button className="w-[80%] sm:w-[95%] sm:self-start rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[10px] text-[20px] sm:text-normal font-semibold my-4 sm:my-1 max-w-[100%]" onClick={() => {
-                                setIsOTPSent(true);
-                            }}>Verify</button>
+                            <button className="w-[80%] sm:w-[95%] sm:self-start rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[10px] text-[20px] sm:text-normal font-semibold my-4 sm:my-1 max-w-[100%]" onClick={generateOtp}>Verify</button>
                         )
                     }
                     {
@@ -217,6 +247,7 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                             </p>
                         )
                     }
+                    <p className="sm:self-start text-[#8F8F8F] text-[14px] sm:text-xs lg:text-base text-center my-3">Don&apos;t have an account? <span className="font-semibold text-red-500 hover:cursor-pointer" onClick={routeToSignUp}>Sign Up</span></p>
                     <div className="absolute flex sm:hidden md:flex flex-row flex-nowrap items-center justify-around w-full bottom-5">
                         <Image src={LeftLeaf} alt="left-leaf" className="w-[48%]" />
                         <Image src={RightLeaf} alt="right-leaf" className="w-[48%]" />

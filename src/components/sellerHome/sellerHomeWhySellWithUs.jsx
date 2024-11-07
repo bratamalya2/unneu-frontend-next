@@ -30,7 +30,7 @@ export default function SellerHomeWhySellWithUs() {
     const [currIndex, setCurrIndex] = useState(0);
 
     return <>
-        <section className="mt-[120px] hidden md:block absolute md:top-[1600px] xl:top-[1500px] 2xl:top-[1600px] px-[5%] w-full">
+        <section className="mt-[120px] hidden md:block absolute md:top-[1350px] 2xl:top-[1600px] px-[5%] w-full">
             <p className="text-3xl lg:text-4xl font-medium">Why <span className="text-[#FE9135] font-semibold">Sell with Us?</span></p>
             <Image src={LeftLeaf} alt="leaf" className="hidden lg:block lg:w-[75px] lg:h-[558px] absolute left-0 top-[155px] z-[-10]" />
             <Image src={RightLeaf} alt="leaf" className="hidden lg:block lg:w-[75px] lg:h-[558px] absolute right-0 top-[155px] z-[-10]" />
@@ -79,7 +79,7 @@ export default function SellerHomeWhySellWithUs() {
                 boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
             }}>
                 <Image src={icons[currIndex]} alt="icon" className={
-                    `${currIndex === 0 && "w-[36px] h-[29px]"}
+                    `${currIndex === 0 && "w-[40px] h-[29px]"}
                      ${currIndex === 1 && "w-[40px] h-[32px]"}
                      ${currIndex === 2 && "w-[40px] h-[35px]"}
                      ${currIndex === 3 && "w-[40px] h-[40px]"}

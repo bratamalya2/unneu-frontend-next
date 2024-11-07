@@ -43,7 +43,7 @@ export default function LandingPageFAQ() {
         }
     }, [isResellerVisible, isSellerVisible, isBuyerVisible]);
 
-    return <section id="faq-section" className="relative px-[10%] min-h-[550px] sm:min-h-[600px] md:min-h-[650px]">
+    return <section id="faq-section" className="relative px-[10%] mt-[50px] lg:mt-[100px] min-h-[500px]">
         <p className="text-[#2D2D2D] text-3xl sm:text-4xl md:text-[42px] font-bold">
             Frequently Asked <span className="text-[#FE9135]">Question</span>
         </p>

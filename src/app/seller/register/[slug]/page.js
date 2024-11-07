@@ -65,7 +65,7 @@ export default function Register({ params }) {
     if (isNaN(parseInt(params.slug)) || parseInt(params.slug) > 3 || parseInt(params.slug) < 1)
         return <Error statusCode={404} />
 
-    return <main className="relative">
+    return <main className="relative top-[80px]">
         <RegisterStage stage={params.slug} />
         {params.slug === "1" && <PersonalInfoForm />}
         {params.slug === "2" && <SellerPickupProfile />}

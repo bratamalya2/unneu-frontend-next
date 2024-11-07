@@ -16,9 +16,9 @@ export default function Footer() {
     return <>
         <footer className={`w-full relative list-none text-[#282828] text-[18px] font-medium hidden lg:flex
                 ${pathname === "/" ? "h-[1050px] xl:h-[550px] top-[1100px] min-[1100px]:top-[1200px] min-[1150px]:top-[1250px] min-[1200px]:top-[1300px] min-[1250px]:top-[1350px] xl:top-[1570px] 2xl:top-[1800px] min-[1640px]:top-[1850px] min-[1760px]:top-[1970px] min-[1860px]:top-[2070px] hidden gap-x-14 pt-[100px] px-[9%]" :
-                pathname === "/seller/home" ? "lg:top-[2500px] xl:top-[2600px] 2xl:top-[2700px] h-[950px] xl:h-[600px] gap-x-14 pt-[100px] px-[5%]" :
-                    (pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") ? "h-[970px] xl:h-[600px] gap-x-14 pt-[100px] px-[7%]" :
-                        pathname === "/seller" ? "h-[1050px] xl:h-[650px] gap-x-14 pt-[100px] px-[9%]" : ""
+                pathname === "/seller/home" ? "lg:top-[2450px] 2xl:top-[2700px] h-[950px] xl:h-[500px] gap-x-14 pt-[100px] px-[5%]" :
+                    (pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") ? "h-[950px] xl:h-[500px] gap-x-14 pt-[100px] px-[7%]" :
+                        pathname === "/seller" ? "h-[950px] xl:h-[500px] gap-x-14 pt-[100px] px-[5%]" : "lg:h-[950px] xl:h-[500px]"
             }
                 ${pathname === "/seller/register/1" && "lg:top-[100px]"}
                 ${pathname === "/seller/register/2" && "lg:top-[100px]"}
@@ -64,10 +64,10 @@ export default function Footer() {
             </li>
         </footer>
         <footer className={`lg:hidden flex flex-col flex-nowrap 
-        ${pathname === "/" && "min-[300px]:top-[430px] min-[420px]:top-[460px] min-[470px]:top-[560px] min-[570px]:top-[680px] sm:top-[760px] min-[730px]:top-[840px] md:top-[820px] min-[780px]:top-[880px] min-[848px]:top-[910px] min-[880px]:top-[950px] min-[910px]:top-[990px] min-[950px]:top-[1040px] min-[1000px]:top-[1100px] h-[1050px] sm:h-[950px] px-[5%] py-[41px]"}
-        ${pathname === "/seller/home" && "min-[300px]:top-[2460px] sm:top-[2460px] md:top-[2900px]  h-[1100px] sm:h-[950px] px-[5%] py-[41px]"}
-        ${pathname === "/seller/register/1" && "min-[300px]:top-[1460px] md:top-[120px] sm:h-[950px] px-[5%] py-[41px]"} 
-        ${(pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") && "min-[300px]:top-[100px] sm:top-[760px] min-[730px]:top-[840px] md:top-[820px] min-[780px]:top-[880px] min-[848px]:top-[910px] min-[880px]:top-[950px] min-[910px]:top-[990px] min-[950px]:top-[1040px] min-[1000px]:top-[1100px] lg:top-0 h-[1100px] sm:h-[950px] px-[5%] py-[41px]"}
+        ${pathname === "/" && "min-[300px]:top-[550px] sm:top-[880px] min-[730px]:top-[840px] md:top-[820px] min-[780px]:top-[880px] min-[848px]:top-[910px] min-[880px]:top-[950px] min-[910px]:top-[990px] min-[950px]:top-[1040px] min-[1000px]:top-[1100px] h-[1050px] sm:h-[950px] px-[5%] py-[41px]"}
+        ${pathname === "/seller/home" && "min-[300px]:top-[2460px] sm:top-[2460px] md:top-[2900px] h-[1050px] sm:h-[950px] px-[5%] py-[41px]"}
+        ${pathname === "/seller/register/1" && "min-[300px]:top-[1460px] md:top-[120px] h-[1050px] sm:h-[950px] px-[5%] py-[41px]"} 
+        ${(pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") && "min-[300px]:top-[100px] sm:top-[760px] min-[730px]:top-[840px] md:top-[820px] min-[780px]:top-[880px] min-[848px]:top-[910px] min-[880px]:top-[950px] min-[910px]:top-[990px] min-[950px]:top-[1040px] min-[1000px]:top-[1100px] lg:top-0 h-[1050px] sm:h-[950px] px-[5%] py-[41px]"}
         list-none relative`} style={{
                 background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)"
             }}>

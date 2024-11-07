@@ -22,6 +22,8 @@ const libreBaskerville = Libre_Baskerville({
 export default function SignUpPopup({ showSignUp, hideSignUp }) {
     const router = useRouter();
     const [isSellerSelected, setIsSellerSelected] = useState(false);
+    const setShowSignIn = useUnneuDataStore(store => store.setShowSignIn);
+    const setShowSignUp = useUnneuDataStore(store => store.setShowSignUp);
     const [phoneNumber, setPhoneNumber] = useState("");
     const [isOTPSent, setIsOTPSent] = useState(false);
     const [otp, setOtp] = useState("");
@@ -35,10 +37,41 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
     const setBuyerSelected = useUnneuDataStore(store => store.setBuyerSelected);
     const setSellerSelected = useUnneuDataStore(store => store.setSellerSelected);
 
+    const generateOtp = async () => {
+        try {
+            const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login/generateOtp`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    phoneNumber
+                })
+            });
+            const y = await x.json();
+            if (y.success) {
+                setIsOTPSent(true);
+                setShowError(false);
+            }
+            else {
+                setShowError(true);
+                setErrorMessage(y.err);
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    };
+
+    const routeToLogin = () => {
+        setShowSignUp(false);
+        setShowSignIn(true);
+    };
+
     const submitOTP = async () => {
         try {
             if (otp.length === 6) {
-                const x = await fetch(`${process.env.BACKEND_URL}\login`, {
+                const x = await fetch(`${process.env.BACKEND_URL}/login`, {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"
@@ -88,11 +121,10 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
     const resendOTP = () => {
         if (timer === 0) {
             setTimerObj(null);
-            setIsOTPSent(false);
             setTimeout(() => {
                 setIsOTPSent(true);
             }, 1000);
-            //send OTP; communicate with backend
+            generateOtp();
         }
     };
 
@@ -109,6 +141,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
 
     useEffect(() => {
         if (isOTPSent) {
+            console.log(timerObj);
             if (!timerObj) {
                 setTimer(60);
                 setTimerObj(setInterval(() => {
@@ -126,9 +159,8 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
     useEffect(() => {
         if (timer === 0) {
             clearInterval(timerObj);
-            setTimerObj(null);
         }
-    }, [timer, timerObj]);
+    }, [timer]);
 
     useEffect(() => {
         if (isSellerSelected) {
@@ -143,9 +175,9 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
         <Modal show={showSignUp} onHide={hideSignUp} className="mt-[20px] xl:max-w-[60%] xl:left-[20%]">
             <Modal.Body className="flex flex-row flex-nowrap justify-center sm:justify-start rounded-[32px] h-[700px] sm:h-[600px] md:h-[640px] p-0">
                 <div className="hidden sm:inline-block w-[35%] h-full rounded-tl-[32px] rounded-bl-[32px]" id="signup-popup-side-img-container"></div>
-                <div className="relative flex flex-col items-center h-full w-full sm:w-[65%]">
+                <div className="relative flex flex-col items-center h-full w-full sm:w-[65%] z-[10]">
                     <Image src={CloseIcon} alt="close" className="w-[20px] h-[20px] absolute top-5 right-5" onClick={hideSignUp} />
-                    <p className={`${libreBaskerville.className} text-2xl text-[32px] text-[#4C4C4C] sm:hidden md:block ${isOTPSent ? "mt-[25px] mb-4" : "mt-[65px] mb-8"}`}>Sign up</p>
+                    <p className={`${libreBaskerville.className} text-2xl text-[32px] text-[#4C4C4C] sm:hidden md:block ${isOTPSent ? "mt-[25px] mb-4" : "mt-[35px] mb-8"}`}>Sign up</p>
                     <div className={`flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-2xl ${showError ? "mt-2" : "mt-8"}`}>
                         <div
                             className={`py-[9px] sm:py-[6px] lg:py-[10px] px-[25px] lg:px-[25px] rounded-tl-[8px] rounded-bl-[8px] hover:cursor-pointer ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
@@ -209,8 +241,8 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                     }
                     {
                         !isOTPSent && !isSellerSelected && (
-                            <button className="relative left-0 sm:left-2 w-[80%] rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[12px] text-[20px] font-semibold my-2" onClick={() => {
-                                setIsOTPSent(true);
+                            <button className="relative left-0 sm:left-2 w-[80%] rounded-[16px] text-white bg-[#FE9135] py-[10px] sm:py-[5px] lg:py-[12px] text-[20px] font-semibold my-2 hover:cursor-pointer" onClick={() => {
+                                generateOtp();
                             }}>Verify</button>
                         )
                     }
@@ -240,19 +272,26 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                     }
                     {
                         isOTPSent && !isSellerSelected && (
-                            <>
-                                <p className="text-[#8F8F8F] text-sm text-center">Didnt get OTP ? <span className={`text-[#6C6C6C] font-medium ${timer === 0 ? "hover:cursor-pointer" : "hover:cursor-wait"}`} onClick={resendOTP}>Resend</span> {
-                                    timer > 0 && timer && (
-                                        <span>
-                                            OTP in <span className="text-red-500">{timer} seconds</span>
-                                        </span>
-                                    )}
-                                </p>
-                                <p className="text-xs mt-3 max-w-[96%] text-center mb-1">By selecting sign up, you agree to our terms of service and privacy policy</p>
-                            </>
+                            <p className="text-[#8F8F8F] text-sm text-center">Didnt get OTP ? <span className={`text-[#6C6C6C] font-medium ${timer === 0 ? "hover:cursor-pointer" : "hover:cursor-wait"}`} onClick={resendOTP}>Resend</span> {
+                                timer > 0 && timer && (
+                                    <span>
+                                        OTP in <span className="text-red-500">{timer} seconds</span>
+                                    </span>
+                                )}
+                            </p>
                         )
                     }
-                    <div className="absolute flex flex-row flex-nowrap items-center justify-around w-full bottom-5">
+                    {
+                        !isSellerSelected && (
+                            <p className="text-[#8F8F8F] text-[14px] sm:text-xs lg:text-base text-center my-3">Already have an account? <span className="font-semibold text-red-500 hover:cursor-pointer" onClick={routeToLogin}>Log in</span></p>
+                        )
+                    }
+                    {
+                        isOTPSent && !isSellerSelected && (
+                            <p className="text-xs mt-3 max-w-[96%] text-center mb-1">By selecting sign up, you agree to our terms of service and privacy policy</p>
+                        )
+                    }
+                    <div className="absolute flex flex-row flex-nowrap items-center justify-around w-full bottom-5 z-[-5]">
                         <Image src={LeftLeaf} alt="left-leaf" className="w-[48%]" />
                         <Image src={RightLeaf} alt="right-leaf" className="w-[48%]" />
                     </div>

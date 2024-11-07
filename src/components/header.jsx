@@ -191,9 +191,9 @@ export default function Header() {
         }
         {
             (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") && (
-                <header className={`hidden ${lbFont.className} h-[90px] lg:flex flex-row flex-nowrap items-center justify-between px-[5%]`}>
+                <header className={`w-full hidden ${lbFont.className} h-[90px] lg:flex flex-row flex-nowrap items-center justify-between fixed top-0 z-[2000] bg-white px-[5%]`}>
                     <Image src={Logo} alt="Unneu" className="w-[125px] h-[44px]" />
-                    <nav className="list-none lg:ml-[5%] xl:ml-[8%] 2xl:ml-[10%] lg:w-[33%] xl:w-[30%] 2xl:w-[28%] flex flex-row flex-nowrap items-center justify-between">
+                    <nav className="list-none lg:ml-[4%] xl:ml-[4%] 2xl:ml-[8%] lg:w-[33%] xl:w-[30%] 2xl:w-[28%] flex flex-row flex-nowrap items-center justify-between">
                         <li className="text-[18px] hover:cursor-pointer">Home</li>
                         <li className="text-[18px] hover:cursor-pointer">Shop</li>
                         <li className="text-[18px] hover:cursor-pointer">Stories</li>
@@ -229,7 +229,7 @@ export default function Header() {
                         )
                     }
                     {
-                        (pathname !== "/seller/home" && pathname !== "/seller" && pathname !== "/seller/editItem" && pathname !== "/seller/register" && pathname !== "/seller/uploadItem") && (
+                        (pathname !== "/seller/home" && pathname !== "/seller" && pathname !== "/seller/editItem" && pathname !== "/seller/register/1" && pathname !== "/seller/register/2" && pathname !== "/seller/register/3" && pathname !== "/seller/uploadItem") && (
                             <button className="text-[18px] font-bold bg-[#FE9135] py-[12px] px-[38px] rounded-[12px] text-white" onClick={() => {
                                 router.push("/seller/home");
                             }}>Sell</button>
@@ -240,7 +240,7 @@ export default function Header() {
         }
         {
             (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") && (
-                <header className={`${lbFont.className} block lg:hidden h-[76px] flex items-center px-[15px] pt-[20px] pb-[20px] z-[200] sticky top-0 bg-white`}>
+                <header className={`w-full ${lbFont.className} block lg:hidden h-[76px] flex items-center px-[15px] pt-[20px] pb-[20px] z-[1000] fixed top-0 bg-white`}>
                     <a href="#mobile-nav">
                         <Image src={Hamburger} alt="details" className="w-[20px] h-[14px]" onClick={() => {
                             setShowHamburger(true);

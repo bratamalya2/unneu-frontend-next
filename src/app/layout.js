@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
           crossOrigin="true" async />
       </head>
 
-      <body className={`${poppins.className} h-screen`}>
+      <body className={`${poppins.className}`}>
         <SnackbarProvider>
           <Suspense>
             <Header />

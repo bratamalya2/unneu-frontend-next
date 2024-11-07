@@ -9,7 +9,7 @@ import "@/styles/landingPageNewsletter.css";
 
 export default function LandingPageNewsletter() {
     return <>
-        <section className="relative hidden lg:block lg:top-[1300px] xl:top-[1640px] 2xl:top-[2100px] lg:h-[550px] xl:h-[450px] 2xl:h-[504px]" id="landingpage-newsletter-section">
+        <section className="relative hidden lg:block lg:top-[1200px] xl:top-[1640px] 2xl:top-[1900px] lg:h-[550px] xl:h-[450px] 2xl:h-[504px]" id="landingpage-newsletter-section">
             <Image src={Background} alt="bg" className="absolute z-10 h-full w-full" />
             <Image src={Foreground} alt="fg" className="absolute z-10 h-full xl:w-[45%] 2xl:w-[40%] right-0" />
             <p className="absolute z-20 lg:max-w-[52%] xl:max-w-[45%] 2xl:max-w-[40%] left-[10%] lg:top-[64px] xl:top-[64px] 2xl:top-[84px] text-[#E3E3E3] lg:text-[40px] xl:text-[48px] font-bold">
@@ -21,7 +21,7 @@ export default function LandingPageNewsletter() {
             <input type="email" placeholder="Enter your e-mail" className="absolute z-20 mt-[32px] left-[10%] lg:top-[304px] xl:top-[324px] 2xl:top-[354px] xl:w-[20%] lg:w-[26%] h-[47px] rounded-[20px] px-3 font-medium text-[18px]" />
             <Image src={ForwardArrow} alt="right arrow" className="absolute z-30 lg:top-[338px] xl:top-[358px] 2xl:top-[388px] w-[44px] h-[44px] hover:cursor-pointer" id="landing-page-newsletter-forward-arrow-big" />
         </section>
-        <section className="relative lg:hidden top-[750px] sm:top-[900px] md:top-[1050px] w-full h-[630px]" id="landingpage-newsletter-section-mobile">
+        <section className="relative lg:hidden top-[550px] sm:top-[900px] md:top-[1050px] w-full h-[630px]" id="landingpage-newsletter-section-mobile">
             <Image src={Background2} alt="bg" className="absolute z-10 h-full w-full" />
             <p className="absolute z-20 max-w-[80%] sm:max-w-[45%] left-[10%] top-[74px] text-[#E3E3E3] text-2xl md:text-3xl font-bold">
                 Join the sustainability revolution: <span className="text-[#FE9135]">one saree at a time.</span>
