@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Libre_Baskerville } from "next/font/google";
@@ -300,7 +300,6 @@ export default function PersonalInfoForm() {
                                     catch (err) {
                                         console.log(err);
                                     }
-                                    //setIsPhoneOtpSent(true);
                                 }}>{sendPhoneOtpText}</div>
                             </div>
                         </>
@@ -479,23 +478,22 @@ export default function PersonalInfoForm() {
                                     try {
                                         if (sendPhoneOtpText === "Send OTP") {
                                             setSendPhoneOtpText("Sending");
-                                            /*
-                                            const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/sendVerificationEmail`, {
+                                            const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/sendVerificationOTP`, {
                                                 method: "POST",
                                                 body: JSON.stringify({
-                                                    email
+                                                    phoneNumber: phoneNo
                                                 }),
                                                 headers: {
                                                     "Content-type": "application/json; charset=UTF-8"
                                                 }
                                             });
                                             const y = await x.json();
-                                            */
-                                            if (true) {
+                                            if (y.success) {
                                                 setIsPhoneOtpSent(true);
                                                 setSendPhoneOtpText("Verify");
                                             }
                                             else {
+                                                setIsPhoneOtpSent(false);
                                                 setSendPhoneOtpText("Send OTP");
                                                 enqueueSnackbar(y.err, {
                                                     variant: "error"
@@ -554,7 +552,6 @@ export default function PersonalInfoForm() {
                                     catch (err) {
                                         console.log(err);
                                     }
-                                    //setIsPhoneOtpSent(true);
                                 }}>{sendPhoneOtpText}</div>
                             </div>
                         </>
