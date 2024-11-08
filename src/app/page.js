@@ -44,7 +44,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main>
+    <main className="relative lg:top-[120px]">
       <LandingPageHero />
       <LandingPageNavSection setShowRentalPopup={setShowRentalPopup} />
       <article className="relative z-0 my-[45px] xl:my-[35px] md:my-[56px] lg:max-w-[85%] xl:max-w-[80%] 2xl:max-w-[75%] mx-auto flex flex-col items-center">

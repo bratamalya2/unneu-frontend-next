@@ -92,12 +92,11 @@ export default function SetupPaymentType() {
                     <div className="mt-[16px] lg:mt-[42px] flex flex-row flex-nowrap justify-between items-center w-full lg:w-[60%]">
                         <input
                             type="text"
-                            className="w-[70%] text-sm lg:text-base border border-[#BFBFBF] bg-[#F9F9F9] rounded-[12px] py-[14px] lg:py-[20px] px-3"
+                            className="w-full text-sm lg:text-base border border-[#BFBFBF] bg-[#F9F9F9] rounded-[12px] py-[14px] lg:py-[20px] px-3"
                             placeholder="Enter your UPI Id here"
                             value={upiId}
                             onChange={e => setUpiId(e.target.value)}
                         />
-                        <button className="w-[25%] rounded-[8px] lg:rounded-[24px] py-[12px] lg:py-[20px] bg-[#FE9135] text-white text-[15px] lg:text-xl font-medium">Verify</button>
                     </div>
                 </>
             )

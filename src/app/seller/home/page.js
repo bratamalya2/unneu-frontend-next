@@ -59,7 +59,7 @@ export default function Home() {
         return null;
     */
 
-    return <main className="relative top-[80px]">
+    return <main className="relative top-[40px] lg:top-[80px]">
         <SellerHomeHero />
         <SellerHomeStepsToStartSelling />
         <SellerHomeWhySellWithUs />

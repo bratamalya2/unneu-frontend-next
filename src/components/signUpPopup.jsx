@@ -85,9 +85,6 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                 if (!y.success) {
                     setShowError(true);
                     setErrorMessage(y.err);
-                    setTimeout(() => {
-                        setShowError(false);
-                    }, 3000);
                 }
                 else {
                     setJwtToken(y.jwtToken);
@@ -105,13 +102,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
             else {
                 setShowError(true);
                 setErrorMessage("Enter a 6 digit OTP!");
-                setTimeout(() => {
-                    setShowError(false);
-                }, 3000);
             }
-            setTimeout(() => {
-                hideSignUp();
-            }, 3000);
         }
         catch (err) {
             console.log(err);

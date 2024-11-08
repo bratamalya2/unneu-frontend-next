@@ -286,7 +286,7 @@ export default function PersonalInfoForm() {
                                         const y = await x.json();
                                         if (y.success) {
                                             setIsPhoneOtpVerified(true);
-                                            setSendPhoneOtpText("Verified");
+                                            setSendPhoneOtpText("OTP Verified");
                                             setPhoneNumber(phoneNo);
                                         }
                                         else {
@@ -538,7 +538,7 @@ export default function PersonalInfoForm() {
                                         const y = await x.json();
                                         if (y.success) {
                                             setIsPhoneOtpVerified(true);
-                                            setSendPhoneOtpText("Verified");
+                                            setSendPhoneOtpText("OTP Verified");
                                             setPhoneNumber(phoneNo);
                                         }
                                         else {

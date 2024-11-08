@@ -9,7 +9,7 @@ import "@/styles/landingPageNewsletter.css";
 
 export default function LandingPageNewsletter() {
     return <>
-        <section className="relative hidden lg:block lg:top-[1200px] xl:top-[1640px] 2xl:top-[1900px] lg:h-[550px] xl:h-[450px] 2xl:h-[504px]" id="landingpage-newsletter-section">
+        <section className="relative hidden lg:block lg:top-[1200px] xl:top-[1640px] 2xl:top-[1900px] min-[1640px]:top-[2000px] min-[1760px]:top-[2100px] min-[1860px]:top-[2200px] lg:h-[550px] xl:h-[450px] 2xl:h-[504px]" id="landingpage-newsletter-section">
             <Image src={Background} alt="bg" className="absolute z-10 h-full w-full" />
             <Image src={Foreground} alt="fg" className="absolute z-10 h-full xl:w-[45%] 2xl:w-[40%] right-0" />
             <p className="absolute z-20 lg:max-w-[52%] xl:max-w-[45%] 2xl:max-w-[40%] left-[10%] lg:top-[64px] xl:top-[64px] 2xl:top-[84px] text-[#E3E3E3] lg:text-[40px] xl:text-[48px] font-bold">

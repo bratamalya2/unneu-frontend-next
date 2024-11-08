@@ -97,9 +97,6 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
                 if (!y.success) {
                     setShowError(true);
                     setErrorMessage(y.err);
-                    setTimeout(() => {
-                        setShowError(false);
-                    }, 3000);
                     setLoginPhoneNumber("");
                 }
                 else {
@@ -119,9 +116,6 @@ export default function SignInPopup({ showSignIn, hideSignIn }) {
             else {
                 setShowError(true);
                 setErrorMessage("Enter a 6 digit OTP!");
-                setTimeout(() => {
-                    setShowError(false);
-                }, 3000);
             }
             setTimeout(() => {
                 hideSignIn();

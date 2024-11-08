@@ -30,6 +30,38 @@ export default function SellerPickupForm() {
     const [state, setState] = useState(States[0]);
     const [storeDescription, setStoreDescription] = useState("");
 
+    const checkStoreNameAvailability = async () => {
+        try {
+            const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/verifyStoreName`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    storeName
+                })
+            });
+            const y = await x.json();
+            if (!y.success)
+                enqueueSnackbar(y.err, {
+                    variant: "error"
+                });
+            else {
+                if (y.isStoreAlreadyExists)
+                    enqueueSnackbar("Store name taken already!", {
+                        variant: "error"
+                    });
+                else
+                    enqueueSnackbar("Store available!", {
+                        variant: "success"
+                    });
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    };
+
     const handleAddressSubmit = () => {
         if (address.length === 0)
             enqueueSnackbar("Please enter a valid address!", {
@@ -110,17 +142,17 @@ export default function SellerPickupForm() {
             onChange={e => setFullName(e.target.value)}
         />
         <p className="text-[15px] lg:text-xl font-medium mt-[21px] lg:mt-[42px]">Enter store name <span className="text-[#B73636]">*</span></p>
-        <div className="mt-[16px] lg:mt-[24px] w-[70%] lg:w-[60%] h-[55px] lg:h-[64px] flex flex-row flex-nowrap items-center justify-between">
+        <div className="mt-[16px] lg:mt-[24px] w-full lg:w-[60%] h-[55px] lg:h-[64px] flex flex-row flex-nowrap items-center justify-between">
             <input
                 type="text"
-                className="border-[0.6px] border-[#00000080] bg-[#F9F9F9] rounded-[12px] h-full w-[70%] lg:w-[60%] px-3"
+                className="border-[0.6px] border-[#00000080] bg-[#F9F9F9] rounded-[12px] h-full w-[60%] lg:w-[65%] lg:w-[60%] px-3"
                 style={{
                     boxShadow: "0px 11px 53.8px 4px rgba(81, 69, 55, 0.05)"
                 }}
                 value={storeName}
                 onChange={e => setStoreName(e.target.value)}
             />
-            <button className="w-[25%] lg:w-[35%] h-full bg-[#FE9135] text-white rounded-[12px]">Check Availability</button>
+            <button className="w-[35%] lg:w-[30%] h-full bg-[#FE9135] text-white rounded-[12px] text-sm lg:text-base" onClick={checkStoreNameAvailability}>Check Availability</button>
         </div>
         <p className="text-[15px] lg:text-xl font-medium mt-[21px] lg:mt-[42px]">Gender <span className="text-[#B73636]">*</span></p>
         <div className="mt-[21px] lg:mt-[42px] flex flex-row flex-nowrap items-center text-xl gap-x-4 lg:gap-x-7">

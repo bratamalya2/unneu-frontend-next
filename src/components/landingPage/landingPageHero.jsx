@@ -22,8 +22,8 @@ export default function LandingPageHero() {
                 <Image src={HeroForeground} alt="foreground" className="absolute z-10 w-[60%] h-[310px] left-[10%] sm:left-[25%] z-10" id="landingpage-hero-fg" />
             </div>
             <p className="absolute left-[5%] sm:left-[15%] bottom-[250px] text-[#363636] font-bold text-[24px] sm:max-w-[70%] mr-[5%] text-center">Wardrobes are filled with sarees! Yet, nothing new to wear?</p>
-            <p className="absolute left-[5%] sm:left-[15%] bottom-[160px] font-medium text-[#2B2A2A] text-[14px] sm:max-w-[70%] mr-[5%] text-center">Welcome to &quot; India&apos;s First <span className="font-semibold text-[#FE9135]">saree aggregator</span> to buy and sell your pre-owned sarees at a negotiable fee&quot;. </p>
-            <button className="absolute bottom-[90px] left-[29%] sm:left-[35%] text-white px-[16px] py-[12px] font-medium rounded-[9px] bg-[#FE9135] hover:bg-[#FBC246]">Start Swapping</button>
+            <p className="absolute left-[5%] sm:left-[15%] bottom-[175px] font-medium text-[#2B2A2A] text-[14px] sm:max-w-[70%] mr-[5%] text-center">Welcome to &quot; India&apos;s First <span className="font-semibold text-[#FE9135]">saree aggregator</span> to buy and sell your pre-owned sarees at a negotiable fee&quot;. </p>
+            <button className="absolute bottom-[95px] left-[29%] sm:left-[35%] text-white px-[16px] py-[12px] font-medium rounded-[9px] bg-[#FE9135] hover:bg-[#FBC246]">Start Swapping</button>
         </section>
     </>
 }

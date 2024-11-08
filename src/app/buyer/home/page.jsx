@@ -143,7 +143,7 @@ export default function BuyerHome() {
         });
     }, [appliedFilters, items]);
 
-    return <main className="w-full relative z-0">
+    return <main className="w-full relative z-0 top-[80px]">
         <Hero />
         <Categories />
         <section className="mt-[21px] lg:mt-[100px] mb-[70px] lg:mb-[150px] w-full flex flex-col lg:flex-row flex-nowrap lg:justify-between gap-x-[16px] lg:gap-x-0">

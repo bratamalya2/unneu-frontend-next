@@ -82,7 +82,7 @@ export default function UploadItem() {
         return new File([blob], fileName, { type: contentType });
     }
 
-    return <main className="relative px-[10%] lg:px-[5%] mb-[90px]">
+    return <main className="relative px-[10%] lg:px-[5%] mb-[90px] top-[80px]">
         <p className="mt-[35px] lg:mt-[60px] mb-[45px] text-2xl lg:text-4xl font-medium">Product information</p>
         <div className="flex flex-col lg:flex-row flex-nowrap justify-between">
             <div className="w-full lg:w-[48%] flex flex-col flex-nowrap items-center">
