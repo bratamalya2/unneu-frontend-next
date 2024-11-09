@@ -34,6 +34,31 @@ export default function SetupPaymentType() {
                     variant: "error"
                 });
             }
+            else if (selectedPaymentType === "bank" && bankName.length === 0) {
+                enqueueSnackbar("Please enter bank name!", {
+                    variant: "error"
+                });
+            }
+            else if (selectedPaymentType === "bank" && accountType.length === 0) {
+                enqueueSnackbar("Please enter account type!", {
+                    variant: "error"
+                });
+            }
+            else if (selectedPaymentType === "bank" && branch.length === 0) {
+                enqueueSnackbar("Please enter bank branch!", {
+                    variant: "error"
+                });
+            }
+            else if (selectedPaymentType === "bank" && ifscCode.length === 0) {
+                enqueueSnackbar("Please enter IFSC Code!", {
+                    variant: "error"
+                });
+            }
+            else if (selectedPaymentType === "upi" && upiId.length === 0) {
+                enqueueSnackbar("Please enter UPI ID!", {
+                    variant: "error"
+                });
+            }
             else if (accountNumber.length === accountNumber2.length) {
                 const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/register/3`, {
                     method: "POST",
@@ -53,8 +78,15 @@ export default function SetupPaymentType() {
                     })
                 });
                 const y = await x.json();
-                if (y.success)
-                    router.push("/seller");
+                if (y.success) {
+                    router.push("/");
+                    enqueueSnackbar("Store created successfully!", {
+                        variant: "success"
+                    });
+                    enqueueSnackbar("Please login as a seller!", {
+                        variant: "success"
+                    });
+                }
                 else
                     enqueueSnackbar(y.err, {
                         variant: "error"
@@ -73,7 +105,7 @@ export default function SetupPaymentType() {
             setAccountNumberErrorText("");
     }, [accountNumber, accountNumber2]);
 
-    return <section className="mt-[56px] lg:mt-[105px] px-[10%]">
+    return <section className="mt-[56px] lg:mt-[105px] mb-[50px lg:mb-[100px] px-[10%]">
         <p className={`${lbFont.className} text-[22px] lg:text-4xl`}>Set up Payment type</p>
         <div className="relative mt-[24px] lg:mt-[56px] lg:w-[60%] w-full h-[64px] lg:h-[95px] rounded-[12px] lg:rounded-[24px] border border-[#BFBFBF]">
             <Image src={UPI} alt="upi" className="w-[74px] h-[20px] absolute top-[40%] left-[3%]" />

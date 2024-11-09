@@ -97,6 +97,10 @@ export default function SellerPickupForm() {
                 enqueueSnackbar("Please select your gender!", {
                     variant: "error"
                 });
+            else if (storeDescription.length === 0)
+                enqueueSnackbar("Please provide your store description!", {
+                    variant: "error"
+                });
             else if (address.length > 0 && contactPhoneNumber.length === 10 && pincode.length > 0 && city.length > 0) {
                 //submit form
                 const formdata = new FormData();
@@ -130,7 +134,7 @@ export default function SellerPickupForm() {
         }
     };
 
-    return <section className="mt-[110px] lg:mt-[250px] pl-[10%] lg:pl-[25%] pr-[10%] lg:pr-[5%] flex flex-col flex-nowrap">
+    return <section className="mt-[110px] lg:mt-[250px] pl-[10%] lg:pl-[25%] pr-[10%] lg:pr-[5%] mb-[50px] lg:mb-[100px] flex flex-col flex-nowrap">
         <p className="text-[15px] lg:text-xl font-medium">Enter full name <span className="text-[#B73636]">*</span></p>
         <input
             type="text"

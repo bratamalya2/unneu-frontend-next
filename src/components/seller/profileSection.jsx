@@ -182,7 +182,9 @@ export default function ProfileSection({ sellerDetails }) {
                     <button className="rounded-[8px] text-sm lg:text-lg font-medium bg-[#FE9135] py-[12px] lg:py-[16px] px-[21px] lg:px-[40px] text-white" onClick={() => {
                         router.push(`/seller/uploadItem`);
                     }}>List an item</button>
-                    <button className="rounded-[8px] border-2 border-[#939393] text-sm lg:text-lg font-medium py-[12px] lg:py-[16px] px-[21px] lg:px-[40px]">Edit profile</button>
+                    <button className="rounded-[8px] border-2 border-[#939393] text-sm lg:text-lg font-medium py-[12px] lg:py-[16px] px-[21px] lg:px-[40px]" onClick={() => {
+                        router.push("/seller/editProfile/1");
+                    }}>Edit profile</button>
                 </div>
             </aside>
         </section>

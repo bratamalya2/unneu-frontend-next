@@ -15,7 +15,7 @@ import "@/styles/personalInfoForm.css";
 
 const lbFont = Libre_Baskerville({ subsets: ["latin"], weight: ["400", "700"] });
 
-export default function PersonalInfoForm() {
+export default function PersonalInfoForm({ sellerDetails }) {
     const router = useRouter();
     const setPhoneNumber = useUnneuDataStore(store => store.setPhoneNumber);
     const [email, setEmail] = useState("");
@@ -23,7 +23,7 @@ export default function PersonalInfoForm() {
     const [sendEmailOtpText, setSendEmailOtpText] = useState("Send OTP");
     const [isEmailOtpVerified, setIsEmailOtpVerified] = useState(false);
     const [emailOtp, setEmailOtp] = useState("");
-    const [phoneNo, setPhoneNo] = useState("");
+    const [phoneNo, setPhoneNo] = useState();
     const [isPhoneOtpSent, setIsPhoneOtpSent] = useState(false);
     const [sendPhoneOtpText, setSendPhoneOtpText] = useState("Send OTP");
     const [isPhoneOtpVerified, setIsPhoneOtpVerified] = useState(false);
@@ -32,6 +32,23 @@ export default function PersonalInfoForm() {
     const [panImagePreview, setPanImagePreview] = useState(null);
     const panFileInputRef = useRef(null);
     const [panImageFile, setPanImageFile] = useState(null);
+
+    const fetchPanImage = async () => {
+        try {
+            const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/fetchImage`, {
+                method: "GET",
+                headers: {
+                    imagekey: sellerDetails.pan
+                }
+            });
+            const y = await x.json();
+            if (y.success)
+                setPanImagePreview(y.imgUrl);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    };
 
     const handlePanButtonClick = () => {
         panFileInputRef.current.click();
@@ -101,6 +118,16 @@ export default function PersonalInfoForm() {
             console.log(err);
         }
     }
+
+    useEffect(() => {
+        if (sellerDetails) {
+            setEmail(sellerDetails.email);
+            setPhoneNo(sellerDetails.phoneNumber);
+            setGst(sellerDetails.gst);
+            if (sellerDetails.pan.length > 0)
+                fetchPanImage();
+        }
+    }, [sellerDetails]);
 
     return <>
         <section className="hidden mt-[105px] md:flex flex-row flex-nowrap justify-between pr-[5%] mb-[100px]">

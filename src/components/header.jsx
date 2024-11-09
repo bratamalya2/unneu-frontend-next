@@ -13,7 +13,6 @@ import Logo from "@/../public/logo.png";
 import Search from "@/../public/search.png";
 import Like from "@/../public/like.png";
 import User from "@/../public/user.png";
-import Cart from "@/../public/cart.png";
 import Hamburger from "@/../public/hamburgerIcon.png";
 import CloseIcon from "@/../public/close.png";
 import Home from "@/../public/home.png";
@@ -21,6 +20,11 @@ import Sell from "@/../public/sell.png";
 import HowItWorks from "@/../public/howItWorks.png";
 import AboutUs from "@/../public/aboutUs.png";
 import FAQ from "@/../public/FAQ.png";
+import BlankDP from "@/../public/blank-dp.webp";
+import MyOrders from "@/../public/My orders.png";
+import Address from "@/../public/Address.png";
+import Settings from "@/../public/Privacy setting.png";
+import Logout from "@/../public/Logout.png";
 
 import SignInPopup from "./signInPopup";
 import SignUpPopup from "./signUpPopup";
@@ -42,6 +46,7 @@ export default function Header() {
     const setRefreshToken = useUnneuDataStore(store => store.setRefreshToken);
     const [showHamburger, setShowHamburger] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
+    const [showProfile, setShowProfile] = useState(false);
 
     const hideHamburger = () => {
         setShowHamburger(false);
@@ -60,7 +65,7 @@ export default function Header() {
             pathname === "/" && (
                 <header className={`w-full ${lbFont.className} h-[182px] hidden md:block z-[200] bg-white fixed top-0`}>
                     <div className="py-[33px] flex justify-around items-center mg:px-[6%] lg:px-[5%]">
-                        <Image src={Logo} alt="Unneu" className="w-[85px] lg:w-[125px] lg:h-[44px] lg:ml-[-10px] xl:ml-[-20px]" />
+                        <Image src={Logo} alt="Unneu" className={`w-[85px] lg:w-[125px] lg:h-[44px] ${jwtToken.length === 0 ? "lg:ml-[-10px] xl:ml-[-20px] min-[1400px]:ml-[-22px]" : "lg:ml-[-25px] xl:ml-[-35px] min-[1400px]:ml-[-37px]"}`} />
                         <div className="w-[30%] md:w-[40%] relative">
                             <Image src={Search} alt="Search" className="w-[24px] h-[24px] absolute top-5 left-4" />
                             <input type="text" placeholder="Search for product" className={`rounded-[24px] w-full h-[64px] pl-[48px] ${poppins.className}`} style={{
@@ -68,7 +73,45 @@ export default function Header() {
                             }} />
                         </div>
                         <Image src={Like} alt="Like" className="w-[24px] h-[24px] hover:cursor-pointer" />
-                        <Image src={User} alt="User" className="w-[24px] h-[24px] hover:cursor-pointer" />
+                        <div className="w-[24px] h-[24px] relative">
+                            <Image src={User} alt="User" className="w-[24px] h-[24px] hover:cursor-pointer" onClick={() => setShowProfile(x => !x)} />
+                            {
+                                showProfile && jwtToken.length > 0 && (
+                                    <div className="absolute w-[310px] h-[350px] bg-[#FEEECB] right-0 top-[30px] rounded-tl-[30px] shadow-2xl">
+                                        <div className="h-[22%] w-full bg-white p-[20px]">
+                                            <Image src={BlankDP} alt="dp" className="w-[50px] h-[50px] rounded-[100%]" />
+                                        </div>
+                                        <div className="h-[0.8px] w-full bg-[#0000004d]"></div>
+                                        <div className="w-full h-[77%] py-[20px] px-[36px] flex flex-col flex-nowrap justify-between">
+                                            <div className="w-full flex flex-row flex-nowrap items-center text-[18px] font-medium hover:cursor-pointer">
+                                                <Image src={Like} alt="wishlist" className="w-[22px] h-[20px] mr-[32px]" />
+                                                Wishlist
+                                            </div>
+                                            <div className="w-full flex flex-row flex-nowrap items-center text-[18px] font-medium hover:cursor-pointer">
+                                                <Image src={MyOrders} alt="orders" className="w-[22px] h-[20px] mr-[33px]" />
+                                                My Orders
+                                            </div>
+                                            <div className="w-full flex flex-row flex-nowrap items-center text-[18px] font-medium hover:cursor-pointer">
+                                                <Image src={Address} alt="address" className="w-[17px] h-[25px] mr-[36px]" />
+                                                Address
+                                            </div>
+                                            <div className="w-full flex flex-row flex-nowrap items-center text-[18px] font-medium hover:cursor-pointer">
+                                                <Image src={Settings} alt="privacy settings" className="w-[24px] h-[24px] mr-[30px]" />
+                                                Privacy Settings
+                                            </div>
+                                            <div className="w-full flex flex-row flex-nowrap items-center text-[18px] font-medium hover:cursor-pointer" onClick={() => {
+                                                setJwtToken("");
+                                                setRefreshToken("");
+                                                setShowProfile(false);
+                                            }}>
+                                                <Image src={Logout} alt="logout" className="w-[22px] h-[22px] mr-[30px]" />
+                                                Logout
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            }
+                        </div>
                         <div className="relative w-[24px] h-[24px] hover:cursor-pointer default-background-svg cart-icon" onClick={() => {
                             if (cart.length > 0)
                                 router.push("/purchase?slug=cart");
@@ -95,11 +138,7 @@ export default function Header() {
                                     }}>Sign up</button>
                                 </>
                             ) : (
-                                <button className="px-[28px] py-[16px] text-center rounded-[12px] bg-[#FE9135] text-white hover:bg-[#FBC246]" onClick={() => {
-                                    hideHamburger();
-                                    setJwtToken("");
-                                    setRefreshToken("");
-                                }}>Logout</button>
+                                null
                             )
                         }
                     </div>
@@ -286,18 +325,25 @@ export default function Header() {
                 <header className={`w-full hidden ${lbFont.className} h-[90px] lg:flex flex-row flex-nowrap items-center justify-between fixed top-0 z-[2000] bg-white px-[5%]`}>
                     <Image src={Logo} alt="Unneu" className="w-[125px] h-[44px]" />
                     <nav className="list-none lg:ml-[4%] xl:ml-[4%] 2xl:ml-[8%] lg:w-[33%] xl:w-[30%] 2xl:w-[28%] flex flex-row flex-nowrap items-center justify-between">
-                        <li className="text-[18px] hover:cursor-pointer">Home</li>
-                        <li className="text-[18px] hover:cursor-pointer">Shop</li>
+                        <li className="text-[18px] hover:cursor-pointer" onClick={() => {
+                            if (pathname.split("/")[1] === "seller" && !window.location.href.includes("?sellerId="))
+                                router.push("/seller");
+                            else
+                                router.push("/buyer/home");
+                        }}>Home</li>
+                        <li className="text-[18px] hover:cursor-pointer" onClick={() => {
+                            router.push("/buyer/home");
+                        }}>Shop</li>
                         <li className="text-[18px] hover:cursor-pointer">Stories</li>
                         <li className="text-[18px] hover:cursor-pointer" onClick={() => {
                             router.push("/aboutUs");
                         }}>About Us</li>
                     </nav>
                     {
-                        (pathname !== "/seller/home" && pathname !== "/seller" && pathname !== "/seller/editItem" && pathname !== "/seller/register" && pathname !== "/seller/uploadItem") && (
+                        (pathname !== "/seller/home" && pathname !== "/seller" && pathname !== "/seller/editItem" && pathname !== "/seller/register/1" && pathname !== "/seller/register/2" && pathname !== "/seller/register/3" && pathname !== "/seller/uploadItem") && (
                             <div className="lg:w-[14%] xl:w-[13%] 2xl:w-[12%] flex flex-row flex-nowrap items-center justify-between">
                                 <Image src={Search} alt="Search" className="w-[24px] h-[24px] hover:cursor-pointer" />
-                                <Image src={User} alt="User" className="w-[24px] h-[24px] hover:cursor-pointer" />
+                                <Image src={User} alt="User" className="w-[24px] h-[24px] hover:cursor-pointer" onClick={() => setShowProfile(x => !x)} />
                                 <div className="relative w-[24px] h-[24px] hover:cursor-pointer default-background-svg cart-icon" onClick={() => {
                                     if (cart.length > 0)
                                         router.push("/purchase?slug=cart");
@@ -314,17 +360,12 @@ export default function Header() {
                         )
                     }
                     {
-                        (pathname !== "/buyer/home" && pathname !== "/item") && (
+                        (pathname === "/seller/home" || pathname === "/seller" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem") && (
                             <button className="text-[18px] font-bold bg-[#FE9135] py-[12px] px-[38px] rounded-[12px] text-white" onClick={() => {
-                                router.push("/buyer/home");
-                            }}>Shop</button>
-                        )
-                    }
-                    {
-                        (pathname !== "/seller/home" && pathname !== "/seller" && pathname !== "/seller/editItem" && pathname !== "/seller/register/1" && pathname !== "/seller/register/2" && pathname !== "/seller/register/3" && pathname !== "/seller/uploadItem") && (
-                            <button className="text-[18px] font-bold bg-[#FE9135] py-[12px] px-[38px] rounded-[12px] text-white" onClick={() => {
-                                router.push("/seller/home");
-                            }}>Sell</button>
+                                setJwtToken("");
+                                setRefreshToken("");
+                                router.push("/");
+                            }}>Logout</button>
                         )
                     }
                 </header>

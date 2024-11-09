@@ -11,7 +11,7 @@ export default function RegisterStage({ stage }) {
         <div className={`rounded-[6px] lg:rounded-[12px] p-[10px] lg:p-[16px] flex flex-row flex-nowrap items-center justify-center ${stage === "1" ? "bg-[#FDDF9F]" : "bg-[#EEEEEE]"}`}>
             <Image src={PersonalInformation} alt="personal-info" className="w-[31px] h-[24px]" />
         </div>
-        <p className="text-[#8C8A8A] text-[10px] lg:text-xs font-medium absolute bottom-0 lg:bottom-5 left-[5%] min-[500px]:left-[6%] sm:left-[6.5%] min-[700px]:left-[7%] min-[750px]:left-[7.5%] min-[875px]:left-[8%] lg:left-[7%] min-[1130px]:left-[7.5%] xl:left-[8%] 2xl:left-[8.5%] w-[88px] lg:w-[109px] text-center">
+        <p className="text-[#8C8A8A] text-[10px] lg:text-xs font-medium absolute bottom-0 left-[5%] min-[500px]:left-[6%] sm:left-[6.5%] min-[700px]:left-[7%] min-[750px]:left-[7.5%] min-[875px]:left-[8%] lg:left-[7%] min-[1130px]:left-[7.5%] xl:left-[8%] 2xl:left-[8.5%] w-[88px] lg:w-[109px] text-center">
             Personal information
         </p>
         <Image src={HorizontalLine} alt="line" className="h-[1px] w-[25%] hidden lg:inline-block lg:w-[45%]" />

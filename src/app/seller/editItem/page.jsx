@@ -221,7 +221,7 @@ export default function EditItem() {
         {
             searchParams.get("sellerId") && searchParams.get("itemId") && isItemProfileExists && isLoaded && <>
                 <p className="mt-[35px] lg:mt-[60px] mb-[45px] text-2xl lg:text-4xl font-medium">Product information</p>
-                <div className="flex flex-col lg:flex-row flex-nowrap justify-between">
+                <div className="flex flex-col lg:flex-row flex-nowrap justify-between lg:mb-[150px]">
                     <div className="w-full lg:w-[48%] flex flex-col flex-nowrap items-center">
                         <Left
                             file1={file1}

@@ -199,7 +199,7 @@ export default function SellerPickupProfile() {
                             <Dropzone onDrop={(x) => handleDrop(x, setCoverImagePreview)}>
                                 <p className="mt-[42px] lg:mt-[56px] font-medium text-2xl lg:text-3xl">Upload cover image</p>
                                 <div className="mt-[24px] mb-[56px] h-[250px] lg:h-[400px] w-full border !border-dashed rounded-[32px] flex flex-col flex-nowrap items-center justify-center gap-y-[28px]">
-                                    <Image src={Upload} alt="upload" className="w-[18%] lg:w-[16%] xl:w-[11%] 2xl:w-[7%] h-[14%] xl:h-[13%] 2xl:h-[12%]" />
+                                    <Image src={Upload} alt="upload" className="w-[18%] lg:w-[16%] xl:w-[11%] min-[1400px]:w-[9%] 2xl:w-[7%] h-[14%] xl:h-[13%] 2xl:h-[12%]" />
                                     <p className="hidden lg:block text-xl font-medium">Drag and drop image here</p>
                                     <p className="hidden lg:block text-xl font-medium">or</p>
                                     <button className="relative py-[10px] lg:py-[16px] px-[50px] lg:px-[125px] rounded-[16px] text-white bg-[#FEA355] text-xl font-medium" onClick={(e) => {
@@ -257,7 +257,7 @@ export default function SellerPickupProfile() {
                             <Dropzone onDrop={(x) => handleDrop(x, setProfileImagePreview)}>
                                 <p className="mt-[42px] lg:mt-[56px] font-medium text-2xl lg:text-3xl">Upload profile photo</p>
                                 <div className="mt-[24px] mb-[56px] h-[250px] lg:h-[400px] w-full border !border-dashed rounded-[32px] flex flex-col flex-nowrap items-center justify-center gap-y-[28px]">
-                                    <Image src={Upload} alt="upload" className="w-[16%] h-[14%]" />
+                                    <Image src={Upload} alt="upload" className="w-[16%] h-[14%] xl:w-[12%] 2xl:w-[11%]" />
                                     <p className="text-xl font-medium lg:block hidden">Drag and drop image here</p>
                                     <p className="text-xl font-medium lg:block hidden">or</p>
                                     <button className="relative py-[10px] lg:py-[16px] px-[50px] lg:px-[125px] rounded-[16px] text-white bg-[#FEA355] text-xl font-medium" onClick={(e) => {
