@@ -321,10 +321,10 @@ export default function Header() {
             )
         }
         {
-            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") && (
-                <header className={`w-full hidden ${lbFont.className} h-[90px] lg:flex flex-row flex-nowrap items-center justify-between fixed top-0 z-[2000] bg-white px-[5%]`}>
+            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller/editProfile/1" || pathname === "/seller/editProfile/2" || pathname === "/seller/editProfile/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") && (
+                <header className={`w-full hidden ${lbFont.className} h-[90px] lg:flex flex-row flex-nowrap items-center ${jwtToken.length > 0 && refreshToken.length > 0 && "justify-between"} fixed top-0 z-[2000] bg-white px-[5%]`}>
                     <Image src={Logo} alt="Unneu" className="w-[125px] h-[44px]" />
-                    <nav className="list-none lg:ml-[4%] xl:ml-[4%] 2xl:ml-[8%] lg:w-[33%] xl:w-[30%] 2xl:w-[28%] flex flex-row flex-nowrap items-center justify-between">
+                    <nav className={`list-none ${jwtToken.length > 0 && refreshToken.length > 0 ? "lg:ml-[4%] xl:ml-[4%] 2xl:ml-[8%]" : "lg:ml-[18%] xl:ml-[22%] 2xl:ml-[24%]"}  lg:w-[33%] xl:w-[30%] 2xl:w-[28%] flex flex-row flex-nowrap items-center justify-between`}>
                         <li className="text-[18px] hover:cursor-pointer" onClick={() => {
                             if (pathname.split("/")[1] === "seller" && !window.location.href.includes("?sellerId="))
                                 router.push("/seller");
@@ -340,7 +340,7 @@ export default function Header() {
                         }}>About Us</li>
                     </nav>
                     {
-                        (pathname !== "/seller/home" && pathname !== "/seller" && pathname !== "/seller/editItem" && pathname !== "/seller/register/1" && pathname !== "/seller/register/2" && pathname !== "/seller/register/3" && pathname !== "/seller/uploadItem") && (
+                        (pathname !== "/seller/home" && pathname !== "/seller" && pathname !== "/seller/editItem" && pathname !== "/seller/register/1" && pathname !== "/seller/register/2" && pathname !== "/seller/register/3" && pathname !== "/seller/editProfile/1" && pathname !== "/seller/editProfile/2" && pathname !== "/seller/editProfile/3" && pathname !== "/seller/uploadItem") && (
                             <div className="lg:w-[14%] xl:w-[13%] 2xl:w-[12%] flex flex-row flex-nowrap items-center justify-between">
                                 <Image src={Search} alt="Search" className="w-[24px] h-[24px] hover:cursor-pointer" />
                                 <Image src={User} alt="User" className="w-[24px] h-[24px] hover:cursor-pointer" onClick={() => setShowProfile(x => !x)} />
@@ -360,7 +360,7 @@ export default function Header() {
                         )
                     }
                     {
-                        (pathname === "/seller/home" || pathname === "/seller" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem") && (
+                        (pathname === "/seller/home" || pathname === "/seller" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller/editProfile/1" || pathname === "/seller/editProfile/2" || pathname === "/seller/editProfile/3" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem") && (jwtToken.length > 0 && refreshToken.length > 0) && (
                             <button className="text-[18px] font-bold bg-[#FE9135] py-[12px] px-[38px] rounded-[12px] text-white" onClick={() => {
                                 setJwtToken("");
                                 setRefreshToken("");
@@ -372,7 +372,7 @@ export default function Header() {
             )
         }
         {
-            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") && (
+            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller/editProfile/1" || pathname === "/seller/editProfile/2" || pathname === "/seller/editProfile/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") && (
                 <header className={`w-full ${lbFont.className} block lg:hidden h-[76px] flex items-center px-[15px] pt-[20px] pb-[20px] z-[1000] fixed top-0 bg-white`}>
                     <a href="#mobile-nav">
                         <Image src={Hamburger} alt="details" className="w-[20px] h-[14px]" onClick={() => {
@@ -386,7 +386,7 @@ export default function Header() {
                         )
                     }
                     {
-                        (pathname !== "/seller/home" && pathname !== "/seller" && pathname !== "/seller/editItem" && pathname !== "/seller/register/1" && pathname !== "/seller/register/2" && pathname !== "/seller/register/3" && pathname !== "/seller/uploadItem") && (
+                        (pathname !== "/seller/home" && pathname !== "/seller" && pathname !== "/seller/editItem" && pathname !== "/seller/register/1" && pathname !== "/seller/register/2" && pathname !== "/seller/register/3" && pathname !== "/seller/editProfile/1" && pathname !== "/seller/editProfile/2" && pathname !== "/seller/editProfile/3" && pathname !== "/seller/uploadItem") && (
                             <>
                                 <Image src={Search} alt="Search" className={`w-[20px] h-[20px] ${showSearch ? "ml-[1%] min-[400px]:ml-[14%] min-[430px]:ml-[16%] min-[460px]:ml-[17%] min-[500px]:ml-[18%] sm:ml-[20%]" : "ml-[17%] min-[400px]:ml-[22%] min-[430px]:ml-[24%] min-[460px]:ml-[25%] min-[500px]:ml-[26%] sm:ml-[27%] md:ml-[32%]"}`} onClick={() => {
                                     setShowSearch(x => !x);

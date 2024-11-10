@@ -33,6 +33,11 @@ export default function PersonalInfoForm({ sellerDetails }) {
     const panFileInputRef = useRef(null);
     const [panImageFile, setPanImageFile] = useState(null);
 
+    const removeImage = () => {
+        setPanImageFile(null);
+        setPanImagePreview(null);
+    };
+
     const fetchPanImage = async () => {
         try {
             const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/fetchImage`, {
@@ -42,8 +47,14 @@ export default function PersonalInfoForm({ sellerDetails }) {
                 }
             });
             const y = await x.json();
-            if (y.success)
+            if (y.success) {
                 setPanImagePreview(y.imgUrl);
+                const response = await fetch(y.imgUrl);
+                const blob = await response.blob();
+                // Create a File from the Blob
+                const file = new File([blob], "pan-image", { type: blob.type });
+                setPanImageFile(file);
+            }
         }
         catch (err) {
             console.log(err);
@@ -100,13 +111,13 @@ export default function PersonalInfoForm({ sellerDetails }) {
                 formdata.append("phoneNumber", phoneNo);
                 formdata.append("gst", gst);
                 formdata.append("pan", panImageFile);
-                const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/register/1`, {
+                const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/editProfile/1`, {
                     method: "POST",
                     body: formdata
                 });
                 const y = await x.json();
                 if (y.success) {
-                    router.push("/seller/register/2");
+                    router.push("/seller/editProfile/2");
                 }
                 else
                     enqueueSnackbar(y.err, {
@@ -358,10 +369,11 @@ export default function PersonalInfoForm({ sellerDetails }) {
                     panImagePreview && (
                         <>
                             <p className="mt-[42px] text-xl">PAN image <span className="text-[#B73636]">*</span></p>
-                            <div className="mt-[24px] mb-[56px] h-[300px] md:w-full lg:w-[80%] xl:w-[70%] border !border-dashed rounded-[32px] default-background-svg" style={{
+                            <div className="mt-[24px] mb-[24px] h-[300px] md:w-full lg:w-[80%] xl:w-[70%] border !border-dashed rounded-[32px] default-background-svg" style={{
                                 backgroundImage: `url(${panImagePreview})`
                             }}>
                             </div>
+                            <button className="bg-[#FE9135] rounded-[16px] py-[10px] px-[10px] text-white mb-[42px]" onClick={removeImage}>Remove Image</button>
                         </>
                     )
                 }
@@ -379,7 +391,7 @@ export default function PersonalInfoForm({ sellerDetails }) {
                 <button className="bg-[#FE9135] rounded-[24px] w-full py-[25px] text-xl mt-[20px] text-white" onClick={handleFormSubmit}>Save and Continue</button>
             </aside>
         </section>
-        <section className="relative mt-[50px] md:hidden pr-[5%]">
+        <section className={`relative mt-[50px] md:hidden pr-[5%] ${panImagePreview && "mb-[200px]"}`}>
             <aside className="absolute h-[600px] w-[100vw] left-0 z-0" id="seller-register-personal-info-form-hero">
             </aside>
             <aside className="absolute w-[90vw] h-fit z-10 top-[450px] left-[5vw] rounded-tl-[24px] rounded-tr-[24px] bg-white py-[36px] px-[16px]" style={{
@@ -612,10 +624,11 @@ export default function PersonalInfoForm({ sellerDetails }) {
                                 backgroundImage: `url(${panImagePreview})`
                             }}>
                             </div>
+                            <button className="mt-[24px] bg-[#FE9135] rounded-[16px] py-[10px] px-[10px] text-white mb-[20px]" onClick={removeImage}>Remove Image</button>
                         </>
                     )
                 }
-                <p className="text-[15px] mt-[24px] mb-[16px]">Enter GSTIN <span className="text-[#ADA6A6]">(optional)</span></p>
+                <p className="text-[15px] mb-[16px]">Enter GSTIN <span className="text-[#ADA6A6]">(optional)</span></p>
                 <input
                     type="text"
                     onChange={e => setGst(e.target.value)}

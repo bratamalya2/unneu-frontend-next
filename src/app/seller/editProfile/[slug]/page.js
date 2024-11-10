@@ -8,9 +8,9 @@ import { useUnneuDataStore } from "@/store/store";
 
 import RegisterStage from "@/components/sellerRegister/registerStage";
 import PersonalInfoForm from "@/components/sellerEditProfile/personalInfoForm";
-import SellerPickupProfile from "@/components/sellerRegister/sellerPickupProfile";
-import SellerPickupForm from "@/components/sellerRegister/sellerPickupForm";
-import SetupPaymentType from "@/components/sellerRegister/setupPaymentType";
+import SellerPickupProfile from "@/components/sellerEditProfile/sellerPickupProfile";
+import SellerPickupForm from "@/components/sellerEditProfile/sellerPickupForm";
+import SetupPaymentType from "@/components/sellerEditProfile/setupPaymentType";
 
 export default function Register({ params }) {
     const router = useRouter();
@@ -22,7 +22,6 @@ export default function Register({ params }) {
 
     const fetchSellerDetails = async () => {
         try {
-            console.log("fetching!");
             const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/getSellerDetails`, {
                 method: "GET",
                 headers: {
@@ -31,7 +30,6 @@ export default function Register({ params }) {
                 }
             });
             const y = await x.json();
-            console.log(y);
             if (y.success)
                 setSellerDetails(y.sellerDetails);
             else {
@@ -86,8 +84,8 @@ export default function Register({ params }) {
     return <main className="relative top-[80px]">
         <RegisterStage stage={params.slug} />
         {params.slug === "1" && <PersonalInfoForm sellerDetails={sellerDetails} />}
-        {params.slug === "2" && <SellerPickupProfile />}
-        {params.slug === "2" && <SellerPickupForm />}
-        {params.slug === "3" && <SetupPaymentType />}
+        {params.slug === "2" && <SellerPickupProfile sellerDetails={sellerDetails} />}
+        {params.slug === "2" && <SellerPickupForm sellerDetails={sellerDetails} />}
+        {params.slug === "3" && <SetupPaymentType sellerDetails={sellerDetails} />}
     </main>
 }

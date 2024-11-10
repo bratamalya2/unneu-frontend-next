@@ -13,7 +13,7 @@ import Bank from "@/../public/bank.png";
 
 const lbFont = Libre_Baskerville({ subsets: ["latin"], weight: ["400", "700"] });
 
-export default function SetupPaymentType() {
+export default function SetupPaymentType({ sellerDetails }) {
     const router = useRouter();
     const sellerPhoneNumber = useUnneuDataStore(store => store.phoneNumber);
     const [selectedPaymentType, setSelectedPaymentType] = useState("");
@@ -59,8 +59,8 @@ export default function SetupPaymentType() {
                     variant: "error"
                 });
             }
-            else if (accountNumber.length === accountNumber2.length) {
-                const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/register/3`, {
+            else if (accountNumber.length === accountNumber2.length && sellerDetails) {
+                const x = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/editProfile/3`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -79,8 +79,8 @@ export default function SetupPaymentType() {
                 });
                 const y = await x.json();
                 if (y.success) {
-                    router.push("/");
-                    enqueueSnackbar("Store created successfully!", {
+                    router.push("/seller");
+                    enqueueSnackbar("Store updated successfully!", {
                         variant: "success"
                     });
                 }
@@ -102,6 +102,35 @@ export default function SetupPaymentType() {
             setAccountNumberErrorText("");
     }, [accountNumber, accountNumber2]);
 
+    useEffect(() => {
+        if (sellerDetails) {
+            setSelectedPaymentType(sellerDetails.paymentType);
+            setUpiId(sellerDetails.upiId);
+            setAccountHolderName(sellerDetails.accountHolderName);
+            setBankName(sellerDetails.bankName);
+            setAccountNumber(sellerDetails.accountNumber);
+            setAccountNumber2(sellerDetails.accountNumber);
+            setBranch(sellerDetails.branch);
+            setIfscCode(sellerDetails.ifscCode);
+            setAccountType(sellerDetails.accountType);
+        }
+    }, [sellerDetails]);
+
+    useEffect(() => {
+        if (selectedPaymentType === "upi") {
+            setAccountHolderName("");
+            setBankName("");
+            setAccountNumber("");
+            setAccountNumber2("");
+            setBranch("");
+            setIfscCode("");
+            setAccountType("");
+        }
+        else {
+            setUpiId("");
+        }
+    }, [selectedPaymentType]);
+
     return <section className="mt-[56px] lg:mt-[105px] mb-[50px lg:mb-[100px] px-[10%]">
         <p className={`${lbFont.className} text-[22px] lg:text-4xl`}>Set up Payment type</p>
         <div className="relative mt-[24px] lg:mt-[56px] lg:w-[60%] w-full h-[64px] lg:h-[95px] rounded-[12px] lg:rounded-[24px] border border-[#BFBFBF]">
@@ -112,6 +141,7 @@ export default function SetupPaymentType() {
                 name="payment_type"
                 value="upi"
                 className="absolute w-[21px] lg:w-[32px] h-[21px] lg:h-[32px] right-[3%] top-[30%] custom-radio"
+                checked={selectedPaymentType === "upi"}
                 onChange={e => setSelectedPaymentType(e.target.value)}
             />
         </div>
@@ -137,6 +167,7 @@ export default function SetupPaymentType() {
                 type="radio"
                 name="payment_type"
                 value="bank"
+                checked={selectedPaymentType === "bank"}
                 className="absolute w-[21px] lg:w-[32px] h-[21px] lg:h-[32px] right-[3%] top-[30%] custom-radio"
                 onChange={e => setSelectedPaymentType(e.target.value)}
             />
