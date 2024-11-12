@@ -6,11 +6,13 @@ import Address from "@/../public/registered-address.svg";
 import Phone from "@/../public/phone-contactUs.svg";
 import Email from "@/../public/email-contactUs.svg";
 
+import "@/styles/contactUs.css";
+
 export default function AboutUs() {
     return <main className="relative w-full top-[80px] mt-[21px]">
         <p className="uppercase text-2xl font-semibold ml-[5%]">Contact uS</p>
         <section className="relative mt-[24px] ml-[2%] w-full h-[520px] bg-[#FEA355] mb-[576px] z-0">
-            <Image src={Hero} alt="hero" className="absolute bottom-[-20px] right-[-4%] w-[70%] h-full z-10" />
+            <Image src={Hero} alt="hero" className="absolute right-[-4%] w-[70%] h-full z-0" id="contact-us-hero-img" />
             <div className="absolute bg-[#FFD7B6] w-[25%] h-[365px] top-[83px] left-[-2%] z-10"></div>
             <div className="absolute top-[150px] left-[26%]">
                 <p className="text-white text-2xl font-semibold">Get In Touch</p>

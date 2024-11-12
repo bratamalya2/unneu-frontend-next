@@ -1,0 +1,23 @@
+@media only screen and (min-width: 1024px) {
+    #contact-us-hero-img {
+        bottom: -22px;
+    }
+}
+
+@media only screen and (min-width: 1050px) {
+    #contact-us-hero-img {
+        bottom: -16px;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    #contact-us-hero-img {
+        bottom: -4px;
+    }
+}
+
+@media only screen and (min-width: 1120px) {
+    #contact-us-hero-img {
+        bottom: 0px;
+    }
+}
