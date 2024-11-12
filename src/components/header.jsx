@@ -37,6 +37,7 @@ export default function Header() {
     const pathname = usePathname();
     const showSignIn = useUnneuDataStore(store => store.showSignIn);
     const setShowSignIn = useUnneuDataStore(store => store.setShowSignIn);
+    const setPhoneNumberAtStore = useUnneuDataStore(store => store.setPhoneNumber);
     const showSignUp = useUnneuDataStore(store => store.showSignUp);
     const setShowSignUp = useUnneuDataStore(store => store.setShowSignUp);
     const cart = useUnneuDataStore(store => store.cart);
@@ -103,6 +104,7 @@ export default function Header() {
                                                 setJwtToken("");
                                                 setRefreshToken("");
                                                 setShowProfile(false);
+                                                setPhoneNumberAtStore("");
                                             }}>
                                                 <Image src={Logout} alt="logout" className="w-[22px] h-[22px] mr-[30px]" />
                                                 Logout
@@ -184,6 +186,7 @@ export default function Header() {
                                 hideHamburger();
                                 setJwtToken("");
                                 setRefreshToken("");
+                                setPhoneNumberAtStore("");
                             }}>
                                 Logout
                             </li>
@@ -257,6 +260,7 @@ export default function Header() {
                                 hideHamburger();
                                 setJwtToken("");
                                 setRefreshToken("");
+                                setPhoneNumberAtStore("");
                             }}>
                                 Logout
                             </li>
@@ -365,6 +369,7 @@ export default function Header() {
                                 setJwtToken("");
                                 setRefreshToken("");
                                 router.push("/");
+                                setPhoneNumberAtStore("");
                             }}>Logout</button>
                         )
                     }
