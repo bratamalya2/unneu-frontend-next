@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Libre_Baskerville } from "next/font/google";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
@@ -45,7 +46,8 @@ export default function Header() {
     const refreshToken = useUnneuDataStore(store => store.refreshToken);
     const setJwtToken = useUnneuDataStore(store => store.setJwtToken);
     const setRefreshToken = useUnneuDataStore(store => store.setRefreshToken);
-    const [showHamburger, setShowHamburger] = useState(false);
+    const showHamburger = useUnneuDataStore(store => store.showHamburger);
+    const setShowHamburger = useUnneuDataStore(store => store.setShowHamburger);
     const [showSearch, setShowSearch] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
 
@@ -159,10 +161,10 @@ export default function Header() {
                 </header>)}
         {
             showHamburger && pathname === "/" && (
-                <nav className={`block ${pathname === "/" ? "md:hidden" : "lg:hidden"} bg-white max-w-[363px] w-[80%] h-[560px] list-none absolute z-50 rounded-tr-[24px] rounded-br-[24px]`} style={{
+                <nav className={`mt-[30px] block ${pathname === "/" ? "md:hidden" : "lg:hidden"} bg-white max-w-[363px] w-[70%] h-[560px] list-none absolute z-50 rounded-tr-[24px] rounded-br-[24px]`} style={{
                     boxShadow: "0px 4px 78px 0px rgba(0, 0, 0, 0.25)"
                 }} id="mobile-nav">
-                    <Image src={CloseIcon} alt="close" className="w-[14px] h-[14px] absolute top-[90px] right-5" onClick={hideHamburger} />
+                    <Image src={CloseIcon} alt="close" className="w-[14px] h-[14px] absolute top-[90px] right-2 min-[360px]:right-5" onClick={hideHamburger} />
                     <Image src={Like} alt="wishlist" className="w-[20px] h-[17px] absolute left-5 top-10" />
                     <div className="absolute top-10 left-[50px] text-[14px]">Wish list</div>
                     {
@@ -200,12 +202,12 @@ export default function Header() {
                         Home
                     </li>
                     <div className="bg-[#D4D4D4] h-[1px] w-full absolute top-[220px]" />
-                    <a href="#landing-page-seller" onClick={hideHamburger}>
+                    <Link href="/seller/home" onClick={hideHamburger}>
                         <li className="flex flex-nowrap items-center gap-x-6 absolute top-[245px] left-5 text-[18px]">
                             <Image src={Sell} alt="sell" className="w-[20px] h-[18px]" />
                             Sell
                         </li>
-                    </a>
+                    </Link>
                     <div className="bg-[#D4D4D4] h-[1px] w-full absolute top-[290px]" />
                     <a href="#landing-page-howitworks" onClick={hideHamburger}>
                         <li className="flex flex-nowrap items-center gap-x-6 absolute top-[315px] left-5 text-[18px]">
@@ -233,10 +235,10 @@ export default function Header() {
         }
         {
             showHamburger && pathname !== "/" && (
-                <nav className={`block lg:hidden bg-white max-w-[363px] w-[80%] h-[560px] list-none absolute z-50 rounded-tr-[24px] rounded-br-[24px]`} style={{
+                <nav className={`mt-[20px] block lg:hidden bg-white max-w-[363px] w-[70%] h-[560px] list-none absolute z-50 rounded-tr-[24px] rounded-br-[24px]`} style={{
                     boxShadow: "0px 4px 78px 0px rgba(0, 0, 0, 0.25)"
                 }} id="mobile-nav">
-                    <Image src={CloseIcon} alt="close" className="w-[14px] h-[14px] absolute top-[90px] right-5" onClick={hideHamburger} />
+                    <Image src={CloseIcon} alt="close" className="w-[14px] h-[14px] absolute top-[90px] right-2 min-[360px]:right-5" onClick={hideHamburger} />
                     <Image src={Like} alt="wishlist" className="w-[20px] h-[17px] absolute left-5 top-10" />
                     <div className="absolute top-10 left-[50px] text-[14px]">Wish list</div>
                     {
@@ -325,7 +327,7 @@ export default function Header() {
             )
         }
         {
-            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller/editProfile/1" || pathname === "/seller/editProfile/2" || pathname === "/seller/editProfile/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") && (
+            (pathname === "/seller/home" || pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller/editProfile/1" || pathname === "/seller/editProfile/2" || pathname === "/seller/editProfile/3" || pathname === "/seller" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/contactUs" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") && (
                 <header className={`w-full hidden ${lbFont.className} h-[90px] lg:flex flex-row flex-nowrap items-center ${jwtToken.length > 0 && refreshToken.length > 0 && "justify-between"} fixed top-0 z-[2000] bg-white px-[5%]`}>
                     <Image src={Logo} alt="Unneu" className="w-[125px] h-[44px]" />
                     <nav className={`list-none ${jwtToken.length > 0 && refreshToken.length > 0 ? "lg:ml-[4%] xl:ml-[4%] 2xl:ml-[8%]" : "lg:ml-[18%] xl:ml-[22%] 2xl:ml-[24%]"}  lg:w-[33%] xl:w-[30%] 2xl:w-[28%] flex flex-row flex-nowrap items-center justify-between`}>
@@ -344,7 +346,7 @@ export default function Header() {
                         }}>About Us</li>
                     </nav>
                     {
-                        (pathname !== "/seller/home" && pathname !== "/seller" && pathname !== "/seller/editItem" && pathname !== "/seller/register/1" && pathname !== "/seller/register/2" && pathname !== "/seller/register/3" && pathname !== "/seller/editProfile/1" && pathname !== "/seller/editProfile/2" && pathname !== "/seller/editProfile/3" && pathname !== "/seller/uploadItem") && (
+                        (pathname !== "/seller/home" && pathname !== "/seller" && pathname !== "/seller/editItem" && pathname !== "/seller/register/1" && pathname !== "/seller/register/2" && pathname !== "/seller/register/3" && pathname !== "/seller/editProfile/1" && pathname !== "/seller/editProfile/2" && pathname !== "/seller/editProfile/3" && pathname !== "/seller/uploadItem") && (jwtToken.length > 0 && refreshToken.length > 0) && (
                             <div className="lg:w-[14%] xl:w-[13%] 2xl:w-[12%] flex flex-row flex-nowrap items-center justify-between">
                                 <Image src={Search} alt="Search" className="w-[24px] h-[24px] hover:cursor-pointer" />
                                 <Image src={User} alt="User" className="w-[24px] h-[24px] hover:cursor-pointer" onClick={() => setShowProfile(x => !x)} />

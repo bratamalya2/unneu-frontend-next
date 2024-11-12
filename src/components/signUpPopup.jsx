@@ -164,7 +164,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
 
     return <>
         <Modal show={showSignUp} onHide={hideSignUp} className="mt-[20px] xl:max-w-[60%] xl:left-[20%]">
-            <Modal.Body className="flex flex-row flex-nowrap justify-center sm:justify-start rounded-[32px] h-[700px] sm:h-[600px] md:h-[640px] p-0">
+            <Modal.Body className={`flex flex-row flex-nowrap justify-center sm:justify-start rounded-[32px] ${isSellerSelected ? "h-[500px]" : "h-[700px]"} sm:h-[600px] md:h-[640px] p-0`}>
                 <div className="hidden sm:inline-block w-[35%] h-full rounded-tl-[32px] rounded-bl-[32px]" id="signup-popup-side-img-container"></div>
                 <div className="relative flex flex-col items-center h-full w-full sm:w-[65%] z-[10]">
                     <Image src={CloseIcon} alt="close" className="w-[20px] h-[20px] absolute top-5 right-5" onClick={hideSignUp} />
@@ -203,7 +203,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                     }
                     {
                         isSellerSelected && (
-                            <button className="bg-[#FE9135] text-white uppercase font-semibold text-xl py-[12px] px-[50px] rounded-[16px] mt-[80px] sm:mt-[50px] mb-[30px]" onClick={() => {
+                            <button className="bg-[#FE9135] text-white uppercase font-semibold text-xl py-[12px] px-[50px] rounded-[16px] mt-[30px] sm:mt-[50px] mb-[30px]" onClick={() => {
                                 router.push("/seller/home");
                                 hideSignUp();
                             }}>

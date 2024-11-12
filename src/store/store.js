@@ -14,6 +14,8 @@ export const useUnneuDataStore = create(
             showSignIn: false,
             showSignUp: false,
             cart: [],
+            showHamburger: false,
+            setShowHamburger: (p) => set({ showHamburger: p }),
             setBodyOpacity: (p) => set({ bodyOpacity: p }),
             setShowSignIn: (p) => set({ showSignIn: p }),
             setShowSignUp: (p) => set({ showSignUp: p }),
