@@ -28,6 +28,7 @@ function Item({ itemDetail, sellerId, setIsItemDeleted }) {
     const [jwtToken, setJwtToken] = useState(null);
     const [refreshToken, setRefreshToken] = useState(null);
     const setJwtTokenAtStore = useUnneuDataStore(store => store.setJwtToken);
+    const [mobileLikesHeight, setMobileLikesHeight] = useState(0);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -137,6 +138,10 @@ function Item({ itemDetail, sellerId, setIsItemDeleted }) {
     }, [itemUrls]);
 
     useEffect(() => {
+        setMobileLikesHeight(itemHeight - 40);
+    }, [itemHeight]);
+
+    useEffect(() => {
         const windowWidth = window.innerWidth;
         if (windowWidth < 1024) {
             setItemWidth(0.45 * windowWidth * 0.9);
@@ -157,7 +162,7 @@ function Item({ itemDetail, sellerId, setIsItemDeleted }) {
 
     if (!itemFiles.length || !itemUrls.length)
         return null;
-    return <div className="w-[45%] lg:w-[24%] xl:w-[23%] 2xl:w-[19%] flex flex-col flex-nowrap relative z-0">
+    return <div className="relative w-[45%] lg:w-[24%] xl:w-[23%] 2xl:w-[19%] flex flex-col flex-nowrap relative z-0">
         {
             ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[0].split(".")[itemFiles[0].split(".").length - 1]) ? (
                 <div className={`h-[${itemHeight}px] w-full object-cover rounded-[6px] z-0`}>
@@ -174,7 +179,7 @@ function Item({ itemDetail, sellerId, setIsItemDeleted }) {
         <Image src={Options} alt="options" className="hidden lg:inline-block absolute w-[40px] h-[40px] top-2 right-2 z-10 hover:cursor-pointer" onClick={() => {
             setShowOptions(x => !x);
         }} />
-        <div className={`${showOptions ? "block" : "hidden"} z-[500] absolute w-[120px] flex flex-col flex-nowrap items-center font-medium bg-[#E2E2E2] bottom-[-50px] right-0 lg:top-[50px] lg:right-2`}>
+        <div className={`${showOptions ? "block" : "hidden"} z-[500] max-h-[85px] absolute w-[120px] flex flex-col flex-nowrap items-center font-medium bg-[#E2E2E2] bottom-[-50px] right-0 lg:top-[50px] lg:right-2`}>
             <div className="w-full py-[8px] text-center hover:cursor-pointer" onClick={() => {
                 router.push(`/seller/editItem?sellerId=${sellerId}&itemId=${itemDetail.itemId}`);
             }}>Edit listing</div>
@@ -187,7 +192,7 @@ function Item({ itemDetail, sellerId, setIsItemDeleted }) {
                 Delete
             </div>
         </div>
-        <div className="absolute block lg:hidden flex flex-row flex-nowrap items-center gap-x-[8px] top-[210px] right-2 bg-white py-[4px] px-[10px] rounded-[6px]">
+        <div className={`absolute block lg:hidden flex flex-row flex-nowrap items-center gap-x-[8px] top-[${mobileLikesHeight}px] right-2 bg-white py-[4px] px-[10px] rounded-[6px]`}>
             <p className="text-sm font-medium">{itemDetail.noOfLikes}</p>
             <Image src={Likes} alt="likes" className="w-[14px] h-[13px]" />
         </div>
