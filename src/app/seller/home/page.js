@@ -27,8 +27,13 @@ export default function Home() {
                 const b = await a.json();
                 setX(b);
             }
-            else
+            else {
                 setIsLoading(false);
+                setX({
+                    success: true,
+                    stage: "0"
+                });
+            }
         }
         catch (err) {
             console.log(err);
@@ -44,9 +49,9 @@ export default function Home() {
             if (isLoading)
                 setIsLoading(false);
             if (x.success) {
-                if (x.stage === '4')
+                if (x.stage === "4")
                     router.push("/seller");
-                else if (x.stage === '0')
+                else if (x.stage === "0")
                     router.push("/seller/home");
                 else
                     router.push(`/seller/register/${x.stage}`);
