@@ -100,8 +100,13 @@ export default function Home() {
                 const b = await a.json();
                 setX(b);
             }
-            else
+            else {
                 setIsLoading(false);
+                setX({
+                    success: true,
+                    stage: "0"
+                });
+            }
         }
         catch (err) {
             console.log(err);
