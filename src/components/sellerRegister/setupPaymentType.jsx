@@ -16,6 +16,8 @@ const lbFont = Libre_Baskerville({ subsets: ["latin"], weight: ["400", "700"] })
 export default function SetupPaymentType() {
     const router = useRouter();
     const sellerPhoneNumber = useUnneuDataStore(store => store.phoneNumber);
+    const setJwtToken = useUnneuDataStore(store => store.setJwtToken);
+    const setRefreshToken = useUnneuDataStore(store => store.setRefreshToken);
     const [selectedPaymentType, setSelectedPaymentType] = useState("");
     const [upiId, setUpiId] = useState("");
     const [accountHolderName, setAccountHolderName] = useState("");
@@ -79,10 +81,14 @@ export default function SetupPaymentType() {
                 });
                 const y = await x.json();
                 if (y.success) {
-                    router.push("/");
                     enqueueSnackbar("Store created successfully!", {
                         variant: "success"
                     });
+                    setJwtToken(y.jwtToken);
+                    setRefreshToken(y.refreshToken);
+                    setTimeout(() => {
+                        router.push("/seller");
+                    }, 1000);
                 }
                 else
                     enqueueSnackbar(y.err, {
