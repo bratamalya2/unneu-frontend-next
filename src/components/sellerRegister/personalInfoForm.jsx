@@ -39,9 +39,9 @@ export default function PersonalInfoForm() {
 
     const handleFileChange = (event, setImagePreview) => {
         if (event.target.files.length > 0) {
-            if (event.target.files[0].type.split("/")[0] !== "image") {
+            if (event.target.files[0].type.split("/")[0] !== "image" && event.target.files[0].type.split("/")[1] !== "pdf") {
                 setImagePreview(null);
-                enqueueSnackbar("Only image files can be uploaded!", {
+                enqueueSnackbar("Only image files or pdf can be uploaded!", {
                     variant: "error"
                 });
             }
@@ -331,10 +331,18 @@ export default function PersonalInfoForm() {
                     panImagePreview && (
                         <>
                             <p className="mt-[42px] text-xl">PAN image <span className="text-[#B73636]">*</span></p>
-                            <div className="mt-[24px] mb-[56px] h-[300px] md:w-full lg:w-[80%] xl:w-[70%] border !border-dashed rounded-[32px] default-background-svg" style={{
-                                backgroundImage: `url(${panImagePreview})`
-                            }}>
-                            </div>
+                            {
+                                panImageFile.type.split("/")[0] === "image" ? (
+                                    <div className="mt-[24px] mb-[56px] h-[300px] md:w-full lg:w-[80%] xl:w-[70%] border !border-dashed rounded-[32px] default-background-svg" style={{
+                                        backgroundImage: `url(${panImagePreview})`
+                                    }}>
+                                    </div>
+                                ) : (
+                                    <div className="mt-[24px] mb-[56px] h-[100px] md:w-full lg:w-[80%] xl:w-[70%] border !border-dashed rounded-[32px] flex flex-row items-center justify-center">
+                                        1 file uploaded
+                                    </div>
+                                )
+                            }
                         </>
                     )
                 }
@@ -581,10 +589,14 @@ export default function PersonalInfoForm() {
                     panImagePreview && (
                         <>
                             <p className="text-[15px] mt-[24px]">PAN image <span className="text-[#B63636]">*</span></p>
-                            <div className="mt-[24px] h-[300px] w-full border !border-dashed rounded-[32px] default-background-svg" style={{
-                                backgroundImage: `url(${panImagePreview})`
-                            }}>
-                            </div>
+                            {
+                                panImageFile.type.split("/")[0] === "image" ? (
+                                    <div className="mt-[24px] h-[300px] w-full border !border-dashed rounded-[32px] default-background-svg" style={{
+                                        backgroundImage: `url(${panImagePreview})`
+                                    }}>
+                                    </div>
+                                ) : (null)
+                            }
                         </>
                     )
                 }
