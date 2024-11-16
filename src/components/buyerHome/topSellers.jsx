@@ -36,6 +36,9 @@ export default function TopSellers({ top10Sellers }) {
         setScrollContainer(document.getElementById("scroll-container-buyer-home-top-seller"));
     }, []);
 
+    if (!top10Sellers)
+        return null;
+
     return <section className="relative w-full bg-[#F1EFEF] mb-[20px] lg:mb-[60px]" id="top-sellers">
         <Image src={Illustration} alt="bg" className="hidden lg:block absolute w-full h-full top-0 left-0" />
         <Image src={MobileIllustration} alt="bg" className="lg:hidden absolute w-full h-full top-0 left-0" />

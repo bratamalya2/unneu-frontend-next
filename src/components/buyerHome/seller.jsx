@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { useUnneuDataStore } from "@/store/store";
 
+import BlankDP from "@/../public/blank-dp.webp";
 import Location from "@/../public/location.png";
 import RatingSelected from "@/../public/rating-selected.png";
 import RatingUnselected from "@/../public/rating-unselected.png";
@@ -176,7 +177,7 @@ export default function Seller({ seller, index }) {
     }}>
         <Image src={LeftLeaf} alt="leaf" className="absolute h-[50%] left-[-17px] bottom-0 w-[30px] lg:w-[40px] z-0" />
         <Image src={RightLeaf} alt="leaf" className="absolute h-[50%] right-[-17px] bottom-0 w-[30px] lg:w-[40px] z-0" />
-        <Image src={sellerProfilePhotoUrl} alt="profile photo" width={window.innerWidth > 500 ? 80 : 70} height={window.innerWidth > 500 ? 80 : 70} className="mt-[12px] rounded-[100%]" />
+        <Image src={sellerProfilePhotoUrl ? sellerProfilePhotoUrl : BlankDP} alt="profile photo" width={window.innerWidth > 500 ? 80 : 70} height={window.innerWidth > 500 ? 80 : 70} className="mt-[12px] rounded-[100%]" />
         {
             seller.isVerified.BOOL && (
                 <Image src={Verified} alt="verified" className="absolute w-[20px] h-[20px] top-[55px] lg:top-[65px] left-[60%] lg:left-[57%]" />
