@@ -25,6 +25,8 @@ const lbFont = Libre_Baskerville({ subsets: ["latin"], weight: ["400", "700"] })
 export default function Home() {
   const router = useRouter();
   const setShowSignUp = useUnneuDataStore(store => store.setShowSignUp);
+  const [jwtToken, setJwtToken] = useState("");
+  const [refreshToken, setRefreshToken] = useState("");
   const [showRentalPopup, setShowRentalPopup] = useState(false);
 
   const handleCloseRentalPopup = () => {
@@ -37,11 +39,22 @@ export default function Home() {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    const store = JSON.parse(localStorage.getItem("unneuDataStore")).state;
+    setJwtToken(store.jwtToken);
+    setRefreshToken(store.refreshToken);
   }, []);
+
+  useEffect(() => {
+    if (jwtToken && refreshToken) {
+      window.removeEventListener("scroll", handleScroll);
+    }
+    else {
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [jwtToken, refreshToken]);
 
   return (
     <main className="relative lg:top-[120px]">

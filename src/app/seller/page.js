@@ -114,8 +114,10 @@ export default function Home() {
     }, [phoneNumber]);
 
     useEffect(() => {
-        fetchStage();
-    }, [fetchStage]);
+        if (!searchParams.get("sellerId")) {
+            fetchStage();
+        }
+    }, [fetchStage, searchParams.get("sellerId")]);
 
     useEffect(() => {
         //fetch user details
@@ -125,8 +127,10 @@ export default function Home() {
 
     useEffect(() => {
         //fetch for buyer
-        if (searchParams.get("sellerId"))
+        if (searchParams.get("sellerId")) {
+            setIsLoading(false);
             fetchSellerDetailsForBuyer();
+        }
     }, [searchParams.get("sellerId")]);
 
     useEffect(() => {
@@ -137,7 +141,7 @@ export default function Home() {
     }, []);
 
     useEffect(() => {
-        if (x) {
+        if (x && !searchParams.get("sellerId")) {
             if (isLoading)
                 setIsLoading(false);
             if (x.success) {
@@ -150,6 +154,8 @@ export default function Home() {
             }
         }
     }, [x, isLoading, router]);
+
+    console.log(isLoading);
 
     if (isLoading)
         return null;

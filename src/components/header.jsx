@@ -67,8 +67,8 @@ export default function Header() {
         {
             pathname === "/" && (
                 <header className={`w-full ${lbFont.className} h-[182px] hidden md:block z-[200] bg-white fixed top-0`}>
-                    <div className="py-[33px] flex justify-around items-center mg:px-[6%] lg:px-[5%]">
-                        <Image src={Logo} alt="Unneu" className={`w-[85px] lg:w-[125px] lg:h-[44px] ${jwtToken.length === 0 ? "lg:ml-[-10px] xl:ml-[-20px] min-[1400px]:ml-[-22px]" : "lg:ml-[-25px] xl:ml-[-35px] min-[1400px]:ml-[-37px]"}`} />
+                    <div className="py-[33px] flex justify-between items-center md:px-[6%] lg:pl-[5.5%] lg:pr-[5%]">
+                        <Image src={Logo} alt="Unneu" className={`w-[85px] lg:w-[125px] lg:h-[44px]`} />
                         <div className="w-[30%] md:w-[40%] relative">
                             <Image src={Search} alt="Search" className="w-[24px] h-[24px] absolute top-5 left-4" />
                             <input type="text" placeholder="Search for product" className={`rounded-[24px] w-full h-[64px] pl-[48px] ${poppins.className}`} style={{
@@ -130,25 +130,33 @@ export default function Header() {
                         </div>
                         {/* <Image src={Cart} alt="Cart" className="w-[24px] h-[24px] hover:cursor-pointer" /> */}
                         {
-                            jwtToken.length === 0 && refreshToken.length === 0 ? (
-                                <>
-                                    <div className="hover:cursor-pointer" onClick={() => {
+                            jwtToken.length === 0 && refreshToken.length === 0 ?
+                                (
+                                    <>
+                                        <div className="font-semibold hover:cursor-pointer" onClick={() => {
+                                            hideHamburger();
+                                            setShowSignIn(true);
+                                        }}>Log in</div>
+                                        <button className="font-semibold px-[28px] py-[16px] text-center rounded-[12px] bg-[#FE9135] text-white hover:bg-[#FBC246]" onClick={() => {
+                                            hideHamburger();
+                                            setShowSignUp(true);
+                                        }}>Sign up</button>
+                                    </>
+                                ) :
+                                (
+                                    <button className="font-semibold px-[28px] py-[16px] text-center rounded-[12px] bg-[#FE9135] text-white hover:bg-[#FBC246]" onClick={() => {
                                         hideHamburger();
-                                        setShowSignIn(true);
-                                    }}>Log in</div>
-                                    <button className="px-[28px] py-[16px] text-center rounded-[12px] bg-[#FE9135] text-white hover:bg-[#FBC246]" onClick={() => {
-                                        hideHamburger();
-                                        setShowSignUp(true);
-                                    }}>Sign up</button>
-                                </>
-                            ) : (
-                                null
-                            )
+                                        setJwtToken("");
+                                        setRefreshToken("");
+                                    }}>Logout</button>
+                                )
                         }
                     </div>
                     <nav className="border-t border-t-[#dcdcdc99] border-b border-b-[#dcdcdc99] w-full px-[6%] 2xl:px-[7%] py-[25px] list-none flex gap-x-[38px] bg-white">
                         <li className="hover:cursor-pointer">Home</li>
-                        <li className="hover:cursor-pointer">Shop</li>
+                        <li className="hover:cursor-pointer" onClick={() => {
+                            router.push("/buyer/home");
+                        }}>Shop</li>
                         <li className="hover:cursor-pointer" onClick={() => {
                             router.push("/seller/home");
                         }}>Sell</li>
@@ -161,10 +169,10 @@ export default function Header() {
                 </header>)}
         {
             showHamburger && pathname === "/" && (
-                <nav className={`mt-[30px] block ${pathname === "/" ? "md:hidden" : "lg:hidden"} bg-white max-w-[363px] w-[70%] h-[560px] list-none absolute z-50 rounded-tr-[24px] rounded-br-[24px]`} style={{
+                <nav className={`mt-[60px] block ${pathname === "/" ? "md:hidden" : "lg:hidden"} bg-white max-w-[363px] w-[70%] h-[560px] list-none absolute z-50 rounded-tr-[24px] rounded-br-[24px]`} style={{
                     boxShadow: "0px 4px 78px 0px rgba(0, 0, 0, 0.25)"
                 }} id="mobile-nav">
-                    <Image src={CloseIcon} alt="close" className="w-[14px] h-[14px] absolute top-[90px] right-2 min-[360px]:right-5" onClick={hideHamburger} />
+                    <Image src={CloseIcon} alt="close" className="w-[14px] h-[14px] absolute top-[40px] right-2 min-[360px]:right-5" onClick={hideHamburger} />
                     <Image src={Like} alt="wishlist" className="w-[20px] h-[17px] absolute left-5 top-10" />
                     <div className="absolute top-10 left-[50px] text-[14px]">Wish list</div>
                     {
@@ -337,9 +345,17 @@ export default function Header() {
                             else
                                 router.push("/buyer/home");
                         }}>Home</li>
-                        <li className="text-[18px] hover:cursor-pointer" onClick={() => {
-                            router.push("/buyer/home");
-                        }}>Shop</li>
+                        {
+                            (pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") ? (
+                                <li className="text-[18px] hover:cursor-pointer" onClick={() => {
+                                    router.push("/seller/home");
+                                }}>Sell</li>
+                            ) : (
+                                <li className="text-[18px] hover:cursor-pointer" onClick={() => {
+                                    router.push("/buyer/home");
+                                }}>Shop</li>
+                            )
+                        }
                         <li className="text-[18px] hover:cursor-pointer">Stories</li>
                         <li className="text-[18px] hover:cursor-pointer" onClick={() => {
                             router.push("/aboutUs");
