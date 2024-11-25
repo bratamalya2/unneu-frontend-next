@@ -25,7 +25,9 @@ export default function Footer() {
                 background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)",
                 boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
             }}>
-            <Image src={Illustration} alt="bg" className="absolute w-full h-full top-0 left-0" />
+            <Image src={Illustration} alt="bg" className="absolute w-full h-full top-0 left-0" style={{
+                pointerEvents: "none"
+            }} />
             <li className="lg:w-[26%] xl:w-[38%] 2xl:w-[35%]">
                 <p className="uppercase font-bold">About us</p>
                 <p className="mt-[32px]">
@@ -42,10 +44,14 @@ export default function Footer() {
             </li>
             <li className="ml-2 xl:ml-10 w-[23%] xl:w-[11%]">
                 <p className="uppercase font-bold">Follow us</p>
-                <Image src={Facebook} alt="fb" className="w-[32px] h-[32px] mt-[32px] hover:cursor-pointer" />
-                <Image src={Instagram} alt="insta" className="w-[34px] h-[32px] mt-[32px] hover:cursor-pointer" />
-                <Image src={LinkedIn} alt="linkedin" className="w-[28px] h-[32px] mt-[32px] hover:cursor-pointer" />
-                <Image src={X} alt="x" className="w-[28px] h-[32px] mt-[32px] hover:cursor-pointer" />
+                <a href="https://www.facebook.com/people/Unneu/61563855900302/?mibextid=qi2Omg&rdid=oM2Cw8JCgiXXh0gM&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F14dPwyEwCK%2F%3Fmibextid%3Dqi2Omg" target="_blank">
+                    <Image src={Facebook} alt="fb" className="w-[34px] h-[34px] mt-[32px] hover:cursor-pointer" />
+                </a>
+                <a href="https://www.instagram.com/unneuofficial/?utm_source=qr&igsh=dzlvOGs0MjZub2Ju#" target="_blank">
+                    <Image src={Instagram} alt="insta" className="w-[30px] h-[30px] mt-[32px] hover:cursor-pointer" />
+                </a>
+                <Image src={LinkedIn} alt="linkedin" className="w-[24px] h-[22px] mt-[32px] hover:cursor-pointer" />
+                <Image src={X} alt="x" className="w-[28px] h-[28px] mt-[32px] hover:cursor-pointer" />
             </li>
             <li className="w-[38%] xl:w-[24%]">
                 <Image src={Logo} alt="unneu logo" className="w-[180px] h-[50px]" />
@@ -70,7 +76,9 @@ export default function Footer() {
         list-none relative`} style={{
                 background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)"
             }}>
-            <Image src={MobileIllustration} alt="bg" className="absolute w-full h-full top-0 left-0" />
+            <Image src={MobileIllustration} alt="bg" className="absolute w-full h-full top-0 left-0" style={{
+                pointerEvents: "none"
+            }} />
             <li className="w-full">
                 <p className="uppercase font-bold text-lg">About us</p>
                 <p className="mt-[20px] font-medium leading-8">
@@ -88,10 +96,14 @@ export default function Footer() {
                 </li>
                 <li className="w-[40%]">
                     <p className="uppercase font-bold">Follow us</p>
-                    <Image src={Facebook} alt="fb" className="w-[28px] h-[28px] mt-[32px] hover:cursor-pointer" />
-                    <Image src={Instagram} alt="insta" className="w-[30px] h-[30px] mt-[16px] hover:cursor-pointer" />
-                    <Image src={LinkedIn} alt="linkedin" className="w-[28px] h-[28px] mt-[16px] hover:cursor-pointer" />
-                    <Image src={X} alt="x" className="w-[28px] h-[30px] mt-[16px] hover:cursor-pointer" />
+                    <a href="https://www.facebook.com/people/Unneu/61563855900302/?mibextid=qi2Omg&rdid=oM2Cw8JCgiXXh0gM&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F14dPwyEwCK%2F%3Fmibextid%3Dqi2Omg" target="_blank">
+                        <Image src={Facebook} alt="fb" className="w-[34px] h-[34px] mt-[32px] hover:cursor-pointer" />
+                    </a>
+                    <a href="https://www.instagram.com/unneuofficial/?utm_source=qr&igsh=dzlvOGs0MjZub2Ju#" target="_blank">
+                        <Image src={Instagram} alt="insta" className="w-[30px] h-[30px] mt-[16px] hover:cursor-pointer" />
+                    </a>
+                    <Image src={LinkedIn} alt="linkedin" className="w-[24px] h-[22px] mt-[16px] hover:cursor-pointer" />
+                    <Image src={X} alt="x" className="w-[28px] h-[28px] mt-[16px] hover:cursor-pointer" />
                 </li>
             </div>
             <li className="w-full mt-[12px]">
