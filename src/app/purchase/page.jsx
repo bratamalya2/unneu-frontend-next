@@ -31,7 +31,7 @@ export default function Purchase() {
     if (!stage)
         return <Error statusCode={404} />
 
-    return <main className="w-full relative">
+    return <main className="w-full relative mt-[80px] lg:mt-[120px]">
         <Nav stage={stage} />
         {
             stage === 1 && <Cart />

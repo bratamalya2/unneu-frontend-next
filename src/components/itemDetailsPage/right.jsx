@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Modal from "react-bootstrap/Modal";
+import { enqueueSnackbar } from "notistack";
 
 import { useUnneuDataStore } from "@/store/store";
 
@@ -379,6 +380,9 @@ export default function Right({ itemId, itemDetails }) {
             </div>
             <button className="my-[14px] lg:my-[32px] py-[19px] w-full rounded-[24px] bg-[#FE9135] text-[15px] lg:text-[22px] font-semibold lg:font-medium xl:font-semibold text-white active:bg-yellow-200" onClick={() => {
                 addToCart(itemId);
+                enqueueSnackbar("Item added to cart!", {
+                    variant: "success"
+                });
             }}>Add to cart</button>
             <p className="mb-[12px] text-[15px] lg:text-[18px] font-semibold">Product Description</p>
             <p className="text-sm lg:text-base overflow-hidden">{itemDetails.description}</p>

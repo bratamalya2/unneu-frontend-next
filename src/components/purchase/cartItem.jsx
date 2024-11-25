@@ -252,7 +252,7 @@ export default function CartItem({ itemId }) {
     if (itemFiles.length === 0 || !itemDetails)
         return null;
 
-    return <div className="relative w-full flex flex-row flex-nowrap justify-between p-[2%] border-[0.5px] border-[#00000066] rounded-[24px]" style={{
+    return <div className="relative w-full flex flex-row flex-nowrap p-[2%] gap-x-[7%] border-[0.5px] border-[#00000066] rounded-[24px]" style={{
         boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
     }}>
         <Image src={DeleteItemFromCart} alt="delete" className="absolute w-[14px] lg:w-[24px] h-[14px] lg:h-[24px] right-[20px] lg:right-[25px] bottom-[15px] lg:top-[25px] hover:cursor-pointer" onClick={() => {
@@ -269,7 +269,7 @@ export default function CartItem({ itemId }) {
                     </video>
                 )
         }
-        <div className="relative w-[55%] h-full">
+        <div className="relative w-[45%] h-full">
             <p className="text-[15px] font-medium lg:font-normal lg:text-lg max-w-[70%] max-h-[60px] overflow-hidden">{itemDetails.itemName}</p>
             <p className="mt-[10px] text-[15px] lg:text-lg font-semibold">₹ {itemDetails.sellingPrice} <span className="text-sm lg:text-base text-[#00000066] font-normal line-through">₹ {itemDetails.marketPrice}</span></p>
             <div className="mt-[20px] hidden lg:flex flex-row flex-nowrap items-center gap-x-[7px]">

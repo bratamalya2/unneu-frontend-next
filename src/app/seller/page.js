@@ -155,8 +155,6 @@ export default function Home() {
         }
     }, [x, isLoading, router]);
 
-    console.log(isLoading);
-
     if (isLoading)
         return null;
 

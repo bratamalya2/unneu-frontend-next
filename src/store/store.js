@@ -37,7 +37,9 @@ export const useUnneuDataStore = create(
                     };
             }),
             removeFromCart: (p) => set((state) => {
+                console.log(p);
                 let arr = [...state.cart];
+                console.log(arr);
                 arr = arr.filter(x => x !== p);
                 return {
                     cart: arr

@@ -18,7 +18,7 @@ export default function Cart() {
         <p className="mt-[12px] lg:mt-[21px] text-sm lg:text-[18px]">
             You have <span className="font-medium lg:font-semibold">{cart.length} Item{cart.length > 1 && "s"}</span> in your cart.
         </p>
-        <section className="mt-[32px] lg:mt-[42px] w-ful flex flex-col lg:flex-row justify-between">
+        <section className="mt-[32px] lg:mt-[42px] w-ful flex flex-col lg:flex-row justify-between mb-[50px] lg:mb-[100px]">
             <aside className="w-full lg:w-[60%]">
                 <div className="w-full mt-0 lg:mt-[44px] flex flex-col gap-y-[32px]">
                     {

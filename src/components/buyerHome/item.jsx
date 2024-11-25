@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Modal from "react-bootstrap/Modal";
+import { enqueueSnackbar } from "notistack";
 
 import { useUnneuDataStore } from "@/store/store";
 
@@ -442,7 +443,12 @@ export default function Item({ item }) {
                         </div>
                     )
                 }
-                <button className="py-[5px] px-[24px] rounded-[4px] bg-[#FE9135] active:bg-[#FBC246] text-white text-sm font-medium">Add to cart</button>
+                <button className="py-[5px] px-[24px] rounded-[4px] bg-[#FE9135] active:bg-[#FBC246] text-white text-sm font-medium" onClick={() => {
+                    addToCart(item.itemId.S);
+                    enqueueSnackbar("Item added to cart!", {
+                        variant: "success"
+                    });
+                }}>Add to cart</button>
                 <Image src={Options} alt="options" className="w-[5px] h-[22px]" onClick={() => setShowMobileShare(x => !x)} />
             </div>
             {
@@ -518,9 +524,9 @@ export default function Item({ item }) {
                 </button>
             </Modal.Body>
         </Modal>
-        <Modal show={showQuickView} onHide={handleCloseQuickView} className="left-[20%] lg:left-0 w-[60%] lg:w-full mt-[100px] lg:max-w-[70%] lg:left-[15%] xl:max-w-[55%] xl:left-[22.5%] 2xl:max-w-[45%] 2xl:left-[27.5%] rounded-b-[16px] rounded-t-[16px] lg:rounded-b-0">
+        <Modal show={showQuickView} onHide={handleCloseQuickView} className="left-[20%] lg:left-0 w-[60%] lg:w-full mt-[100px] lg:max-w-[70%] lg:left-[15%] xl:max-w-[55%] xl:left-[22.5%] min-[1350px]:max-w-[50%] min-[1350px]:left-[25%] min-[1450px]:max-w-[45%] min-[1450px]:left-[27.5%] 2xl:max-w-[42%] 2xl:left-[29%] rounded-b-[16px] rounded-t-[16px] lg:rounded-b-0">
             <Modal.Body className="w-full h-[450px] flex flex-col lg:flex-row p-0 overflow-y-hidden rounded-b-[16px] rounded-t-[16px] lg:rounded-b-0 gap-x-[45px]">
-                <section className="relative w-full lg:w-[45%] min-[1400px]:w-[40%] h-[60%] lg:h-full">
+                <section className="relative w-full lg:w-[45%] h-[60%] lg:h-full">
                     <Image src={Close} alt="close" className="lg:hidden absolute top-4 right-4 w-[16px] h-[16px] hover:cursor-pointer z-10" onClick={handleCloseQuickView} />
                     {
                         ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[modalCurrentIndex].split(".")[itemFiles[modalCurrentIndex].split(".").length - 1]) ? (
@@ -587,12 +593,20 @@ export default function Item({ item }) {
                     <p className="hidden lg:block mt-[15px] text-sm font-medium">Category: <span className="font-normal">{item.category.S}</span></p>
                     <button className="hidden lg:block mt-[30px] bg-[#FE9135] text-white rounded-[24px] py-[10px] px-[100px] font-medium active:bg-yellow-200" onClick={() => {
                         addToCart(item.itemId.S);
+                        enqueueSnackbar("Item added to cart!", {
+                            variant: "success"
+                        });
                     }}>Add to cart</button>
                     <Link href={`/item?itemId=${item.itemId.S}`}>
                         <button className="hidden lg:block mt-[20px] border border-[#9D9D9D] rounded-[24px] py-[10px] px-[95px] font-medium">More Details</button>
                     </Link>
                     <div className="lg:hidden w-full absolute bottom-0 left-0 flex flex-row flex-nowrap items-center justify-between">
-                        <div className="py-[12px] w-[50%] h-full text-white text-[15px] font-medium bg-[#FE9135] text-center">Add to cart</div>
+                        <div className="py-[12px] w-[50%] h-full text-white text-[15px] font-medium bg-[#FE9135] text-center" onClick={() => {
+                            addToCart(item.itemId.S);
+                            enqueueSnackbar("Item added to cart!", {
+                                variant: "success"
+                            });
+                        }}>Add to cart</div>
                         <Link href={`/item?itemId=${item.itemId.S}`} className="w-[50%] h-full">
                             <div className="py-[12px] text-[#787878] text-[15px] font-medium text-center border-t border-t-[#C8C8C8]">More details</div>
                         </Link>

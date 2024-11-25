@@ -120,10 +120,10 @@ export default function ProfileSection({ sellerDetails }) {
             </Modal.Body>
         </Modal>
         <section className="w-full h-fit flex flex-col lg:flex-row flex-nowrap justify-between mt-[35px] lg:mt-[100px] px-[10%] lg:px-[5%]">
-            <aside className={`w-full lg:w-[50%] h-[300px] lg:h-[500px] rounded-[10px] lg:rounded-[0px] relative default-background-svg ${!coverPhotoUrl && "default-cover-photo"}`} style={{
+            <aside className={`w-full lg:w-[55%] h-[300px] lg:h-[500px] rounded-[10px] lg:rounded-[0px] relative default-background-svg ${!coverPhotoUrl && "default-cover-photo"}`} style={{
                 backgroundImage: coverPhotoUrl && `url(${coverPhotoUrl})`
             }}>
-                <div className={`absolute w-[150px] lg:w-[250px] h-[150px] lg:h-[250px] default-background-svg left-[26%] lg:left-[24%] xl:left-[26%] bottom-[-75px] lg:bottom-[-125px] rounded-[100%] ${!profilePhotoUrl && "default-profile-photo"}`} style={{
+                <div className={`absolute w-[150px] lg:w-[250px] h-[150px] lg:h-[250px] default-background-svg left-[26%] lg:left-[26%] xl:left-[32%] bottom-[-75px] lg:bottom-[-125px] rounded-[100%] ${!profilePhotoUrl && "default-profile-photo"}`} style={{
                     backgroundImage: profilePhotoUrl && `url(${profilePhotoUrl})`
                 }}>
                 </div>
@@ -135,7 +135,7 @@ export default function ProfileSection({ sellerDetails }) {
                     <Image src={Dot} alt="dot" className="w-[5px] h-[5px]" />
                 </div>
                 <Image src={Share} alt="share" className="w-[20px] h-[24px] absolute top-1 lg:top-2 right-10 hover:cursor-pointer" onClick={handleShowShareModal} />
-                <p className="text-2xl lg:text-3xl font-medium">{sellerDetails.storeName}</p>
+                <p className="text-2xl lg:text-3xl font-medium max-w-[80%]">{sellerDetails.storeName}</p>
                 {
                     sellerDetails.storeDescription.length > 0 && <>
                         <p className="hidden lg:block mt-[10px] text-[#FE9135] font-medium">BIO</p>

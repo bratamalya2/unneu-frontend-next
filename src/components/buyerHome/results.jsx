@@ -51,7 +51,7 @@ export default function Results({ items, appliedFilters, removeFilter, sortBy, s
                         })
                     }
                 </div>
-                <div className="absolute right-0 mt-[20px] lg:w-[35%] xl:w-[30%] min-[1400px]:w-[25%] 2xl:w-[22%] flex flex-row flex-nowrap justify-end gap-x-[10px] mr-3">
+                <div className="absolute right-5 mt-[20px] lg:w-[35%] xl:w-[30%] min-[1400px]:w-[25%] 2xl:w-[22%] flex flex-row flex-nowrap justify-end gap-x-[10px] mr-3">
                     <div className="flex flex-row flex-nowrap py-[9px]">
                         <p>Sort by</p>
                     </div>
