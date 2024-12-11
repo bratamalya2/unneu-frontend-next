@@ -3,4 +3,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    overflow: hidden;
+    height: 100%; /* Ensure the container fills the entire height of its parent */
+    max-height: 550px; /*Match the reduced height of the popup */
+    object-fit: cover; /* Ensure the image covers the container without stretching */
 }

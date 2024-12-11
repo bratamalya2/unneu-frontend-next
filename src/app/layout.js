@@ -28,6 +28,8 @@ export default function RootLayout({ children }) {
         <script
           src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js"
           crossOrigin="true" async />
+          <script src="https://static.elfsight.com/platform/platform.js" async></script>
+          <div class="elfsight-app-5a00025e-e3c1-423f-827d-2ab254badb52" data-elfsight-app-lazy></div>
       </head>
 
       <body className={`${poppins.className}`}>

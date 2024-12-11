@@ -35,7 +35,7 @@ export default function LandingPageFAQQuestion({ tag, question, currentQuestion,
                             setCurrentQuestion(null);
                             setClickedQuestion(null);
                         }}>
-                        <Image src={Contract} alt="hide answer" className="absolute top-[10px] left-[9px] w-[40%] h-[40%] absolute hover:cursor-pointer" />
+                        <Image src={Contract} alt="hide answer" className="top-[10px] left-[9px] w-[40%] h-[40%] absolute hover:cursor-pointer" />
                     </div>
                 )
             }
