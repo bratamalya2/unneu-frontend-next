@@ -31,11 +31,23 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
     const [timerObj, setTimerObj] = useState(null);
     const [showError, setShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+    const [isPopupReady, setIsPopupReady] = useState(false);
 
     const setJwtToken = useUnneuDataStore(store => store.setJwtToken);
     const setRefreshToken = useUnneuDataStore(store => store.setRefreshToken);
     const setBuyerSelected = useUnneuDataStore(store => store.setBuyerSelected);
     const setSellerSelected = useUnneuDataStore(store => store.setSellerSelected);
+
+     // Add a useEffect to create a delay
+     useEffect(() => {
+        // Only set the popup to be ready after a 3-second delay
+        const timer = setTimeout(() => {
+            setIsPopupReady(true);
+        }, 7000);
+
+        // Cleanup the timer if the component unmounts
+        return () => clearTimeout(timer);
+    }, []);
 
     const generateOtp = async () => {
         try {
@@ -163,13 +175,13 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
     }, [isSellerSelected, setBuyerSelected, setSellerSelected]);
 
     return <>
-        <Modal show={showSignUp} onHide={hideSignUp} className="mt-[20px] xl:max-w-[60%] xl:left-[20%]">
-            <Modal.Body className={`flex flex-row flex-nowrap justify-center sm:justify-start rounded-[32px] ${isSellerSelected ? "h-[500px]" : "h-[700px]"} sm:h-[600px] md:h-[640px] p-0`}>
+        <Modal show={showSignUp && isPopupReady} onHide={hideSignUp} className="mt-[70px] xl:max-w-[50%] xl:left-[25%]">
+            <Modal.Body className={`flex flex-row flex-nowrap justify-center sm:justify-start rounded-[32px] ${isSellerSelected ? "h-[400px]" : "h-[550px]"} sm:h-[500px] md:h-[550px] p-0`}>
                 <div className="hidden sm:inline-block w-[35%] h-full rounded-tl-[32px] rounded-bl-[32px]" id="signup-popup-side-img-container"></div>
                 <div className="relative flex flex-col items-center h-full w-full sm:w-[65%] z-[10]">
                     <Image src={CloseIcon} alt="close" className="w-[20px] h-[20px] absolute top-5 right-5" onClick={hideSignUp} />
-                    <p className={`${libreBaskerville.className} text-2xl text-[32px] text-[#4C4C4C] sm:hidden md:block ${isOTPSent ? "mt-[25px] mb-4" : "mt-[35px] mb-8"}`}>Sign up</p>
-                    <div className={`flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-2xl ${showError ? "mt-2" : "mt-8"}`}>
+                    <p className={`${libreBaskerville.className} text-2xl text-[32px] text-[#4C4C4C] sm:hidden md:block ${isOTPSent ? "mt-[25px] mb-4" : "mt-[25px] mb-6"}`}>Sign up</p>
+                    <div className={`flex flex-row flex-nowrap items-center justify-center ${libreBaskerville.className} text-[20px] lg:text-2xl ${showError ? "mt-2" : "mt-4"}`}>
                         <div
                             className={`py-[9px] sm:py-[6px] lg:py-[10px] px-[25px] lg:px-[25px] rounded-tl-[8px] rounded-bl-[8px] hover:cursor-pointer ${isSellerSelected ? "bg-[#E05F1D] text-white border-y-2 border-l-2 border-[#E05F1D]" : "bg-white text-[#4C4C4C] border-y-2 border-l-2 border-[#CECECE]"}`}
                             onClick={() => setIsSellerSelected(true)}
@@ -258,7 +270,7 @@ export default function SignUpPopup({ showSignUp, hideSignUp }) {
                     }
                     {
                         showError && !isSellerSelected && (
-                            <p className="text-[#8F8F8F] text-[14px] text-red-500 font-bold text-center my-2 sm:my-0">{errorMessage}</p>
+                            <p className="text-[14px] text-red-500 font-bold text-center my-2 sm:my-0">{errorMessage}</p>
                         )
                     }
                     {

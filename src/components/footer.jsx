@@ -15,23 +15,47 @@ export default function Footer() {
 
     return <>
         <footer className={`w-full relative list-none text-[#282828] text-[18px] font-medium hidden lg:flex
-                ${pathname === "/" ? "h-[1050px] xl:h-[550px] top-[1320px] xl:top-[1750px] 2xl:top-[2010px] min-[1640px]:top-[2120px] min-[1760px]:top-[2220px] min-[1860px]:top-[2320px] hidden gap-x-14 pt-[100px] px-[9%]" :
+                ${pathname === "/" ? "h-[1050px] xl:h-[450px] top-[1320px] xl:top-[1750px] 2xl:top-[2010px] min-[1640px]:top-[2120px] min-[1760px]:top-[2220px] min-[1860px]:top-[2320px] hidden gap-x-14 pt-[100px] px-[9%]" :
                 pathname === "/seller/home" ? "lg:top-[2450px] 2xl:top-[2700px] h-[950px] xl:h-[500px] gap-x-14 pt-[100px] px-[5%]" :
-                    (pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller/editProfile/1" || pathname === "/seller/editProfile/2" || pathname === "/seller/editProfile/3" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/contactUs" || pathname === "/terms&conditions" || pathname === "/cancellation&refund" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") ? "h-[950px] xl:h-[500px] gap-x-14 pt-[100px] px-[7%]" :
-                        pathname === "/seller" ? "h-[950px] xl:h-[500px] gap-x-14 pt-[100px] px-[5%]" : "lg:h-[950px] xl:h-[500px]"
+                    (pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller/editProfile/1" || pathname === "/seller/editProfile/2" || pathname === "/seller/editProfile/3" || pathname === "/seller/uploadItem" || pathname === "/seller/editItem" || pathname === "/aboutUs" || pathname === "/contactUs" || pathname === "/terms&conditions" || pathname === "/cancellation&refund" || pathname === "/buyer/home" || pathname === "/item" || pathname === "/buyer/category" || pathname === "/purchase") ? "h-[950px] xl:h-[450px] gap-x-14 pt-[100px] px-[7%]" :
+                        pathname === "/seller" ? "h-[950px] xl:h-[450px] gap-x-14 pt-[100px] px-[5%]" : "lg:h-[950px] xl:h-[500px]"
             }
                 ${(pathname === "/seller/register/1" || pathname === "/seller/register/2" || pathname === "/seller/register/3" || pathname === "/seller/editProfile/1" || pathname === "/seller/editProfile/2" || pathname === "/seller/editProfile/3") && "lg:top-[100px]"}
             `} style={{
                 background: "linear-gradient(0deg, #FFC595 0%, #FFEDDE 100%)",
-                boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)"
+                boxShadow: "0px 11px 30px 4px rgba(81, 69, 55, 0.10)",
+                paddingBottom: "0", // Remove extra padding
+
             }}>
-            <Image src={Illustration} alt="bg" className="absolute w-full h-full top-0 left-0" style={{
-                pointerEvents: "none"
+            <Image src="/footer-illustration.svg" alt="bg" className="absolute w-full h-full top-0 left-0"  width={64} height={64} style={{
+                pointerEvents: "none",
             }} />
-            <li className="lg:w-[26%] xl:w-[38%] 2xl:w-[35%]">
-                <p className="uppercase font-bold">About us</p>
+           <li className="lg:w-[26%] xl:w-[38%] 2xl:w-[40%]">
+            
+            <div className="flex items-center">
+                <h4 className="uppercase font-bold">About us</h4>
+            </div>
+            <div className="flex items-center">
+                <p className="text-sm mr-2 w-94px h-24px mt-5">Certified by</p>
+            </div>
+                <div
+                    className="absolute"
+                    style={{
+                    top: '84px',
+                    left: '230px',
+                    width: '150px',
+                    height: "100px"
+                    }}
+                >
+                    <Image
+                    src="/startup-india.svg"
+                    alt="Startup India Recognized Startup"
+                    width={150} // Adjust logo size here
+                    height={100}
+                    />
+                </div>
                 <p className="mt-[32px]">
-                    Unneu is a peer to peer marketplace to buy- sell- rent your pre-owned sarees at a negotiable fee from the convenience of your door step.We aim to create a pool of micro entrepreneurs offering social recognition for their contribution to sustainability while making money. A platform to exchange your favourite sarees for a purpose while experiencing varieties everyday.
+                    Unneu is a peer-to-peer marketplace to buy, sell, or rent your pre-owned sarees at a negotiable fee from the convenience of your doorstep. We aim to create a pool of micro-entrepreneurs, offering social recognition for their contribution to sustainability while making money. A platform to exchange your favorite sarees for a purpose while experiencing varieties every day.
                 </p>
             </li>
             <li className="ml-10 w-[23%] xl:w-[14%]">
@@ -54,7 +78,7 @@ export default function Footer() {
                 <Image src={X} alt="x" className="w-[28px] h-[28px] mt-[32px] hover:cursor-pointer" />
             </li>
             <li className="w-[38%] xl:w-[24%]">
-                <Image src={Logo} alt="unneu logo" className="w-[180px] h-[50px]" />
+                <Image src={Logo} alt="unneu logo" className="w-[180px] h-[50px]" onClick={()=> router.push('/')}/>
                 <p className="mt-[20px]">Unneu Fashion Pvt Ltd</p>
                 <p className="mt-[16px]">
                     19, RN Mukherjee Rd, Esplanade, B.B.D. Bagh, Kolkata, West Bengal 700001
@@ -67,6 +91,7 @@ export default function Footer() {
                 </p>
             </li>
         </footer>
+
         <footer className={`lg:hidden flex flex-col flex-nowrap 
         ${pathname === "/" && "min-[300px]:top-[550px] sm:top-[880px] min-[730px]:top-[840px] md:top-[820px] min-[780px]:top-[880px] min-[848px]:top-[910px] min-[880px]:top-[950px] min-[910px]:top-[990px] min-[950px]:top-[1040px] min-[1000px]:top-[1100px] h-[1050px] sm:h-[950px] px-[5%] py-[41px]"}
         ${pathname === "/seller/home" && "min-[300px]:top-[2460px] sm:top-[2460px] md:top-[2900px] h-[1050px] sm:h-[950px] px-[5%] py-[41px]"}
@@ -81,6 +106,25 @@ export default function Footer() {
             }} />
             <li className="w-full">
                 <p className="uppercase font-bold text-lg">About us</p>
+                <div className="flex items-center">
+                <p className="text-md mr-2 w-94px h-24px mt-5">Certified by</p>
+            </div>
+                <div
+                    className="absolute"
+                    style={{
+                    top: '33px',
+                    left: '120px',
+                    width: '150px',
+                    height: "100px"
+                    }}
+                >
+                    <Image
+                    src="/startup-india.svg"
+                    alt="Startup India Recognized Startup"
+                    width={150} // Adjust logo size here
+                    height={100}
+                    />
+                </div>
                 <p className="mt-[20px] font-medium leading-8">
                     Unneu is a peer to peer marketplace to buy- sell- rent your pre-owned sarees at a negotiable fee from the convenience of your door step.We aim to create a pool of micro entrepreneurs offering social recognition for their contribution to sustainability while making money. A platform to exchange your favourite sarees for a purpose while experiencing varieties everyday.
                 </p>
@@ -107,7 +151,7 @@ export default function Footer() {
                 </li>
             </div>
             <li className="w-full mt-[12px]">
-                <Image src={Logo} alt="unneu logo" className="w-[180px] h-[50px] mt-5" />
+                <Image src={Logo} alt="unneu logo" className="w-[180px] h-[50px] mt-5" onClick={()=> router.push('/')} />
                 <p className="mt-[20px] font-medium">Unneu Fashion Pvt Ltd</p>
                 <p className="mt-[16px] max-w-[90%] font-medium">
                     19, RN Mukherjee Rd, Esplanade, B.B.D. Bagh, Kolkata, West Bengal 700001
@@ -119,6 +163,8 @@ export default function Footer() {
                     <span>&nbsp;+91 9147397159</span>
                 </p>
             </li>
+            {/* Startup India Logo */}
+  
         </footer>
     </>
 }

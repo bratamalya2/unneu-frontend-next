@@ -82,7 +82,7 @@ export default function Filters({ appliedFilters, addFilter, removeFilter, handl
             <p className="mb-[70px] lg:text-3xl">Filters</p>
             <div className="w-full flex flex-row flex-nowrap items-center justify-between">
                 <p className="text-xl">Newly Listed</p>
-                <Image src={showNewlyListed ? UpArrow : DownArrow} alt="show/hide" className="w-[11px] h-[5px] hover:cursor-pointer" onClick={() => {
+                <Image src={showNewlyListed ? UpArrow : DownArrow} alt="show/hide" className="w-[11px] h-[5px] hover:cursor-pointer mr-10" onClick={() => {
                     setShowNewlyListed(x => !x);
                 }} />
             </div>
@@ -119,7 +119,7 @@ export default function Filters({ appliedFilters, addFilter, removeFilter, handl
             }
             <div className="mt-[25px] w-full flex flex-row flex-nowrap items-center justify-between">
                 <p className="text-xl">By Color</p>
-                <Image src={showColors ? UpArrow : DownArrow} alt="show/hide" className="w-[11px] h-[5px] hover:cursor-pointer" onClick={() => {
+                <Image src={showColors ? UpArrow : DownArrow} alt="show/hide" className="w-[11px] h-[5px] hover:cursor-pointer mr-10" onClick={() => {
                     setShowColors(x => !x);
                 }} />
             </div>
@@ -144,7 +144,7 @@ export default function Filters({ appliedFilters, addFilter, removeFilter, handl
             }
             <div className="my-[25px] w-full flex flex-row flex-nowrap items-center justify-between">
                 <p className="text-xl">By Seller Profile</p>
-                <Image src={showProfile ? UpArrow : DownArrow} alt="show/hide" className="w-[11px] h-[5px] hover:cursor-pointer" onClick={() => {
+                <Image src={showProfile ? UpArrow : DownArrow} alt="show/hide" className="w-[11px] h-[5px] hover:cursor-pointer mr-10" onClick={() => {
                     setShowProfile(x => !x);
                 }} />
             </div>

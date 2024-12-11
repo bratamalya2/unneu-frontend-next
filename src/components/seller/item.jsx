@@ -162,7 +162,7 @@ function Item({ itemDetail, sellerId, setIsItemDeleted }) {
 
     if (!itemFiles.length || !itemUrls.length)
         return null;
-    return <div className="relative w-[45%] lg:w-[24%] xl:w-[23%] 2xl:w-[19%] flex flex-col flex-nowrap relative z-0">
+    return <div className="w-[45%] lg:w-[24%] xl:w-[23%] 2xl:w-[19%] flex flex-col flex-nowrap relative z-0">
         {
             ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[0].split(".")[itemFiles[0].split(".").length - 1]) ? (
                 <div className={`h-[${itemHeight}px] w-full object-cover rounded-[6px] z-0`}>
@@ -192,7 +192,7 @@ function Item({ itemDetail, sellerId, setIsItemDeleted }) {
                 Delete
             </div>
         </div>
-        <div className={`absolute block lg:hidden flex flex-row flex-nowrap items-center gap-x-[8px] top-[${mobileLikesHeight}px] right-2 bg-white py-[4px] px-[10px] rounded-[6px]`}>
+        <div className={`absolute lg:hidden flex flex-row flex-nowrap items-center gap-x-[8px] top-[${mobileLikesHeight}px] right-2 bg-white py-[4px] px-[10px] rounded-[6px]`}>
             <p className="text-sm font-medium">{itemDetail.noOfLikes}</p>
             <Image src={Likes} alt="likes" className="w-[14px] h-[13px]" />
         </div>
@@ -204,16 +204,25 @@ function Item({ itemDetail, sellerId, setIsItemDeleted }) {
             </div>
             <Image src={Options2} alt="options" className="lg:hidden hover:cursor-pointer w-[30px] h-[30px]" onClick={() => setShowOptions(x => !x)} />
         </div>
-        <div className="w-full px-2 w-full flex flex-row flex-nowrap items-center">
+        <div className="px-2 w-full flex flex-row flex-nowrap items-center">
             <p className="text-[#2E9E33] lg:text-xl font-medium">₹ {itemDetail.sellingPrice}</p>
             <p className="line-through ml-[15px] text-sm lg:text-base">₹ {itemDetail.marketPrice}</p>
         </div>
         <Modal show={show} onHide={handleClose}>
-            <Modal.Body className="max-h-[600px] lg:max-h-[800px]">
-                <Image src={Close} alt="close" className="absolute w-[18px] h-[18px] right-5 top-5 hover:cursor-pointer" onClick={handleClose} />
+        <Modal.Body className="max-h-[90vh] mt-8 sm:mt-10 lg:mt-16 lg:space-y-0 sm:max-h-[80vh] px-4 py-6 sm:px-6 lg:px-8">
+            <Image 
+                src={Close} 
+                alt="close" 
+                className="absolute w-[18px] h-[18px] right-4 top-4 sm:right-6 sm:top-6 lg:w-[14px] lg:h-[14px] lg:right-8 lg:top-8 hover:cursor-pointer" 
+                onClick={handleClose} 
+            />
                 {
                     ["jpg", "jpeg", "png", "gif", "tiff", "tif", "bmp", "svg", "webp", "heif", "heic", "raw"].includes(itemFiles[currentIndex].split(".")[itemFiles[currentIndex].split(".").length - 1]) ? (
-                        <img src={itemUrls[currentIndex]} alt="item image" className="mx-auto h-[500px] lg:h-[750px] max-w-[94%] rounded-[6px]" />
+                        <img 
+                            src={itemUrls[currentIndex]} 
+                            alt="item image" 
+                            className="mx-auto h-auto max-h-[500px] sm:max-h-[600px] lg:max-h-[500px] w-full max-w-[94%] rounded-[6px] object-contain" 
+                        />
                     ) : (
                         <video className="mx-auto h-[500px] lg:h-[750px] max-w-[94%] rounded-[6px] object-cover" loop={true} autoPlay="autoplay" muted>
                             <source src={itemUrls[currentIndex]} />
@@ -222,7 +231,7 @@ function Item({ itemDetail, sellerId, setIsItemDeleted }) {
                 }
                 {
                     currentIndex === 0 ? (
-                        <div className="absolute w-[50px] h-[50px] top-[50%] left-2 flex flex-row flex-nowrap items-center justify-center bg-white border border-gray-600 rounded-[100%]">
+                        <div className="absolute w-[50px] h-[50px] top-[50%] left-2 flex flex-row flex-nowrap items-center justify-center bg-black border border-gray-600 rounded-[100%]">
                             <Image src={LeftLightArrow} alt="left-arrow" className=" w-[25px] h-[25px]" />
                         </div>
                     ) : (

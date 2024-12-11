@@ -6,6 +6,9 @@ import Error from "next/error";
 
 import Nav from "@/components/purchase/nav";
 import Cart from "@/components/purchase/cart";
+import Address from "@/components/purchase/address";
+
+import Payment from "@/components/purchase/payment";
 
 export default function Purchase() {
     const searchParams = useSearchParams();
@@ -35,6 +38,12 @@ export default function Purchase() {
         <Nav stage={stage} />
         {
             stage === 1 && <Cart />
+        }
+        {
+            stage === 2 && <Address />
+        }
+        {
+            stage === 3 && <Payment />
         }
     </main>
 }
