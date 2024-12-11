@@ -39,6 +39,7 @@ export default function Footer() {
                 <p className="text-sm mr-2 w-94px h-24px mt-5">Certified by</p>
             </div>
             {/* added startupindia logo */}
+            {/* Added for nav bar also */}
                 <div
                     className="absolute"
                     style={{
