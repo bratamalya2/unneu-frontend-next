@@ -38,6 +38,7 @@ export default function Footer() {
             <div className="flex items-center">
                 <p className="text-sm mr-2 w-94px h-24px mt-5">Certified by</p>
             </div>
+            {/* added startupindia logo */}
                 <div
                     className="absolute"
                     style={{
